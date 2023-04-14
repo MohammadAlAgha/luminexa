@@ -13,3 +13,7 @@ const scheduleSchema = new mongoose.Schema({
     type: Date,
   },
 });
+
+const Schedule = mongoose.model("Schedule", scheduleSchema);
+
+module.exports = Schedule;

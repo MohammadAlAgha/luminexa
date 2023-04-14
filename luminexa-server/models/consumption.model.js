@@ -14,3 +14,7 @@ const consumptionSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+const Consumption = mongoose.model("Consumption", consumptionSchema);
+
+module.exports = Consumption;

@@ -20,3 +20,7 @@ const ledSchema = new mongoose.Schema({
     default: "standard",
   },
 });
+
+const Led = mongoose.model("Led", ledSchema);
+
+module.exports = Led;

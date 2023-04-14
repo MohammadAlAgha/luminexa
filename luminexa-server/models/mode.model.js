@@ -11,3 +11,7 @@ const modeSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+const Mode = mongoose.model("Mode", modeSchema);
+
+module.exports = Mode;

@@ -6,3 +6,7 @@ const systemSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+const System = mongoose.model("System", systemSchema);
+
+module.exports = System;
