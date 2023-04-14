@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Consumption = require("./consumption.model");
 
 const ledSchema = new mongoose.Schema({
   ledName: {
@@ -18,6 +19,11 @@ const ledSchema = new mongoose.Schema({
     type: String,
     enum: ["standard", "red", "blue", "green", "yellow", "purple", "orange"],
     default: "standard",
+  },
+  consumption: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Consumption",
+    required: true,
   },
 });
 
