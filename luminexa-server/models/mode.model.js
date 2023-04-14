@@ -10,6 +10,11 @@ const modeSchema = new mongoose.Schema({
     enum: ["on", "off"],
     required: true,
   },
+  leds: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Led",
+    required: true,
+  },
 });
 
 const Mode = mongoose.model("Mode", modeSchema);
