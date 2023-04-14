@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
   deviceToken: {
     type: String,
   },
+  systems: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "System",
+  },
 });
 
 const User = mongoose.model("User", userSchema);
