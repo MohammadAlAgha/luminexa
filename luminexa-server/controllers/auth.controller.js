@@ -1,5 +1,6 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 exports.register = async (req, res) => {
   const { email, password, userType, userName } = req.body;
@@ -9,9 +10,13 @@ exports.register = async (req, res) => {
   if (existingUser)
     return res.status(409).json({ message: "Email already exists" });
 
+  const saltRounds = 10;
+  const salt = await bcrypt.genSalt(saltRounds);
+  const hashed = await bcrypt.hash(password, salt);
+
   const user = new User();
   user.email = email;
-  user.password = password;
+  user.password = hashed;
   user.userName = userName;
 
   if (userType) user.userType = userType;
@@ -26,7 +31,7 @@ exports.login = async (req, res) => {
 
   if (!user) return res.status(404).json({ message: "Invalid Credentials" });
 
-  const isMatched = user.matchPassword(password);
+  const isMatched = await bcrypt.compare(password, user.password);
   if (!isMatched)
     return res.status(404).json({ message: "Invalid Credentials" });
 
