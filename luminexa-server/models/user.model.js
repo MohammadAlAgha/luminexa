@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "System",
   },
+  notifications: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Notifications",
+  },
 });
 
 const User = mongoose.model("User", userSchema);
