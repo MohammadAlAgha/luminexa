@@ -22,3 +22,10 @@ exports.addSchedule = async (req, res) => {
 
   res.json(system);
 };
+
+exports.getSchedules = async (req, res) => {
+  const { systemId } = req.body;
+  const system = await System.findById(systemId);
+
+  res.json(system.schedules);
+};

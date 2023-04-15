@@ -9,7 +9,7 @@ const scheduleSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  scheduleRepeat: {
+  repeat: {
     type: [
       {
         type: String,

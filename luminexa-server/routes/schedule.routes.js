@@ -1,9 +1,12 @@
 const { Router } = require("express");
 const router = Router();
 
-const { addSchedule } = require("../controllers/schedules.controller");
-const { route } = require("./auth.routes");
+const {
+  addSchedule,
+  getSchedules,
+} = require("../controllers/schedules.controller");
 
 router.post("/addSchedule", addSchedule);
+router.post("/getSchedules", getSchedules);
 
 module.exports = router;
