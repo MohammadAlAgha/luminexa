@@ -3,6 +3,6 @@ const router = Router();
 
 const { addSystem } = require("../controllers/systems.controller");
 
-route.post("/addSystem", addSystem);
+router.post("/addSystem", addSystem);
 
 module.exports = router;
