@@ -8,6 +8,8 @@ app.use("/auth", authRouter);
 const systemRouter = require("./routes/systems.routes");
 const { authMiddleware } = require("./middlewares/auth.middleware");
 app.use("/system", authMiddleware, systemRouter);
+const ledsRouter = require("./routes/leds.routes");
+app.use("/leds", authMiddleware, ledsRouter);
 
 app.listen(process.env.PORT, (error) => {
   if (error) console.error(error);
