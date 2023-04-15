@@ -8,7 +8,7 @@ const modeSchema = new mongoose.Schema({
   modeStatus: {
     type: String,
     enum: ["on", "off"],
-    required: true,
+    default: "off",
   },
   leds: [
     {
