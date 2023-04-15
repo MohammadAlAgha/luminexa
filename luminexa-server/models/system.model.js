@@ -7,6 +7,7 @@ const systemSchema = new mongoose.Schema({
   },
   serialNumber: {
     type: String,
+    unique: true,
     required: true,
   },
   leds: [
