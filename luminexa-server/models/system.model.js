@@ -16,19 +16,19 @@ const systemSchema = new mongoose.Schema({
       required: true,
     },
   ],
-  mode: [
+  modes: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Mode",
     },
   ],
-  schedule: [
+  schedules: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Schedule",
     },
   ],
-  user: [
+  users: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
