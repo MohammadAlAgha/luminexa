@@ -20,11 +20,13 @@ const ledSchema = new mongoose.Schema({
     enum: ["standard", "red", "blue", "green", "yellow", "purple", "orange"],
     default: "standard",
   },
-  consumption: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Consumption",
-    required: true,
-  },
+  consumption: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Consumption",
+      required: true,
+    },
+  ],
 });
 
 const Led = mongoose.model("Led", ledSchema);
