@@ -11,7 +11,7 @@ const ledSchema = new mongoose.Schema({
     enum: ["on", "off"],
     required: true,
   },
-  intesnsity: {
+  intensity: {
     type: Number,
     required: true,
   },
