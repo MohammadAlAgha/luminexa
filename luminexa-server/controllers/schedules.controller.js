@@ -29,3 +29,11 @@ exports.getSchedules = async (req, res) => {
 
   res.json(system.schedules);
 };
+
+exports.setScheduleStatus = async (req, res) => {
+  const { scheduleId } = req.body;
+  const schedule = await Schedule.findById(scheduleId);
+  schedule.scheduleStatus = schedule.scheduleStatus === "on" ? "off" : "on";
+  await schedule.save();
+  res.json(schedule);
+};
