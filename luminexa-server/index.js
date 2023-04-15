@@ -13,7 +13,7 @@ app.use("/leds", authMiddleware, ledsRouter);
 const scheduleRouter = require("./routes/schedule.routes");
 app.use("/schedules", authMiddleware, scheduleRouter);
 const modeRouter = require("./routes/modes.routes");
-app.use("/modes", modeRouter);
+app.use("/modes", authMiddleware, modeRouter);
 
 app.listen(process.env.PORT, (error) => {
   if (error) console.error(error);
