@@ -1,12 +1,12 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 
-exports.authMiddleware = async (res, req, next) => {
+exports.authMiddleware = async (req, res, next) => {
   try {
-    const token = req.headers.authorixation?.split(" ")[1];
+    const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
-      res.json({ message: "Unauthorized" });
+      return res.status(403).json({ message: "Unauthenticated" });
     }
 
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
@@ -15,7 +15,7 @@ exports.authMiddleware = async (res, req, next) => {
     req.user = user;
 
     next();
-  } catch (error) {
-    return res.json({ message: "Server Error" });
+  } catch (e) {
+    return res.status(500).json({ message: "Server Error" });
   }
 };

@@ -6,7 +6,8 @@ app.use(express.json());
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 const systemRouter = require("./routes/systems.routes");
-app.use("/system", systemRouter);
+const { authMiddleware } = require("./middlewares/auth.middleware");
+app.use("/system", authMiddleware, systemRouter);
 
 app.listen(process.env.PORT, (error) => {
   if (error) console.error(error);
