@@ -31,3 +31,11 @@ exports.editLedColor = async (req, res) => {
   await led.save();
   res.json(led);
 };
+
+exports.editLedName = async (req, res) => {
+  const { ledId, ledName } = req.body;
+  const led = await Led.findById(ledId);
+  led.ledName = ledName;
+  await led.save();
+  res.json(led);
+};
