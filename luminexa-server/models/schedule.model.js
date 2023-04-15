@@ -26,6 +26,11 @@ const scheduleSchema = new mongoose.Schema({
     ],
     default: [],
   },
+  scheduleStatus: {
+    type: String,
+    enum: ["on", "off"],
+    default: "on",
+  },
 });
 
 const Schedule = mongoose.model("Schedule", scheduleSchema);
