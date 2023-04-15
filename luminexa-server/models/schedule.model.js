@@ -10,7 +10,21 @@ const scheduleSchema = new mongoose.Schema({
     required: true,
   },
   scheduleRepeat: {
-    type: Date,
+    type: [
+      {
+        type: String,
+        enum: [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday",
+        ],
+      },
+    ],
+    default: [],
   },
 });
 
