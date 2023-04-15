@@ -15,3 +15,11 @@ exports.editLedStatus = async (req, res) => {
   await led.save();
   res.json(led);
 };
+
+exports.editLedIntensity = async (req, res) => {
+  const { ledId, intensity } = req.body;
+  const led = await Led.findById(ledId);
+  led.intensity = intensity;
+  await led.save();
+  res.json(led);
+};
