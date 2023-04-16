@@ -1,6 +1,33 @@
 const mongoose = require("mongoose");
-const ledsSchema = require("../models/led.model");
 const modesSchema = require("../models/mode.model");
+
+const ledSchema = new mongoose.Schema({
+  ledName: {
+    type: String,
+    required: true,
+  },
+  ledStatus: {
+    type: String,
+    enum: ["on", "off"],
+    required: true,
+  },
+  intensity: {
+    type: Number,
+    required: true,
+  },
+  color: {
+    type: String,
+    enum: ["standard", "red", "blue", "green", "yellow", "purple", "orange"],
+    default: "standard",
+  },
+  history: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "History",
+      default: [],
+    },
+  ],
+});
 
 const scheduleSchema = new mongoose.Schema({
   scheduleTitle: {
@@ -45,7 +72,8 @@ const systemSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  leds: [ledsSchema],
+  leds: [ledSchema],
+  lastManual: [ledSchema],
   modes: [modesSchema],
   schedules: [scheduleSchema],
   users: [
