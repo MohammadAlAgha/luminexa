@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const consumptionSchema = new mongoose.Schema({
+const historySchema = new mongoose.Schema({
   time: {
     type: Date,
     required: true,
@@ -15,6 +15,6 @@ const consumptionSchema = new mongoose.Schema({
   },
 });
 
-const Consumption = mongoose.model("Consumption", consumptionSchema);
+const History = mongoose.model("History", historySchema);
 
-module.exports = Consumption;
+module.exports = History;

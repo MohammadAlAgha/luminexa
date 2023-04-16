@@ -7,6 +7,7 @@ const {
   editLedIntensity,
   editLedColor,
   editLedName,
+  addLed,
 } = require("../controllers/leds.controller");
 
 router.post("/getLeds", getLeds);
@@ -14,5 +15,6 @@ router.post("/editLedStatus", editLedStatus);
 router.post("/editLedIntensity", editLedIntensity);
 router.post("/editLedColor", editLedColor);
 router.post("/editLedName", editLedName);
+router.post("/addLed", addLed);
 
 module.exports = router;
