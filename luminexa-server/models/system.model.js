@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const ledsSchema = require("../models/led.model");
+const modesSchema = require("../models/mode.model");
+const schedulesSchema = require("../models/schedule.model");
 
 const systemSchema = new mongoose.Schema({
   systemName: {
@@ -10,25 +13,9 @@ const systemSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  leds: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Led",
-      required: true,
-    },
-  ],
-  modes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Mode",
-    },
-  ],
-  schedules: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Schedule",
-    },
-  ],
+  leds: [ledsSchema],
+  modes: [modesSchema],
+  schedules: [schedulesSchema],
   users: [
     {
       type: mongoose.Schema.Types.ObjectId,

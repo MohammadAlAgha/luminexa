@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Consumption = require("./consumption.model");
 
 const ledSchema = new mongoose.Schema({
   ledName: {
@@ -28,7 +27,3 @@ const ledSchema = new mongoose.Schema({
     },
   ],
 });
-
-const Led = mongoose.model("Led", ledSchema);
-
-module.exports = Led;

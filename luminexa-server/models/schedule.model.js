@@ -32,7 +32,3 @@ const scheduleSchema = new mongoose.Schema({
     default: "on",
   },
 });
-
-const Schedule = mongoose.model("Schedule", scheduleSchema);
-
-module.exports = Schedule;

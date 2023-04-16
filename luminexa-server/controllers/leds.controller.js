@@ -1,4 +1,3 @@
-const Led = require("../models/led.model");
 const System = require("../models/system.model");
 
 exports.getLeds = async (req, res) => {
