@@ -1,4 +1,3 @@
-const Schedule = require("../models/schedule.model");
 const System = require("../models/system.model");
 
 exports.addSchedule = async (req, res) => {
@@ -31,9 +30,17 @@ exports.getSchedules = async (req, res) => {
 };
 
 exports.setScheduleStatus = async (req, res) => {
-  const { scheduleId } = req.body;
-  const schedule = await Schedule.findById(scheduleId);
+  const { systemId, scheduleId } = req.body;
+  const system = await System.findById(systemId);
+  const schedule = system.schedules.find(
+    (schedule) => schedule._id == scheduleId
+  );
+
+  if (!schedule) {
+    return res.status(404).json({ message: "Schedule not found" });
+  }
+
   schedule.scheduleStatus = schedule.scheduleStatus === "on" ? "off" : "on";
-  await schedule.save();
+  await system.save();
   res.json(schedule);
 };
