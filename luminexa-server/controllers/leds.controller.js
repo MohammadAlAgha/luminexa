@@ -4,7 +4,32 @@ exports.getLeds = async (req, res) => {
   const { systemId } = req.body;
   const system = await System.findById(systemId);
 
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  }
+
   res.json(system.leds);
+};
+
+exports.editLedStatus = async (req, res) => {
+  const { systemId, ledId } = req.body;
+
+  const system = await System.findById(systemId);
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  }
+
+  const led = system.leds.find((led) => led._id == ledId);
+
+  if (!led) {
+    return res.status(404).json({ message: "Led not found" });
+  }
+
+  led.ledStatus = led.ledStatus == "on" ? "off" : "on";
+
+  await system.save();
+  res.json(led);
 };
 
 exports.addLed = async (req, res) => {
@@ -30,40 +55,21 @@ exports.addLed = async (req, res) => {
   res.json(system);
 };
 
-exports.editLedStatus = async (req, res) => {
-  const { systemId, ledId } = req.body;
+exports.editLed = async (req, res) => {
+  const { systemId, ledId, ledName, intensity, color } = req.body;
   const system = await System.findById(systemId);
-  const led = system.leds.find((led) => led._id == ledId);
 
-  if (!led) {
-    return res.status(404).json({ message: "Led not found" });
+  if (!system) {
+    return res.status(404).json("System not found");
   }
 
-  led.ledStatus = led.ledStatus === "on" ? "off" : "on";
-  await system.save();
-  res.json(led);
-};
+  const led = system.leds.find((led) => led._id == ledId);
 
-exports.editLedIntensity = async (req, res) => {
-  const { ledId, intensity } = req.body;
-  const led = await Led.findById(ledId);
-  led.intensity = intensity;
-  await led.save();
-  res.json(led);
-};
-
-exports.editLedColor = async (req, res) => {
-  const { ledId, color } = req.body;
-  const led = await Led.findById(ledId);
-  led.color = color;
-  await led.save();
-  res.json(led);
-};
-
-exports.editLedName = async (req, res) => {
-  const { ledId, ledName } = req.body;
-  const led = await Led.findById(ledId);
   led.ledName = ledName;
-  await led.save();
+  led.intensity = intensity;
+  led.color = color;
+
+  await system.save();
+
   res.json(led);
 };

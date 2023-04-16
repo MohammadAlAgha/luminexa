@@ -29,6 +29,8 @@ const ledSchema = new mongoose.Schema({
   ],
 });
 
+module.exports = ledSchema;
+
 const scheduleSchema = new mongoose.Schema({
   scheduleTitle: {
     type: String,
