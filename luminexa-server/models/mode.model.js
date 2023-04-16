@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const ledsSchema = require("../models/led.model");
+const ledsSchema = require("../models/system.model");
 
-const modeSchema = new mongoose.Schema({
+modesSchema = new mongoose.Schema({
   modeName: {
     type: String,
     required: true,
@@ -13,3 +13,5 @@ const modeSchema = new mongoose.Schema({
   },
   leds: [ledsSchema],
 });
+
+module.exports = modesSchema;
