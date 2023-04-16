@@ -4,11 +4,11 @@ const System = require("../models/system.model");
 exports.addSchedule = async (req, res) => {
   const { systemId, scheduleTitle, time, repeat } = req.body;
 
-  const schedule = await Schedule.create({
+  const schedule = {
     scheduleTitle,
     time,
     repeat,
-  });
+  };
 
   const system = await System.findById(systemId);
 
@@ -16,7 +16,7 @@ exports.addSchedule = async (req, res) => {
     return res.status(404).json({ message: "System not found" });
   }
 
-  system.schedules.push(schedule.id);
+  system.schedules.push(schedule);
 
   await system.save();
 
