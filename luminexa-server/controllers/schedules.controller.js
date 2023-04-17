@@ -32,6 +32,7 @@ exports.getSchedules = async (req, res) => {
 exports.setScheduleStatus = async (req, res) => {
   const { systemId, scheduleId } = req.body;
   const system = await System.findById(systemId);
+
   const schedule = system.schedules.find(
     (schedule) => schedule._id == scheduleId
   );
