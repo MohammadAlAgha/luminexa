@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const router = Router();
 
-const { getModes, setModeStatus } = require("../controllers/modes.controller");
+const { getModes, addMode } = require("../controllers/modes.controller");
 
-router.post("getModes", getModes);
+router.post("/getModes", getModes);
+router.post("/addMode", addMode);
 
 module.exports = router;
