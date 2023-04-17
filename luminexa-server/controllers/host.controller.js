@@ -26,3 +26,25 @@ exports.renameSystem = async (req, res) => {
 
   res.json(system);
 };
+
+exports.renameLed = async (req, res) => {
+  const { systemId, ledId, ledName } = req.body;
+
+  const system = await System.findById(systemId);
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  }
+
+  const led = system.leds.find((led) => led._id == ledId);
+
+  if (!led) {
+    return res.status(404).json({ message: "Led not found" });
+  }
+
+  led.ledName = ledName;
+
+  await system.save();
+
+  res.json(led);
+};
