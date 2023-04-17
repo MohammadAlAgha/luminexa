@@ -27,3 +27,8 @@ exports.createNotifications = async (req, res) => {
 
   res.json(user.notifications);
 };
+
+exports.getNotifications = async (req, res) => {
+  const user = await User.findById(req.user.id);
+  res.json(user.systems);
+};
