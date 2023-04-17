@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const modesSchema = require("../models/mode.model");
 
 const ledSchema = new mongoose.Schema({
   ledName: {
@@ -30,6 +29,19 @@ const ledSchema = new mongoose.Schema({
 });
 
 module.exports = ledSchema;
+
+modesSchema = new mongoose.Schema({
+  modeName: {
+    type: String,
+    required: true,
+  },
+  modeStatus: {
+    type: String,
+    enum: ["on", "off"],
+    default: "off",
+  },
+  leds: [ledSchema],
+});
 
 const scheduleSchema = new mongoose.Schema({
   scheduleTitle: {
