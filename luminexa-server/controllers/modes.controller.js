@@ -44,7 +44,7 @@ exports.applyMode = async (req, res) => {
     return res.status(404).json({ message: "Mode not found" });
   }
 
-  mode.modeStatus = "on";
+  const notMode = system.modes.find((mode) => mode._id !== modeId);
 
   system.modes.forEach((notMode) => {
     if (notMode._id !== modeId) {
@@ -52,9 +52,11 @@ exports.applyMode = async (req, res) => {
     }
   });
 
+  mode.modeStatus = "on";
+
   system.leds = mode.leds;
 
   await system.save();
 
-  res.json(system.leds);
+  res.json(system);
 };
