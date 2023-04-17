@@ -32,3 +32,11 @@ exports.getNotifications = async (req, res) => {
   const user = await User.findById(req.user.id);
   res.json(user.systems);
 };
+
+exports.getSystemNotitifications = async (req, res) => {
+  const { systemId } = req.body;
+
+  const notifications = await Notification.find({ system: systemId });
+
+  res.json(notifications);
+};
