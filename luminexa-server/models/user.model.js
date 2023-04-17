@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const notificationsSchema = require("../models/notification.model");
 
 const userSchema = new mongoose.Schema({
   userName: {
