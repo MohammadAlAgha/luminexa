@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const notificationsSchema = require("../models/notification.model");
 
 const userSchema = new mongoose.Schema({
   userName: {
@@ -28,12 +29,7 @@ const userSchema = new mongoose.Schema({
       ref: "System",
     },
   ],
-  notifications: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Notifications",
-    },
-  ],
+  notifications: [notificationsSchema],
 });
 
 const User = mongoose.model("User", userSchema);

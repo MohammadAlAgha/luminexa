@@ -6,7 +6,8 @@ const notificationSchema = new mongoose.Schema({
     required: true,
   },
   place: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "System",
     required: true,
   },
   description: {
@@ -15,6 +16,4 @@ const notificationSchema = new mongoose.Schema({
   },
 });
 
-const Notification = mongoose.model("Notification", notificationSchema);
-
-module.exports = Notification;
+module.exports = notificationSchema;
