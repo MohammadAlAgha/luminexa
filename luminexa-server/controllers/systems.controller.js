@@ -10,11 +10,14 @@ exports.addSystem = async (req, res) => {
 
   const user = await User.findByIdAndUpdate(
     req.user.id,
-    { $addToSet: { systems: system.id } },
+    { $addToSet: { systems: system._id } },
     { new: true }
   );
 
-  await user.save();
+  await System.updateOne(
+    { _id: system._id },
+    { $addToSet: { users: user._id } }
+  );
 
   res.json(user);
 };
