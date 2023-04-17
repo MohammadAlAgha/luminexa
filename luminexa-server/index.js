@@ -14,6 +14,8 @@ const scheduleRouter = require("./routes/schedule.routes");
 app.use("/schedules", authMiddleware, scheduleRouter);
 const modeRouter = require("./routes/modes.routes");
 app.use("/modes", authMiddleware, modeRouter);
+const notificationRouter = require("./routes/notifications.routes");
+app.use("/notifications", authMiddleware, notificationRouter);
 
 app.listen(process.env.PORT, (error) => {
   if (error) console.error(error);
