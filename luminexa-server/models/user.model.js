@@ -29,7 +29,12 @@ const userSchema = new mongoose.Schema({
       ref: "System",
     },
   ],
-  notifications: [notificationsSchema],
+  notifications: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Notifications",
+    },
+  ],
 });
 
 const User = mongoose.model("User", userSchema);
