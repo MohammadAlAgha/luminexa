@@ -19,6 +19,8 @@ app.use("/notifications", authMiddleware, notificationRouter);
 const hostRouter = require("./routes/host.routes");
 const { hostMiddleware } = require("./middlewares/host.middleware");
 app.use("/host", authMiddleware, hostMiddleware, hostRouter);
+const historyRouter = require("./routes/history.routes");
+app.use("/history", authMiddleware, hostMiddleware, historyRouter);
 
 app.listen(process.env.PORT, (error) => {
   if (error) console.error(error);
