@@ -49,6 +49,7 @@ exports.addLed = async (req, res) => {
   }
 
   system.leds.push(led);
+  system.lastManual.push(led);
 
   await system.save();
 
