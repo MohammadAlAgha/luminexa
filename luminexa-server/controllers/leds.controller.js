@@ -57,7 +57,7 @@ exports.addLed = async (req, res) => {
 };
 
 exports.editLed = async (req, res) => {
-  const { systemId, ledId, ledName, intensity, color } = req.body;
+  const { systemId, ledId, intensity, color } = req.body;
   const system = await System.findById(systemId);
 
   if (!system) {
@@ -66,7 +66,6 @@ exports.editLed = async (req, res) => {
 
   const led = system.leds.find((led) => led._id == ledId);
 
-  led.ledName = ledName;
   led.intensity = intensity;
   led.color = color;
 
