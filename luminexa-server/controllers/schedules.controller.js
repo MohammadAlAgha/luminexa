@@ -29,23 +29,6 @@ exports.getSchedules = async (req, res) => {
   res.json(system.schedules);
 };
 
-exports.setScheduleStatus = async (req, res) => {
-  const { systemId, scheduleId } = req.body;
-  const system = await System.findById(systemId);
-
-  const schedule = system.schedules.find(
-    (schedule) => schedule._id == scheduleId
-  );
-
-  if (!schedule) {
-    return res.status(404).json({ message: "Schedule not found" });
-  }
-
-  schedule.scheduleStatus = schedule.scheduleStatus === "on" ? "off" : "on";
-  await system.save();
-  res.json(schedule);
-};
-
 exports.toggleSchedule = async (req, res) => {
   const { systemId, scheduleId } = req.body;
 
@@ -64,6 +47,35 @@ exports.toggleSchedule = async (req, res) => {
   }
 
   schedule.scheduleStatus = schedule.scheduleStatus == "on" ? "off" : "on";
+
+  await system.save();
+
+  res.json(system);
+};
+
+exports.updateSchedule = async (req, res) => {
+  const { systemId, scheduleId, scheduleTitle, time, repeat } = req.body;
+
+  const system = await System.findById(systemId);
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  }
+
+  const scheduleIndex = system.schedules.findIndex(
+    (schedule) => schedule._id == scheduleId
+  );
+
+  if (scheduleIndex === -1) {
+    return res.status(404).json({ message: "Schedule not found" });
+  }
+
+  system.schedules[scheduleIndex] = {
+    _id: scheduleId,
+    scheduleTitle,
+    time,
+    repeat,
+  };
 
   await system.save();
 

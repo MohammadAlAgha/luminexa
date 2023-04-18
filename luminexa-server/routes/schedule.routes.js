@@ -4,13 +4,13 @@ const router = Router();
 const {
   addSchedule,
   getSchedules,
-  setScheduleStatus,
   toggleSchedule,
+  updateSchedule,
 } = require("../controllers/schedules.controller");
 
 router.post("/addSchedule", addSchedule);
 router.post("/getSchedules", getSchedules);
-router.post("/setScheduleStatus", setScheduleStatus);
 router.put("/toggleSchedule", toggleSchedule);
+router.put("/updateSchedule", updateSchedule);
 
 module.exports = router;
