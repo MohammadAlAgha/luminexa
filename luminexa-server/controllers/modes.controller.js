@@ -82,3 +82,26 @@ exports.toggleMode = async (req, res) => {
 
   res.json(system);
 };
+
+exports.updateMode = async (req, res) => {
+  const { systemId, modeId, modeName } = req.body;
+
+  const system = await System.findById(systemId);
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  }
+
+  const mode = system.modes.find((mode) => (mode._id = modeId));
+
+  if (!mode) {
+    return res.status(404).json({ message: "Mode not found" });
+  }
+
+  mode.modeName = modeName;
+  mode.leds = system.leds;
+
+  await system.save();
+
+  res.json(system);
+};

@@ -62,20 +62,17 @@ exports.updateSchedule = async (req, res) => {
     return res.status(404).json({ message: "System not found" });
   }
 
-  const scheduleIndex = system.schedules.findIndex(
+  const schedule = system.schedules.find(
     (schedule) => schedule._id == scheduleId
   );
 
-  if (scheduleIndex === -1) {
+  if (!schedule) {
     return res.status(404).json({ message: "Schedule not found" });
   }
 
-  system.schedules[scheduleIndex] = {
-    _id: scheduleId,
-    scheduleTitle,
-    time,
-    repeat,
-  };
+  schedule.scheduleTitle = scheduleTitle;
+  schedule.time = time;
+  schedule.repeat = repeat;
 
   await system.save();
 
