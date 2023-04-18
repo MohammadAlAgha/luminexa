@@ -48,3 +48,30 @@ exports.renameLed = async (req, res) => {
 
   res.json(led);
 };
+
+exports.systemShutDown = async (req, res) => {
+  const { systemId } = req.body;
+
+  const system = await System.findById(systemId);
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  }
+
+  system.leds.forEach((led) => {
+    led.ledStatus = "off";
+    led.intensity = 0;
+  });
+
+  system.modes.forEach((mode) => {
+    mode.modeStatus == "off";
+  });
+
+  system.schedules.forEach((schedule) => {
+    schedule.scheduleStatus == "off";
+  });
+
+  await system.save();
+
+  res.json(system);
+};
