@@ -4,3 +4,5 @@ const router = Router();
 const { createInstance } = require("../controllers/Histroy.controller");
 
 router.post("/instance", createInstance);
+
+module.exports = router;
