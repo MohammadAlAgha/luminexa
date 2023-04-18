@@ -45,3 +45,27 @@ exports.setScheduleStatus = async (req, res) => {
   await system.save();
   res.json(schedule);
 };
+
+exports.toggleSchedule = async (req, res) => {
+  const { systemId, scheduleId } = req.body;
+
+  const system = await System.findById(systemId);
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  }
+
+  const schedule = system.schedules.find(
+    (schedule) => schedule._id == scheduleId
+  );
+
+  if (!schedule) {
+    return res.status(404).json({ message: "Schedule not found" });
+  }
+
+  schedule.scheduleStatus = schedule.scheduleStatus == "on" ? "off" : "on";
+
+  await system.save();
+
+  res.json(system);
+};
