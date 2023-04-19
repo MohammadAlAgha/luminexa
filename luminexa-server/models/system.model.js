@@ -33,6 +33,7 @@ const scheduleSchema = new mongoose.Schema({
     enum: ["on", "off"],
     default: "on",
   },
+  leds: [ledSchema],
 });
 
 const systemSchema = new mongoose.Schema({
