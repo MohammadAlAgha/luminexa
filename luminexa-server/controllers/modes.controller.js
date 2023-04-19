@@ -26,6 +26,8 @@ exports.addMode = async (req, res) => {
 
   system.modes.push(mode); //adding the new mode to the list of modes in this system
 
+  system.leds = system.lastManual; //retrieved the old status of the leds
+
   await system.save();
 
   res.json(system);
@@ -56,6 +58,8 @@ exports.applyMode = async (req, res) => {
 
   mode.modeStatus = "on"; //setting the applied mode as on
 
+  system.lastManual = system.leds; //saving the latest manual before adding mode
+
   system.leds = mode.leds; //setting the leds status to match the saved leds status in the applied mode
 
   await system.save();
@@ -80,6 +84,10 @@ exports.toggleMode = async (req, res) => {
 
   mode.modeStatus = mode.modeStatus == "on" ? "off" : "on"; //toggling the mode from on to off or from off to on
 
+  if (mode.modeStatus == "off") {
+    system.leds = system.lastManual; //Set the modes back to the old status after the mode is off
+  }
+
   await system.save();
 
   res.json(system);
@@ -102,6 +110,8 @@ exports.updateMode = async (req, res) => {
 
   mode.modeName = modeName; //updating mode name
   mode.leds = system.leds; //updating the leds status
+
+  system.lastManual = system.leds; //saving the latest manual before updating mode
 
   await system.save();
 

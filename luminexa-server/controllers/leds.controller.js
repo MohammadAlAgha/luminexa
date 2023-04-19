@@ -29,6 +29,8 @@ exports.editLedStatus = async (req, res) => {
 
   led.ledStatus = led.ledStatus == "on" ? "off" : "on"; //toggling the LED status from on to off or from off to on
 
+  system.lastManual = system.leds; //updated the latest manual
+
   await system.save();
 
   res.json(led);
@@ -71,6 +73,8 @@ exports.editLed = async (req, res) => {
 
   led.intensity = intensity; //updating the LED intensity
   led.color = color; //updating the LED color
+
+  system.lastManual = system.leds; //updated the latest manual
 
   await system.save();
 
