@@ -9,8 +9,8 @@ const {
 } = require("../controllers/leds.controller");
 
 router.post("/getLeds", getLeds);
-router.post("/editLedStatus", editLedStatus);
-router.post("/editLed", editLed);
+router.put("/editLedStatus", editLedStatus);
+router.put("/editLed", editLed);
 router.post("/addled", addLed);
 
 module.exports = router;

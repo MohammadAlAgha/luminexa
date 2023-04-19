@@ -9,8 +9,8 @@ const {
 } = require("../controllers/host.controller");
 
 router.post("/getSystemUsers", getSystemUsers);
-router.post("/renameSystem", renameSystem);
-router.post("/renameLed", renameLed);
+router.put("/renameSystem", renameSystem);
+router.put("/renameLed", renameLed);
 router.post("/systemShutDown", systemShutDown);
 
 module.exports = router;
