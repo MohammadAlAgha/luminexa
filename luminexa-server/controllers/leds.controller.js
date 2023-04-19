@@ -2,11 +2,12 @@ const System = require("../models/system.model");
 
 exports.getLeds = async (req, res) => {
   const { systemId } = req.body;
-  const system = await System.findById(systemId);
+
+  const system = await System.findById(systemId); //getting the system by ID
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  }
+  } //checking if system exists
 
   res.json(system.leds);
 };
@@ -14,21 +15,22 @@ exports.getLeds = async (req, res) => {
 exports.editLedStatus = async (req, res) => {
   const { systemId, ledId } = req.body;
 
-  const system = await System.findById(systemId);
+  const system = await System.findById(systemId); //getting the system by ID
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  }
+  } //checking if system exists
 
-  const led = system.leds.find((led) => led._id == ledId);
+  const led = system.leds.find((led) => led._id == ledId); //finding the LED in that system by ID
 
   if (!led) {
     return res.status(404).json({ message: "Led not found" });
-  }
+  } //checking if LED exists
 
-  led.ledStatus = led.ledStatus == "on" ? "off" : "on";
+  led.ledStatus = led.ledStatus == "on" ? "off" : "on"; //toggling the LED status from on to off or from off to on
 
   await system.save();
+
   res.json(led);
 };
 
@@ -40,16 +42,16 @@ exports.addLed = async (req, res) => {
     ledStatus,
     intensity,
     color,
-  };
+  }; //Saving the LED info
 
-  const system = await System.findById(systemId);
+  const system = await System.findById(systemId); //finding the mode in that system by ID
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  }
+  } //checking if system exists
 
-  system.leds.push(led);
-  system.lastManual.push(led);
+  system.leds.push(led); //Adding the LED to the group of LEDs in that system
+  system.lastManual.push(led); //Saving the last LED status in case of reverting changes or turning off all modes or schedule time out
 
   await system.save();
 
@@ -58,16 +60,17 @@ exports.addLed = async (req, res) => {
 
 exports.editLed = async (req, res) => {
   const { systemId, ledId, intensity, color } = req.body;
-  const system = await System.findById(systemId);
+
+  const system = await System.findById(systemId); //getting the system by ID
 
   if (!system) {
     return res.status(404).json("System not found");
-  }
+  } //checking if system exists
 
-  const led = system.leds.find((led) => led._id == ledId);
+  const led = system.leds.find((led) => led._id == ledId); //finding the LED in that system by ID
 
-  led.intensity = intensity;
-  led.color = color;
+  led.intensity = intensity; //updating the LED intensity
+  led.color = color; //updating the LED color
 
   await system.save();
 

@@ -5,23 +5,23 @@ const System = require("../models/system.model");
 exports.createNotifications = async (req, res) => {
   const { time, systemId, description } = req.body;
 
-  const system = await System.findById(systemId);
+  const system = await System.findById(systemId); //getting the system by ID
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  }
+  } //checking if system exists
 
   const notification = await Notification.create({
     time: time,
     system: system._id,
     description: description,
-  });
+  }); //creating the notification from
 
   const user = await User.findByIdAndUpdate(
     req.user.id,
     { $addToSet: { notifications: notification.id } },
     { new: true }
-  );
+  ); //adding the notification ID in the authenticated user notifications
 
   await user.save();
 
@@ -29,14 +29,14 @@ exports.createNotifications = async (req, res) => {
 };
 
 exports.getNotifications = async (req, res) => {
-  const user = await User.findById(req.user.id);
+  const user = await User.findById(req.user.id); //finding the authenticated user
   res.json(user.systems);
 };
 
 exports.getSystemNotitifications = async (req, res) => {
   const { systemId } = req.body;
 
-  const notifications = await Notification.find({ system: systemId });
+  const notifications = await Notification.find({ system: systemId }); //finding the notifications with the system ID
 
   res.json(notifications);
 };

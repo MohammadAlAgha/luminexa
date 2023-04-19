@@ -2,27 +2,29 @@ const System = require("../models/system.model");
 
 exports.getModes = async (req, res) => {
   const { systemId } = req.body;
-  const system = await System.findById(systemId);
+
+  const system = await System.findById(systemId); //getting the system by ID
 
   res.json(system.modes);
 };
 
 exports.addMode = async (req, res) => {
   const { systemId, modeName } = req.body;
-  const system = await System.findById(systemId);
+
+  const system = await System.findById(systemId); //getting the system by ID
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  }
+  } //checking if system exists
 
-  const leds = system.leds;
+  const leds = system.leds; //getting the system current leds status
 
   const mode = {
     modeName,
     leds,
-  };
+  }; //setting the mode based on the leds status
 
-  system.modes.push(mode);
+  system.modes.push(mode); //adding the new mode to the list of modes in this system
 
   await system.save();
 
@@ -32,29 +34,29 @@ exports.addMode = async (req, res) => {
 exports.applyMode = async (req, res) => {
   const { systemId, modeId } = req.body;
 
-  const system = await System.findById(systemId);
+  const system = await System.findById(systemId); //finding the schedule in that system by ID
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  }
+  } //checking if system exists
 
-  const mode = system.modes.find((mode) => mode._id == modeId);
+  const mode = system.modes.find((mode) => mode._id == modeId); //finding the mode in that system by ID
 
   if (!mode) {
     return res.status(404).json({ message: "Mode not found" });
-  }
+  } //checking if the mode exists
 
-  const notMode = system.modes.find((mode) => mode._id !== modeId);
+  const notMode = system.modes.find((mode) => mode._id !== modeId); //getting all the non applied modes
 
   system.modes.forEach((notMode) => {
     if (notMode._id !== modeId) {
       notMode.modeStatus = "off";
     }
-  });
+  }); //makeing sure all the non applied modes are off
 
-  mode.modeStatus = "on";
+  mode.modeStatus = "on"; //setting the applied mode as on
 
-  system.leds = mode.leds;
+  system.leds = mode.leds; //setting the leds status to match the saved leds status in the applied mode
 
   await system.save();
 
@@ -64,19 +66,19 @@ exports.applyMode = async (req, res) => {
 exports.toggleMode = async (req, res) => {
   const { systemId, modeId } = req.body;
 
-  const system = await System.findById(systemId);
+  const system = await System.findById(systemId); //getting the system by ID
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  }
+  } //checking if system exists
 
-  const mode = system.modes.find((mode) => mode._id == modeId);
+  const mode = system.modes.find((mode) => mode._id == modeId); //finding the mode in that system by ID
 
   if (!mode) {
     return res.status(404).json({ message: "Mode not found" });
-  }
+  } //checking if the mode exists
 
-  mode.modeStatus = mode.modeStatus == "on" ? "off" : "on";
+  mode.modeStatus = mode.modeStatus == "on" ? "off" : "on"; //toggling the mode from on to off or from off to on
 
   await system.save();
 
@@ -86,20 +88,20 @@ exports.toggleMode = async (req, res) => {
 exports.updateMode = async (req, res) => {
   const { systemId, modeId, modeName } = req.body;
 
-  const system = await System.findById(systemId);
+  const system = await System.findById(systemId); //getting the system by ID
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  }
+  } //checking if system exists
 
-  const mode = system.modes.find((mode) => (mode._id = modeId));
+  const mode = system.modes.find((mode) => (mode._id = modeId)); //finding the mode in that system by ID
 
   if (!mode) {
     return res.status(404).json({ message: "Mode not found" });
-  }
+  } //checking if the mode exists
 
-  mode.modeName = modeName;
-  mode.leds = system.leds;
+  mode.modeName = modeName; //updating mode name
+  mode.leds = system.leds; //updating the leds status
 
   await system.save();
 
