@@ -76,3 +76,25 @@ exports.editLed = async (req, res) => {
 
   res.json(led);
 };
+
+exports.getActiveLeds = async (req, res) => {
+  const { systemId } = req.body;
+
+  const activeLeds = []; //creating an empty array to collect the active LEDs
+
+  const system = await System.findById(systemId); //getting the system by ID
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  } //checking if system exists
+
+  const leds = system.leds; //finding the LED in that system by ID
+
+  leds.forEach((led) => {
+    if (led.ledStatus == "on") {
+      activeLeds.push(led);
+    }
+  }); //getting only the on LEDs
+
+  res.json(activeLeds);
+};
