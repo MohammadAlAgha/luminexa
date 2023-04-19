@@ -14,11 +14,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userType: {
-    type: String,
-    enum: ["host", "user"],
-    default: "user",
-  },
   deviceToken: {
     type: String,
   },

@@ -36,6 +36,12 @@ const scheduleSchema = new mongoose.Schema({
 });
 
 const systemSchema = new mongoose.Schema({
+  hosts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   systemName: {
     type: String,
     required: true,
