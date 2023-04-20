@@ -108,3 +108,48 @@ exports.addUser = async (req, res) => {
 
   res.json(system.users);
 };
+
+exports.deleteUser = async (req, res) => {
+  const { systemId, email } = req.body;
+
+  const system = await System.findById(systemId); //getting the system by ID
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  } //checking if system exists
+
+  const user = await User.findOne({ email }); //finding the user by email
+
+  if (!user) {
+    return res.status(400).json({ message: "Wrong email" });
+  } //checking if the email exist
+
+  const userIndex = system.users.indexOf(user._id); //searching for the index of the user ID in the array of users
+
+  if (userIndex === -1) {
+    return res.status(400).json({ message: "This user is not in this system" });
+  } //checking if the user is already in the system
+
+  const updatedSystem = [];
+  const updatedUser = [];
+
+  system.users.forEach((oneUser) => {
+    if (!(oneUser.valueOf() == user._id)) {
+      updatedSystem.push(oneUser);
+    }
+  }); //removing the user ID from the array of users in the system
+
+  user.systems.forEach((oneSystem) => {
+    if (!(oneSystem.valueOf() == systemId)) {
+      updatedUser.push(oneSystem);
+    }
+  }); //removing the system ID from the array of systems for that user
+
+  system.users = updatedSystem; //updating the users array in the system
+  user.systems = updatedUser; //updating the systems array for the user
+
+  await system.save();
+  await user.save();
+
+  res.json(system.users);
+};
