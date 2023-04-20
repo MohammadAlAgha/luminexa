@@ -153,3 +153,31 @@ exports.deleteUser = async (req, res) => {
 
   res.json(system.users);
 };
+
+exports.setHost = async (req, res) => {
+  const { systemId, userEmail } = req.body;
+
+  const system = await System.findById(systemId); //getting the system by ID
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  } //checking if system exists
+
+  const user = await User.findOne({ userEmail }); //finding the user by email
+
+  if (!user) {
+    return res.status(400).json({ message: "Wrong email" });
+  } //checking if the email exist
+
+  const userIndex = system.users.indexOf(user._id); //searching for the index of the user ID in the array of users
+
+  if (userIndex === -1) {
+    return res.status(400).json({ message: "This user is not in this system" });
+  } //checking if the user is already in the system
+
+  system.hosts.push(user); //adding the user to the sets of hosts in that system
+
+  await system.save();
+
+  res.json(system.hosts);
+};

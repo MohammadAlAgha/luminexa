@@ -17,5 +17,6 @@ router.put("/renameLed", renameLed);
 router.post("/systemShutDown", systemShutDown);
 router.post("/addUser", addUser);
 router.post("/deleteUser", deleteUser);
+router.put("/setHost", setHost);
 
 module.exports = router;
