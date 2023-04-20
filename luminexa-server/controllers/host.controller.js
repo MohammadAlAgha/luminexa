@@ -1,4 +1,5 @@
 const System = require("../models/system.model");
+const User = require("../models/user.model");
 
 exports.getSystemUsers = async (req, res) => {
   const { systemId } = req.body;
@@ -74,4 +75,36 @@ exports.systemShutDown = async (req, res) => {
   await system.save();
 
   res.json(system);
+};
+
+exports.addUser = async (req, res) => {
+  const { systemId, email } = req.body;
+
+  const system = await System.findById(systemId); //getting the system by ID
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  } //checking if system exists
+
+  const user = await User.findOne({ email }); //finding the user by email
+
+  if (!user) {
+    return res.status(400).json({ message: "Wrong email" });
+  } //checking if the email exist
+
+  const userIndex = system.users.indexOf(user._id); //searching for the index of the user ID in the array of users
+
+  if (userIndex !== -1) {
+    return res
+      .status(400)
+      .json({ message: "This user is already added in this system" });
+  } //checking if the user is already in the system
+
+  system.users.push(user.id); //adding the user to the list of users in the system
+  user.systems.push(systemId); //adding the system to the list of systems for that user
+
+  await system.save();
+  await user.save();
+
+  res.json(system.users);
 };
