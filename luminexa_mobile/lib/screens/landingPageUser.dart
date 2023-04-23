@@ -38,7 +38,7 @@ class _landingState extends State<landing> {
             Text(
               "Systems",
               style: TextStyle(
-                  fontFamily: "Raleway",
+                  fontFamily: "RalewayBold",
                   fontSize: 18,
                   fontWeight: FontWeight.w700),
             )

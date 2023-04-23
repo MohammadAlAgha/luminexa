@@ -41,9 +41,9 @@ class _SignUpState extends State<SignUp> {
                     "Sign Up",
                     style: TextStyle(
                         color: Colors.black,
-                        fontFamily: "Raleway",
+                        fontFamily: "RalewayBold",
                         fontWeight: FontWeight.w900,
-                        fontSize: 23),
+                        fontSize: 22),
                   ),
                 ],
               ),
@@ -105,7 +105,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                       Text.rich(TextSpan(
                           style: TextStyle(
-                              fontFamily: "Raleway",
+                              fontFamily: "RalewayBold",
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
                               color: Color.fromARGB(255, 63, 139, 0),
