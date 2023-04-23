@@ -40,11 +40,13 @@ class _sytledTextFieldState extends State<sytledTextField> {
                       style: TextStyle(
                           fontFamily: "Raleway",
                           fontSize: 14,
+                          color: Colors.grey,
                           fontWeight: FontWeight.w600),
                     ),
                     hintStyle: TextStyle(
                         fontFamily: "Raleway",
                         fontSize: 14,
+                        color: Colors.grey,
                         fontWeight: FontWeight.w600))),
           )
         : Padding(
@@ -61,12 +63,14 @@ class _sytledTextFieldState extends State<sytledTextField> {
                   style: TextStyle(
                       fontFamily: "Raleway",
                       fontSize: 14,
+                      color: Colors.grey,
                       fontWeight: FontWeight.w600),
                 ),
                 helperText: "Password must contain at least 8 character.",
                 hintStyle: TextStyle(
                     fontFamily: "Raleway",
                     fontSize: 14,
+                    color: Colors.grey,
                     fontWeight: FontWeight.w600),
                 suffixIcon: IconButton(
                   icon: Icon(passwordVisible
