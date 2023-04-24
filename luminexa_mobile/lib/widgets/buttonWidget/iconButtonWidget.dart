@@ -13,30 +13,32 @@ class iconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                border: Border.all(
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            border: Border.all(
+              color: Color.fromARGB(255, 63, 139, 0),
+              style: BorderStyle.solid,
+            )),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: iconName,
+              color: Color.fromARGB(255, 63, 139, 0),
+            ),
+            Text(
+              innerText,
+              style: TextStyle(
                   color: Color.fromARGB(255, 63, 139, 0),
-                  style: BorderStyle.solid,
-                )),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: iconName,
-                  color: Color.fromARGB(255, 63, 139, 0),
-                ),
-                Text(
-                  innerText,
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 63, 139, 0),
-                      fontFamily: "Raleway",
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600),
-                ),
-              ],
-            )));
+                  fontFamily: "Raleway",
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
