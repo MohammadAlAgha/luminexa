@@ -49,6 +49,14 @@ class _schedulePageState extends State<schedulePage> {
               );
             },
           ),
+          SizedBox(
+            height: 230,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(25),
+            child: iconButton(
+                innerText: "Set new schedule", iconName: Icon(Icons.alarm_add)),
+          )
         ],
       ),
     ));
