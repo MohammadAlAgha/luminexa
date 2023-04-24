@@ -25,7 +25,7 @@ class ledListOption extends StatelessWidget {
             ledName,
             style: TextStyle(
               fontFamily: "RalewayNormal",
-              fontSize: 15,
+              fontSize: 17,
               color: Color.fromARGB(255, 63, 139, 0),
             ),
           ),
@@ -36,8 +36,8 @@ class ledListOption extends StatelessWidget {
             "status $status",
             style: TextStyle(
                 fontFamily: "RalewayBold",
-                fontSize: 10,
-                fontWeight: FontWeight.w600),
+                fontSize: 12,
+                fontWeight: FontWeight.w700),
           ),
         ),
       ),
