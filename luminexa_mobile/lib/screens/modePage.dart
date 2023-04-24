@@ -38,6 +38,14 @@ class _modePageState extends State<modePage> {
                 status: status[index],
               );
             }),
+        SizedBox(
+          height: 230,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(25),
+          child:
+              iconButton(innerText: "Set new mode", iconName: Icon(Icons.add)),
+        )
       ],
     )));
   }
