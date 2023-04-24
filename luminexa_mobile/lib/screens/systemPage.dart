@@ -4,15 +4,16 @@ import 'package:luminexa_mobile/screens/ledPage.dart';
 import 'package:luminexa_mobile/screens/modePage.dart';
 import 'package:luminexa_mobile/screens/notificationPage.dart';
 import 'package:luminexa_mobile/screens/schedulePage.dart';
+import 'package:luminexa_mobile/screens/settingsPage.dart';
 
-class system extends StatefulWidget {
-  const system({super.key});
+class systemPage extends StatefulWidget {
+  const systemPage({super.key});
 
   @override
-  State<system> createState() => _systemState();
+  State<systemPage> createState() => _systemPageState();
 }
 
-class _systemState extends State<system> {
+class _systemPageState extends State<systemPage> {
   @override
   int currentIndex = 0;
   void navigateTab(index) {
@@ -83,7 +84,12 @@ class _systemState extends State<system> {
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return settingsPage();
+                }));
+              },
               icon: Icon(Icons.settings),
             )
           ],
