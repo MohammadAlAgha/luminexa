@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
+import 'package:luminexa_mobile/widgets/listsWidget/listWidget.dart';
 
 class landing extends StatefulWidget {
   const landing({super.key});
@@ -11,6 +10,8 @@ class landing extends StatefulWidget {
 }
 
 class _landingState extends State<landing> {
+  final List systems = ["Kitchen", "Room", "Living Room"];
+  final List leds = [3, 2, 5];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,39 +54,10 @@ class _landingState extends State<landing> {
               ),
               ListView.builder(
                   shrinkWrap: true,
-                  itemCount: 3,
+                  itemCount: systems.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 75,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        top: BorderSide(
-                            color: Color.fromARGB(255, 173, 173, 173)),
-                      )),
-                      child: ListTile(
-                        title: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "Kitchen",
-                            style: TextStyle(
-                              fontFamily: "RalewayNormal",
-                              fontSize: 15,
-                              color: Color.fromARGB(255, 63, 139, 0),
-                            ),
-                          ),
-                        ),
-                        subtitle: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "3 Active LEDS",
-                            style: TextStyle(
-                                fontFamily: "RalewayBold",
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ),
-                    );
+                    return listOption(
+                        systemName: systems[index], activeLeds: leds[index]);
                   }),
               SizedBox(
                 height: 320,
