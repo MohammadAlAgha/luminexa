@@ -22,8 +22,21 @@ class toggleTileList extends StatelessWidget {
           ),
         ),
         child: ListTile(
-          title: Text(title),
-          subtitle: Text(subTitle ?? "Edit Mode"),
+          title: Text(
+            title,
+            style: TextStyle(
+              fontFamily: "RalewayNormal",
+              fontSize: 17,
+              color: Color.fromARGB(255, 63, 139, 0),
+            ),
+          ),
+          subtitle: Text(
+            subTitle ?? "Edit Mode",
+            style: TextStyle(
+                fontFamily: "RalewayBold",
+                fontWeight: FontWeight.w700,
+                fontSize: 12),
+          ),
           trailing: status == "on"
               ? Icon(
                   Icons.toggle_on,
