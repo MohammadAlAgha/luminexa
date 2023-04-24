@@ -31,18 +31,64 @@ class _landingState extends State<landing> {
           icon: Icon(Icons.menu),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(25, 35, 0, 0),
-        child: Row(
-          children: [
-            Text(
-              "Systems",
-              style: TextStyle(
-                  fontFamily: "RalewayBold",
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700),
-            )
-          ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 30),
+                    child: Text(
+                      "Systems",
+                      style: TextStyle(
+                          fontFamily: "RalewayBold",
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ],
+              ),
+              ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                          border: Border(
+                              top: BorderSide(
+                                  color: Color.fromARGB(255, 173, 173, 173)),
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 173, 173, 173)))),
+                      child: ListTile(
+                        title: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "Kitchen",
+                            style: TextStyle(
+                              fontFamily: "RalewayNormal",
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 63, 139, 0),
+                            ),
+                          ),
+                        ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "3 Active LEDS",
+                            style: TextStyle(
+                                fontFamily: "RalewayBold",
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+            ],
+          ),
         ),
       ),
     );
