@@ -14,6 +14,7 @@ class iconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
+        height: 45,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             border: Border.all(
@@ -22,11 +23,14 @@ class iconButton extends StatelessWidget {
             )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () {},
               icon: iconName,
               color: Color.fromARGB(255, 63, 139, 0),
+              padding: EdgeInsets.only(right: 2.0),
+              constraints: BoxConstraints(),
             ),
             Text(
               innerText,
