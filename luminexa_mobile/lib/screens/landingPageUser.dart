@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 
 class landing extends StatefulWidget {
   const landing({super.key});
@@ -86,6 +87,16 @@ class _landingState extends State<landing> {
                       ),
                     );
                   }),
+              SizedBox(
+                height: 320,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: iconButton(
+                  innerText: "Add new system",
+                  iconName: Icon(Icons.add),
+                ),
+              )
             ],
           ),
         ),
