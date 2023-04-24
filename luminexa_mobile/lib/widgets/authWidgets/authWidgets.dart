@@ -53,7 +53,7 @@ class _sytledTextFieldState extends State<sytledTextField> {
             padding: EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
               controller: widget.controller,
-              obscureText: !passwordVisible,
+              obscureText: passwordVisible,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20))),
