@@ -55,13 +55,12 @@ class _landingState extends State<landing> {
                   itemCount: 3,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      height: 100,
+                      height: 75,
                       decoration: BoxDecoration(
                           border: Border(
-                              top: BorderSide(
-                                  color: Color.fromARGB(255, 173, 173, 173)),
-                              bottom: BorderSide(
-                                  color: Color.fromARGB(255, 173, 173, 173)))),
+                        top: BorderSide(
+                            color: Color.fromARGB(255, 173, 173, 173)),
+                      )),
                       child: ListTile(
                         title: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
