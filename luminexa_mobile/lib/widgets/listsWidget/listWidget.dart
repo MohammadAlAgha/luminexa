@@ -36,8 +36,8 @@ class listOption extends StatelessWidget {
             "$activeLeds Active LEDS",
             style: TextStyle(
                 fontFamily: "RalewayBold",
-                fontSize: 10,
-                fontWeight: FontWeight.w600),
+                fontSize: 12,
+                fontWeight: FontWeight.w700),
           ),
         ),
       ),
