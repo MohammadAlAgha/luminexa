@@ -46,7 +46,7 @@ class toggleTileList extends StatelessWidget {
               : Icon(
                   Icons.toggle_off,
                   size: 40,
-                  color: Color.fromARGB(255, 43, 43, 43),
+                  color: Color.fromARGB(255, 179, 179, 179),
                 ),
         ));
   }
