@@ -85,10 +85,13 @@ class _systemPageState extends State<systemPage> {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return settingsPage();
-                }));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return settingsPage();
+                    },
+                  ),
+                );
               },
               icon: Icon(Icons.settings),
             )
