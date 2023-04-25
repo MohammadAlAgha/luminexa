@@ -33,8 +33,7 @@ class _systemPageState extends State<systemPage> {
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
               color: Colors.green,
-              borderRadius: BorderRadius.horizontal(
-                  left: Radius.circular(25), right: Radius.circular(25))),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: GNav(
