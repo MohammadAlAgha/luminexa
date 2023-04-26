@@ -16,32 +16,50 @@ class _modePageState extends State<modePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-            child: Column(
+            child: Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
-          child: Row(
-            children: [
-              Text(
-                "Modes",
-                style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-              )
-            ],
-          ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
+              child: Row(
+                children: [
+                  Text(
+                    "Modes",
+                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
+                  )
+                ],
+              ),
+            ),
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: 3,
+                itemBuilder: (BuildContext context, int index) {
+                  return toggleListTile(
+                    title: modes[index],
+                    status: status[index],
+                  );
+                }),
+          ],
         ),
-        ListView.builder(
-            shrinkWrap: true,
-            itemCount: 3,
-            itemBuilder: (BuildContext context, int index) {
-              return toggleListTile(
-                title: modes[index],
-                status: status[index],
-              );
-            }),
-        Padding(
-          padding: const EdgeInsets.all(25),
-          child:
-              iconButton(innerText: "Set new mode", iconName: Icon(Icons.add)),
+        Positioned(
+          bottom: 0,
+          child: Container(
+            height: 60,
+            decoration: BoxDecoration(color: Colors.white, boxShadow: [
+              BoxShadow(
+                  offset: Offset(0, -30),
+                  color: Colors.grey,
+                  spreadRadius: -5,
+                  blurRadius: 50)
+            ]),
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+            width: MediaQuery.of(context).size.width,
+            child: iconButton(
+              innerText: "Set new mode",
+              iconName: Icon(Icons.bookmark_add_outlined),
+            ),
+          ),
         )
       ],
     )));
