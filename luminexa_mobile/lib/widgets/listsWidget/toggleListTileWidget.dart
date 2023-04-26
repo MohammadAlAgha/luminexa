@@ -33,7 +33,7 @@ class _toggleTileListState extends State<toggleListTile> {
             top: BorderSide(color: Color.fromARGB(255, 173, 173, 173)),
           ),
         ),
-        child: SwitchListTile(
+        child: ListTile(
           title: Text(
             widget.title,
             style: TextStyle(
@@ -49,8 +49,10 @@ class _toggleTileListState extends State<toggleListTile> {
                 fontWeight: FontWeight.w700,
                 fontSize: 12),
           ),
-          value: status,
-          onChanged: setStatus,
+          trailing: Switch(
+            value: status,
+            onChanged: setStatus,
+          ),
         ));
   }
 }
