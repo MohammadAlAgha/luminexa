@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class toggleTileList extends StatefulWidget {
+class toggleListTile extends StatefulWidget {
   final String title;
   final String? subTitle;
   final String status;
 
-  const toggleTileList({
+  const toggleListTile({
     super.key,
     required this.title,
     this.subTitle,
@@ -13,10 +13,10 @@ class toggleTileList extends StatefulWidget {
   });
 
   @override
-  State<toggleTileList> createState() => _toggleTileListState();
+  State<toggleListTile> createState() => _toggleTileListState();
 }
 
-class _toggleTileListState extends State<toggleTileList> {
+class _toggleTileListState extends State<toggleListTile> {
   @override
   bool status = true;
   void setStatus(value) {

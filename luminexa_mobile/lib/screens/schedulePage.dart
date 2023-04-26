@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
-import 'package:luminexa_mobile/widgets/listsWidget/toggleTileListWidget.dart';
+import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
 
 class schedulePage extends StatefulWidget {
   const schedulePage({super.key});
@@ -42,7 +42,7 @@ class _schedulePageState extends State<schedulePage> {
             shrinkWrap: true,
             itemCount: 1,
             itemBuilder: (BuildContext context, int index) {
-              return toggleTileList(
+              return toggleListTile(
                 title: title[1],
                 subTitle: time[1],
                 status: status[1],
@@ -67,7 +67,7 @@ class _schedulePageState extends State<schedulePage> {
             shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (BuildContext context, int index) {
-              return toggleTileList(
+              return toggleListTile(
                 title: title[index],
                 subTitle: time[index],
                 status: status[index],

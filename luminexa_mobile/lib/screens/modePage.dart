@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
-import 'package:luminexa_mobile/widgets/listsWidget/toggleTileListWidget.dart';
+import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
 
 class modePage extends StatefulWidget {
   const modePage({super.key});
@@ -33,7 +33,7 @@ class _modePageState extends State<modePage> {
             shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (BuildContext context, int index) {
-              return toggleTileList(
+              return toggleListTile(
                 title: modes[index],
                 status: status[index],
               );
