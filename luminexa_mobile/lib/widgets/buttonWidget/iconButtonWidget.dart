@@ -13,6 +13,7 @@ class iconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {},
       child: Container(
         height: 45,
         decoration: BoxDecoration(
