@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/listWidget.dart';
 
@@ -15,6 +17,49 @@ class _landingState extends State<landing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        backgroundColor: Color.fromARGB(255, 63, 139, 0),
+        width: 220,
+        child: SafeArea(
+            child: Column(
+          children: [
+            SizedBox(
+              height: 60,
+            ),
+            Container(
+              width: 200,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset('images/Logo.svg'),
+                  ]),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: Column(children: [
+                SizedBox(
+                  height: 30,
+                ),
+                styledButton(innerText: "Weather"),
+                SizedBox(
+                  height: 20,
+                ),
+                styledButton(innerText: "Notification"),
+                SizedBox(
+                  height: 400,
+                ),
+                styledButton(innerText: "Log Out"),
+              ]),
+            )
+          ],
+        )),
+      ),
       appBar: AppBar(
         title: Text(
           "User Name",
@@ -28,50 +73,61 @@ class _landingState extends State<landing> {
             icon: Icon(Icons.settings),
           )
         ],
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-        ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
+        child: Stack(children: [
+          SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 25, vertical: 30),
-                    child: Text(
-                      "Systems",
-                      style: TextStyle(
-                          fontFamily: "RalewayBold",
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
-                    ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25, vertical: 30),
+                        child: Text(
+                          "Systems",
+                          style: TextStyle(
+                              fontFamily: "RalewayBold",
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
                   ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: systems.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return listOption(
+                            systemName: systems[index],
+                            activeLeds: leds[index]);
+                      }),
                 ],
               ),
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: systems.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return listOption(
-                        systemName: systems[index], activeLeds: leds[index]);
-                  }),
-              SizedBox(
-                height: 320,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: iconButton(
-                  innerText: "Add new system",
-                  iconName: Icon(Icons.add),
-                ),
-              )
-            ],
+            ),
           ),
-        ),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              height: 80,
+              decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(
+                    offset: Offset(0, -30),
+                    color: Colors.grey,
+                    spreadRadius: -5,
+                    blurRadius: 50)
+              ]),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+              width: MediaQuery.of(context).size.width,
+              child: iconButton(
+                innerText: "Add new system",
+                iconName: Icon(Icons.add),
+              ),
+            ),
+          )
+        ]),
       ),
     );
   }
