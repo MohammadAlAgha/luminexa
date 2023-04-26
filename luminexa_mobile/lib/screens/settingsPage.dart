@@ -9,6 +9,27 @@ class settingsPage extends StatefulWidget {
 }
 
 class _settingsPageState extends State<settingsPage> {
+  bool notificationStatus = true;
+  bool DarkModeStatus = true;
+  bool EnergyStatus = true;
+  void setNotificationStatus(value) {
+    setState(() {
+      notificationStatus = value;
+    });
+  }
+
+  void setDarkModeStatus(value) {
+    setState(() {
+      DarkModeStatus = value;
+    });
+  }
+
+  void setEnergyStatus(value) {
+    setState(() {
+      EnergyStatus = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,10 +57,9 @@ class _settingsPageState extends State<settingsPage> {
           shrinkWrap: true,
           children: [
             ListTile(
-              leading: Icon(
-                Icons.toggle_on,
-                size: 40,
-                color: Color.fromARGB(255, 188, 236, 147),
+              leading: Switch(
+                value: notificationStatus,
+                onChanged: setNotificationStatus,
               ),
               title: Text(
                 "Notifications",
@@ -50,10 +70,9 @@ class _settingsPageState extends State<settingsPage> {
               ),
             ),
             ListTile(
-              leading: Icon(
-                Icons.toggle_on,
-                size: 40,
-                color: Color.fromARGB(255, 188, 236, 147),
+              leading: Switch(
+                value: DarkModeStatus,
+                onChanged: setDarkModeStatus,
               ),
               title: Text(
                 "Dark mode",
@@ -64,10 +83,9 @@ class _settingsPageState extends State<settingsPage> {
               ),
             ),
             ListTile(
-              leading: Icon(
-                Icons.toggle_off,
-                size: 40,
-                color: Color.fromARGB(255, 179, 179, 179),
+              leading: Switch(
+                value: EnergyStatus,
+                onChanged: setEnergyStatus,
               ),
               title: Text(
                 "Energy saving mode",
