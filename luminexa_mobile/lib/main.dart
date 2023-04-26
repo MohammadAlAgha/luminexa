@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      home: setSchedulePage(),
+      home: SignUp(),
     );
   }
 }

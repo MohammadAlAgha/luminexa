@@ -75,8 +75,7 @@ class _SignUpState extends State<SignUp> {
                       controller: ConfirmPasswordController,
                       label: "Confirm Password",
                       hintText: "Confirm Password",
-                      isPass: false,
-                      obscureText: true,
+                      isPass: true,
                     )
                   ]),
             ),

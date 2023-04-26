@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class sytledTextField extends StatefulWidget {
   final bool isPass;
-  final bool? obscureText;
   final controller;
   final String label;
   final String hintText;
@@ -10,7 +9,6 @@ class sytledTextField extends StatefulWidget {
   sytledTextField({
     super.key,
     required this.isPass,
-    this.obscureText,
     required this.controller,
     required this.label,
     required this.hintText,
@@ -30,7 +28,7 @@ class _sytledTextFieldState extends State<sytledTextField> {
             padding: EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
                 controller: widget.controller,
-                obscureText: widget.obscureText ?? false,
+                obscureText: false,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20))),
