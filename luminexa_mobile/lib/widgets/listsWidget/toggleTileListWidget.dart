@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class toggleTileList extends StatelessWidget {
+class toggleTileList extends StatefulWidget {
   final String title;
   final String? subTitle;
   final String status;
@@ -13,6 +13,18 @@ class toggleTileList extends StatelessWidget {
   });
 
   @override
+  State<toggleTileList> createState() => _toggleTileListState();
+}
+
+class _toggleTileListState extends State<toggleTileList> {
+  @override
+  bool status = true;
+  void setStatus(value) {
+    setState(() {
+      status = value;
+    });
+  }
+
   Widget build(BuildContext context) {
     return Container(
         height: 75,
@@ -21,9 +33,9 @@ class toggleTileList extends StatelessWidget {
             top: BorderSide(color: Color.fromARGB(255, 173, 173, 173)),
           ),
         ),
-        child: ListTile(
+        child: SwitchListTile(
           title: Text(
-            title,
+            widget.title,
             style: TextStyle(
               fontFamily: "RalewayNormal",
               fontSize: 17,
@@ -31,23 +43,14 @@ class toggleTileList extends StatelessWidget {
             ),
           ),
           subtitle: Text(
-            subTitle ?? "Edit Mode",
+            widget.subTitle ?? "Edit Mode",
             style: TextStyle(
                 fontFamily: "RalewayBold",
                 fontWeight: FontWeight.w700,
                 fontSize: 12),
           ),
-          trailing: status == "on"
-              ? Icon(
-                  Icons.toggle_on,
-                  size: 40,
-                  color: Color.fromARGB(255, 188, 236, 147),
-                )
-              : Icon(
-                  Icons.toggle_off,
-                  size: 40,
-                  color: Color.fromARGB(255, 179, 179, 179),
-                ),
+          value: status,
+          onChanged: setStatus,
         ));
   }
 }
