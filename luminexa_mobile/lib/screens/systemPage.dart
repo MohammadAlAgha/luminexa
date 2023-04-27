@@ -5,6 +5,7 @@ import 'package:luminexa_mobile/screens/modePage.dart';
 import 'package:luminexa_mobile/screens/notificationPage.dart';
 import 'package:luminexa_mobile/screens/schedulePage.dart';
 import 'package:luminexa_mobile/screens/settingsPage.dart';
+import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 
 class systemPage extends StatefulWidget {
   const systemPage({super.key});
@@ -72,33 +73,10 @@ class _systemPageState extends State<systemPage> {
             ),
           ),
         ),
-        appBar: AppBar(
-          title: Text(
-            "Kitchen",
-            style: TextStyle(
-                fontFamily: "Raleway",
-                fontWeight: FontWeight.bold,
-                fontSize: 24),
-          ),
-          centerTitle: true,
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return settingsPage();
-                    },
-                  ),
-                );
-              },
-              icon: Icon(Icons.settings),
-            )
-          ],
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_back),
-          ),
+        appBar: appBar(
+          title: "Kitchen",
+          iconAction: Icon(Icons.settings),
+          iconLeading: Icon(Icons.arrow_back),
         ),
         body: pages[currentIndex]);
   }

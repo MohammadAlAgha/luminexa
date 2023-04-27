@@ -46,15 +46,24 @@ class _landingState extends State<landing> {
                 SizedBox(
                   height: 30,
                 ),
-                styledButton(innerText: "Weather"),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: styledButton(innerText: "Weather"),
+                ),
                 SizedBox(
                   height: 20,
                 ),
-                styledButton(innerText: "Notification"),
-                SizedBox(
-                  height: 400,
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: styledButton(innerText: "Notification"),
                 ),
-                styledButton(innerText: "Log Out"),
+                SizedBox(
+                  height: 300,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: styledButton(innerText: "Log Out"),
+                ),
               ]),
             )
           ],
