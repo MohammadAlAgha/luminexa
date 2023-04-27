@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
+import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/customeCheckBox.dart';
@@ -31,32 +32,9 @@ class _setSchedulePageState extends State<setSchedulePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Set schedule",
-          style: TextStyle(
-              fontFamily: "Raleway", fontWeight: FontWeight.bold, fontSize: 24),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop(
-              MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return setSchedulePage();
-                },
-              ),
-            );
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return systemPage();
-                },
-              ),
-            );
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
+      appBar: appBar(
+        title: "Set schedule",
+        iconLeading: Icon(Icons.arrow_back),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -103,12 +81,11 @@ class _setSchedulePageState extends State<setSchedulePage> {
               ),
               Text(
                 time.format(context),
+                style: TextStyle(fontFamily: "ralewayBold", fontSize: 25),
               ),
-              ElevatedButton(
-                onPressed: showtime,
-                child: Text(
-                  "Press",
-                ),
+              Padding(
+                padding: const EdgeInsets.all(25),
+                child: styledButton(innerText: "Pick a time"),
               ),
               SizedBox(
                 height: 50,

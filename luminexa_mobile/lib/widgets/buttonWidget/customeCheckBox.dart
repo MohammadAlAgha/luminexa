@@ -37,7 +37,11 @@ class _customeCheckBoxState extends State<customeCheckBox> {
                 children: [
                   Text(
                     widget.day,
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 10),
+                    style: TextStyle(
+                      fontFamily: "RalewayBold",
+                      fontSize: 10,
+                      color: Color.fromARGB(255, 63, 139, 0),
+                    ),
                   ),
                 ],
               ),
