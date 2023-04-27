@@ -33,7 +33,7 @@ class _setSchedulePageState extends State<setSchedulePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(
-        title: "Set schedule",
+        title: "Set Schedule",
         iconLeading: Icon(Icons.arrow_back),
       ),
       body: SingleChildScrollView(
@@ -59,8 +59,8 @@ class _setSchedulePageState extends State<setSchedulePage> {
               sytledTextField(
                 isPass: false,
                 controller: scheduleName,
-                label: "Schedule Name",
-                hintText: "Schedule Name",
+                label: "Title",
+                hintText: "Title",
               ),
               SizedBox(
                 height: 50,
@@ -128,7 +128,7 @@ class _setSchedulePageState extends State<setSchedulePage> {
                 child: Row(
                   children: [
                     Text(
-                      "Edit LEDs in Kitchen",
+                      "LEDs in Kitchen",
                       style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
                     ),
                   ],
@@ -148,7 +148,7 @@ class _setSchedulePageState extends State<setSchedulePage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(25),
-                child: styledButton(innerText: "Set schedule"),
+                child: styledButton(innerText: "Set Schedule"),
               )
             ],
           ),

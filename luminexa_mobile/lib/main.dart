@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/screens/landingPageUser.dart';
 import 'package:luminexa_mobile/screens/login.dart';
 import 'package:luminexa_mobile/screens/setSchedulePage.dart';
+import 'package:luminexa_mobile/screens/setModePage.dart';
 import 'package:luminexa_mobile/screens/signUp.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
 
@@ -25,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.green, scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: setSchedulePage(),
+      home: setModePage(),
     );
   }
 }
