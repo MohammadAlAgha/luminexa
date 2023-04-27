@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
+import 'package:luminexa_mobile/widgets/buttonWidget/customeCheckBox.dart';
 
 class setSchedulePage extends StatefulWidget {
   const setSchedulePage({super.key});
@@ -22,14 +23,6 @@ class _setSchedulePageState extends State<setSchedulePage> {
         time = value!;
       });
     });
-  }
-
-  void showDate() {
-    showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime(3000));
   }
 
   @override
@@ -109,15 +102,38 @@ class _setSchedulePageState extends State<setSchedulePage> {
             ),
             ElevatedButton(
               onPressed: showtime,
-              child: Text("Press"),
+              child: Text(
+                "Press",
+              ),
             ),
             SizedBox(
               height: 50,
             ),
-            Text("Date"),
-            ElevatedButton(
-              onPressed: showDate,
-              child: Text("Press"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Row(
+                children: [
+                  Text(
+                    "Repeat",
+                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  customeCheckBox(day: "Mon", isPressed: false),
+                  customeCheckBox(day: "Teu", isPressed: false),
+                  customeCheckBox(day: "Wed", isPressed: false),
+                  customeCheckBox(day: "Thu", isPressed: false),
+                  customeCheckBox(day: "Fri", isPressed: false),
+                  customeCheckBox(day: "Sat", isPressed: false),
+                  customeCheckBox(day: "Sun", isPressed: false),
+                ],
+              ),
             ),
           ],
         ),
