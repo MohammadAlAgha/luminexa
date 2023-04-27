@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
+import 'package:luminexa_mobile/widgets/drawerWidget/drawer.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/listWidget.dart';
 
 class landing extends StatefulWidget {
@@ -17,58 +18,7 @@ class _landingState extends State<landing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Color.fromARGB(255, 63, 139, 0),
-        width: 220,
-        child: SafeArea(
-            child: Column(
-          children: [
-            SizedBox(
-              height: 60,
-            ),
-            Container(
-              width: 200,
-              height: 60,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset('images/Logo.svg'),
-                  ]),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              child: Column(children: [
-                SizedBox(
-                  height: 30,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: styledButton(innerText: "Weather"),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: styledButton(innerText: "Notification"),
-                ),
-                SizedBox(
-                  height: 300,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: styledButton(innerText: "Log Out"),
-                ),
-              ]),
-            )
-          ],
-        )),
-      ),
+      drawer: drawerWidget(),
       appBar: AppBar(
         title: Text(
           "User Name",

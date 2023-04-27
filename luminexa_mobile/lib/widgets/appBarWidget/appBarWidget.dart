@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class appBar extends StatefulWidget with PreferredSizeWidget {
+class appBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
   final Widget? iconAction;
   final Widget? iconLeading;
@@ -13,29 +13,22 @@ class appBar extends StatefulWidget with PreferredSizeWidget {
   });
 
   @override
-  State<appBar> createState() => _appBarState();
-
-  @override
-  Size get preferredSize => Size(0, 60);
-}
-
-class _appBarState extends State<appBar> {
-  @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(
-        widget.title,
+        title,
         style: TextStyle(
             fontFamily: "Raleway", fontWeight: FontWeight.bold, fontSize: 24),
       ),
       centerTitle: true,
-      actions: [
-        IconButton(onPressed: () {}, icon: widget.iconAction ?? Container())
-      ],
+      actions: [IconButton(onPressed: () {}, icon: iconAction ?? Container())],
       leading: IconButton(
         onPressed: () {},
-        icon: widget.iconLeading ?? Container(),
+        icon: iconLeading ?? Container(),
       ),
     );
   }
+
+  @override
+  Size get preferredSize => Size(0, 60);
 }
