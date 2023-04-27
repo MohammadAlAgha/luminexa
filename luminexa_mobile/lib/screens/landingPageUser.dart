@@ -75,10 +75,10 @@ class _landingState extends State<landing> {
         ],
       ),
       body: SafeArea(
-        child: Stack(children: [
-          SingleChildScrollView(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Stack(children: [
+            SingleChildScrollView(
               child: Column(
                 children: [
                   Row(
@@ -104,30 +104,35 @@ class _landingState extends State<landing> {
                             systemName: systems[index],
                             activeLeds: leds[index]);
                       }),
+                  SizedBox(
+                    height: 120,
+                  ),
                 ],
               ),
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              height: 80,
-              decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                    offset: Offset(0, -30),
-                    color: Colors.grey,
-                    spreadRadius: -5,
-                    blurRadius: 50)
-              ]),
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-              width: MediaQuery.of(context).size.width,
-              child: iconButton(
-                innerText: "Add new system",
-                iconName: Icon(Icons.add),
+            Positioned(
+              bottom: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                      Colors.white.withOpacity(0.5),
+                      Colors.white,
+                      Colors.white,
+                    ])),
+                padding: const EdgeInsets.only(
+                    left: 25, right: 25, bottom: 20, top: 60),
+                width: MediaQuery.of(context).size.width,
+                child: iconButton(
+                  innerText: "Add new system",
+                  iconName: Icon(Icons.add),
+                ),
               ),
-            ),
-          )
-        ]),
+            )
+          ]),
+        ),
       ),
     );
   }

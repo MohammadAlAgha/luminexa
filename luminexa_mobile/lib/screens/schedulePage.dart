@@ -92,14 +92,15 @@ class _schedulePageState extends State<schedulePage> {
             Positioned(
               bottom: 0,
               child: Container(
-                height: 60,
-                decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(
-                      offset: Offset(0, -30),
-                      color: Colors.grey,
-                      spreadRadius: -5,
-                      blurRadius: 50)
-                ]),
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                      Colors.white.withOpacity(0.6),
+                      Color.fromARGB(255, 255, 255, 255),
+                      Color.fromARGB(255, 255, 255, 255),
+                    ])),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 width: MediaQuery.of(context).size.width,
