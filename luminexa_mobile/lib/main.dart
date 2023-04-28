@@ -8,6 +8,7 @@ import 'package:luminexa_mobile/screens/signUp.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
 import 'package:luminexa_mobile/screens/editLedPage.dart';
 import 'package:luminexa_mobile/screens/viewUsersPage.dart';
+import 'package:luminexa_mobile/screens/weatherPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +28,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.green, scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: viewUsers(),
+      home: weatherPage(),
     );
   }
 }
