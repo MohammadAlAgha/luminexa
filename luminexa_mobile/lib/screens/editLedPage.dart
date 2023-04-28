@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class editLeds extends StatefulWidget {
   editLeds({super.key});
 
-  double sliderValue = 100;
-  bool isOn = true;
-  String dropDownSelected = "Standard";
-
   @override
   State<editLeds> createState() => _editLedsState();
 }
 
 class _editLedsState extends State<editLeds> {
+  double sliderValue = 100;
+  bool isOn = true;
+  String dropDownSelected = "Standard";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,18 +29,18 @@ class _editLedsState extends State<editLeds> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Switch(
-                  value: widget.isOn,
+                  value: isOn,
                   onChanged: (value) {
-                    widget.sliderValue == 0
+                    sliderValue == 0
                         ? setState(() {
-                            widget.isOn = false;
+                            isOn = false;
                           })
                         : setState(() {
-                            widget.isOn = value;
+                            isOn = value;
                           });
                   }),
               Text(
-                widget.isOn ? "ON" : "OFF",
+                isOn ? "ON" : "OFF",
                 style: TextStyle(fontFamily: "RalewayBold", fontSize: 15),
               )
             ],
@@ -54,16 +53,16 @@ class _editLedsState extends State<editLeds> {
             height: 15,
           ),
           Text(
-            widget.sliderValue.toStringAsFixed(0),
+            sliderValue.toStringAsFixed(0),
             style: TextStyle(fontSize: 17),
           ),
           Slider(
               min: 0,
               max: 100,
-              value: widget.sliderValue,
+              value: sliderValue,
               onChanged: (value) {
                 setState(() {
-                  widget.sliderValue = value;
+                  sliderValue = value;
                 });
               }),
           SizedBox(
@@ -74,7 +73,7 @@ class _editLedsState extends State<editLeds> {
             height: 15,
           ),
           DropdownButton<String>(
-              value: widget.dropDownSelected,
+              value: dropDownSelected,
               borderRadius: BorderRadius.circular(25),
               icon: Icon(
                 Icons.arrow_drop_down_circle_sharp,
@@ -138,14 +137,14 @@ class _editLedsState extends State<editLeds> {
               ],
               onChanged: (String? value) {
                 setState(() {
-                  widget.dropDownSelected = value!;
+                  dropDownSelected = value!;
                 });
               }),
           SizedBox(
             height: 50,
           ),
           Padding(
-            padding: const EdgeInsets.all(25),
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 60),
             child: styledButton(innerText: "Save Changes"),
           )
         ]),
