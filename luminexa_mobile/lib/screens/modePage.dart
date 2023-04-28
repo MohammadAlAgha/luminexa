@@ -53,6 +53,7 @@ class _modePageState extends State<modePage> {
                   Colors.white.withOpacity(0.5),
                   Colors.white,
                   Colors.white,
+                  Colors.white,
                 ])),
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
             width: MediaQuery.of(context).size.width,

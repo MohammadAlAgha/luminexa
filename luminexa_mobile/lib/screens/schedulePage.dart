@@ -100,6 +100,7 @@ class _schedulePageState extends State<schedulePage> {
                       Colors.white.withOpacity(0.6),
                       Color.fromARGB(255, 255, 255, 255),
                       Color.fromARGB(255, 255, 255, 255),
+                      Color.fromARGB(255, 255, 255, 255),
                     ])),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
