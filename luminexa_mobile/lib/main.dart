@@ -7,6 +7,7 @@ import 'package:luminexa_mobile/screens/setSchedulePage.dart';
 import 'package:luminexa_mobile/screens/setModePage.dart';
 import 'package:luminexa_mobile/screens/signUp.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
+import 'package:luminexa_mobile/screens/editLedPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.green, scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: setModePage(),
+      home: editLeds(),
     );
   }
 }
