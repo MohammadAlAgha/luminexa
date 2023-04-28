@@ -22,7 +22,7 @@ class _userListTileState extends State<userListTile> {
   Widget build(BuildContext context) {
     return widget.index % 2 == 0
         ? Container(
-            height: 40,
+            height: 50,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -37,18 +37,24 @@ class _userListTileState extends State<userListTile> {
                 ]),
           )
         : Container(
-            height: 40,
-            color: Color.fromARGB(255, 188, 236, 147),
+            height: 50,
+            color: Color.fromARGB(255, 245, 245, 245),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     widget.user,
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 17),
+                    style: TextStyle(
+                        fontFamily: "RalewayBold",
+                        fontSize: 17,
+                        color: Colors.black),
                   ),
                   Text(
                     widget.type,
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 17),
+                    style: TextStyle(
+                        fontFamily: "RalewayBold",
+                        fontSize: 17,
+                        color: Colors.black),
                   ),
                 ]),
           );
