@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
+import 'package:luminexa_mobile/widgets/barChart/consumptionGraph.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
@@ -45,9 +47,25 @@ class _consumptionPageState extends State<consumptionPage> {
     },
   ];
 
+  List<double> currentIntensity = [
+    4.1,
+    6.2,
+    10.0,
+    6.4,
+    8.6,
+    6.1,
+    12.9,
+    5.2,
+    8.4,
+    5.5,
+    14.2,
+    11.1
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar(title: "Consumption"),
       body: SafeArea(
           child: Column(
         children: [
@@ -70,6 +88,14 @@ class _consumptionPageState extends State<consumptionPage> {
           Divider(
             color: Colors.black,
             thickness: 1,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 70),
+              child: consumptionGraph(
+                consumption: currentIntensity,
+              ),
+            ),
           ),
         ],
       )),
