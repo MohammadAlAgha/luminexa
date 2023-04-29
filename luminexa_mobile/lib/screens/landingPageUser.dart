@@ -19,10 +19,41 @@ class _landingState extends State<landing> {
 
   final newSystem = TextEditingController();
 
-  // void addSystem() {
-  //   print("Pressed");
-
-  // }
+  void addSystem() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Add the system serial number"),
+            content: sytledTextField(
+              isPass: false,
+              controller: newSystem,
+              label: "Serial Number",
+              hintText: "Serial Number",
+            ),
+            actions: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
+                child: styledButton(
+                  innerText: "Connect",
+                  onTap: () {},
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
+                child: styledButton(
+                  innerText: "Cancel",
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,10 +125,9 @@ class _landingState extends State<landing> {
                     left: 25, right: 25, bottom: 20, top: 60),
                 width: MediaQuery.of(context).size.width,
                 child: iconButton(
-                  innerText: "Add new system",
-                  iconName: Icon(Icons.add),
-                  onTap: () {},
-                ),
+                    innerText: "Add new system",
+                    iconName: Icon(Icons.add),
+                    onTap: addSystem),
               ),
             )
           ]),
