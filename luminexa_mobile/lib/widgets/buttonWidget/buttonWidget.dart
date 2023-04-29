@@ -13,9 +13,7 @@ class styledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        onTap;
-      },
+      onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
