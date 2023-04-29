@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
+import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
+import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/userListWidget.dart';
 
@@ -11,6 +13,44 @@ class viewUsers extends StatefulWidget {
 }
 
 class _viewUsersState extends State<viewUsers> {
+  final newUser = TextEditingController();
+
+  void addUser() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Add the user email"),
+            content: sytledTextField(
+              isPass: false,
+              controller: newUser,
+              label: "User Email",
+              hintText: "User Email",
+            ),
+            actions: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
+                child: styledButton(
+                  innerText: "Invite",
+                  onTap: () {},
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
+                child: styledButton(
+                  innerText: "Cancel",
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+            ],
+          );
+        });
+  }
+
   bool isOpen = false;
   List<Map> users = [
     {"name": "User 1", "type": "Host"},
@@ -142,9 +182,9 @@ class _viewUsersState extends State<viewUsers> {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 width: MediaQuery.of(context).size.width,
                 child: iconButton(
-                  innerText: "Set New User",
+                  innerText: "Add New User",
                   iconName: Icon(Icons.add),
-                  onTap: () {},
+                  onTap: addUser,
                 ),
               ),
             ),
