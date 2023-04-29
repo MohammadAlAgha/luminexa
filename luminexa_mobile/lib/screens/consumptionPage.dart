@@ -70,7 +70,7 @@ class _consumptionPageState extends State<consumptionPage> {
           Divider(
             color: Colors.black,
             thickness: 1,
-          )
+          ),
         ],
       )),
     );
