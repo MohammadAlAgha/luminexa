@@ -47,6 +47,7 @@ class _landingState extends State<landing> {
                   innerText: "Cancel",
                   onTap: () {
                     Navigator.of(context).pop();
+                    newSystem.clear();
                   },
                 ),
               ),

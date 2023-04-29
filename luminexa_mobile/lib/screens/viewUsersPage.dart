@@ -43,6 +43,7 @@ class _viewUsersState extends State<viewUsers> {
                   innerText: "Cancel",
                   onTap: () {
                     Navigator.of(context).pop();
+                    newUser.clear();
                   },
                 ),
               ),
