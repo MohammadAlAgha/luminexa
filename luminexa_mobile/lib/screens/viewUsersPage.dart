@@ -144,6 +144,7 @@ class _viewUsersState extends State<viewUsers> {
                 child: iconButton(
                   innerText: "Set New User",
                   iconName: Icon(Icons.add),
+                  onTap: () {},
                 ),
               ),
             ),

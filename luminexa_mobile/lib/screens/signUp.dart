@@ -89,6 +89,7 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     styledButton(
                       innerText: "Sign Up",
+                      onTap: () {},
                     ),
                     SizedBox(
                       height: 20,

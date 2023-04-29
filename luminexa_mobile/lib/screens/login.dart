@@ -77,7 +77,10 @@ class _logInState extends State<logIn> {
                   padding: const EdgeInsets.all(25),
                   child: Column(
                     children: [
-                      styledButton(innerText: "Sign In"),
+                      styledButton(
+                        innerText: "Sign In",
+                        onTap: () {},
+                      ),
                       SizedBox(
                         height: 20,
                       ),

@@ -145,7 +145,10 @@ class _editLedsState extends State<editLeds> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 60),
-            child: styledButton(innerText: "Save Changes"),
+            child: styledButton(
+              innerText: "Save Changes",
+              onTap: () {},
+            ),
           )
         ]),
       ),

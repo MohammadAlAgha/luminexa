@@ -85,7 +85,10 @@ class _setSchedulePageState extends State<setSchedulePage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(25),
-                child: styledButton(innerText: "Pick a time"),
+                child: styledButton(
+                  innerText: "Pick a time",
+                  onTap: () {},
+                ),
               ),
               SizedBox(
                 height: 50,
@@ -148,7 +151,10 @@ class _setSchedulePageState extends State<setSchedulePage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(25),
-                child: styledButton(innerText: "Set Schedule"),
+                child: styledButton(
+                  innerText: "Set Schedule",
+                  onTap: () {},
+                ),
               )
             ],
           ),

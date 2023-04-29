@@ -60,6 +60,7 @@ class _modePageState extends State<modePage> {
             child: iconButton(
               innerText: "Set new mode",
               iconName: Icon(Icons.bookmark_add_outlined),
+              onTap: () {},
             ),
           ),
         )

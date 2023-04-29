@@ -176,9 +176,15 @@ class weatherPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 50, bottom: 20),
-              child: styledButton(innerText: "Edit LEDs"),
+              child: styledButton(
+                innerText: "Edit LEDs",
+                onTap: () {},
+              ),
             ),
-            styledButton(innerText: "Turn off LEDs"),
+            styledButton(
+              innerText: "Turn off LEDs",
+              onTap: () {},
+            ),
           ],
         ),
       )),

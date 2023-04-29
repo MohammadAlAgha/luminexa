@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/drawerWidget/drawer.dart';
@@ -15,6 +16,14 @@ class landing extends StatefulWidget {
 class _landingState extends State<landing> {
   final List systems = ["Kitchen", "Room", "Living Room"];
   final List leds = [3, 2, 5];
+
+  final newSystem = TextEditingController();
+
+  // void addSystem() {
+  //   print("Pressed");
+
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,6 +96,7 @@ class _landingState extends State<landing> {
                 child: iconButton(
                   innerText: "Add new system",
                   iconName: Icon(Icons.add),
+                  onTap: () {},
                 ),
               ),
             )

@@ -63,7 +63,10 @@ class setModePage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(25),
-            child: styledButton(innerText: "Set Mode"),
+            child: styledButton(
+              innerText: "Set Mode",
+              onTap: () {},
+            ),
           )
         ],
       )),

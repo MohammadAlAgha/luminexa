@@ -108,6 +108,7 @@ class _schedulePageState extends State<schedulePage> {
                 child: iconButton(
                   innerText: "Set new schedule",
                   iconName: Icon(Icons.alarm_add),
+                  onTap: () {},
                 ),
               ),
             )
