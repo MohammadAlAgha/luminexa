@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
+import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
@@ -60,19 +62,13 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: drawerWidget(),
-      appBar: AppBar(
-        title: Text(
-          "User Name",
-          style: TextStyle(
-              fontFamily: "Raleway", fontWeight: FontWeight.bold, fontSize: 24),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.settings),
-          )
-        ],
+      appBar: appBar(
+        title: "Kitchen",
+        iconAction: Icon(Icons.settings),
+        iconActionFunction: () =>
+            Navigator.of(context).pushNamed(RouteManager.settingsPage),
+        iconLeading: Icon(Icons.arrow_back),
+        iconLeadingFunction: () => Navigator.of(context).pop(context),
       ),
       body: SafeArea(
         child: Container(

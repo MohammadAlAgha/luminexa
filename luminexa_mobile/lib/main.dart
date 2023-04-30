@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.green, scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: SystemPage(),
+      home: LandingPage(),
       // initialRoute: RouteManager.login,
       onGenerateRoute: RouteManager.generateRoute,
     );
