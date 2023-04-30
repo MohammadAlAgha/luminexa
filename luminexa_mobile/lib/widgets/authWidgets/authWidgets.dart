@@ -27,25 +27,19 @@ class _sytledTextFieldState extends State<sytledTextField> {
         ? Padding(
             padding: EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
-                controller: widget.controller,
-                obscureText: false,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    hintText: widget.hintText,
-                    label: Text(
-                      widget.label,
-                      style: TextStyle(
-                          fontFamily: "Raleway",
-                          fontSize: 14,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    hintStyle: TextStyle(
-                        fontFamily: "Raleway",
-                        fontSize: 14,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w600))),
+              controller: widget.controller,
+              obscureText: false,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                hintText: widget.hintText,
+                label: Text(
+                  widget.label,
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+                hintStyle: Theme.of(context).textTheme.displayMedium,
+              ),
+            ),
           )
         : Padding(
             padding: EdgeInsets.symmetric(horizontal: 25),
@@ -54,30 +48,25 @@ class _sytledTextFieldState extends State<sytledTextField> {
               obscureText: passwordVisible,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                hintText: widget.hintText,
-                label: Text(
-                  widget.label,
-                  style: TextStyle(
-                      fontFamily: "Raleway",
-                      fontSize: 14,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w600),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
                 ),
+                hintText: widget.hintText,
+                label: Text(widget.label,
+                    style: Theme.of(context).textTheme.displayMedium),
                 helperText: "Password must contain at least 8 character.",
-                hintStyle: TextStyle(
-                    fontFamily: "Raleway",
-                    fontSize: 14,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w600),
+                hintStyle: Theme.of(context).textTheme.displayMedium,
                 suffixIcon: IconButton(
                   icon: Icon(passwordVisible
                       ? Icons.visibility
                       : Icons.visibility_off),
                   onPressed: () {
-                    setState(() {
-                      passwordVisible = !passwordVisible;
-                    });
+                    setState(
+                      () {
+                        passwordVisible = !passwordVisible;
+                      },
+                    );
                   },
                 ),
               ),
