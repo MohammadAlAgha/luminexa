@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/barChart/consumptionGraph.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
