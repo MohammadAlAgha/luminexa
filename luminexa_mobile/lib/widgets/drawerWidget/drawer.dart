@@ -42,36 +42,40 @@ class drawerWidget extends StatelessWidget {
               drawerButton(
                 innerText: "Home",
                 iconName: Icon(Icons.home),
-                onTap: () => Navigator.of(context)
-                    .popAndPushNamed(RouteManager.landingPage),
+                onTap: () {
+                  Navigator.of(context).pop(context);
+                },
               ),
               SizedBox(
                 height: 20,
               ),
               drawerButton(
-                innerText: "Weather",
-                iconName: Icon(Icons.sunny),
-                onTap: () =>
-                    Navigator.of(context).pushNamed(RouteManager.weatherPage),
-              ),
+                  innerText: "Weather",
+                  iconName: Icon(Icons.sunny),
+                  onTap: () {
+                    Navigator.of(context).pushNamed(RouteManager.weatherPage);
+                  }),
               SizedBox(
                 height: 20,
               ),
               drawerButton(
                 innerText: "Notifications",
                 iconName: Icon(Icons.notifications),
-                onTap: () => Navigator.of(context)
-                    .pushNamed(RouteManager.notificationsPage),
+                onTap: () {
+                  Navigator.of(context)
+                      .pushNamed(RouteManager.notificationsPage);
+                },
               ),
               SizedBox(
                 height: 400,
               ),
               drawerButton(
-                innerText: "Log Out",
-                iconName: Icon(Icons.logout),
-                onTap: () =>
-                    Navigator.of(context).popAndPushNamed(RouteManager.login),
-              ),
+                  innerText: "Log Out",
+                  iconName: Icon(Icons.logout),
+                  onTap: () {
+                    Navigator.of(context).pop(context);
+                    Navigator.of(context).popAndPushNamed(RouteManager.login);
+                  }),
             ]),
           )
         ],
