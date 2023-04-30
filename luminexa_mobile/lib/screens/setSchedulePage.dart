@@ -4,6 +4,7 @@ import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/customeCheckBox.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/ledsListWidget.dart';
+import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class SetSchedulePage extends StatefulWidget {
   const SetSchedulePage({super.key});
@@ -37,127 +38,81 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
         },
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  children: [
-                    Text(
-                      "Title of the schedule",
-                      style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-                    ),
-                  ],
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            titleWidget(title: "Title of the schedule"),
+            SizedBox(
+              height: 15,
+            ),
+            sytledTextField(
+              isPass: false,
+              controller: scheduleName,
+              label: "Title",
+              hintText: "Title",
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            titleWidget(title: "Time"),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              time.format(context),
+              style: TextStyle(
+                  fontFamily: "ralewayBold", fontSize: 25, color: Colors.black),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(25),
+              child: styledButton(
+                innerText: "Pick a time",
+                onTap: showTime,
               ),
-              SizedBox(
-                height: 15,
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            titleWidget(title: "Repeat"),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  customeCheckBox(day: "Mon", isPressed: false),
+                  customeCheckBox(day: "Tue", isPressed: false),
+                  customeCheckBox(day: "Wed", isPressed: false),
+                  customeCheckBox(day: "Thu", isPressed: false),
+                  customeCheckBox(day: "Fri", isPressed: false),
+                  customeCheckBox(day: "Sat", isPressed: false),
+                  customeCheckBox(day: "Sun", isPressed: false),
+                ],
               ),
-              sytledTextField(
-                isPass: false,
-                controller: scheduleName,
-                label: "Title",
-                hintText: "Title",
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            titleWidget(title: "LEDs in Kitchen"),
+            SizedBox(
+              height: 10,
+            ),
+            ListView.builder(
+              physics: ScrollPhysics(parent: null),
+              shrinkWrap: true,
+              itemCount: leds.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ledListOption(
+                    ledName: leds[index], status: status[index]);
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.all(25),
+              child: styledButton(
+                innerText: "Set Schedule",
+                onTap: () {},
               ),
-              SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  children: [
-                    Text(
-                      "Time",
-                      style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                time.format(context),
-                style: TextStyle(fontFamily: "ralewayBold", fontSize: 25),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25),
-                child: styledButton(
-                  innerText: "Pick a time",
-                  onTap: showTime,
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  children: [
-                    Text(
-                      "Repeat",
-                      style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    customeCheckBox(day: "Mon", isPressed: false),
-                    customeCheckBox(day: "Tue", isPressed: false),
-                    customeCheckBox(day: "Wed", isPressed: false),
-                    customeCheckBox(day: "Thu", isPressed: false),
-                    customeCheckBox(day: "Fri", isPressed: false),
-                    customeCheckBox(day: "Sat", isPressed: false),
-                    customeCheckBox(day: "Sun", isPressed: false),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  children: [
-                    Text(
-                      "LEDs in Kitchen",
-                      style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              ListView.builder(
-                physics: ScrollPhysics(parent: null),
-                shrinkWrap: true,
-                itemCount: leds.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ledListOption(
-                      ledName: leds[index], status: status[index]);
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25),
-                child: styledButton(
-                  innerText: "Set Schedule",
-                  onTap: () {},
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
