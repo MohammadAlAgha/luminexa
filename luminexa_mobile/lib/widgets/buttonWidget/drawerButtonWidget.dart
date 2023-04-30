@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 class drawerButton extends StatelessWidget {
   final String innerText;
   final Widget iconName;
+  final Function()? onTap;
 
   const drawerButton({
     super.key,
     required this.innerText,
     required this.iconName,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         height: 35,
         decoration: BoxDecoration(

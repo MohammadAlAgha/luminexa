@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/drawerButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
@@ -38,17 +39,39 @@ class drawerWidget extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              drawerButton(innerText: "Weather", iconName: Icon(Icons.sunny)),
+              drawerButton(
+                innerText: "Home",
+                iconName: Icon(Icons.home),
+                onTap: () => Navigator.of(context)
+                    .popAndPushNamed(RouteManager.landingPage),
+              ),
               SizedBox(
                 height: 20,
               ),
               drawerButton(
-                  innerText: "Notifications",
-                  iconName: Icon(Icons.notifications)),
+                innerText: "Weather",
+                iconName: Icon(Icons.sunny),
+                onTap: () =>
+                    Navigator.of(context).pushNamed(RouteManager.weatherPage),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              drawerButton(
+                innerText: "Notifications",
+                iconName: Icon(Icons.notifications),
+                onTap: () => Navigator.of(context)
+                    .pushNamed(RouteManager.notificationsPage),
+              ),
               SizedBox(
                 height: 400,
               ),
-              drawerButton(innerText: "Log Out", iconName: Icon(Icons.logout)),
+              drawerButton(
+                innerText: "Log Out",
+                iconName: Icon(Icons.logout),
+                onTap: () =>
+                    Navigator.of(context).popAndPushNamed(RouteManager.login),
+              ),
             ]),
           )
         ],
