@@ -30,7 +30,7 @@ class _customeCheckBoxState extends State<customeCheckBox> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(45),
                   border: Border.all(
-                    color: Color.fromARGB(255, 63, 139, 0),
+                    color: Theme.of(context).primaryColor,
                   )),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +40,7 @@ class _customeCheckBoxState extends State<customeCheckBox> {
                     style: TextStyle(
                       fontFamily: "RalewayBold",
                       fontSize: 10,
-                      color: Color.fromARGB(255, 63, 139, 0),
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 ],
@@ -58,7 +58,7 @@ class _customeCheckBoxState extends State<customeCheckBox> {
               width: 45,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(45),
-                color: Color.fromARGB(255, 63, 139, 0),
+                color: Theme.of(context).primaryColor,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
