@@ -18,7 +18,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
   final scheduleName = TextEditingController();
   TimeOfDay time = TimeOfDay(hour: 12, minute: 0);
 
-  void showtime() {
+  void showTime() {
     showTimePicker(context: context, initialTime: TimeOfDay.now())
         .then((value) {
       setState(() {
@@ -90,7 +90,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                 padding: const EdgeInsets.all(25),
                 child: styledButton(
                   innerText: "Pick a time",
-                  onTap: () {},
+                  onTap: showTime,
                 ),
               ),
               SizedBox(
