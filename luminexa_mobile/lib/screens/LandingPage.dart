@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
+import 'package:luminexa_mobile/screens/SettingsPage.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
@@ -70,7 +72,9 @@ class _LandingPageState extends State<LandingPage> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(RouteManager.settingsPage);
+            },
             icon: Icon(Icons.settings),
           )
         ],
