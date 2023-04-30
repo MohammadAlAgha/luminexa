@@ -26,15 +26,12 @@ class _systemButtonState extends State<systemButton> {
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black),
-                  color: Color.fromARGB(255, 188, 236, 147),
+                  color: Theme.of(context).canvasColor,
                   borderRadius: BorderRadius.all(Radius.circular(25))),
               child: Center(
                   child: Text(
                 widget.innerText,
-                style: TextStyle(
-                    fontFamily: "Raleway",
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600),
+                style: Theme.of(context).textTheme.displaySmall,
               )),
             ),
           )
@@ -44,19 +41,15 @@ class _systemButtonState extends State<systemButton> {
               margin: EdgeInsets.symmetric(horizontal: 5),
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Color.fromARGB(255, 63, 139, 0),
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(25))),
+                border: Border.all(color: Theme.of(context).primaryColor),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(25),
+                ),
+              ),
               child: Center(
                   child: Text(
                 widget.innerText,
-                style: TextStyle(
-                  fontFamily: "Raleway",
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: Color.fromARGB(255, 63, 139, 0),
-                ),
+                style: Theme.of(context).textTheme.displaySmall,
               )),
             ),
           );

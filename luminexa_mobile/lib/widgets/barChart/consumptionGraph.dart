@@ -66,7 +66,7 @@ class consumptionGraph extends StatelessWidget {
                   barRods: [
                     BarChartRodData(
                       toY: data.y,
-                      color: Colors.green,
+                      color: Theme.of(context).primaryColor,
                       width: 20,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
