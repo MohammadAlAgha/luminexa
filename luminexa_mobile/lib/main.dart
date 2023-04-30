@@ -14,6 +14,7 @@ import 'package:luminexa_mobile/screens/EditLedPage.dart';
 import 'package:luminexa_mobile/screens/ViewUsersPage.dart';
 import 'package:luminexa_mobile/screens/WeatherPage.dart';
 import 'package:luminexa_mobile/tools/CreateMaterialColor.dart';
+import 'package:luminexa_mobile/widgets/barChart/consumptionGraph.dart';
 
 void main() {
   runApp(const MyApp());
@@ -95,7 +96,7 @@ class _MyAppState extends State<MyApp> {
             ),
           )),
       debugShowCheckedModeBanner: false,
-      home: LandingPage(),
+      home: ConsumptionPage(),
       // initialRoute: RouteManager.login,
       onGenerateRoute: RouteManager.generateRoute,
     );

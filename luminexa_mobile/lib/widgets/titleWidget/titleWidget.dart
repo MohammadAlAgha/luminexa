@@ -15,7 +15,7 @@ class titleWidget extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
+            style: Theme.of(context).textTheme.bodySmall,
           )
         ],
       ),
