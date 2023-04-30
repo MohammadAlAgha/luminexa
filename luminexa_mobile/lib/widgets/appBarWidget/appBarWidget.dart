@@ -19,11 +19,7 @@ class appBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
-        title,
-        style: TextStyle(
-            fontFamily: "Raleway", fontWeight: FontWeight.bold, fontSize: 24),
-      ),
+      title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
       centerTitle: true,
       actions: [
         IconButton(
