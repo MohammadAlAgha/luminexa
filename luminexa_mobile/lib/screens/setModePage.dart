@@ -3,6 +3,7 @@ import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/ledsListWidget.dart';
+import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class SetModePage extends StatelessWidget {
   SetModePage({super.key});
@@ -23,17 +24,7 @@ class SetModePage extends StatelessWidget {
       body: SingleChildScrollView(
           child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
-            child: Row(
-              children: [
-                Text(
-                  "Title of the mode",
-                  style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-                )
-              ],
-            ),
-          ),
+          titleWidget(title: "Title of the schedule"),
           SizedBox(
             height: 15,
           ),
@@ -45,17 +36,7 @@ class SetModePage extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
-            child: Row(
-              children: [
-                Text(
-                  "LEDs in Kitchen",
-                  style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-                )
-              ],
-            ),
-          ),
+          titleWidget(title: "LEDs in Kitchen"),
           SizedBox(
             height: 15,
           ),
