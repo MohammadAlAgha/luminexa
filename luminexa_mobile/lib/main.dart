@@ -65,6 +65,7 @@ class _MyAppState extends State<MyApp> {
               fontFamily: "RalewayNormal",
               fontSize: 14,
               fontWeight: FontWeight.w700,
+              color: Colors.black,
             ),
             displayMedium: TextStyle(
               fontFamily: "Raleway",

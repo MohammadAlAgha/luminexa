@@ -16,7 +16,7 @@ class notificationTile extends StatelessWidget {
       height: 80,
       margin: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 188, 236, 147),
+        color: Theme.of(context).canvasColor,
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       child: Padding(
@@ -24,18 +24,11 @@ class notificationTile extends StatelessWidget {
         child: ListTile(
           title: Text(
             title,
-            style: TextStyle(
-                fontFamily: "RalewayNormal",
-                fontSize: 14,
-                fontWeight: FontWeight.w700),
+            style: Theme.of(context).textTheme.displayLarge,
           ),
           subtitle: Text(
             time,
-            style: TextStyle(
-                fontFamily: "RalewayBold",
-                fontWeight: FontWeight.w700,
-                color: Colors.black45,
-                fontSize: 12),
+            style: Theme.of(context).textTheme.labelMedium,
           ),
         ),
       ),
