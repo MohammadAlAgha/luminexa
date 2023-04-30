@@ -34,6 +34,7 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: createMaterialColor(
             Color.fromARGB(255, 63, 139, 0),
           ),
+          canvasColor: Color.fromARGB(255, 188, 236, 147),
           scaffoldBackgroundColor: Colors.white,
           textTheme: const TextTheme(
             bodyLarge: TextStyle(
