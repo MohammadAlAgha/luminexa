@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
 
@@ -60,7 +61,8 @@ class _ModePageState extends State<ModePage> {
             child: iconButton(
               innerText: "Set new mode",
               iconName: Icon(Icons.bookmark_add_outlined),
-              onTap: () {},
+              onTap: () =>
+                  Navigator.of(context).pushNamed(RouteManager.setModePage),
             ),
           ),
         )

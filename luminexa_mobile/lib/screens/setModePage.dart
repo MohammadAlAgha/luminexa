@@ -13,7 +13,13 @@ class SetModePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: "Set Mode"),
+      appBar: appBar(
+        title: "Set Mode",
+        iconLeading: Icon(Icons.arrow_back),
+        iconLeadingFunction: () {
+          Navigator.pop(context);
+        },
+      ),
       body: SingleChildScrollView(
           child: Column(
         children: [
