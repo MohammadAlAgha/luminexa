@@ -7,6 +7,7 @@ import 'package:luminexa_mobile/screens/Login.dart';
 import 'package:luminexa_mobile/screens/SetSchedulePage.dart';
 import 'package:luminexa_mobile/screens/SetModePage.dart';
 import 'package:luminexa_mobile/screens/modePage.dart';
+import 'package:luminexa_mobile/screens/schedulePage.dart';
 import 'package:luminexa_mobile/screens/signUp.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
 import 'package:luminexa_mobile/screens/EditLedPage.dart';
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.green, scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: ModePage(),
+      home: SchedulePage(),
       // initialRoute: RouteManager.login,
       onGenerateRoute: RouteManager.generateRoute,
     );

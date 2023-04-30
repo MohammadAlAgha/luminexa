@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
 
@@ -108,7 +109,8 @@ class _SchedulePageState extends State<SchedulePage> {
                 child: iconButton(
                   innerText: "Set new schedule",
                   iconName: Icon(Icons.alarm_add),
-                  onTap: () {},
+                  onTap: () => Navigator.of(context)
+                      .pushNamed(RouteManager.setSchedulePage),
                 ),
               ),
             )

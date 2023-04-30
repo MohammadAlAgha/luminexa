@@ -35,6 +35,9 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
       appBar: appBar(
         title: "Set Schedule",
         iconLeading: Icon(Icons.arrow_back),
+        iconLeadingFunction: () {
+          Navigator.of(context).pop(context);
+        },
       ),
       body: SingleChildScrollView(
         child: Padding(
