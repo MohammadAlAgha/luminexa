@@ -25,7 +25,7 @@ class listOption extends StatelessWidget {
             systemName,
             style: TextStyle(
               fontFamily: "RalewayNormal",
-              fontSize: 15,
+              fontSize: 17,
               color: Color.fromARGB(255, 63, 139, 0),
             ),
           ),
