@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
-import 'package:luminexa_mobile/screens/SettingsPage.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/drawerWidget/drawer.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/listWidget.dart';
+import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -66,8 +66,7 @@ class _LandingPageState extends State<LandingPage> {
       appBar: AppBar(
         title: Text(
           "User Name",
-          style: TextStyle(
-              fontFamily: "Raleway", fontWeight: FontWeight.bold, fontSize: 24),
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         centerTitle: true,
         actions: [
@@ -86,21 +85,7 @@ class _LandingPageState extends State<LandingPage> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 25, vertical: 30),
-                        child: Text(
-                          "Systems",
-                          style: TextStyle(
-                              fontFamily: "RalewayBold",
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ],
-                  ),
+                  titleWidget(title: "Systems"),
                   ListView.builder(
                       shrinkWrap: true,
                       itemCount: systems.length,

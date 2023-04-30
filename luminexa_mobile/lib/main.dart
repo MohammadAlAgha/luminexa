@@ -42,6 +42,7 @@ class _MyAppState extends State<MyApp> {
               fontFamily: "Raleway",
               fontSize: 24,
               color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
             bodySmall: TextStyle(
               fontFamily: "RalewayBold",
@@ -97,7 +98,7 @@ class _MyAppState extends State<MyApp> {
             ),
           )),
       debugShowCheckedModeBanner: false,
-      home: EditLeds(),
+      home: LandingPage(),
       // initialRoute: RouteManager.login,
       onGenerateRoute: RouteManager.generateRoute,
     );
