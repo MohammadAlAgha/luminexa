@@ -5,7 +5,6 @@ import 'package:luminexa_mobile/screens/LedPage.dart';
 import 'package:luminexa_mobile/screens/ModePage.dart';
 import 'package:luminexa_mobile/screens/NotificationPage.dart';
 import 'package:luminexa_mobile/screens/SchedulePage.dart';
-import 'package:luminexa_mobile/screens/SettingsPage.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 
 class SystemPage extends StatefulWidget {
@@ -37,14 +36,15 @@ class _SystemPageState extends State<SystemPage> {
               color: Color.fromARGB(255, 63, 139, 0),
               borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
             child: GNav(
-              activeColor: Colors.white,
+              activeColor: Color.fromARGB(255, 63, 139, 0),
               onTabChange: (value) => navigateTab(value),
               backgroundColor: Color.fromARGB(255, 63, 139, 0),
+              tabBackgroundColor: Colors.white,
               color: Colors.white,
               gap: 10,
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               tabs: [
                 GButton(
                   icon: Icons.lightbulb,
@@ -53,7 +53,7 @@ class _SystemPageState extends State<SystemPage> {
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontFamily: "RalewayBold",
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 63, 139, 0),
                   ),
                 ),
                 GButton(
@@ -63,7 +63,7 @@ class _SystemPageState extends State<SystemPage> {
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontFamily: "RalewayBold",
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 63, 139, 0),
                   ),
                 ),
                 GButton(
@@ -73,7 +73,7 @@ class _SystemPageState extends State<SystemPage> {
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontFamily: "RalewayBold",
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 63, 139, 0),
                   ),
                 ),
                 GButton(
@@ -83,7 +83,7 @@ class _SystemPageState extends State<SystemPage> {
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontFamily: "RalewayBold",
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 63, 139, 0),
                   ),
                 ),
               ],
