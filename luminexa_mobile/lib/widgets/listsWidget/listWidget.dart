@@ -23,22 +23,13 @@ class listOption extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             systemName,
-            style: TextStyle(
-              fontFamily: "RalewayNormal",
-              fontSize: 17,
-              color: Color.fromARGB(255, 63, 139, 0),
-            ),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         subtitle: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
-            "$activeLeds Active LEDS",
-            style: TextStyle(
-                fontFamily: "RalewayBold",
-                fontSize: 12,
-                fontWeight: FontWeight.w700),
-          ),
+          child: Text("$activeLeds Active LEDS",
+              style: Theme.of(context).textTheme.labelLarge),
         ),
       ),
     );
