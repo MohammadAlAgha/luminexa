@@ -4,6 +4,7 @@ import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
+import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -34,21 +35,7 @@ class _LogInState extends State<LogIn> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(25),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Sign In",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: "RalewayBold",
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 22),
-                            ),
-                          ]),
-                    ),
+                    titleWidget(title: "Sign In"),
                     Container(
                       height: 200,
                       child: Column(
@@ -89,10 +76,7 @@ class _LogInState extends State<LogIn> {
                         children: [
                           Text(
                             "No account? ",
-                            style: TextStyle(
-                                fontFamily: "Raleway",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w800),
+                            style: Theme.of(context).textTheme.displaySmall,
                           ),
                           Text.rich(
                             TextSpan(
@@ -100,7 +84,7 @@ class _LogInState extends State<LogIn> {
                                   fontFamily: "RalewayBold",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
-                                  color: Color.fromARGB(255, 63, 139, 0),
+                                  color: Theme.of(context).primaryColor,
                                   decoration: TextDecoration.underline),
                               text: "Sign Up",
                               recognizer: TapGestureRecognizer()
