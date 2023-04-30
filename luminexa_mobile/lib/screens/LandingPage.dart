@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
-import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
+import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/drawerWidget/drawer.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/listWidget.dart';
 
@@ -37,18 +36,20 @@ class _LandingPageState extends State<LandingPage> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
-                child: styledButton(
-                  innerText: "Connect",
+                child: systemButton(
+                  isPressed: false,
+                  innerText: "Invite",
                   onTap: () {},
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
-                child: styledButton(
+                padding: const EdgeInsets.only(
+                    left: 35, right: 35, bottom: 25, top: 10),
+                child: systemButton(
+                  isPressed: false,
                   innerText: "Cancel",
                   onTap: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(context);
                     newSystem.clear();
                   },
                 ),
@@ -122,9 +123,10 @@ class _LandingPageState extends State<LandingPage> {
                     left: 25, right: 25, bottom: 20, top: 60),
                 width: MediaQuery.of(context).size.width,
                 child: iconButton(
-                    innerText: "Add new system",
-                    iconName: Icon(Icons.add),
-                    onTap: addSystem),
+                  innerText: "Add new system",
+                  iconName: Icon(Icons.add),
+                  onTap: addSystem,
+                ),
               ),
             )
           ]),
