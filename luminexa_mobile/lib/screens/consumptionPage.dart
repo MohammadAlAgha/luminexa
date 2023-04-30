@@ -65,7 +65,6 @@ class _consumptionPageState extends State<consumptionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: "Consumption"),
       body: SafeArea(
           child: Column(
         children: [
@@ -84,10 +83,6 @@ class _consumptionPageState extends State<consumptionPage> {
                 );
               },
             ),
-          ),
-          Divider(
-            color: Colors.black,
-            thickness: 1,
           ),
           Expanded(
             child: Padding(

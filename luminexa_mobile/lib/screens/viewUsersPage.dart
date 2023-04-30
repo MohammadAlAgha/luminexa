@@ -3,6 +3,7 @@ import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
+import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/userListWidget.dart';
 
 class viewUsers extends StatefulWidget {
@@ -31,15 +32,17 @@ class _viewUsersState extends State<viewUsers> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
-                child: styledButton(
+                child: systemButton(
+                  isPressed: false,
                   innerText: "Invite",
                   onTap: () {},
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
-                child: styledButton(
+                padding: const EdgeInsets.only(
+                    left: 35, right: 35, bottom: 25, top: 10),
+                child: systemButton(
+                  isPressed: false,
                   innerText: "Cancel",
                   onTap: () {
                     Navigator.of(context).pop();
