@@ -41,7 +41,7 @@ class _EditLedsState extends State<EditLeds> {
                   }),
               Text(
                 isOn ? "ON" : "OFF",
-                style: TextStyle(fontFamily: "RalewayBold", fontSize: 15),
+                style: Theme.of(context).textTheme.titleMedium,
               )
             ],
           ),
@@ -54,7 +54,7 @@ class _EditLedsState extends State<EditLeds> {
           ),
           Text(
             sliderValue.toStringAsFixed(0),
-            style: TextStyle(fontSize: 17),
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           Slider(
               min: 0,
@@ -84,53 +84,53 @@ class _EditLedsState extends State<EditLeds> {
                 height: 2,
                 color: Colors.green,
               ),
-              items: const [
+              items: [
                 DropdownMenuItem(
                   child: Text(
                     "Standard",
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 16),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   value: "Standard",
                 ),
                 DropdownMenuItem(
                   child: Text(
                     "Red",
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 16),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   value: "Red",
                 ),
                 DropdownMenuItem(
                   child: Text(
                     "Blue",
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 16),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   value: "Blue",
                 ),
                 DropdownMenuItem(
                   child: Text(
                     "Green",
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 16),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   value: "Green",
                 ),
                 DropdownMenuItem(
                   child: Text(
                     "Yellow",
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 16),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   value: "Yellow",
                 ),
                 DropdownMenuItem(
                   child: Text(
                     "Purple",
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 16),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   value: "Purple",
                 ),
                 DropdownMenuItem(
                   child: Text(
                     "Orange",
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 16),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   value: "Orange",
                 ),
