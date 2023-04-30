@@ -8,6 +8,13 @@ class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar(
+        title: "Weather Status",
+        iconLeading: Icon(Icons.arrow_back),
+        iconLeadingFunction: () {
+          Navigator.of(context).pop(context);
+        },
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
