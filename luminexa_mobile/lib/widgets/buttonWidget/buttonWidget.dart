@@ -20,11 +20,11 @@ class styledButton extends StatelessWidget {
             color: Color.fromARGB(255, 188, 236, 147),
             borderRadius: BorderRadius.all(Radius.circular(25))),
         child: Center(
-            child: Text(
-          innerText,
-          style: TextStyle(
-              fontFamily: "Raleway", fontSize: 17, fontWeight: FontWeight.w600),
-        )),
+          child: Text(
+            innerText,
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+        ),
       ),
     );
   }
