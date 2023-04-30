@@ -8,13 +8,13 @@ import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/customeCheckBox.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/ledsListWidget.dart';
 
-class setSchedulePage extends StatefulWidget {
-  const setSchedulePage({super.key});
+class SetSchedulePage extends StatefulWidget {
+  const SetSchedulePage({super.key});
   @override
-  State<setSchedulePage> createState() => _setSchedulePageState();
+  State<SetSchedulePage> createState() => _SetSchedulePageState();
 }
 
-class _setSchedulePageState extends State<setSchedulePage> {
+class _SetSchedulePageState extends State<SetSchedulePage> {
   final scheduleName = TextEditingController();
   TimeOfDay time = TimeOfDay(hour: 12, minute: 0);
 

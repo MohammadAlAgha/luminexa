@@ -1,17 +1,15 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:luminexa_mobile/screens/consumptionPage.dart';
-import 'package:luminexa_mobile/screens/landingPageUser.dart';
-import 'package:luminexa_mobile/screens/ledPage.dart';
-import 'package:luminexa_mobile/screens/login.dart';
-import 'package:luminexa_mobile/screens/setSchedulePage.dart';
-import 'package:luminexa_mobile/screens/setModePage.dart';
+import 'package:luminexa_mobile/screens/ConsumptionPage.dart';
+import 'package:luminexa_mobile/screens/LandingPage.dart';
+import 'package:luminexa_mobile/screens/LedPage.dart';
+import 'package:luminexa_mobile/screens/Login.dart';
+import 'package:luminexa_mobile/screens/SetSchedulePage.dart';
+import 'package:luminexa_mobile/screens/SetModePage.dart';
 import 'package:luminexa_mobile/screens/signUp.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
-import 'package:luminexa_mobile/screens/editLedPage.dart';
-import 'package:luminexa_mobile/screens/viewUsersPage.dart';
-import 'package:luminexa_mobile/screens/weatherPage.dart';
+import 'package:luminexa_mobile/screens/EditLedPage.dart';
+import 'package:luminexa_mobile/screens/ViewUsersPage.dart';
+import 'package:luminexa_mobile/screens/WeatherPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +29,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.green, scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: consumptionPage(),
+      home: systemPage(),
     );
   }
 }

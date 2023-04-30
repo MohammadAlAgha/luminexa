@@ -6,14 +6,14 @@ import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/userListWidget.dart';
 
-class viewUsers extends StatefulWidget {
-  const viewUsers({super.key});
+class ViewUsers extends StatefulWidget {
+  const ViewUsers({super.key});
 
   @override
-  State<viewUsers> createState() => _viewUsersState();
+  State<ViewUsers> createState() => _ViewUsersState();
 }
 
-class _viewUsersState extends State<viewUsers> {
+class _ViewUsersState extends State<ViewUsers> {
   final newUser = TextEditingController();
 
   void addUser() {

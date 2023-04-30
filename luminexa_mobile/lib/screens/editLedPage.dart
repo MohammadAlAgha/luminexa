@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
-class editLeds extends StatefulWidget {
-  editLeds({super.key});
+class EditLeds extends StatefulWidget {
+  EditLeds({super.key});
 
   @override
-  State<editLeds> createState() => _editLedsState();
+  State<EditLeds> createState() => _EditLedsState();
 }
 
-class _editLedsState extends State<editLeds> {
+class _EditLedsState extends State<EditLeds> {
   double sliderValue = 100;
   bool isOn = true;
   String dropDownSelected = "Standard";

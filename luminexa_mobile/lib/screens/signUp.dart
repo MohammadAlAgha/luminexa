@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:luminexa_mobile/screens/login.dart';
+import 'package:luminexa_mobile/screens/Login.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 
@@ -116,7 +116,7 @@ class _SignUpState extends State<SignUp> {
                               ..onTap = () async {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (BuildContext context) {
-                                  return logIn();
+                                  return LogIn();
                                 }));
                               }))
                       ],

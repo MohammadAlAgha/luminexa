@@ -4,14 +4,14 @@ import 'package:luminexa_mobile/widgets/barChart/consumptionGraph.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
-class consumptionPage extends StatefulWidget {
-  const consumptionPage({super.key});
+class ConsumptionPage extends StatefulWidget {
+  const ConsumptionPage({super.key});
 
   @override
-  State<consumptionPage> createState() => _consumptionPageState();
+  State<ConsumptionPage> createState() => _ConsumptionPageState();
 }
 
-class _consumptionPageState extends State<consumptionPage> {
+class _ConsumptionPageState extends State<ConsumptionPage> {
   List<Map> systems = [
     {
       "name": "Kitchen",

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/ledsListWidget.dart';
 
-class ledsPage extends StatefulWidget {
-  const ledsPage({super.key});
+class LedsPage extends StatefulWidget {
+  const LedsPage({super.key});
 
   @override
-  State<ledsPage> createState() => _ledsPageState();
+  State<LedsPage> createState() => _LedsPageState();
 }
 
-class _ledsPageState extends State<ledsPage> {
+class _LedsPageState extends State<LedsPage> {
   final leds = ["LED 1", "LED 2", "LED 3", "LED 4"];
   final status = ["ON", "OFF", "OFF", "ON"];
   @override

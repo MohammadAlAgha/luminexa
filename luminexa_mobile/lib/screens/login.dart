@@ -5,14 +5,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 
-class logIn extends StatefulWidget {
-  const logIn({super.key});
+class LogIn extends StatefulWidget {
+  const LogIn({super.key});
 
   @override
-  State<logIn> createState() => _logInState();
+  State<LogIn> createState() => _LogInState();
 }
 
-class _logInState extends State<logIn> {
+class _LogInState extends State<LogIn> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
@@ -94,7 +94,8 @@ class _logInState extends State<logIn> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w800),
                           ),
-                          Text.rich(TextSpan(
+                          Text.rich(
+                            TextSpan(
                               style: TextStyle(
                                   fontFamily: "RalewayBold",
                                   fontSize: 14,
@@ -103,12 +104,17 @@ class _logInState extends State<logIn> {
                                   decoration: TextDecoration.underline),
                               text: "Sign Up",
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () async {
-                                  Navigator.of(context).push(MaterialPageRoute(
+                                ..onTap = () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
                                       builder: (BuildContext context) {
-                                    return SignUp();
-                                  }));
-                                }))
+                                        return SignUp();
+                                      },
+                                    ),
+                                  );
+                                },
+                            ),
+                          )
                         ],
                       )
                     ],

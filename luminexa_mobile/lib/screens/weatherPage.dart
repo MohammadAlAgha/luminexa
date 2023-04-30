@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 
-class weatherPage extends StatelessWidget {
+class WeatherPage extends StatelessWidget {
   DateTime todayDate = DateTime.now();
-  weatherPage({super.key});
+  WeatherPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

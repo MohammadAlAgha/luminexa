@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:luminexa_mobile/screens/ledPage.dart';
-import 'package:luminexa_mobile/screens/modePage.dart';
-import 'package:luminexa_mobile/screens/notificationPage.dart';
-import 'package:luminexa_mobile/screens/schedulePage.dart';
-import 'package:luminexa_mobile/screens/settingsPage.dart';
+import 'package:luminexa_mobile/screens/LedPage.dart';
+import 'package:luminexa_mobile/screens/ModePage.dart';
+import 'package:luminexa_mobile/screens/NotificationPage.dart';
+import 'package:luminexa_mobile/screens/SchedulePage.dart';
+import 'package:luminexa_mobile/screens/SettingsPage.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 
-class systemPage extends StatefulWidget {
-  const systemPage({super.key});
+class SystemPage extends StatefulWidget {
+  const SystemPage({super.key});
 
   @override
-  State<systemPage> createState() => _systemPageState();
+  State<SystemPage> createState() => _SystemPageState();
 }
 
-class _systemPageState extends State<systemPage> {
+class _SystemPageState extends State<SystemPage> {
   @override
   int currentIndex = 0;
   void navigateTab(index) {
@@ -24,10 +24,10 @@ class _systemPageState extends State<systemPage> {
   }
 
   final List pages = [
-    ledsPage(),
-    schedulePage(),
-    modePage(),
-    notificationsPage()
+    LedsPage(),
+    SchedulePage(),
+    ModePage(),
+    NotificationsPage()
   ];
   Widget build(BuildContext context) {
     return Scaffold(

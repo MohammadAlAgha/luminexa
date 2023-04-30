@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
 
-class settingsPage extends StatefulWidget {
-  const settingsPage({super.key});
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
 
   @override
-  State<settingsPage> createState() => _settingsPageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _settingsPageState extends State<settingsPage> {
+class _SettingsPageState extends State<SettingsPage> {
   bool notificationStatus = true;
   bool DarkModeStatus = true;
   bool EnergyStatus = true;
@@ -44,7 +44,7 @@ class _settingsPageState extends State<settingsPage> {
           onPressed: () {
             Navigator.of(context)
                 .pop(MaterialPageRoute(builder: (BuildContext context) {
-              return settingsPage();
+              return SettingsPage();
             }));
           },
           icon: Icon(Icons.arrow_back),

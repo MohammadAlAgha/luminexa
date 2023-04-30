@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
 
-class schedulePage extends StatefulWidget {
-  const schedulePage({super.key});
+class SchedulePage extends StatefulWidget {
+  const SchedulePage({super.key});
 
   @override
-  State<schedulePage> createState() => _schedulePageState();
+  State<SchedulePage> createState() => _SchedulePageState();
 }
 
-class _schedulePageState extends State<schedulePage> {
+class _SchedulePageState extends State<SchedulePage> {
   final List title = [
     "Turn off the light in the hallway",
     "Turn on the lights in the room",

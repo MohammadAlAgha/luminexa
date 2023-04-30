@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/notificationTile.dart';
 
-class notificationsPage extends StatefulWidget {
-  const notificationsPage({super.key});
+class NotificationsPage extends StatefulWidget {
+  const NotificationsPage({super.key});
 
   @override
-  State<notificationsPage> createState() => _notificationsPageState();
+  State<NotificationsPage> createState() => _NotificationsPageState();
 }
 
-class _notificationsPageState extends State<notificationsPage> {
+class _NotificationsPageState extends State<NotificationsPage> {
   final List title = [
     "Room 2 seems empty! Do want to turn off the lights?",
     "Dinner mode in the Living room is currently on.",

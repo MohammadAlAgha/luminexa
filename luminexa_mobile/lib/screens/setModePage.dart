@@ -4,8 +4,8 @@ import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/ledsListWidget.dart';
 
-class setModePage extends StatelessWidget {
-  setModePage({super.key});
+class SetModePage extends StatelessWidget {
+  SetModePage({super.key});
 
   final modeController = TextEditingController();
   final leds = ["LED 1", "LED 2", "LED 3", "LED 4"];

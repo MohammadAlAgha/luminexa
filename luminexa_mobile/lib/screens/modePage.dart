@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
 
-class modePage extends StatefulWidget {
-  const modePage({super.key});
+class ModePage extends StatefulWidget {
+  const ModePage({super.key});
 
   @override
-  State<modePage> createState() => _modePageState();
+  State<ModePage> createState() => _ModePageState();
 }
 
-class _modePageState extends State<modePage> {
+class _ModePageState extends State<ModePage> {
   final List modes = ["Dinner Mode", "Movie night mode", "Study mode"];
   final List status = ["of", "on", "off"];
   @override

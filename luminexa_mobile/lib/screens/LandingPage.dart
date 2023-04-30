@@ -6,14 +6,14 @@ import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/drawerWidget/drawer.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/listWidget.dart';
 
-class landing extends StatefulWidget {
-  const landing({super.key});
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
 
   @override
-  State<landing> createState() => _landingState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
-class _landingState extends State<landing> {
+class _LandingPageState extends State<LandingPage> {
   final List systems = ["Kitchen", "Room", "Living Room"];
   final List leds = [3, 2, 5];
 
