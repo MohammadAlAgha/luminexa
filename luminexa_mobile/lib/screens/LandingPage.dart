@@ -63,13 +63,19 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: drawerWidget(),
-      appBar: appBar(
-        title: "Kitchen",
-        iconAction: Icon(Icons.settings),
-        iconActionFunction: () =>
-            Navigator.of(context).pushNamed(RouteManager.settingsPage),
-        iconLeading: Icon(Icons.arrow_back),
-        iconLeadingFunction: () => Navigator.of(context).pop(context),
+      appBar: AppBar(
+        title: Text(
+          "User Name",
+          style: TextStyle(
+              fontFamily: "Raleway", fontWeight: FontWeight.bold, fontSize: 24),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.settings),
+          )
+        ],
       ),
       body: SafeArea(
         child: Container(
