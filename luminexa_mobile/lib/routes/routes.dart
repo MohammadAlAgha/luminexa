@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/screens/AllNotifications.dart';
 import 'package:luminexa_mobile/screens/ConsumptionPage.dart';
 import 'package:luminexa_mobile/screens/LandingPage.dart';
 import 'package:luminexa_mobile/screens/Login.dart';
@@ -34,6 +35,7 @@ class RouteManager {
   static const String setSchedulePage = '/setSchedulePage';
 
   static const String notificationsPage = '/notificationsPage';
+  static const String allNotifications = '/allNotifications';
 
   static const String settingsPage = '/settingsPage';
 
@@ -103,6 +105,11 @@ class RouteManager {
       case notificationsPage:
         return MaterialPageRoute(
           builder: (context) => NotificationsPage(),
+        );
+
+      case allNotifications:
+        return MaterialPageRoute(
+          builder: (context) => AllNotifications(),
         );
       //Notifications Routes
 
