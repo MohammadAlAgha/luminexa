@@ -21,7 +21,7 @@ class drawerButton extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             border: Border.all(
-              color: Color.fromARGB(255, 188, 236, 147),
+              color: Colors.black,
               style: BorderStyle.solid,
             )),
         child: Padding(
@@ -33,18 +33,14 @@ class drawerButton extends StatelessWidget {
               IconButton(
                 onPressed: () {},
                 icon: iconName,
-                color: Color.fromARGB(255, 188, 236, 147),
+                color: Colors.black,
                 padding: EdgeInsets.only(right: 2.0),
                 constraints: BoxConstraints(),
                 iconSize: 18,
               ),
               Text(
                 innerText,
-                style: TextStyle(
-                    color: Color.fromARGB(255, 188, 236, 147),
-                    fontFamily: "Raleway",
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600),
+                style: Theme.of(context).textTheme.displaySmall,
               ),
               Container()
             ],
