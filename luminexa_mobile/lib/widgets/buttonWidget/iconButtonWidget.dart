@@ -21,7 +21,7 @@ class iconButton extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             border: Border.all(
-              color: Color.fromARGB(255, 63, 139, 0),
+              color: Theme.of(context).primaryColor,
               style: BorderStyle.solid,
             )),
         child: Row(
@@ -31,18 +31,11 @@ class iconButton extends StatelessWidget {
             IconButton(
               onPressed: () {},
               icon: iconName,
-              color: Color.fromARGB(255, 63, 139, 0),
+              color: Theme.of(context).primaryColor,
               padding: EdgeInsets.only(right: 2.0),
               constraints: BoxConstraints(),
             ),
-            Text(
-              innerText,
-              style: TextStyle(
-                  color: Color.fromARGB(255, 63, 139, 0),
-                  fontFamily: "Raleway",
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600),
-            ),
+            Text(innerText, style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),
