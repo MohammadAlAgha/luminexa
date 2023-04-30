@@ -63,7 +63,7 @@ class drawerWidget extends StatelessWidget {
                 iconName: Icon(Icons.notifications),
                 onTap: () {
                   Navigator.of(context)
-                      .pushNamed(RouteManager.notificationsPage);
+                      .pushNamed(RouteManager.allNotifications);
                 },
               ),
               SizedBox(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:luminexa_mobile/screens/notificationPage.dart';
+import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 
 class AllNotifications extends StatelessWidget {
   const AllNotifications({super.key});
@@ -9,6 +10,13 @@ class AllNotifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar(
+        title: "Notifications",
+        iconLeading: Icon(Icons.arrow_back),
+        iconLeadingFunction: () {
+          Navigator.of(context).pop(context);
+        },
+      ),
       body: NotificationsPage(),
     );
   }
