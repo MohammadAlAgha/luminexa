@@ -44,6 +44,11 @@ class _MyAppState extends State<MyApp> {
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
+            bodyMedium: TextStyle(
+                color: Color.fromARGB(255, 63, 139, 0),
+                fontFamily: "Raleway",
+                fontSize: 17,
+                fontWeight: FontWeight.w600),
             bodySmall: TextStyle(
               fontFamily: "RalewayBold",
               fontSize: 20,
