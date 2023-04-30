@@ -55,7 +55,6 @@ class _sytledTextFieldState extends State<sytledTextField> {
                 hintText: widget.hintText,
                 label: Text(widget.label,
                     style: Theme.of(context).textTheme.displayMedium),
-                helperText: "Password must contain at least 8 character.",
                 hintStyle: Theme.of(context).textTheme.displayMedium,
                 suffixIcon: IconButton(
                   icon: Icon(passwordVisible
