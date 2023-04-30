@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/screens/ConsumptionPage.dart';
 import 'package:luminexa_mobile/screens/LandingPage.dart';
 import 'package:luminexa_mobile/screens/LedPage.dart';
 import 'package:luminexa_mobile/screens/Login.dart';
 import 'package:luminexa_mobile/screens/SetSchedulePage.dart';
 import 'package:luminexa_mobile/screens/SetModePage.dart';
+import 'package:luminexa_mobile/screens/modePage.dart';
 import 'package:luminexa_mobile/screens/signUp.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
 import 'package:luminexa_mobile/screens/EditLedPage.dart';
@@ -29,7 +31,9 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.green, scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: systemPage(),
+      home: ModePage(),
+      // initialRoute: RouteManager.login,
+      onGenerateRoute: RouteManager.generateRoute,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/screens/signUp.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
@@ -105,13 +106,8 @@ class _LogInState extends State<LogIn> {
                               text: "Sign Up",
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) {
-                                        return SignUp();
-                                      },
-                                    ),
-                                  );
+                                  Navigator.of(context)
+                                      .popAndPushNamed(RouteManager.signUp);
                                 },
                             ),
                           )

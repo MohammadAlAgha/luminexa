@@ -16,7 +16,7 @@ import 'package:luminexa_mobile/screens/viewUsersPage.dart';
 import 'package:luminexa_mobile/screens/weatherPage.dart';
 import 'package:luminexa_mobile/widgets/barChart/consumptionGraph.dart';
 
-class routeManager {
+class RouteManager {
   static const String login = '/login';
   static const String signUp = '/signUp';
 

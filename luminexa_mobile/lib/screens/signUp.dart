@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/screens/Login.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
@@ -104,7 +105,8 @@ class _SignUpState extends State<SignUp> {
                               fontSize: 14,
                               fontWeight: FontWeight.w800),
                         ),
-                        Text.rich(TextSpan(
+                        Text.rich(
+                          TextSpan(
                             style: TextStyle(
                                 fontFamily: "RalewayBold",
                                 fontSize: 14,
@@ -113,12 +115,12 @@ class _SignUpState extends State<SignUp> {
                                 decoration: TextDecoration.underline),
                             text: "Sign In",
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () async {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (BuildContext context) {
-                                  return LogIn();
-                                }));
-                              }))
+                              ..onTap = () {
+                                Navigator.of(context)
+                                    .popAndPushNamed(RouteManager.login);
+                              },
+                          ),
+                        )
                       ],
                     )
                   ],
