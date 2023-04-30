@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
-import 'package:luminexa_mobile/screens/signUp.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:luminexa_mobile/screens/systemPage.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';

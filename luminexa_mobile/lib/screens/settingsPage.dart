@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:luminexa_mobile/screens/systemPage.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 
 class SettingsPage extends StatefulWidget {
