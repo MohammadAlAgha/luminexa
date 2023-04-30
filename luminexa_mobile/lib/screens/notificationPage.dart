@@ -18,19 +18,16 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: title.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return notificationTile(
-                      title: title[index], time: time[index]);
-                })
-          ],
-        ),
+    return SafeArea(
+      child: Column(
+        children: [
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: title.length,
+              itemBuilder: (BuildContext context, int index) {
+                return notificationTile(title: title[index], time: time[index]);
+              })
+        ],
       ),
     );
   }

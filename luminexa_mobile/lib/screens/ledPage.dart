@@ -13,9 +13,8 @@ class _LedsPageState extends State<LedsPage> {
   final status = ["ON", "OFF", "OFF", "ON"];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: Column(
+    return SafeArea(
+      child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
@@ -39,7 +38,7 @@ class _LedsPageState extends State<LedsPage> {
             },
           )
         ],
-      )),
+      ),
     );
   }
 }

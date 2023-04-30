@@ -15,58 +15,59 @@ class _ModePageState extends State<ModePage> {
   final List status = ["of", "on", "off"];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-            child: Stack(
-      children: [
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
-              child: Row(
-                children: [
-                  Text(
-                    "Modes",
-                    style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-                  )
-                ],
+    return SafeArea(
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
+                child: Row(
+                  children: [
+                    Text(
+                      "Modes",
+                      style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
+                    )
+                  ],
+                ),
+              ),
+              ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    return toggleListTile(
+                      title: modes[index],
+                      status: status[index],
+                    );
+                  }),
+            ],
+          ),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                    Colors.white.withOpacity(0.5),
+                    Colors.white,
+                    Colors.white,
+                    Colors.white,
+                  ])),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              width: MediaQuery.of(context).size.width,
+              child: iconButton(
+                innerText: "Set new mode",
+                iconName: Icon(Icons.bookmark_add_outlined),
+                onTap: () =>
+                    Navigator.of(context).pushNamed(RouteManager.setModePage),
               ),
             ),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  return toggleListTile(
-                    title: modes[index],
-                    status: status[index],
-                  );
-                }),
-          ],
-        ),
-        Positioned(
-          bottom: 0,
-          child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                  Colors.white.withOpacity(0.5),
-                  Colors.white,
-                  Colors.white,
-                  Colors.white,
-                ])),
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-            width: MediaQuery.of(context).size.width,
-            child: iconButton(
-              innerText: "Set new mode",
-              iconName: Icon(Icons.bookmark_add_outlined),
-              onTap: () =>
-                  Navigator.of(context).pushNamed(RouteManager.setModePage),
-            ),
-          ),
-        )
-      ],
-    )));
+          )
+        ],
+      ),
+    );
   }
 }
