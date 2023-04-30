@@ -4,12 +4,16 @@ class appBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
   final Widget? iconAction;
   final Widget? iconLeading;
+  final Function()? iconActionFunction;
+  final Function()? iconLeadingFunction;
 
   const appBar({
     super.key,
     required this.title,
     this.iconAction,
     this.iconLeading,
+    this.iconLeadingFunction,
+    this.iconActionFunction,
   });
 
   @override
@@ -21,9 +25,12 @@ class appBar extends StatelessWidget with PreferredSizeWidget {
             fontFamily: "Raleway", fontWeight: FontWeight.bold, fontSize: 24),
       ),
       centerTitle: true,
-      actions: [IconButton(onPressed: () {}, icon: iconAction ?? Container())],
+      actions: [
+        IconButton(
+            onPressed: iconActionFunction, icon: iconAction ?? Container())
+      ],
       leading: IconButton(
-        onPressed: () {},
+        onPressed: iconLeadingFunction,
         icon: iconLeading ?? Container(),
       ),
     );
