@@ -9,7 +9,7 @@ class drawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Color.fromARGB(255, 63, 139, 0),
+      backgroundColor: Theme.of(context).canvasColor,
       width: 220,
       child: SafeArea(
           child: Column(
