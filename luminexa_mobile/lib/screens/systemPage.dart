@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/screens/LedPage.dart';
 import 'package:luminexa_mobile/screens/ModePage.dart';
 import 'package:luminexa_mobile/screens/NotificationPage.dart';
@@ -76,7 +77,10 @@ class _SystemPageState extends State<SystemPage> {
         appBar: appBar(
           title: "Kitchen",
           iconAction: Icon(Icons.settings),
+          iconActionFunction: () =>
+              Navigator.of(context).pushNamed(RouteManager.settingsPage),
           iconLeading: Icon(Icons.arrow_back),
+          iconLeadingFunction: () => Navigator.of(context).pop(context),
         ),
         body: pages[currentIndex]);
   }

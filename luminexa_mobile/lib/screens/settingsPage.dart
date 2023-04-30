@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
+import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -33,22 +34,10 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Settings",
-          style: TextStyle(
-              fontFamily: "Raleway", fontWeight: FontWeight.bold, fontSize: 24),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context)
-                .pop(MaterialPageRoute(builder: (BuildContext context) {
-              return SettingsPage();
-            }));
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
+      appBar: appBar(
+        title: "Settings",
+        iconLeading: Icon(Icons.arrow_back),
+        iconLeadingFunction: () => Navigator.of(context).pop(context),
       ),
       body: SafeArea(
           child: Padding(
