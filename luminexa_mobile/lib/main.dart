@@ -13,6 +13,7 @@ import 'package:luminexa_mobile/screens/systemPage.dart';
 import 'package:luminexa_mobile/screens/EditLedPage.dart';
 import 'package:luminexa_mobile/screens/ViewUsersPage.dart';
 import 'package:luminexa_mobile/screens/WeatherPage.dart';
+import 'package:luminexa_mobile/tools/CreateMaterialColor.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primarySwatch: Colors.green,
+          primarySwatch: createMaterialColor(
+            Color.fromARGB(255, 63, 139, 0),
+          ),
           scaffoldBackgroundColor: Colors.white,
           textTheme: const TextTheme(
             bodyLarge: TextStyle(
