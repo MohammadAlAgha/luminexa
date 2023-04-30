@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/remoteDataSource/authDataSource.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
@@ -14,8 +15,19 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void login() async {
+    final String email = emailController.text;
+    final String password = passwordController.text;
+    try {
+      await AuthDataSource.login(email, password);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +78,7 @@ class _LogInState extends State<LogIn> {
                     children: [
                       styledButton(
                         innerText: "Sign In",
-                        onTap: () {},
+                        onTap: login,
                       ),
                       SizedBox(
                         height: 20,

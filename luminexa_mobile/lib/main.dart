@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
             ),
           )),
       debugShowCheckedModeBanner: false,
-      home: SetSchedulePage(),
+      home: LogIn(),
       // initialRoute: RouteManager.login,
       onGenerateRoute: RouteManager.generateRoute,
     );
