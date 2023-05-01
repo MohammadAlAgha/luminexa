@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
+import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({super.key});
@@ -39,41 +40,13 @@ class _SchedulePageState extends State<SchedulePage> {
           SingleChildScrollView(
             child: Column(
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Upcoming schedule",
-                        style: TextStyle(
-                            fontFamily: "RalewayBold",
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
-                      ),
-                    ],
-                  ),
-                ),
+                titleWidget(title: "Upcoming schedule"),
                 toggleListTile(
                   title: title[1],
                   subTitle: time[1],
                   status: status[1],
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Schedules",
-                        style: TextStyle(
-                            fontFamily: "RalewayBold",
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
-                      ),
-                    ],
-                  ),
-                ),
+                titleWidget(title: "Schedules"),
                 ListView.builder(
                   physics: ScrollPhysics(parent: null),
                   shrinkWrap: true,
