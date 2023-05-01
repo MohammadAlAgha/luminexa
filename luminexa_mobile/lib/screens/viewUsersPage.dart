@@ -119,15 +119,13 @@ class _ViewUsersState extends State<ViewUsers> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text("Delete User",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontFamily: "Raleway",
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w700)),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall),
                                           Icon(
                                             Icons.delete,
                                             size: 20,
-                                            color: Colors.white,
+                                            color: Colors.black,
                                           ),
                                         ]),
                                   ),
@@ -145,16 +143,14 @@ class _ViewUsersState extends State<ViewUsers> {
                                       children: [
                                         Text(
                                           "Set a Host",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontFamily: "Raleway",
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w700),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displaySmall,
                                         ),
                                         Icon(
                                           Icons.person_add,
                                           size: 20,
-                                          color: Colors.white,
+                                          color: Colors.black,
                                         ),
                                       ],
                                     ),
@@ -196,23 +192,17 @@ class _ViewUsersState extends State<ViewUsers> {
               child: Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                color: Colors.green,
+                color: Theme.of(context).primaryColor,
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         "User Name",
-                        style: TextStyle(
-                            fontFamily: "RalewayBold",
-                            fontSize: 17,
-                            color: Colors.white),
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       Text(
                         "User Type",
-                        style: TextStyle(
-                            fontFamily: "RalewayBold",
-                            fontSize: 17,
-                            color: Colors.white),
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
                     ]),
               ),
