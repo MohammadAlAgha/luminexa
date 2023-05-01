@@ -5,6 +5,7 @@ import 'package:luminexa_mobile/remoteDataSource/authDataSource.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
+import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({super.key});
@@ -49,21 +50,7 @@ class _SignUpState extends State<SignUp> {
               SizedBox(
                 height: 50,
               ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "Sign Up",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: "RalewayBold",
-                          fontWeight: FontWeight.w900,
-                          fontSize: 22),
-                    ),
-                  ],
-                ),
-              ),
+              titleWidget(title: "Sign Up"),
               Container(
                 height: 370,
                 child: Column(
@@ -114,10 +101,7 @@ class _SignUpState extends State<SignUp> {
                       children: [
                         Text(
                           "Joined Us Before? ",
-                          style: TextStyle(
-                              fontFamily: "Raleway",
-                              fontSize: 14,
-                              fontWeight: FontWeight.w800),
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                         Text.rich(
                           TextSpan(
@@ -125,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                                 fontFamily: "RalewayBold",
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700,
-                                color: Color.fromARGB(255, 63, 139, 0),
+                                color: Theme.of(context).primaryColor,
                                 decoration: TextDecoration.underline),
                             text: "Sign In",
                             recognizer: TapGestureRecognizer()
