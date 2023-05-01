@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const ledSchema = require("./led.model");
 const modesSchema = require("./mode.model");
+const ledConfigSchema = require("./ledConfiguration.model");
 
 const scheduleSchema = new mongoose.Schema({
   scheduleTitle: {
@@ -33,7 +34,8 @@ const scheduleSchema = new mongoose.Schema({
     enum: ["on", "off"],
     default: "on",
   },
-  leds: [ledSchema],
+
+  leds: [ledConfigSchema],
 });
 
 const systemSchema = new mongoose.Schema({
@@ -53,9 +55,10 @@ const systemSchema = new mongoose.Schema({
     required: true,
   },
   leds: [ledSchema],
-  lastManual: [ledSchema],
+  lastManual: [ledConfigSchema],
   modes: [modesSchema],
   schedules: [scheduleSchema],
+
   users: [
     {
       type: mongoose.Schema.Types.ObjectId,
