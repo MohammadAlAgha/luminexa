@@ -10,22 +10,37 @@ class LedsPage extends StatefulWidget {
 }
 
 class _LedsPageState extends State<LedsPage> {
-  final leds = ["LED 1", "LED 2", "LED 3", "LED 4"];
-  final status = ["ON", "OFF", "OFF", "ON"];
+  final leds = [
+    "LED 1",
+    "LED 2",
+    "LED 3",
+    "LED 4",
+    "LED 4",
+    "LED 4",
+    "LED 4",
+    "LED 4",
+    "LED 4",
+    "LED 4",
+  ];
+  final status = ["ON", "OFF", "OFF", "ON", "ON", "ON", "ON", "ON", "ON", "ON"];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          titleWidget(title: "Edite LEDs in Kitchen"),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: leds.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ledListOption(ledName: leds[index], status: status[index]);
-            },
-          )
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            titleWidget(title: "Edite LEDs in Kitchen"),
+            ListView.builder(
+              physics: ScrollPhysics(parent: null),
+              shrinkWrap: true,
+              itemCount: leds.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ledListOption(
+                    ledName: leds[index], status: status[index]);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
