@@ -12,26 +12,47 @@ class ModePage extends StatefulWidget {
 }
 
 class _ModePageState extends State<ModePage> {
-  final List modes = ["Dinner Mode", "Movie night mode", "Study mode"];
-  final List status = ["of", "on", "off"];
+  final List modes = [
+    "Dinner Mode",
+    "Movie night mode",
+    "Study mode",
+    "mode 1",
+    "mode 1",
+    "mode 1",
+    "mode 1",
+    "mode 1",
+  ];
+  final List status = [
+    "of",
+    "on",
+    "off",
+    "on",
+    "on",
+    "on",
+    "on",
+    "on",
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Stack(
         children: [
-          Column(
-            children: [
-              titleWidget(title: "Modes"),
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 3,
-                  itemBuilder: (BuildContext context, int index) {
-                    return toggleListTile(
-                      title: modes[index],
-                      status: status[index],
-                    );
-                  }),
-            ],
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                titleWidget(title: "Modes"),
+                ListView.builder(
+                    physics: ScrollPhysics(parent: null),
+                    shrinkWrap: true,
+                    itemCount: modes.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return toggleListTile(
+                        title: modes[index],
+                        status: status[index],
+                      );
+                    }),
+              ],
+            ),
           ),
           Positioned(
             bottom: 0,
