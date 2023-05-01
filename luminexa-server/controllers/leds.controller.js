@@ -23,19 +23,17 @@ exports.editLedStatus = async (req, res) => {
     return res.status(404).json({ message: "System not found" });
   } //checking if system exists
 
-  const led = system.leds.find((led) => led._id == ledId); //finding the LED in that system by ID
+  const config = system.lastManual.find((config) => config.leds._id == ledId); //finding the LED in that system by ID
 
-  if (!led) {
+  if (!config) {
     return res.status(404).json({ message: "Led not found" });
   } //checking if LED exists
 
-  led.ledStatus = led.ledStatus == "on" ? "off" : "on"; //toggling the LED status from on to off or from off to on
-
-  system.lastManual = system.leds; //updated the latest manual
+  config.ledStatus = config.ledStatus == "on" ? "off" : "on"; //toggling the LED status from on to off or from off to on
 
   await system.save();
 
-  res.json(led);
+  res.json(config);
 };
 
 exports.addLed = async (req, res) => {
