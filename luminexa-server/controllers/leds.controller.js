@@ -71,16 +71,18 @@ exports.editLed = async (req, res) => {
     return res.status(404).json("System not found");
   } //checking if system exists
 
-  const led = system.leds.find((led) => led._id == ledId); //finding the LED in that system by ID
+  const config = system.lastManual.find((config) => config.leds._id == ledId); //finding the LED in that system by ID
 
-  led.intensity = intensity; //updating the LED intensity
-  led.color = color; //updating the LED color
+  if (!config) {
+    return res.status(404).json({ message: "Led not found" });
+  } //checking if LED exists
 
-  system.lastManual = system.leds; //updated the latest manual
+  config.intensity = intensity; //updating the LED intensity
+  config.color = color; //updating the LED color
 
   await system.save();
 
-  res.json(led);
+  res.json(config);
 };
 
 exports.getActiveLeds = async (req, res) => {
