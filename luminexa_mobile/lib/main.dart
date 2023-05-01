@@ -108,9 +108,10 @@ class _MyAppState extends State<MyApp> {
             ),
             headlineMedium: TextStyle(
                 fontFamily: "RalewayBold", fontSize: 17, color: Colors.white),
+            headlineSmall: TextStyle(fontSize: 11, fontFamily: "RalewayBold"),
           )),
       debugShowCheckedModeBanner: false,
-      home: ViewUsers(),
+      home: WeatherPage(),
       // initialRoute: RouteManager.login,
       onGenerateRoute: RouteManager.generateRoute,
     );
