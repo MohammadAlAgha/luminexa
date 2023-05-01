@@ -51,6 +51,9 @@ class _ModePageState extends State<ModePage> {
                         status: status[index],
                       );
                     }),
+                SizedBox(
+                  height: 50,
+                )
               ],
             ),
           ),

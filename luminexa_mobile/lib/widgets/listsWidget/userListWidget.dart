@@ -56,6 +56,5 @@ class _userListTileState extends State<userListTile> {
                   ),
                 ]),
           );
-    ;
   }
 }
