@@ -36,20 +36,14 @@ class _toggleTileListState extends State<toggleListTile> {
         child: ListTile(
           title: Text(
             widget.title,
-            style: TextStyle(
-              fontFamily: "RalewayNormal",
-              fontSize: 17,
-              color: Color.fromARGB(255, 63, 139, 0),
-            ),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           subtitle: Text(
             widget.subTitle ?? "Edit Mode",
-            style: TextStyle(
-                fontFamily: "RalewayBold",
-                fontWeight: FontWeight.w700,
-                fontSize: 12),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
           trailing: Switch(
+            activeColor: Theme.of(context).canvasColor,
             value: status,
             onChanged: setStatus,
           ),
