@@ -59,6 +59,9 @@ class _SchedulePageState extends State<SchedulePage> {
                     );
                   },
                 ),
+                SizedBox(
+                  height: 50,
+                )
               ],
             ),
           ),
