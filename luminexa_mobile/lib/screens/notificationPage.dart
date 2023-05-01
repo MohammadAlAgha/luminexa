@@ -13,21 +13,39 @@ class _NotificationsPageState extends State<NotificationsPage> {
     "Room 2 seems empty! Do want to turn off the lights?",
     "Dinner mode in the Living room is currently on.",
     "It seems cloudy out side! Do you want to increase the lights intensity?",
+    "It seems cloudy out side! Do you want to increase the lights intensity?",
+    "It seems cloudy out side! Do you want to increase the lights intensity?",
+    "It seems cloudy out side! Do you want to increase the lights intensity?",
+    "It seems cloudy out side! Do you want to increase the lights intensity?",
+    "It seems cloudy out side! Do you want to increase the lights intensity?",
   ];
-  final List time = ["Today, 8:11 PM", "Today, 4:25 PM", "Today, 11:37 AM"];
+  final List time = [
+    "Today, 8:11 PM",
+    "Today, 4:25 PM",
+    "Today, 11:37 AM",
+    "Today, 4:25 PM",
+    "Today, 4:25 PM",
+    "Today, 4:25 PM",
+    "Today, 4:25 PM",
+    "Today, 4:25 PM",
+  ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          ListView.builder(
-              shrinkWrap: true,
-              itemCount: title.length,
-              itemBuilder: (BuildContext context, int index) {
-                return notificationTile(title: title[index], time: time[index]);
-              })
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            ListView.builder(
+                physics: ScrollPhysics(parent: null),
+                shrinkWrap: true,
+                itemCount: title.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return notificationTile(
+                      title: title[index], time: time[index]);
+                })
+          ],
+        ),
       ),
     );
   }
