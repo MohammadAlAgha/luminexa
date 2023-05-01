@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/ledsListWidget.dart';
+import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class LedsPage extends StatefulWidget {
   const LedsPage({super.key});
@@ -16,20 +17,7 @@ class _LedsPageState extends State<LedsPage> {
     return SafeArea(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
-            child: Row(
-              children: [
-                Text(
-                  "Edit LEDs in Kitchen",
-                  style: TextStyle(
-                      fontFamily: "RalewayBold",
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700),
-                )
-              ],
-            ),
-          ),
+          titleWidget(title: "Edite LEDs in Kitchen"),
           ListView.builder(
             shrinkWrap: true,
             itemCount: leds.length,
