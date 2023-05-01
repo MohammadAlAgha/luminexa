@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const ledConfigSchema = new mongoose.Schema({
-  led: {
+  leds: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Led",
+    required: true,
   },
   ledStatus: {
     type: String,

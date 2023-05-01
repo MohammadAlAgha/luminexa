@@ -54,7 +54,10 @@ const systemSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  leds: [ledSchema],
+  leds: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Led",
+  },
   lastManual: [ledConfigSchema],
   modes: [modesSchema],
   schedules: [scheduleSchema],
