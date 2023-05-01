@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class toggleListTile extends StatefulWidget {
   final String title;
   final String? subTitle;
-  final String status;
+  bool status;
 
-  const toggleListTile({
+  toggleListTile({
     super.key,
     required this.title,
     this.subTitle,
@@ -18,10 +18,9 @@ class toggleListTile extends StatefulWidget {
 
 class _toggleTileListState extends State<toggleListTile> {
   @override
-  bool status = true;
   void setStatus(value) {
     setState(() {
-      status = value;
+      widget.status = value;
     });
   }
 
@@ -44,7 +43,7 @@ class _toggleTileListState extends State<toggleListTile> {
           ),
           trailing: Switch(
             activeColor: Theme.of(context).canvasColor,
-            value: status,
+            value: widget.status,
             onChanged: setStatus,
           ),
         ));

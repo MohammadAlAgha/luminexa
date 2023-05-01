@@ -23,14 +23,14 @@ class _ModePageState extends State<ModePage> {
     "mode 1",
   ];
   final List status = [
-    "of",
-    "on",
-    "off",
-    "on",
-    "on",
-    "on",
-    "on",
-    "on",
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    false,
   ];
   @override
   Widget build(BuildContext context) {

@@ -21,7 +21,15 @@ class _SchedulePageState extends State<SchedulePage> {
     "Sun set schedule",
     "Sun set schedule"
   ];
-  final List status = ["off", "on", "off", "off", "off", "off", "off"];
+  final List<bool> status = [
+    true,
+    false,
+    true,
+    true,
+    true,
+    false,
+    true,
+  ];
   final List time = [
     "6:00 AM, Once",
     "7:00 PM, Daily",
