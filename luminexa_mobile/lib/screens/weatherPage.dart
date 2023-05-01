@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 
@@ -178,7 +179,9 @@ class WeatherPage extends StatelessWidget {
               padding: const EdgeInsets.only(top: 50, bottom: 20),
               child: styledButton(
                 innerText: "Edit LEDs",
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed(RouteManager.systemPage);
+                },
               ),
             ),
             styledButton(

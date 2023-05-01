@@ -80,8 +80,7 @@ class _SystemPageState extends State<SystemPage> {
           iconActionFunction: () =>
               Navigator.of(context).pushNamed(RouteManager.settingsPage),
           iconLeading: Icon(Icons.arrow_back),
-          iconLeadingFunction: () =>
-              Navigator.of(context).popAndPushNamed(RouteManager.landingPage),
+          iconLeadingFunction: () => Navigator.of(context).pop(context),
         ),
         body: pages[currentIndex]);
   }
