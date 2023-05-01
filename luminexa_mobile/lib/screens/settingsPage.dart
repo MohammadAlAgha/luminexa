@@ -46,41 +46,35 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             ListTile(
               leading: Switch(
+                activeColor: Theme.of(context).canvasColor,
                 value: notificationStatus,
                 onChanged: setNotificationStatus,
               ),
               title: Text(
                 "Notifications",
-                style: TextStyle(
-                    fontFamily: "ralewayBold",
-                    color: Colors.black,
-                    fontSize: 20),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
             ListTile(
               leading: Switch(
+                activeColor: Theme.of(context).canvasColor,
                 value: DarkModeStatus,
                 onChanged: setDarkModeStatus,
               ),
               title: Text(
                 "Dark mode",
-                style: TextStyle(
-                    fontFamily: "ralewayBold",
-                    color: Colors.black,
-                    fontSize: 20),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
             ListTile(
               leading: Switch(
+                activeColor: Theme.of(context).canvasColor,
                 value: EnergyStatus,
                 onChanged: setEnergyStatus,
               ),
               title: Text(
                 "Energy saving mode",
-                style: TextStyle(
-                    fontFamily: "ralewayBold",
-                    color: Colors.black,
-                    fontSize: 20),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
           ],
