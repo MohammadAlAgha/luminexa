@@ -10,4 +10,6 @@ const ledSchema = new mongoose.Schema({
   history: [historySchema],
 });
 
-module.exports = ledSchema;
+const Led = mongoose.model("Led", ledSchema);
+
+module.exports = Led;

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const ledSchema = require("../models/led.model");
 const ledConfigSchema = require("./ledConfiguration.model");
 
 const modesSchema = new mongoose.Schema({
