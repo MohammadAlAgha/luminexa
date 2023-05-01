@@ -17,7 +17,7 @@ class styledButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 188, 236, 147),
+            color: Theme.of(context).canvasColor,
             borderRadius: BorderRadius.all(Radius.circular(25))),
         child: Center(
           child: Text(
