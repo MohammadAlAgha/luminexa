@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const ledSchema = require("../models/led.model");
+const ledConfigSchema = require("./ledConfiguration.model");
 
 const modesSchema = new mongoose.Schema({
   modeName: {
@@ -11,7 +12,7 @@ const modesSchema = new mongoose.Schema({
     enum: ["on", "off"],
     default: "off",
   },
-  leds: [ledSchema],
+  leds: [ledConfigSchema],
 });
 
 module.exports = modesSchema;
