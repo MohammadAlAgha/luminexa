@@ -5,6 +5,7 @@ const ledSchema = new mongoose.Schema({
   ledName: {
     type: String,
     required: true,
+    unique: true,
   },
 
   history: [historySchema],

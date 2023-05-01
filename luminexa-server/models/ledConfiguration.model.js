@@ -10,10 +10,12 @@ const ledConfigSchema = new mongoose.Schema({
     type: String,
     enum: ["on", "off"],
     required: true,
+    default: "off",
   },
   intensity: {
     type: Number,
     required: true,
+    default: 0,
   },
   color: {
     type: String,
