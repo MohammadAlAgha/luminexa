@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 exports.register = async (req, res) => {
-  const { email, password, userName } = req.body;
+  const { email, password, userName, confirmPassword } = req.body;
 
   // Validating the email using regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -19,6 +19,10 @@ exports.register = async (req, res) => {
         "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number",
     });
   }
+
+  if (password !== confirmPassword) {
+    return res.status(400).json({ message: "Check your password again" });
+  } //Ckecking if the confirm password is the same as the first password
 
   const existingUser = await User.findOne({ email });
 
