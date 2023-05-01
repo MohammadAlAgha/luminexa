@@ -33,14 +33,14 @@ class _SystemPageState extends State<SystemPage> {
     return Scaffold(
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 63, 139, 0),
+              color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
             child: GNav(
-              activeColor: Color.fromARGB(255, 63, 139, 0),
+              activeColor: Theme.of(context).primaryColor,
               onTabChange: (value) => navigateTab(value),
-              backgroundColor: Color.fromARGB(255, 63, 139, 0),
+              backgroundColor: Theme.of(context).primaryColor,
               tabBackgroundColor: Colors.white,
               color: Colors.white,
               gap: 10,
@@ -50,41 +50,25 @@ class _SystemPageState extends State<SystemPage> {
                   icon: Icons.lightbulb,
                   iconSize: 20,
                   text: "LEDs",
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontFamily: "RalewayBold",
-                    color: Color.fromARGB(255, 63, 139, 0),
-                  ),
+                  textStyle: Theme.of(context).textTheme.headlineLarge,
                 ),
                 GButton(
                   icon: Icons.schedule,
                   iconSize: 20,
                   text: "Schedules",
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontFamily: "RalewayBold",
-                    color: Color.fromARGB(255, 63, 139, 0),
-                  ),
+                  textStyle: Theme.of(context).textTheme.headlineLarge,
                 ),
                 GButton(
                   icon: Icons.list,
                   iconSize: 20,
                   text: "Modes",
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontFamily: "RalewayBold",
-                    color: Color.fromARGB(255, 63, 139, 0),
-                  ),
+                  textStyle: Theme.of(context).textTheme.headlineLarge,
                 ),
                 GButton(
                   icon: Icons.notifications,
                   iconSize: 20,
                   text: "Notifications",
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontFamily: "RalewayBold",
-                    color: Color.fromARGB(255, 63, 139, 0),
-                  ),
+                  textStyle: Theme.of(context).textTheme.headlineLarge,
                 ),
               ],
             ),
