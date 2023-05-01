@@ -106,9 +106,11 @@ class _MyAppState extends State<MyApp> {
               fontFamily: "RalewayBold",
               color: Color.fromARGB(255, 63, 139, 0),
             ),
+            headlineMedium: TextStyle(
+                fontFamily: "RalewayBold", fontSize: 17, color: Colors.white),
           )),
       debugShowCheckedModeBanner: false,
-      home: SystemPage(),
+      home: ViewUsers(),
       // initialRoute: RouteManager.login,
       onGenerateRoute: RouteManager.generateRoute,
     );
