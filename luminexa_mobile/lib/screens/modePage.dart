@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
+import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class ModePage extends StatefulWidget {
   const ModePage({super.key});
@@ -20,18 +21,7 @@ class _ModePageState extends State<ModePage> {
         children: [
           Column(
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
-                child: Row(
-                  children: [
-                    Text(
-                      "Modes",
-                      style: TextStyle(fontFamily: "RalewayBold", fontSize: 20),
-                    )
-                  ],
-                ),
-              ),
+              titleWidget(title: "Modes"),
               ListView.builder(
                   shrinkWrap: true,
                   itemCount: 3,
