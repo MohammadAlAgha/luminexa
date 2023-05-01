@@ -28,7 +28,7 @@ class WeatherPage extends StatelessWidget {
                   children: [
                     Text(
                       "Lebanon, Beirut",
-                      style: TextStyle(fontFamily: "RalewayBold", fontSize: 16),
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
                       todayDate.year.toString() +
@@ -36,7 +36,7 @@ class WeatherPage extends StatelessWidget {
                           todayDate.month.toString() +
                           "/" +
                           todayDate.day.toString(),
-                      style: TextStyle(fontSize: 14),
+                      style: Theme.of(context).textTheme.labelLarge,
                     ),
                   ],
                 ),
@@ -48,14 +48,14 @@ class WeatherPage extends StatelessWidget {
             Container(
               height: 120,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 188, 236, 147),
+                  color: Theme.of(context).canvasColor,
                   borderRadius: BorderRadius.circular(25)),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
                       "34",
-                      style: TextStyle(fontSize: 30),
+                      style: TextStyle(fontSize: 30, color: Colors.black),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -69,8 +69,7 @@ class WeatherPage extends StatelessWidget {
                         ),
                         Text(
                           "Sunny",
-                          style: TextStyle(
-                              fontSize: 23, fontFamily: "RalewayBold"),
+                          style: Theme.of(context).textTheme.bodySmall,
                         )
                       ],
                     )
@@ -85,7 +84,7 @@ class WeatherPage extends StatelessWidget {
                     Container(
                         width: 100,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 188, 236, 147),
+                            color: Theme.of(context).canvasColor,
                             borderRadius: BorderRadius.circular(25)),
                         child: Padding(
                           padding: const EdgeInsets.all(15),
@@ -97,13 +96,12 @@ class WeatherPage extends StatelessWidget {
                               ),
                               Text(
                                 "Humidity",
-                                style: TextStyle(
-                                    fontSize: 10, fontFamily: "RalewayBold"),
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
                               ),
                               Text(
                                 "88%",
-                                style: TextStyle(
-                                    fontSize: 17, fontFamily: "RalewayBold"),
+                                style: Theme.of(context).textTheme.bodySmall,
                               )
                             ],
                           ),
@@ -111,7 +109,7 @@ class WeatherPage extends StatelessWidget {
                     Container(
                         width: 100,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 188, 236, 147),
+                            color: Theme.of(context).canvasColor,
                             borderRadius: BorderRadius.circular(25)),
                         child: Padding(
                           padding: const EdgeInsets.all(15),
@@ -123,13 +121,12 @@ class WeatherPage extends StatelessWidget {
                               ),
                               Text(
                                 "Water Levels",
-                                style: TextStyle(
-                                    fontSize: 10, fontFamily: "RalewayBold"),
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
                               ),
                               Text(
                                 "1.68%",
-                                style: TextStyle(
-                                    fontSize: 17, fontFamily: "RalewayBold"),
+                                style: Theme.of(context).textTheme.bodySmall,
                               )
                             ],
                           ),
@@ -137,7 +134,7 @@ class WeatherPage extends StatelessWidget {
                     Container(
                         width: 100,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 188, 236, 147),
+                            color: Theme.of(context).canvasColor,
                             borderRadius: BorderRadius.circular(25)),
                         child: Padding(
                           padding: const EdgeInsets.all(15),
@@ -149,13 +146,12 @@ class WeatherPage extends StatelessWidget {
                               ),
                               Text(
                                 "Wind Speed",
-                                style: TextStyle(
-                                    fontSize: 10, fontFamily: "RalewayBold"),
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
                               ),
                               Text(
                                 "13 km/h",
-                                style: TextStyle(
-                                    fontSize: 17, fontFamily: "RalewayBold"),
+                                style: Theme.of(context).textTheme.titleMedium,
                               )
                             ],
                           ),
@@ -169,17 +165,14 @@ class WeatherPage extends StatelessWidget {
             ),
             Text(
               "Note",
-              style: TextStyle(fontSize: 17, fontFamily: "RalewayBold"),
+              style: Theme.of(context).textTheme.titleSmall,
             ),
             SizedBox(
               height: 20,
             ),
             Text(
               "The weather seems sunny outside,the LEDs can be turned off",
-              style: TextStyle(
-                  fontSize: 13,
-                  fontFamily: "Raleway",
-                  fontWeight: FontWeight.w700),
+              style: Theme.of(context).textTheme.displaySmall,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 50, bottom: 20),
