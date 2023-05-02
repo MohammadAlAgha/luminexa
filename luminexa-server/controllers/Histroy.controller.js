@@ -1,14 +1,12 @@
-const History = require("../models/history.model");
 const System = require("../models/system.model");
 
 exports.createInstance = async (req, res) => {
-  const { systemId, ledId, time, intensity, currentConsumption } = req.body;
+  const { systemId, ledId, time, currentConsumption } = req.body;
 
-  const instance = await History.create({
+  const instance = {
     time,
-    intensity,
     currentConsumption,
-  }); //saving the instance info
+  }; //saving the instance info
 
   const system = await System.findById(systemId); //getting the system by ID
 
@@ -22,7 +20,7 @@ exports.createInstance = async (req, res) => {
     return res.status(404).json({ message: "Led not found" });
   } //checking if the LED exists
 
-  led.history.push(instance._id); //saving the new instance of that LED
+  led.history.push(instance); //saving the new instance of that LED
 
   await system.save();
 
