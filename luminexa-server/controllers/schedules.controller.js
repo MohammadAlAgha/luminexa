@@ -118,3 +118,31 @@ exports.updateSchedule = async (req, res) => {
 
   res.json(system);
 };
+
+exports.deleteSchedule = async (req, res) => {
+  const { systemId, scheduleId } = req.body;
+
+  const system = await System.findById(systemId); //getting the system by ID
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  } //checking if system exists
+
+  const schedule = system.schedules.find(
+    (schedule) => schedule._id == scheduleId
+  ); //finding the schedule in that system by ID
+
+  if (!schedule) {
+    return res.status(404).json({ message: "Schedule not found" });
+  } //checking if the schedule exists
+
+  const index = system.schedules.findIndex(
+    (schedule) => schedule._id == scheduleId
+  ); //getting the schedule index in the list of schedule
+
+  system.schedules.splice(index, 1); //deleting the schedule
+
+  await system.save();
+
+  res.json(system);
+};
