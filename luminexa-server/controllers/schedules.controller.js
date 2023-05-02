@@ -1,5 +1,13 @@
 const System = require("../models/system.model");
 
+exports.getSchedules = async (req, res) => {
+  const { systemId } = req.body;
+
+  const system = await System.findById(systemId); //getting the system by ID
+
+  res.json(system.schedules);
+};
+
 exports.addSchedule = async (req, res) => {
   const { systemId, scheduleTitle, time, repeat } = req.body;
 
@@ -42,14 +50,6 @@ exports.addSchedule = async (req, res) => {
   res.json(system);
 };
 
-exports.getSchedules = async (req, res) => {
-  const { systemId } = req.body;
-
-  const system = await System.findById(systemId); //getting the system by ID
-
-  res.json(system.schedules);
-};
-
 exports.toggleSchedule = async (req, res) => {
   const { systemId, scheduleId } = req.body;
 
@@ -68,10 +68,6 @@ exports.toggleSchedule = async (req, res) => {
   } //checking if the schedule exists
 
   schedule.scheduleStatus = schedule.scheduleStatus == "on" ? "off" : "on"; //toggling the schedule from on to off or from off to on
-
-  if (schedule.scheduleStatus == "off") {
-    system.leds = system.lastManual;
-  } //Set the modes back to the old status after the schedule is off
 
   await system.save();
 
