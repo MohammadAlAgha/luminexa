@@ -72,9 +72,15 @@ exports.applyMode = async (req, res) => {
 
   mode.modeStatus = "on"; //setting the applied mode as on
 
-  system.lastManual = system.leds; //saving the latest manual before adding mode
+  const leds = system.leds; //getting the systems leds
 
-  system.leds = mode.leds; //setting the leds status to match the saved leds status in the applied mode
+  leds.forEach((led) => {
+    mode.leds.forEach((config) => {
+      if (led.id == config.leds) {
+        led.ledConfig = config;
+      }
+    });
+  }); //setting the leds status to match the saved leds status in the applied mode
 
   await system.save();
 
