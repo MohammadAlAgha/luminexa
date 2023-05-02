@@ -24,7 +24,7 @@ exports.addMode = async (req, res) => {
 
   leds.forEach((led) => {
     configurations.push(led.ledConfig);
-  });
+  }); //Saving the actual led status
 
   const mode = {
     modeName,
@@ -106,10 +106,28 @@ exports.updateMode = async (req, res) => {
     return res.status(404).json({ message: "Mode not found" });
   } //checking if the mode exists
 
-  mode.modeName = modeName; //updating mode name
-  mode.leds = system.leds; //updating the leds status
+  const leds = system.leds; //getting the system current leds status
+  const originalConfigs = system.lastManual; //getting the system current leds status
 
-  system.lastManual = system.leds; //saving the latest manual before updating mode
+  const configurations = [];
+
+  leds.forEach((led) => {
+    configurations.push(led.ledConfig);
+  }); //Saving the actual led status
+
+  mode.modeName = modeName;
+  mode.leds = configurations;
+  mode.modeStatus = "off";
+  //Changing the setting of the mode
+
+  leds.forEach((led) => {
+    originalConfigs.forEach((config) => {
+      if (led.id == config.leds) {
+        led.ledConfig = config;
+      }
+    });
+  });
+  //retrieved the old status of the leds
 
   await system.save();
 
