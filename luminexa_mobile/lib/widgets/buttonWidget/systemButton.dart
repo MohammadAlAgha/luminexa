@@ -41,7 +41,8 @@ class _systemButtonState extends State<systemButton> {
               margin: EdgeInsets.symmetric(horizontal: 5),
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
-                border: Border.all(color: Theme.of(context).primaryColor),
+                border:
+                    Border.all(color: Theme.of(context).canvasColor, width: 2),
                 borderRadius: BorderRadius.all(
                   Radius.circular(25),
                 ),
