@@ -1,6 +1,4 @@
-const ledConfigSchema = require("../models/ledConfiguration.model");
 const System = require("../models/system.model");
-const Led = require("../models/led.model");
 
 exports.getLeds = async (req, res) => {
   const { systemId } = req.body;
@@ -39,9 +37,9 @@ exports.editLedStatus = async (req, res) => {
 exports.addLed = async (req, res) => {
   const { systemId, ledName } = req.body;
 
-  const led = await Led.create({
+  const led = {
     ledName: ledName,
-  }); //creating  a new led
+  }; //creating  a new led
 
   const system = await System.findById(systemId); //finding the mode in that system by ID
 
@@ -51,11 +49,24 @@ exports.addLed = async (req, res) => {
 
   system.leds.push(led); //Adding the LED to the group of LEDs in that system
 
-  const config = {
-    leds: led,
+  // system.lastManual.push(led); //Saving the last LED status in case of reverting changes or turning off all modes or schedule time out
+
+  await system.save();
+  const newLed = system.leds[system.leds.length - 1]; // Get the last LED in the array (which is the newly added LED)
+
+  const ledConfig = {
+    leds: newLed._id, // Use the new LED's ID
   };
 
-  system.lastManual.push(config); //Saving the last LED status in case of reverting changes or turning off all modes or schedule time out
+  const history = [];
+
+  const newLedObject = {
+    ledName: ledName,
+    ledConfig: ledConfig,
+    history: history,
+  };
+
+  system.lastManual.push(newLedObject.ledConfig);
 
   await system.save();
 
