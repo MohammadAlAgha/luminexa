@@ -9,19 +9,33 @@ exports.addSchedule = async (req, res) => {
     return res.status(404).json({ message: "System not found" });
   } //checking if system exists
 
-  const leds = system.leds; //getting the cuurent leds status
+  const leds = system.leds; //getting the system current leds status
+  const originalConfigs = system.lastManual; //getting the system current leds status
+
+  const configurations = [];
+
+  leds.forEach((led) => {
+    configurations.push(led.ledConfig);
+  }); //Saving the actual led status
 
   const schedule = {
     scheduleTitle,
     time,
     repeat,
-    leds,
+    leds: configurations,
   };
   //creating the new schedule form with the current led status
 
   system.schedules.push(schedule); //adding the new schedule to the system
 
-  system.leds = system.lastManual; //seting back the leds as the last manual (before setting the schedule)
+  leds.forEach((led) => {
+    originalConfigs.forEach((config) => {
+      if (led.id == config.leds) {
+        led.ledConfig = config;
+      }
+    });
+  });
+  //retrieved the old status of the leds
 
   await system.save();
 
