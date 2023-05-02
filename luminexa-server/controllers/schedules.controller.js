@@ -91,16 +91,29 @@ exports.updateSchedule = async (req, res) => {
     return res.status(404).json({ message: "Schedule not found" });
   } //checking if schedule exists
 
-  const leds = system.leds; //getting the cuurent leds status
+  const leds = system.leds; //getting the system current leds status
+  const originalConfigs = system.lastManual; //getting the system current leds status
+
+  const configurations = [];
+
+  leds.forEach((led) => {
+    configurations.push(led.ledConfig);
+  }); //Saving the actual led status
 
   schedule.scheduleTitle = scheduleTitle;
   schedule.time = time;
   schedule.repeat = repeat;
-  schedule.leds = leds;
+  schedule.leds = configurations;
   //updating the schedule with the new values
 
-  system.leds = system.lastManual; //seting back the leds as the last manual (before updating the schedule)
-
+  leds.forEach((led) => {
+    originalConfigs.forEach((config) => {
+      if (led.id == config.leds) {
+        led.ledConfig = config;
+      }
+    });
+  });
+  //retrieved the old status of the leds
   await system.save();
 
   res.json(system);
