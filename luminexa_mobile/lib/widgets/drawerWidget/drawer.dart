@@ -38,16 +38,6 @@ class drawerWidget extends StatelessWidget {
                 height: 30,
               ),
               drawerButton(
-                innerText: "Home",
-                iconName: Icon(Icons.home),
-                onTap: () {
-                  Navigator.of(context).pop(context);
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              drawerButton(
                   innerText: "Weather",
                   iconName: Icon(Icons.sunny),
                   onTap: () {

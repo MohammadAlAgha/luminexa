@@ -38,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
                     const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
                 child: systemButton(
                   isPressed: false,
-                  innerText: "Invite",
+                  innerText: "Connect",
                   onTap: () {},
                 ),
               ),
