@@ -12,32 +12,6 @@ exports.getLeds = async (req, res) => {
   res.json(system.leds);
 };
 
-exports.editLedStatus = async (req, res) => {
-  const { systemId, ledId } = req.body;
-
-  const system = await System.findById(systemId); //getting the system by ID
-
-  if (!system) {
-    return res.status(404).json({ message: "System not found" });
-  } //checking if system exists
-
-  const led = system.leds.find((led) => led._id == ledId); //finding the LED in that system by ID
-
-  if (!led) {
-    return res.status(404).json({ message: "Led not found" });
-  } //checking if LED exists
-
-  led.ledConfig.ledStatus = led.ledConfig.ledStatus == "on" ? "off" : "on"; //toggling the LED status from on to off or from off to on
-
-  const config = system.lastManual.find((config) => config.leds._id == ledId); //finding the config with the same LED ID
-
-  config.ledStatus = led.ledConfig.ledStatus; //Updating the config with the same actual led config
-
-  await system.save();
-
-  res.json(system);
-};
-
 exports.addLed = async (req, res) => {
   const { systemId, ledName } = req.body;
 
@@ -83,7 +57,7 @@ exports.addLed = async (req, res) => {
 };
 
 exports.editLed = async (req, res) => {
-  const { systemId, ledId, intensity, color } = req.body;
+  const { systemId, ledId, ledStatus, intensity, color } = req.body;
 
   const system = await System.findById(systemId); //getting the system by ID
 
@@ -91,14 +65,26 @@ exports.editLed = async (req, res) => {
     return res.status(404).json("System not found");
   } //checking if system exists
 
-  const config = system.lastManual.find((config) => config.leds._id == ledId); //finding the LED in that system by ID
+  const led = system.leds.find((led) => led._id == ledId); //finding the LED in that system by ID
+
+  if (!led) {
+    return res.status(404).json({ message: "Led not found" });
+  } //checking if LED exists
+
+  led.ledConfig.ledStatus = ledStatus; //editing the LED status
+  led.ledConfig.intensity = intensity; //editing the intensity
+  led.ledConfig.color = color; //editing the LED color
+
+  const config = system.lastManual.find((config) => config.leds._id == ledId); //finding the config with the same LED ID
 
   if (!config) {
     return res.status(404).json({ message: "Led not found" });
   } //checking if LED exists
 
-  config.intensity = intensity; //updating the LED intensity
-  config.color = color; //updating the LED color
+  config.ledStatus = led.ledConfig.ledStatus;
+  config.intensity = intensity;
+  config.color = color;
+  //Updating the config with the same actual led config
 
   await system.save();
 
