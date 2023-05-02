@@ -112,3 +112,27 @@ exports.getActiveLeds = async (req, res) => {
 
   res.json(activeLeds);
 };
+
+exports.editConfigs = async (req, res) => {
+  const { systemId, ledId, ledStatus, intensity, color } = req.body;
+
+  const system = await System.findById(systemId); //getting the system by ID
+
+  if (!system) {
+    return res.status(404).json("System not found");
+  } //checking if system exists
+
+  const led = system.leds.find((led) => led._id == ledId); //finding the LED in that system by ID
+
+  if (!led) {
+    return res.status(404).json({ message: "Led not found" });
+  } //checking if LED exists
+
+  led.ledConfig.ledStatus = ledStatus; //editing the LED status
+  led.ledConfig.intensity = intensity; //editing the intensity
+  led.ledConfig.color = color; //editing the LED color
+
+  await system.save();
+
+  res.json(led);
+};
