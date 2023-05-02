@@ -47,7 +47,7 @@ class _LogInState extends State<LogIn> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    titleWidget(title: "Sign In"),
+                    titleWidget(title: "Log In"),
                     Container(
                       height: 200,
                       child: Column(
@@ -77,7 +77,7 @@ class _LogInState extends State<LogIn> {
                   child: Column(
                     children: [
                       styledButton(
-                        innerText: "Sign In",
+                        innerText: "Log In",
                         onTap: login,
                       ),
                       SizedBox(

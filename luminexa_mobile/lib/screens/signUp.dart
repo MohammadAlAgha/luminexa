@@ -111,7 +111,7 @@ class _SignUpState extends State<SignUp> {
                                 fontWeight: FontWeight.w700,
                                 color: Theme.of(context).primaryColor,
                                 decoration: TextDecoration.underline),
-                            text: "Sign In",
+                            text: "Log In",
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.of(context)

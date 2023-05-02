@@ -111,7 +111,7 @@ class _MyAppState extends State<MyApp> {
             headlineSmall: TextStyle(fontSize: 11, fontFamily: "RalewayBold"),
           )),
       debugShowCheckedModeBanner: false,
-      home: ConsumptionPage(),
+      home: LogIn(),
       // initialRoute: RouteManager.login,
       onGenerateRoute: RouteManager.generateRoute,
     );
