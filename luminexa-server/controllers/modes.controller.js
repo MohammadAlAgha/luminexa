@@ -62,6 +62,12 @@ exports.toggleMode = async (req, res) => {
     return res.status(404).json({ message: "Mode not found" });
   } //checking if the mode exists
 
+  system.modes.forEach((notMode) => {
+    if (notMode._id !== modeId) {
+      notMode.modeStatus = "off";
+    }
+  }); //makeing sure all the non applied modes are off
+
   mode.modeStatus = mode.modeStatus == "on" ? "off" : "on"; //toggling the mode from on to off or from off to on
 
   const leds = system.leds; //getting the systems leds
