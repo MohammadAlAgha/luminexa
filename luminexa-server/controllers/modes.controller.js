@@ -133,3 +133,39 @@ exports.updateMode = async (req, res) => {
 
   res.json(system);
 };
+
+exports.deleteMode = async (req, res) => {
+  const { systemId, modeId } = req.body;
+
+  const system = await System.findById(systemId); //getting the system by ID
+
+  if (!system) {
+    return res.status(404).json({ message: "System not found" });
+  } //checking if system exists
+
+  const mode = system.modes.find((mode) => mode._id == modeId); //finding the mode in that system by ID
+
+  if (!mode) {
+    return res.status(404).json({ message: "Mode not found" });
+  } //checking if the mode exists
+
+  const leds = system.leds; //getting the system current leds status
+  const originalConfigs = system.lastManual; //getting the system current leds status
+
+  const index = system.modes.findIndex((mode) => mode._id == modeId); //getting the mode index in the list of modes
+
+  if (mode.modeStatus == "on") {
+    leds.forEach((led) => {
+      originalConfigs.forEach((config) => {
+        if (led.id == config.leds) {
+          led.ledConfig = config;
+        }
+      });
+    }); //retrieved the old status of the leds before deleting
+    system.modes.splice(index, 1); //deleting the mode
+  } else system.modes.splice(index, 1); //deleting the mode
+
+  await system.save();
+
+  res.json(system);
+};
