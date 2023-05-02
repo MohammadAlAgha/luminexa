@@ -119,7 +119,7 @@ exports.getActiveLeds = async (req, res) => {
   const leds = system.leds; //finding the LED in that system by ID
 
   leds.forEach((led) => {
-    if (led.ledStatus == "on") {
+    if (led.ledConfig.ledStatus == "on") {
       activeLeds.push(led);
     }
   }); //getting only the on LEDs
