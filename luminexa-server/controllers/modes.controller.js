@@ -18,15 +18,29 @@ exports.addMode = async (req, res) => {
   } //checking if system exists
 
   const leds = system.leds; //getting the system current leds status
+  const originalConfigs = system.lastManual; //getting the system current leds status
+
+  const configurations = [];
+
+  leds.forEach((led) => {
+    configurations.push(led.ledConfig);
+  });
 
   const mode = {
     modeName,
-    leds,
+    leds: configurations,
   }; //setting the mode based on the leds status
 
   system.modes.push(mode); //adding the new mode to the list of modes in this system
 
-  system.leds = system.lastManual; //retrieved the old status of the leds
+  leds.forEach((led) => {
+    originalConfigs.forEach((config) => {
+      if (led.id == config.leds) {
+        led.ledConfig = config;
+      }
+    });
+  });
+  //retrieved the old status of the leds
 
   await system.save();
 
