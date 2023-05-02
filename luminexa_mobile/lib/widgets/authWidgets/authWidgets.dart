@@ -20,7 +20,7 @@ class sytledTextField extends StatefulWidget {
 
 class _sytledTextFieldState extends State<sytledTextField> {
   @override
-  bool passwordVisible = false;
+  bool passwordVisible = true;
 
   Widget build(BuildContext context) {
     return !widget.isPass
