@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const historySchema = require("./history.model");
+const ledConfigSchema = require("./ledConfiguration.model");
 
 const ledSchema = new mongoose.Schema({
   ledName: {
@@ -8,9 +9,9 @@ const ledSchema = new mongoose.Schema({
     unique: true,
   },
 
+  ledConfig: ledConfigSchema,
+
   history: [historySchema],
 });
 
-const Led = mongoose.model("Led", ledSchema);
-
-module.exports = Led;
+module.exports = ledSchema;
