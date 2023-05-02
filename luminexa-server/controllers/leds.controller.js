@@ -49,8 +49,6 @@ exports.addLed = async (req, res) => {
 
   system.leds.push(led); //Adding the LED to the group of LEDs in that system
 
-  // system.lastManual.push(led); //Saving the last LED status in case of reverting changes or turning off all modes or schedule time out
-
   await system.save();
   const newLed = system.leds[system.leds.length - 1]; // Get the last LED in the array (which is the newly added LED)
 
@@ -58,15 +56,22 @@ exports.addLed = async (req, res) => {
     leds: newLed._id, // Use the new LED's ID
   };
 
-  const history = [];
+  const history = []; //Creating an empty history since it is new LED
 
   const newLedObject = {
     ledName: ledName,
     ledConfig: ledConfig,
     history: history,
-  };
+  }; //Creating a new led object to that has the last LED id
 
-  system.lastManual.push(newLedObject.ledConfig);
+  system.lastManual.push(newLedObject.ledConfig); //updating the system manula
+
+  system.leds.forEach((led) => {
+    if (led.id == newLed.id) {
+      led.ledConfig = ledConfig;
+    }
+  });
+  //updating the led initial configuration
 
   await system.save();
 
