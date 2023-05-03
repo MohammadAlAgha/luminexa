@@ -21,6 +21,9 @@ class _EditLedsState extends State<EditLeds> {
       appBar: appBar(
         title: "LED 1",
         iconLeading: Icon(Icons.arrow_back),
+        iconLeadingFunction: () {
+          Navigator.of(context).pop(context);
+        },
       ),
       body: SingleChildScrollView(
         child: SafeArea(
