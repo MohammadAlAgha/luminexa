@@ -26,7 +26,7 @@ class SetModePage extends StatelessWidget {
         children: [
           titleWidget(title: "Title of the schedule"),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           sytledTextField(
               isPass: false,
@@ -34,11 +34,11 @@ class SetModePage extends StatelessWidget {
               label: "Title",
               hintText: "Title"),
           SizedBox(
-            height: 50,
+            height: 30,
           ),
           titleWidget(title: "LEDs in Kitchen"),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           ListView.builder(
             physics: ScrollPhysics(parent: null),
