@@ -43,7 +43,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
           children: [
             titleWidget(title: "Title of the schedule"),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             sytledTextField(
               isPass: false,
@@ -52,12 +52,9 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
               hintText: "Title",
             ),
             SizedBox(
-              height: 40,
+              height: 30,
             ),
             titleWidget(title: "Time"),
-            SizedBox(
-              height: 10,
-            ),
             Text(
               time.format(context),
               style: TextStyle(
@@ -71,7 +68,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 30,
             ),
             titleWidget(title: "Repeat"),
             Padding(
@@ -90,7 +87,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             titleWidget(title: "LEDs in Kitchen"),
             SizedBox(
