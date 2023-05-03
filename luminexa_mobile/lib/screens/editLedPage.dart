@@ -18,7 +18,10 @@ class _EditLedsState extends State<EditLeds> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: "LED 1"),
+      appBar: appBar(
+        title: "LED 1",
+        iconLeading: Icon(Icons.arrow_back),
+      ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(children: [
@@ -26,7 +29,7 @@ class _EditLedsState extends State<EditLeds> {
               title: "LED Status",
             ),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -49,11 +52,11 @@ class _EditLedsState extends State<EditLeds> {
               ],
             ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             titleWidget(title: "LED Intensity"),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             Text(
               sliderValue.toStringAsFixed(0),
@@ -69,11 +72,11 @@ class _EditLedsState extends State<EditLeds> {
                   });
                 }),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             titleWidget(title: "LED Color"),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             DropdownButton<String>(
                 value: dropDownSelected,
@@ -144,10 +147,10 @@ class _EditLedsState extends State<EditLeds> {
                   });
                 }),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 60),
               child: styledButton(
                 innerText: "Save Changes",
                 onTap: () {},
