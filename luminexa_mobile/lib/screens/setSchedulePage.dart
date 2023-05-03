@@ -14,13 +14,23 @@ class SetSchedulePage extends StatefulWidget {
 
 class _SetSchedulePageState extends State<SetSchedulePage> {
   final scheduleName = TextEditingController();
-  TimeOfDay time = TimeOfDay(hour: 12, minute: 0);
+  TimeOfDay timeToStart = TimeOfDay(hour: 12, minute: 0);
+  TimeOfDay timeToEnd = TimeOfDay(hour: 1, minute: 0);
 
-  void showTime() {
+  void showTimeStart() {
     showTimePicker(context: context, initialTime: TimeOfDay.now())
         .then((value) {
       setState(() {
-        time = value!;
+        timeToStart = value!;
+      });
+    });
+  }
+
+  void showTimeEnd() {
+    showTimePicker(context: context, initialTime: TimeOfDay.now())
+        .then((value) {
+      setState(() {
+        timeToEnd = value!;
       });
     });
   }
@@ -56,15 +66,27 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
             ),
             titleWidget(title: "Time"),
             Text(
-              time.format(context),
+              timeToStart.format(context),
               style: TextStyle(
                   fontFamily: "ralewayBold", fontSize: 25, color: Colors.black),
             ),
             Padding(
               padding: const EdgeInsets.all(25),
               child: styledButton(
-                innerText: "Pick a time",
-                onTap: showTime,
+                innerText: "Pick a time to start",
+                onTap: showTimeStart,
+              ),
+            ),
+            Text(
+              timeToEnd.format(context),
+              style: TextStyle(
+                  fontFamily: "ralewayBold", fontSize: 25, color: Colors.black),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(25),
+              child: styledButton(
+                innerText: "Pick a time to end",
+                onTap: showTimeEnd,
               ),
             ),
             SizedBox(
