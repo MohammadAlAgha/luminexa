@@ -8,7 +8,11 @@ const scheduleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  time: {
+  timeStart: {
+    type: Date,
+    required: true,
+  },
+  timeEnd: {
     type: Date,
     required: true,
   },
