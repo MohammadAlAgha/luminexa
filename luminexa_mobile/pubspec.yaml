@@ -40,6 +40,9 @@ dependencies:
   syncfusion_flutter_sliders: ^21.1.41
   fl_chart: ^0.62.0
   dio: ^5.1.1
+  firebase_core: ^2.10.0
+  firebase_messaging: ^14.4.1
+  flutter_local_notifications: ^14.0.0+1
 
 dev_dependencies:
   flutter_test:
