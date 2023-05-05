@@ -9,7 +9,7 @@ const {
   updateMode,
 } = require("../controllers/modes.controller");
 
-router.post("/getModes", getModes);
+router.get("/getModes", getModes);
 router.post("/addMode", addMode);
 router.delete("/deleteMode", deleteMode);
 router.put("/toggleMode", toggleMode);
