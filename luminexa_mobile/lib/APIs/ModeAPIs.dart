@@ -45,4 +45,15 @@ class ModeAPIs {
       rethrow;
     }
   }
+
+  static Future deleteMode(systemId, modeId) async {
+    final body = {"systemId": systemId, "modeId": modeId};
+    try {
+      final response = await sendRequest(
+          route: "/mode/deleteMode", method: RequestMethods.DELETE, load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
