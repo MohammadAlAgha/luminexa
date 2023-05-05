@@ -9,7 +9,7 @@ exports.getSchedules = async (req, res) => {
 };
 
 exports.addSchedule = async (req, res) => {
-  const { systemId, scheduleTitle, time, repeat } = req.body;
+  const { systemId, scheduleTitle, timeStart, timeEnd, repeat } = req.body;
 
   const system = await System.findById(systemId); //getting the system by ID
 
@@ -28,7 +28,8 @@ exports.addSchedule = async (req, res) => {
 
   const schedule = {
     scheduleTitle,
-    time,
+    timeStart,
+    timeEnd,
     repeat,
     leds: configurations,
   };
@@ -75,7 +76,8 @@ exports.toggleSchedule = async (req, res) => {
 };
 
 exports.updateSchedule = async (req, res) => {
-  const { systemId, scheduleId, scheduleTitle, time, repeat } = req.body;
+  const { systemId, scheduleId, scheduleTitle, timeStart, timeEnd, repeat } =
+    req.body;
 
   const system = await System.findById(systemId); //getting the system by ID
 
@@ -101,7 +103,8 @@ exports.updateSchedule = async (req, res) => {
   }); //Saving the actual led status
 
   schedule.scheduleTitle = scheduleTitle;
-  schedule.time = time;
+  schedule.timeStart = timeStart;
+  schedule.timeEnd = timeEnd;
   schedule.repeat = repeat;
   schedule.leds = configurations;
   //updating the schedule with the new values
