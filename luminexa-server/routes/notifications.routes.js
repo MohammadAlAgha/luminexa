@@ -8,7 +8,7 @@ const {
 } = require("../controllers/notifications.controller");
 
 router.post("/createNotifications", createNotifications);
-router.post("/getNotifications", getNotifications);
-router.post("/getSystemNotitifications", getSystemNotitifications);
+router.get("/getNotifications", getNotifications);
+router.get("/getSystemNotitifications", getSystemNotitifications);
 
 module.exports = router;
