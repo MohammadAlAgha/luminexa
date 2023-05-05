@@ -11,12 +11,12 @@ const {
   setHost,
 } = require("../controllers/host.controller");
 
-router.post("/getSystemUsers", getSystemUsers);
+router.get("/getSystemUsers", getSystemUsers);
 router.put("/renameSystem", renameSystem);
 router.put("/renameLed", renameLed);
 router.post("/systemShutDown", systemShutDown);
 router.post("/addUser", addUser);
-router.post("/deleteUser", deleteUser);
+router.delete("/deleteUser", deleteUser);
 router.put("/setHost", setHost);
 
 module.exports = router;
