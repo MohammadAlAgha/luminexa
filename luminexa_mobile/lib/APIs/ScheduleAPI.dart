@@ -16,12 +16,14 @@ class ScheduleAPIs {
     }
   }
 
-  static Future addSchedule(systemId, scheduleTitle, time, repeat) async {
+  static Future addSchedule(
+      systemId, scheduleTitle, timeStart, timeEnd, repeat) async {
     try {
       final body = {
         "systemId": systemId,
         "scheduleTitle": scheduleTitle,
-        "time": time,
+        "timeStart": timeStart,
+        "timeEnd": timeEnd,
         "repeat": repeat
       };
       final response = await sendRequest(
@@ -48,12 +50,13 @@ class ScheduleAPIs {
   }
 
   static Future updateSchedule(
-      systemId, scheduleId, scheduleTitle, time, repeat) async {
+      systemId, scheduleId, scheduleTitle, timeStart, timeEnd, repeat) async {
     final body = {
       "systemId": systemId,
       "scheduleId": scheduleId,
       "scheduleTitle": scheduleTitle,
-      "time": time,
+      "timeStart": timeStart,
+      "timeEnd": timeEnd,
       "repeat": repeat
     };
     try {
