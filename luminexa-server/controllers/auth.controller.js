@@ -4,16 +4,15 @@ const bcrypt = require("bcrypt");
 
 exports.register = async (req, res) => {
   const { email, password, userName, confirmPassword } = req.body;
+  const { validateEmail, validatePassword } = require("./regex"); //importing the validation functions
 
   // Validating the email using regex
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!validateEmail) {
     return res.status(400).json({ message: "Invalid email format" });
   }
 
   //Validating the password using regex
-  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-  if (!passwordRegex.test(password)) {
+  if (!validatePassword) {
     return res.status(400).json({
       message:
         "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number",
