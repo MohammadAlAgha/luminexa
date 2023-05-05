@@ -66,4 +66,17 @@ class ScheduleAPIs {
       rethrow;
     }
   }
+
+  static Future deleteSchedule(systemId, scheduleId) async {
+    final body = {"systemId": systemId, "scheduleId": scheduleId};
+    try {
+      final response = await sendRequest(
+          route: "schedules/deleteSchedule",
+          method: RequestMethods.DELETE,
+          load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
