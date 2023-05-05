@@ -30,17 +30,12 @@ exports.addLed = async (req, res) => {
   await system.save();
   const newLed = system.leds[system.leds.length - 1]; // Get the last LED in the array (which is the newly added LED)
 
-  const ledConfig = {
-    leds: newLed._id, // Use the new LED's ID
-  };
-
-  const history = []; //Creating an empty history since it is new LED
-
   const newLedObject = {
-    ledName: ledName,
-    ledConfig: ledConfig,
-    history: history,
-  }; //Creating a new led object to that has the last LED id
+    ledName,
+    ledConfig: { leds: newLed._id },
+    history: [],
+  };
+  //Creating a new led object to that has the last LED id
 
   system.lastManual.push(newLedObject.ledConfig); //updating the system manula
 
