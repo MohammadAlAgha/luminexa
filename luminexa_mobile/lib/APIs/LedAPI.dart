@@ -12,4 +12,15 @@ class LedsAPIs {
       rethrow;
     }
   }
+
+  static Future addLed(systemId, ledName) async {
+    final body = {"systemId": systemId, "ledName": ledName};
+    try {
+      final response = await sendRequest(
+          route: "/leds/addLed", method: RequestMethods.POST, load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
