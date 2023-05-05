@@ -34,4 +34,15 @@ class ModeAPIs {
       rethrow;
     }
   }
+
+  static Future updateMode(systemId, modeId, modeName) async {
+    final body = {"systemId": systemId, "modeId": modeId, "modeName": modeName};
+    try {
+      final response = await sendRequest(
+          route: "/mode/updateMode", method: RequestMethods.PUT, load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
