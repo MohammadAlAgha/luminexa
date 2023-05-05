@@ -61,12 +61,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ModesProvider()),
-        ChangeNotifierProvider(create: (context) => SchedulesProvider()),
+        ChangeNotifierProvider(create: (context) => ModesProvider(modes: [])),
+        ChangeNotifierProvider(
+            create: (context) => SchedulesProvider(schedules: [])),
         ChangeNotifierProvider(
             create: (context) => SystemsProvider(systems: [])),
-        ChangeNotifierProvider(create: (context) => LedProvider()),
-        ChangeNotifierProvider(create: (context) => NotificationsProvider()),
+        ChangeNotifierProvider(create: (context) => LedProvider(leds: [])),
+        ChangeNotifierProvider(
+            create: (context) => NotificationsProvider(notifications: [])),
       ],
       child: MaterialApp(
         theme: ThemeData(

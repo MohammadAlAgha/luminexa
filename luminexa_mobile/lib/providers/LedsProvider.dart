@@ -1,32 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/APIs/LedAPI.dart';
+import 'package:luminexa_mobile/models/ledModel.dart';
 
 class LedProvider extends ChangeNotifier {
-  static Future getLeds(systemId) async {
-    final Response = await LedsAPIs.getLeds(systemId);
-    return Response;
+  List<Led> leds = [];
+
+  LedProvider({
+    required this.leds,
+  });
+
+  Future getLeds(systemId) async {
+    final response = await LedsAPIs.getLeds(systemId);
+    return response;
   }
 
-  static Future addLed(systemId, ledName) async {
-    final Response = await LedsAPIs.addLed(systemId, ledName);
-    return Response;
+  Future addLed(systemId, ledName) async {
+    final response = await LedsAPIs.addLed(systemId, ledName);
+    return response;
   }
 
-  static Future editLed(systemId, ledId, ledStatus, intensity, color) async {
-    final Response =
+  Future editLed(systemId, ledId, ledStatus, intensity, color) async {
+    final response =
         await LedsAPIs.editLed(systemId, ledId, ledStatus, intensity, color);
-    return Response;
+    return response;
   }
 
-  static Future editConfigs(
-      systemId, ledId, ledStatus, intensity, color) async {
-    final Response = await LedsAPIs.editConfigs(
+  Future editConfigs(systemId, ledId, ledStatus, intensity, color) async {
+    final response = await LedsAPIs.editConfigs(
         systemId, ledId, ledStatus, intensity, color);
-    return Response;
+    return response;
   }
 
-  static Future getActiveLeds(systemId) async {
-    final Response = await LedsAPIs.getActiveLeds(systemId);
-    return Response;
+  Future getActiveLeds(systemId) async {
+    final response = await LedsAPIs.getActiveLeds(systemId);
+    return response;
+  }
+
+  Led fromJSON(Map json) {
+    final Led newLed = Led(
+        id: json["id"],
+        ledName: json["ledName"],
+        intensity: json["intensity"],
+        ledStatus: json["ledStatus"],
+        color: json["color"],
+        histrory: json["histrory"]);
+
+    return newLed;
   }
 }
