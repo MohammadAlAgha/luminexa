@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/models/systemModel.dart';
+import 'package:luminexa_mobile/providers/SystemsProvider.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
@@ -6,6 +8,7 @@ import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/drawerWidget/drawer.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/listWidget.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
+import 'package:provider/provider.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -19,6 +22,18 @@ class _LandingPageState extends State<LandingPage> {
   final List leds = [3, 2, 5];
 
   final newSystem = TextEditingController();
+
+  Future<void> fetchSystems() async {
+    await Provider.of<SystemsProvider>(context, listen: false).getAllSystems();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsFlutterBinding.ensureInitialized();
+    fetchSystems();
+  }
 
   void addSystem() {
     showDialog(
@@ -61,70 +76,76 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: drawerWidget(),
-      appBar: AppBar(
-        title: Text(
-          "User Name",
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(RouteManager.settingsPage);
-            },
-            icon: Icon(Icons.settings),
-          )
-        ],
-      ),
-      body: SafeArea(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          child: Stack(children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  titleWidget(title: "Systems"),
-                  ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: systems.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return listOption(
-                            systemName: systems[index],
-                            activeLeds: leds[index]);
-                      }),
-                  SizedBox(
-                    height: 120,
-                  ),
-                ],
-              ),
+    return Consumer<SystemsProvider>(
+      builder: (context, value, child) {
+        List<System> _systems = value.systems;
+
+        return Scaffold(
+          drawer: drawerWidget(),
+          appBar: AppBar(
+            title: Text(
+              "User Name",
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
-            Positioned(
-              bottom: 0,
-              child: Container(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                      Colors.white.withOpacity(0.5),
-                      Colors.white,
-                      Colors.white,
-                    ])),
-                padding: const EdgeInsets.only(
-                    left: 25, right: 25, bottom: 20, top: 60),
-                width: MediaQuery.of(context).size.width,
-                child: iconButton(
-                  innerText: "Add new system",
-                  iconName: Icon(Icons.add),
-                  onTap: addSystem,
+            centerTitle: true,
+            actions: [
+              IconButton(
+                onPressed: () async {
+                  Navigator.of(context).pushNamed(RouteManager.settingsPage);
+                },
+                icon: Icon(Icons.settings),
+              )
+            ],
+          ),
+          body: SafeArea(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              child: Stack(children: [
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      titleWidget(title: "Systems"),
+                      ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: _systems.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return listOption(
+                                systemName: _systems[index].systemName,
+                                activeLeds: leds[index]);
+                          }),
+                      SizedBox(
+                        height: 120,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            )
-          ]),
-        ),
-      ),
+                Positioned(
+                  bottom: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                          Colors.white.withOpacity(0.5),
+                          Colors.white,
+                          Colors.white,
+                        ])),
+                    padding: const EdgeInsets.only(
+                        left: 25, right: 25, bottom: 20, top: 60),
+                    width: MediaQuery.of(context).size.width,
+                    child: iconButton(
+                      innerText: "Add new system",
+                      iconName: Icon(Icons.add),
+                      onTap: addSystem,
+                    ),
+                  ),
+                )
+              ]),
+            ),
+          ),
+        );
+      },
     );
   }
 }
