@@ -23,4 +23,15 @@ class ModeAPIs {
       rethrow;
     }
   }
+
+  static Future toggleMode(systemId, modeId) async {
+    final body = {"systemId": systemId, "modeId": modeId};
+    try {
+      final response = await sendRequest(
+          route: "/mode/toggleMode", method: RequestMethods.PUT, load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
