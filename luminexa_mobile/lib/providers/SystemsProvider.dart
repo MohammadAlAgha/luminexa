@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/APIs/SystemAPIs.dart';
 import 'package:luminexa_mobile/models/systemModel.dart';
@@ -27,8 +25,8 @@ class SystemsProvider extends ChangeNotifier {
   }
 
   Future<List<System>> addSystem(serialNumber) async {
-    final Response = await SystemAPIs.addSystem(serialNumber);
-    return Response;
+    final response = await SystemAPIs.addSystem(serialNumber);
+    return response;
   }
 
   System fromJSON(Map json) {
