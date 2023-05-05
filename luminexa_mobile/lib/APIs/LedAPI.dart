@@ -58,4 +58,17 @@ class LedsAPIs {
       rethrow;
     }
   }
+
+  static Future getActiveLeds(systemId) async {
+    final body = {
+      "systemId": systemId,
+    };
+    try {
+      final response = await sendRequest(
+          route: "/leds/getActiveLeds", method: RequestMethods.GET, load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
