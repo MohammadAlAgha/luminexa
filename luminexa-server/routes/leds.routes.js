@@ -9,7 +9,7 @@ const {
   editConfigs,
 } = require("../controllers/leds.controller");
 
-router.post("/getLeds", getLeds);
+router.get("/getLeds", getLeds);
 router.put("/editLed", editLed);
 router.put("/editConfigs", editConfigs);
 router.post("/addled", addLed);
