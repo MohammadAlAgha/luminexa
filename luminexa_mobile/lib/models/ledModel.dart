@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'package:luminexa_mobile/models/historyModel.dart';
 
 class Led {
   final int id;
