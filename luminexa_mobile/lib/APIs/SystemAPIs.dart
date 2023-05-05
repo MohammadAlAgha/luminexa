@@ -18,7 +18,9 @@ abstract class SystemAPIs {
   static Future addSystem(serialNumber) async {
     final body = {"serialNumber": serialNumber};
     try {
-      final response = await dioClient.post("/system/addSystem", data: body);
+      final response = await sendRequest(
+          route: "/system/addSystem", load: body, method: RequestMethods.POST);
+
       return response;
     } catch (e) {
       rethrow;
