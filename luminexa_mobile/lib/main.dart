@@ -1,4 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:luminexa_mobile/configs/local_storage_config.dart';
+import 'package:luminexa_mobile/enums/localTypes.dart';
+import 'package:luminexa_mobile/providers/LedsProvider.dart';
+import 'package:luminexa_mobile/providers/NotificationsProvider.dart';
+import 'package:luminexa_mobile/providers/SchedulesProvider.dart';
+import 'package:luminexa_mobile/providers/SystemsProvider.dart';
+import 'package:luminexa_mobile/providers/ModesProvider.dart';
+import 'package:provider/provider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/configs/remoteConfig.dart';
@@ -33,10 +41,35 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool _isloggedIn = false;
+
+  void logInChecker() async {
+    final token = await getLocal(type: LocalTypes.String, key: "access_token");
+
+    setState(() {
+      _isloggedIn = (token != null); //false or true;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    logInChecker();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ModesProvider()),
+        ChangeNotifierProvider(create: (context) => SchedulesProvider()),
+        ChangeNotifierProvider(
+            create: (context) => SystemsProvider(systems: [])),
+        ChangeNotifierProvider(create: (context) => LedProvider()),
+        ChangeNotifierProvider(create: (context) => NotificationsProvider()),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
           primarySwatch: createMaterialColor(
             Color.fromARGB(255, 63, 139, 0),
           ),
@@ -114,11 +147,12 @@ class _MyAppState extends State<MyApp> {
             headlineMedium: TextStyle(
                 fontFamily: "RalewayBold", fontSize: 17, color: Colors.white),
             headlineSmall: TextStyle(fontSize: 11, fontFamily: "RalewayBold"),
-          )),
-      debugShowCheckedModeBanner: false,
-      home: SetSchedulePage(),
-      // initialRoute: RouteManager.login,
-      onGenerateRoute: RouteManager.generateRoute,
+          ),
+        ),
+        debugShowCheckedModeBanner: false,
+        home: _isloggedIn ? LandingPage() : LogIn(),
+        onGenerateRoute: RouteManager.generateRoute,
+      ),
     );
   }
 }
