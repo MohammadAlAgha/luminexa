@@ -6,4 +6,10 @@ class NotificationsProvider extends ChangeNotifier {
     final Response = await NotificationsAPIs.getSystemNotitifications(systemId);
     return Response;
   }
+
+  static Future createNotifications(time, systemId, description) async {
+    final Response = await NotificationsAPIs.createNotifications(
+        time, systemId, description);
+    return Response;
+  }
 }
