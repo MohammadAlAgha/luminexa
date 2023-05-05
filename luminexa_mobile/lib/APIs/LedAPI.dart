@@ -40,4 +40,22 @@ class LedsAPIs {
       rethrow;
     }
   }
+
+  static Future editConfigs(
+      systemId, ledId, ledStatus, intensity, color) async {
+    final body = {
+      "systemId": systemId,
+      "ledId": ledId,
+      "ledStatus": ledStatus,
+      "intensity": intensity,
+      "color": color
+    };
+    try {
+      final response = await sendRequest(
+          route: "/leds/editConfigs", method: RequestMethods.PUT, load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
