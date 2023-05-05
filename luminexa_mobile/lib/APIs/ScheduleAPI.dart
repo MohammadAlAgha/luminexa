@@ -33,4 +33,17 @@ class ScheduleAPIs {
       rethrow;
     }
   }
+
+  static Future toggleSchedule(systemId, scheduleId) async {
+    final body = {"systemId": systemId, "scheduleId": scheduleId};
+    try {
+      final response = await sendRequest(
+          route: "schedules/toggleSchedule",
+          method: RequestMethods.PUT,
+          load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
