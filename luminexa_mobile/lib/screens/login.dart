@@ -23,6 +23,8 @@ class _LogInState extends State<LogIn> {
     final String password = passwordController.text;
     try {
       await AuthDataSource.login(email, password);
+
+      Navigator.of(context).pushNamed(RouteManager.landingPage);
     } catch (e) {
       print(e);
     }
