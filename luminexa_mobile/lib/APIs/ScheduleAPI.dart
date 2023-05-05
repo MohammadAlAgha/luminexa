@@ -46,4 +46,24 @@ class ScheduleAPIs {
       rethrow;
     }
   }
+
+  static Future updateSchedule(
+      systemId, scheduleId, scheduleTitle, time, repeat) async {
+    final body = {
+      "systemId": systemId,
+      "scheduleId": scheduleId,
+      "scheduleTitle": scheduleTitle,
+      "time": time,
+      "repeat": repeat
+    };
+    try {
+      final response = await sendRequest(
+          route: "schedules/updateSchedule",
+          method: RequestMethods.PUT,
+          load: body);
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
