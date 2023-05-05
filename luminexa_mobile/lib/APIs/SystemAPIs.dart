@@ -1,5 +1,5 @@
 import 'package:luminexa_mobile/configs/remoteConfig.dart';
-import 'package:luminexa_mobile/enums/requetMethods.dart';
+import 'package:luminexa_mobile/enums/requestMethods.dart';
 
 abstract class SystemAPIs {
   static Future getAllSystems() async {

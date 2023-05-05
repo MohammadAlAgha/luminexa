@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:luminexa_mobile/configs/local_storage_config.dart';
 import 'package:luminexa_mobile/enums/localTypes.dart';
-import 'package:luminexa_mobile/enums/requetMethods.dart';
+import 'package:luminexa_mobile/enums/requestMethods.dart';
 
 final options = BaseOptions(
   baseUrl: "http://192.168.0.102:8000",

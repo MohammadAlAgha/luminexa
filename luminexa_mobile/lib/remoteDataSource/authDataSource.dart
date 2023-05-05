@@ -1,7 +1,7 @@
 import 'package:luminexa_mobile/configs/local_storage_config.dart';
 import 'package:luminexa_mobile/configs/remoteConfig.dart';
 import 'package:luminexa_mobile/enums/localTypes.dart';
-import 'package:luminexa_mobile/enums/requetMethods.dart';
+import 'package:luminexa_mobile/enums/requestMethods.dart';
 
 abstract class AuthDataSource {
   static Future login(email, password) async {
