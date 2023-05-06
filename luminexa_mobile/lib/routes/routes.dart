@@ -79,7 +79,9 @@ class RouteManager {
 
       case setModePage:
         return MaterialPageRoute(
-          builder: (context) => SetModePage(),
+          builder: (context) => SetModePage(
+            systemId: (settings.arguments as Map)["systemId"],
+          ),
         );
       //Modes Routes
 
