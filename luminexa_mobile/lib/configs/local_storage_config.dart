@@ -6,10 +6,7 @@ Future<void> localSave({
   required String key,
   required dynamic value,
 }) async {
-  SharedPreferences.setMockInitialValues({
-    "access_token":
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2ZkODU0MGVmODMxZmY4NDhiM2Q3YSIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNjgzMjM4NTQwfQ.biUSVxrhKaSNOH6I48rJ4LtJRsP1dPZ6hO7D2ptgIfA"
-  });
+  SharedPreferences.setMockInitialValues({});
 
   final SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -29,10 +26,7 @@ dynamic getLocal({
   required String key,
 }) async {
   // SharedPreferences.setMockInitialValues({});
-  SharedPreferences.setMockInitialValues({
-    "access_token":
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2ZkODU0MGVmODMxZmY4NDhiM2Q3YSIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNjgzMjM4NTQwfQ.biUSVxrhKaSNOH6I48rJ4LtJRsP1dPZ6hO7D2ptgIfA"
-  });
+  SharedPreferences.setMockInitialValues({});
 
   final SharedPreferences prefs = await SharedPreferences.getInstance();
 

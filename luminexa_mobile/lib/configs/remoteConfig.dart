@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:luminexa_mobile/configs/local_storage_config.dart';
 import 'package:luminexa_mobile/enums/localTypes.dart';
 import 'package:luminexa_mobile/enums/requestMethods.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final options = BaseOptions(
   baseUrl: "http://192.168.0.102:8000",
@@ -15,8 +16,10 @@ Future sendRequest({
   RequestMethods method = RequestMethods.GET,
   Map? load,
 }) async {
-  final String? token =
-      await getLocal(type: LocalTypes.String, key: "access_token");
+  final prefs = await SharedPreferences.getInstance();
+
+  final String? token = prefs.getString(
+      "access_token"); // await getLocal(type: LocalTypes.String, key: "access_token");
 
   if (token != null) {
     final BaseOptions authorizedOptions =
@@ -26,7 +29,7 @@ Future sendRequest({
   }
 
   if (method == RequestMethods.GET) {
-    final response = await dioClient.get(route);
+    final response = await dioClient.get(route, data: load);
 
     return response;
   } else if (method == RequestMethods.POST) {
