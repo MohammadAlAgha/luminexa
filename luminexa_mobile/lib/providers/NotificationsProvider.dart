@@ -22,6 +22,7 @@ class NotificationsProvider extends ChangeNotifier {
 
   Notifications fromJSON(Map json) {
     final newNotification = Notifications(
+        id: json['_id'],
         time: json['time'],
         systemId: json['systemId'],
         description: json['description']);
