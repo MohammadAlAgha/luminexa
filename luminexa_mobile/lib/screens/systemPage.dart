@@ -32,7 +32,7 @@ class _SystemPageState extends State<SystemPage> {
     final List pages = [
       LedsPage(systemId: widget.systemId),
       SchedulePage(),
-      ModePage(),
+      ModePage(systemId: widget.systemId),
       NotificationsPage()
     ];
 

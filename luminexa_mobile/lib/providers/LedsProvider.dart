@@ -10,7 +10,6 @@ class LedsProvider extends ChangeNotifier {
   });
 
   Future<void> getLeds(systemId) async {
-    print(systemId);
     final response = await LedsAPIs.getLeds(systemId);
 
     List<Led> _led = [];
