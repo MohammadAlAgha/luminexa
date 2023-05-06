@@ -2,16 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/APIs/LedAPI.dart';
 import 'package:luminexa_mobile/models/ledModel.dart';
 
-class LedProvider extends ChangeNotifier {
+class LedsProvider extends ChangeNotifier {
   List<Led> leds = [];
 
-  LedProvider({
+  LedsProvider({
     required this.leds,
   });
 
-  Future getLeds(systemId) async {
+  Future<void> getLeds(systemId) async {
+    print(systemId);
     final response = await LedsAPIs.getLeds(systemId);
-    return response;
+
+    List<Led> _led = [];
+
+    response.data.forEach((map) {
+      final Led led = fromJSON(map);
+      _led.add(led);
+    });
+    leds = _led;
+
+    notifyListeners();
   }
 
   Future addLed(systemId, ledName) async {
@@ -38,12 +48,13 @@ class LedProvider extends ChangeNotifier {
 
   Led fromJSON(Map json) {
     final Led newLed = Led(
-        id: json["id"],
-        ledName: json["ledName"],
-        intensity: json["intensity"],
-        ledStatus: json["ledStatus"],
-        color: json["color"],
-        histrory: json["histrory"]);
+      id: json["_id"],
+      ledName: json["ledName"],
+      intensity: json["ledConfig"]["intensity"],
+      ledStatus: json["ledConfig"]["ledStatus"],
+      color: json["ledConfig"]["color"],
+      histrory: [],
+    );
 
     return newLed;
   }
