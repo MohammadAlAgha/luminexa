@@ -1,7 +1,7 @@
 import 'package:luminexa_mobile/models/ledModel.dart';
 
 class Mode {
-  final int id;
+  final String id;
   final String modeName;
   final List<Led> leds;
   final bool modeStatus;
