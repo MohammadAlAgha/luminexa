@@ -11,7 +11,17 @@ class NotificationsProvider extends ChangeNotifier {
 
   Future getSystemNotitifications(systemId) async {
     final response = await NotificationsAPIs.getSystemNotitifications(systemId);
-    return response;
+
+    List<Notifications> _notifications = [];
+
+    response.data.forEach((map) {
+      final Notifications notification = fromJSON(map);
+      _notifications.add(notification);
+    });
+
+    notifications = _notifications;
+
+    notifyListeners();
   }
 
   Future createNotifications(time, systemId, description) async {
