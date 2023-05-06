@@ -4,11 +4,11 @@ const router = Router();
 const {
   createNotifications,
   getNotifications,
-  getSystemNotitifications,
+  getSystemNotifications,
 } = require("../controllers/notifications.controller");
 
 router.post("/createNotifications", createNotifications);
 router.get("/getNotifications", getNotifications);
-router.get("/getSystemNotitifications", getSystemNotitifications);
+router.get("/getSystemNotifications", getSystemNotifications);
 
 module.exports = router;
