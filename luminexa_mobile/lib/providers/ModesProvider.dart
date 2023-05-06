@@ -9,9 +9,19 @@ class ModesProvider extends ChangeNotifier {
     required this.modes,
   });
 
-  Future getModes(systemId) async {
+  Future<void> getModes(systemId) async {
     final response = await ModeAPIs.getModes(systemId);
-    return response;
+
+    List<Mode> _modes = [];
+
+    response.data.forEach((map) {
+      final Mode mode = fromJSON(map);
+      _modes.add(mode);
+    });
+
+    modes = _modes;
+
+    notifyListeners();
   }
 
   Future addMode(systemId, modeName) async {
@@ -36,9 +46,9 @@ class ModesProvider extends ChangeNotifier {
 
   Mode fromJSON(Map json) {
     final Mode newMode = Mode(
-        id: json["id"],
+        id: json["_id"],
         modeName: json["modeName"],
-        leds: json["leds"],
+        leds: [],
         modeStatus: json['modeStatus']);
     return newMode;
   }
