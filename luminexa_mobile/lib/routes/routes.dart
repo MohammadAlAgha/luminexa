@@ -87,7 +87,9 @@ class RouteManager {
 
       case setSchedulePage:
         return MaterialPageRoute(
-          builder: (context) => SetSchedulePage(),
+          builder: (context) => SetSchedulePage(
+            systemId: (settings.arguments as Map)["systemId"],
+          ),
         );
       //Schedules Routes
 
