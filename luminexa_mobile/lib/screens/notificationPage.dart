@@ -1,52 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/models/notificationModel.dart';
+import 'package:luminexa_mobile/providers/NotificationsProvider.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/notificationTile.dart';
+import 'package:provider/provider.dart';
 
 class NotificationsPage extends StatefulWidget {
-  const NotificationsPage({super.key});
+  final String systemId;
+  const NotificationsPage({
+    super.key,
+    required this.systemId,
+  });
 
   @override
   State<NotificationsPage> createState() => _NotificationsPageState();
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
-  final List title = [
-    "Room 2 seems empty! Do want to turn off the lights?",
-    "Dinner mode in the Living room is currently on.",
-    "It seems cloudy out side! Do you want to increase the lights intensity?",
-    "It seems cloudy out side! Do you want to increase the lights intensity?",
-    "It seems cloudy out side! Do you want to increase the lights intensity?",
-    "It seems cloudy out side! Do you want to increase the lights intensity?",
-    "It seems cloudy out side! Do you want to increase the lights intensity?",
-    "It seems cloudy out side! Do you want to increase the lights intensity?",
-  ];
-  final List time = [
-    "Today, 8:11 PM",
-    "Today, 4:25 PM",
-    "Today, 11:37 AM",
-    "Today, 4:25 PM",
-    "Today, 4:25 PM",
-    "Today, 4:25 PM",
-    "Today, 4:25 PM",
-    "Today, 4:25 PM",
-  ];
+  Future fetchNotifications() async {
+    await Provider.of<NotificationsProvider>(context, listen: false)
+        .getSystemNotitifications(widget.systemId);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchNotifications();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            ListView.builder(
-                physics: ScrollPhysics(parent: null),
-                shrinkWrap: true,
-                itemCount: title.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return notificationTile(
-                      title: title[index], time: time[index]);
-                })
-          ],
-        ),
-      ),
+    return Consumer<NotificationsProvider>(
+      builder: (context, value, child) {
+        List<Notifications> _notifications = value.notifications;
+        return SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ListView.builder(
+                    physics: ScrollPhysics(parent: null),
+                    shrinkWrap: true,
+                    itemCount: _notifications.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return notificationTile(
+                          title: _notifications[index].description,
+                          time: _notifications[index].time);
+                    })
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
