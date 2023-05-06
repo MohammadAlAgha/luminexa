@@ -4,7 +4,7 @@ class Mode {
   final String id;
   final String modeName;
   final List<Led> leds;
-  final bool modeStatus;
+  final String modeStatus;
 
   Mode({
     required this.id,
