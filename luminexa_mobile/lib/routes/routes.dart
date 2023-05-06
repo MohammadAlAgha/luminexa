@@ -59,7 +59,9 @@ class RouteManager {
 
       case systemPage:
         return MaterialPageRoute(
-          builder: (context) => SystemPage(),
+          builder: (context) => SystemPage(
+            systemId: (settings.arguments as Map)["systemId"],
+          ),
         );
       //System Route
 
@@ -68,11 +70,6 @@ class RouteManager {
           builder: (context) => LandingPage(),
         );
       //Landing Rourte
-
-      case ledsPage:
-        return MaterialPageRoute(
-          builder: (context) => LedsPage(),
-        );
 
       case editLedPage:
         return MaterialPageRoute(
