@@ -9,9 +9,19 @@ class SchedulesProvider extends ChangeNotifier {
     required this.schedules,
   });
 
-  Future getSchedules(systemId) async {
+  Future<void> getSchedules(systemId) async {
     final response = await ScheduleAPIs.getSchedules(systemId);
-    return response;
+
+    List<Schedule> _schedules = [];
+
+    response.data.forEach((map) {
+      final Schedule schedule = fromJSON(map);
+      _schedules.add(schedule);
+    });
+
+    schedules = _schedules;
+
+    notifyListeners();
   }
 
   Future addSchedule(
