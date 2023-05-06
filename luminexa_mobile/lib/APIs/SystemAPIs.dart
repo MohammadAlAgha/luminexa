@@ -6,7 +6,7 @@ abstract class SystemAPIs {
     try {
       final response = await sendRequest(
         route: "/system/getSystems",
-        method: RequestMethods.POST,
+        method: RequestMethods.GET,
       );
 
       return response;
