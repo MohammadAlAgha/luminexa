@@ -1,7 +1,7 @@
 import 'package:luminexa_mobile/models/ledModel.dart';
 
 class Schedule {
-  final int id;
+  final String id;
   final String scheduleTitle;
   final DateTime timeStart;
   final DateTime timeEnd;
