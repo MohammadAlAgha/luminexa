@@ -3,11 +3,11 @@ import 'package:luminexa_mobile/models/ledModel.dart';
 class Schedule {
   final String id;
   final String scheduleTitle;
-  final DateTime timeStart;
-  final DateTime timeEnd;
+  final String timeStart;
+  final String timeEnd;
   final List<String> repeat;
   final List<Led> leds;
-  final bool scheduleStatus;
+  final String scheduleStatus;
 
   Schedule({
     required this.id,
