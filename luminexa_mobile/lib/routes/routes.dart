@@ -77,11 +77,6 @@ class RouteManager {
         );
       //LEDs Routes
 
-      case modePage:
-        return MaterialPageRoute(
-          builder: (context) => ModePage(),
-        );
-
       case setModePage:
         return MaterialPageRoute(
           builder: (context) => SetModePage(),
