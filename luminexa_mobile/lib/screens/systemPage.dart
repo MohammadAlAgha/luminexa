@@ -35,7 +35,7 @@ class _SystemPageState extends State<SystemPage> {
       LedsPage(systemId: widget.systemId),
       SchedulePage(systemId: widget.systemId),
       ModePage(systemId: widget.systemId),
-      NotificationsPage()
+      NotificationsPage(systemId: widget.systemId)
     ];
 
     return pages[currentIndex];

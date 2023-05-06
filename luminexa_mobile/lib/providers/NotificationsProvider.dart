@@ -34,7 +34,7 @@ class NotificationsProvider extends ChangeNotifier {
     final newNotification = Notifications(
         id: json['_id'],
         time: json['time'],
-        systemId: json['systemId'],
+        system: json['system'],
         description: json['description']);
     return newNotification;
   }

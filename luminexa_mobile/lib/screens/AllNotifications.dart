@@ -15,7 +15,7 @@ class AllNotifications extends StatelessWidget {
           Navigator.of(context).pop(context);
         },
       ),
-      body: NotificationsPage(),
+      body: Scaffold(),
     );
   }
 }

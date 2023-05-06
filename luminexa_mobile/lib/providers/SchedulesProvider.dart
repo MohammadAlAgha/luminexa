@@ -50,12 +50,12 @@ class SchedulesProvider extends ChangeNotifier {
 
   Schedule fromJSON(Map josn) {
     final newSchedule = Schedule(
-        id: josn["id"],
+        id: josn["_id"],
         scheduleTitle: josn["scheduleTitle"],
         timeStart: josn["timeStart"],
         timeEnd: josn["timeEnd"],
-        repeat: josn["repeat"],
-        leds: josn["leds"],
+        repeat: [],
+        leds: [],
         scheduleStatus: josn["scheduleStatus"]);
     return newSchedule;
   }

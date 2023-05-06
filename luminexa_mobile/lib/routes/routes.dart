@@ -87,11 +87,6 @@ class RouteManager {
         );
       //Schedules Routes
 
-      case notificationsPage:
-        return MaterialPageRoute(
-          builder: (context) => NotificationsPage(),
-        );
-
       case allNotifications:
         return MaterialPageRoute(
           builder: (context) => AllNotifications(),
