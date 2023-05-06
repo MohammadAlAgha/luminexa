@@ -88,8 +88,12 @@ class _SchedulePageState extends State<SchedulePage> {
                   child: iconButton(
                     innerText: "Set new schedule",
                     iconName: Icon(Icons.alarm_add),
-                    onTap: () => Navigator.of(context)
-                        .pushNamed(RouteManager.setSchedulePage),
+                    onTap: () => Navigator.of(context).pushNamed(
+                      RouteManager.setSchedulePage,
+                      arguments: {
+                        "systemId": widget.systemId,
+                      },
+                    ),
                   ),
                 ),
               )
