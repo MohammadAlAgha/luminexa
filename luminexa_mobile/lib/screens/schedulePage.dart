@@ -5,7 +5,11 @@ import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class SchedulePage extends StatefulWidget {
-  const SchedulePage({super.key});
+  final String systemId;
+  const SchedulePage({
+    super.key,
+    required this.systemId,
+  });
 
   @override
   State<SchedulePage> createState() => _SchedulePageState();
