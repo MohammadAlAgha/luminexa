@@ -77,8 +77,9 @@ class _ModePageState extends State<ModePage> {
                 child: iconButton(
                   innerText: "Set new mode",
                   iconName: Icon(Icons.bookmark_add_outlined),
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(RouteManager.setModePage),
+                  onTap: () => Navigator.of(context).pushNamed(
+                      RouteManager.setModePage,
+                      arguments: {"systemId": widget.systemId}),
                 ),
               ),
             )
