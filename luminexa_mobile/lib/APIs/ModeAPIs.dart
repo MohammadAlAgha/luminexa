@@ -6,7 +6,7 @@ class ModeAPIs {
     final body = {"systemId": systemId};
     try {
       final response = await sendRequest(
-          route: "/mode/getModes", method: RequestMethods.GET, load: body);
+          route: "/modes/getModes", method: RequestMethods.GET, load: body);
       return response;
     } catch (e) {
       rethrow;
@@ -17,7 +17,7 @@ class ModeAPIs {
     final body = {"systemId": systemId, "modeName": modeName};
     try {
       final response = await sendRequest(
-          route: "/mode/addMode", method: RequestMethods.POST, load: body);
+          route: "/modes/addMode", method: RequestMethods.POST, load: body);
       return response;
     } catch (e) {
       rethrow;
@@ -28,7 +28,7 @@ class ModeAPIs {
     final body = {"systemId": systemId, "modeId": modeId};
     try {
       final response = await sendRequest(
-          route: "/mode/toggleMode", method: RequestMethods.PUT, load: body);
+          route: "/modes/toggleMode", method: RequestMethods.PUT, load: body);
       return response;
     } catch (e) {
       rethrow;
@@ -39,7 +39,7 @@ class ModeAPIs {
     final body = {"systemId": systemId, "modeId": modeId, "modeName": modeName};
     try {
       final response = await sendRequest(
-          route: "/mode/updateMode", method: RequestMethods.PUT, load: body);
+          route: "/modes/updateMode", method: RequestMethods.PUT, load: body);
       return response;
     } catch (e) {
       rethrow;
@@ -50,7 +50,9 @@ class ModeAPIs {
     final body = {"systemId": systemId, "modeId": modeId};
     try {
       final response = await sendRequest(
-          route: "/mode/deleteMode", method: RequestMethods.DELETE, load: body);
+          route: "/modes/deleteMode",
+          method: RequestMethods.DELETE,
+          load: body);
       return response;
     } catch (e) {
       rethrow;
