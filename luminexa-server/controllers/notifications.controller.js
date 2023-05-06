@@ -33,7 +33,7 @@ exports.getNotifications = async (req, res) => {
   res.json(user.systems);
 };
 
-exports.getSystemNotitifications = async (req, res) => {
+exports.getSystemNotifications = async (req, res) => {
   const { systemId } = req.body;
 
   const notifications = await Notification.find({ system: systemId }); //finding the notifications with the system ID
