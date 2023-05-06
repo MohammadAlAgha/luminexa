@@ -106,13 +106,13 @@ class _LandingPageState extends State<LandingPage> {
                     children: [
                       titleWidget(title: "Systems"),
                       ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: _systems.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return listOption(
-                                systemName: _systems[index].systemName,
-                                activeLeds: leds[index]);
-                          }),
+                        shrinkWrap: true,
+                        itemCount: _systems.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return listOption(
+                              system: _systems[index], activeLeds: leds[index]);
+                        },
+                      ),
                       SizedBox(
                         height: 120,
                       ),
