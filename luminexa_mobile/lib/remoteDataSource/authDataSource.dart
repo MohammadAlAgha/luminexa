@@ -2,6 +2,7 @@ import 'package:luminexa_mobile/configs/local_storage_config.dart';
 import 'package:luminexa_mobile/configs/remoteConfig.dart';
 import 'package:luminexa_mobile/enums/localTypes.dart';
 import 'package:luminexa_mobile/enums/requestMethods.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AuthDataSource {
   static Future login(email, password) async {
@@ -13,11 +14,14 @@ abstract class AuthDataSource {
         method: RequestMethods.POST,
       );
 
-      await localSave(
-        type: LocalTypes.String,
-        key: "access_token",
-        value: response.data["token"],
-      );
+      // await localSave(
+      //   type: LocalTypes.String,
+      //   key: "access_token",
+      //   value: response.data["token"],
+      // );
+
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString("access_token", response.data["token"]);
 
       print("Token saved");
     } catch (e) {
