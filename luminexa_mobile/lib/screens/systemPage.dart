@@ -9,10 +9,12 @@ import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 
 class SystemPage extends StatefulWidget {
   final String systemId;
+  final String systemName;
 
   const SystemPage({
     super.key,
     required this.systemId,
+    required this.systemName,
   });
 
   @override
@@ -86,7 +88,7 @@ class _SystemPageState extends State<SystemPage> {
         ),
       ),
       appBar: appBar(
-        title: "Kitchen",
+        title: widget.systemName,
         iconAction: Icon(Icons.settings),
         iconActionFunction: () =>
             Navigator.of(context).pushNamed(RouteManager.settingsPage),
