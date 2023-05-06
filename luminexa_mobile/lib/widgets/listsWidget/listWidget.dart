@@ -18,6 +18,7 @@ class listOption extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(RouteManager.systemPage, arguments: {
           "systemId": system.id,
+          "systemName": system.systemName,
         });
       },
       child: Container(

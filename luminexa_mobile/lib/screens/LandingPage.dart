@@ -18,7 +18,6 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  final List systems = ["Kitchen", "Room", "Living Room"];
   final List leds = [3, 2, 5];
 
   final newSystem = TextEditingController();

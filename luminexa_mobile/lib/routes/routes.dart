@@ -61,6 +61,7 @@ class RouteManager {
         return MaterialPageRoute(
           builder: (context) => SystemPage(
             systemId: (settings.arguments as Map)["systemId"],
+            systemName: (settings.arguments as Map)["systemName"],
           ),
         );
       //System Route
