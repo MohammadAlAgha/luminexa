@@ -17,13 +17,13 @@ class toggleListTile extends StatefulWidget {
 }
 
 class _toggleTileListState extends State<toggleListTile> {
-  @override
   void setStatus(value) {
     setState(() {
       widget.status = value;
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Container(
         height: 75,
