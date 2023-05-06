@@ -115,15 +115,15 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
             SizedBox(
               height: 10,
             ),
-            ListView.builder(
-              physics: ScrollPhysics(parent: null),
-              shrinkWrap: true,
-              itemCount: leds.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ledListOption(
-                    ledName: leds[index], status: status[index]);
-              },
-            ),
+            // ListView.builder(
+            //   physics: ScrollPhysics(parent: null),
+            //   shrinkWrap: true,
+            //   itemCount: leds.length,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return ledListOption(
+            //         ledName: leds[index], status: status[index]);
+            //   },
+            // ),
             Padding(
               padding: const EdgeInsets.all(25),
               child: styledButton(

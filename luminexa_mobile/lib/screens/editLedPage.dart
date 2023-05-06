@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/models/ledModel.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class EditLeds extends StatefulWidget {
-  EditLeds({super.key});
+  final Led led;
+  EditLeds({
+    super.key,
+    required this.led,
+  });
 
   @override
   State<EditLeds> createState() => _EditLedsState();
@@ -19,7 +24,7 @@ class _EditLedsState extends State<EditLeds> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(
-        title: "LED 1",
+        title: widget.led.ledName,
         iconLeading: Icon(Icons.arrow_back),
         iconLeadingFunction: () {
           Navigator.of(context).pop(context);
@@ -37,19 +42,31 @@ class _EditLedsState extends State<EditLeds> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Switch(
-                    value: isOn,
-                    onChanged: (value) {
-                      sliderValue == 0
-                          ? setState(() {
-                              isOn = false;
-                            })
-                          : setState(() {
-                              isOn = value;
-                            });
-                    }),
+                widget.led.ledStatus == "on"
+                    ? Switch(
+                        value: true,
+                        onChanged: (value) {
+                          sliderValue == 0
+                              ? setState(() {
+                                  isOn = false;
+                                })
+                              : setState(() {
+                                  isOn = value;
+                                });
+                        })
+                    : Switch(
+                        value: false,
+                        onChanged: (value) {
+                          sliderValue == 0
+                              ? setState(() {
+                                  isOn = false;
+                                })
+                              : setState(() {
+                                  isOn = value;
+                                });
+                        }),
                 Text(
-                  isOn ? "ON" : "OFF",
+                  widget.led.ledStatus == "on" ? "ON" : "OFF",
                   style: Theme.of(context).textTheme.titleMedium,
                 )
               ],
