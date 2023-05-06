@@ -81,11 +81,6 @@ class RouteManager {
         );
       //Modes Routes
 
-      case schedulePage:
-        return MaterialPageRoute(
-          builder: (context) => SchedulePage(),
-        );
-
       case setSchedulePage:
         return MaterialPageRoute(
           builder: (context) => SetSchedulePage(),
