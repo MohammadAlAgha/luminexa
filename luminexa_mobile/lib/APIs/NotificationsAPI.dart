@@ -6,7 +6,7 @@ class NotificationsAPIs {
     final body = {"systemId": systemId};
     try {
       final response = await sendRequest(
-          route: "/schedules/getSchedules",
+          route: "/notifications/getSystemNotifications",
           method: RequestMethods.GET,
           load: body);
       return response;
@@ -23,7 +23,7 @@ class NotificationsAPIs {
     };
     try {
       final response = await sendRequest(
-          route: "/schedules/createNotifications",
+          route: "/notifications/createNotifications",
           method: RequestMethods.POST,
           load: body);
       return response;
