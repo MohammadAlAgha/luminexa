@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class toggleListTile extends StatefulWidget {
   final String title;
   final String? subTitle;
-  bool status;
+  String status;
 
   toggleListTile({
     super.key,
@@ -41,11 +41,17 @@ class _toggleTileListState extends State<toggleListTile> {
             widget.subTitle ?? "Edit Mode",
             style: Theme.of(context).textTheme.labelLarge,
           ),
-          trailing: Switch(
-            activeColor: Theme.of(context).canvasColor,
-            value: widget.status,
-            onChanged: setStatus,
-          ),
+          trailing: widget.status == "on"
+              ? Switch(
+                  activeColor: Theme.of(context).canvasColor,
+                  value: true,
+                  onChanged: setStatus,
+                )
+              : Switch(
+                  activeColor: Theme.of(context).canvasColor,
+                  value: false,
+                  onChanged: setStatus,
+                ),
         ));
   }
 }
