@@ -8,14 +8,11 @@ import 'package:luminexa_mobile/screens/SetModePage.dart';
 import 'package:luminexa_mobile/screens/SetSchedulePage.dart';
 import 'package:luminexa_mobile/screens/SignUp.dart';
 import 'package:luminexa_mobile/screens/editLedPage.dart';
-import 'package:luminexa_mobile/screens/ledPage.dart';
-import 'package:luminexa_mobile/screens/modePage.dart';
 import 'package:luminexa_mobile/screens/notificationPage.dart';
 import 'package:luminexa_mobile/screens/settingsPage.dart';
 import 'package:luminexa_mobile/screens/systemPage.dart';
 import 'package:luminexa_mobile/screens/viewUsersPage.dart';
 import 'package:luminexa_mobile/screens/weatherPage.dart';
-import 'package:luminexa_mobile/widgets/barChart/consumptionGraph.dart';
 
 class RouteManager {
   static const String login = '/login';
