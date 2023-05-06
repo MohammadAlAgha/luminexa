@@ -45,6 +45,7 @@ class _LedsPageState extends State<LedsPage> {
                 itemCount: _leds.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ledListOption(
+                      led: _leds[index],
                       ledName: _leds[index].ledName,
                       status: _leds[index].ledStatus);
                 },
