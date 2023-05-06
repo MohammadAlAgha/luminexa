@@ -1,6 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:luminexa_mobile/configs/local_storage_config.dart';
 import 'package:luminexa_mobile/enums/localTypes.dart';
+import 'package:luminexa_mobile/models/ledModel.dart';
+import 'package:luminexa_mobile/models/modeModel.dart';
+import 'package:luminexa_mobile/models/notificationModel.dart';
+import 'package:luminexa_mobile/models/scheduleModel.dart';
+import 'package:luminexa_mobile/models/systemModel.dart';
 import 'package:luminexa_mobile/providers/LedsProvider.dart';
 import 'package:luminexa_mobile/providers/NotificationsProvider.dart';
 import 'package:luminexa_mobile/providers/SchedulesProvider.dart';
@@ -61,14 +66,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ModesProvider(modes: [])),
         ChangeNotifierProvider(
-            create: (context) => SchedulesProvider(schedules: [])),
+            create: (context) => ModesProvider(modes: <Mode>[])),
         ChangeNotifierProvider(
-            create: (context) => SystemsProvider(systems: [])),
-        ChangeNotifierProvider(create: (context) => LedProvider(leds: [])),
+            create: (context) => SchedulesProvider(schedules: <Schedule>[])),
         ChangeNotifierProvider(
-            create: (context) => NotificationsProvider(notifications: [])),
+            create: (context) => SystemsProvider(systems: <System>[])),
+        ChangeNotifierProvider(
+            create: (context) => LedsProvider(leds: <Led>[])),
+        ChangeNotifierProvider(
+            create: (context) =>
+                NotificationsProvider(notifications: <Notifications>[])),
       ],
       child: MaterialApp(
         theme: ThemeData(
