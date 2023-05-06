@@ -31,6 +31,7 @@ class SystemsProvider extends ChangeNotifier {
 
   System fromJSON(Map json) {
     final System newSystem = System(
+      id: json["_id"],
       hosts: [],
       users: [],
       systemName: json["systemName"],

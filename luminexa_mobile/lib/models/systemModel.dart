@@ -4,6 +4,7 @@ import 'package:luminexa_mobile/models/scheduleModel.dart';
 import 'package:luminexa_mobile/models/userModel.dart';
 
 class System {
+  final String id;
   final List<User> hosts;
   final List<User> users;
   final String systemName;
@@ -13,6 +14,7 @@ class System {
   final List<Schedule> schedule;
 
   System({
+    required this.id,
     required this.hosts,
     required this.users,
     required this.systemName,
