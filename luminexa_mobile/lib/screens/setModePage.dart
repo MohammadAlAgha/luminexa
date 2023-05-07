@@ -72,6 +72,7 @@ class _SetModePageState extends State<SetModePage> {
                 itemCount: _leds.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ledListOption(
+                      system: widget.systemId,
                       led: _leds[index],
                       ledName: _leds[index].ledName,
                       status: _leds[index].ledStatus);
