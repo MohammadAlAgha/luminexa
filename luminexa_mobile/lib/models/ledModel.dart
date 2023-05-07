@@ -3,9 +3,9 @@ import 'package:luminexa_mobile/models/historyModel.dart';
 class Led {
   final String id;
   final String ledName;
-  final int intensity;
-  final String ledStatus;
-  final String color;
+  int intensity;
+  String ledStatus;
+  String color;
   final List<History> histrory;
 
   Led({
