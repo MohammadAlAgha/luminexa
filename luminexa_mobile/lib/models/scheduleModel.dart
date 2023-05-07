@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/models/ledModel.dart';
+import 'package:luminexa_mobile/models/repeatModel.dart';
 
 class Schedule {
   final String id;
   final String scheduleTitle;
-  final String timeStart;
-  final String timeEnd;
-  final List<String> repeat;
+  final DateTime timeStart;
+  final DateTime timeEnd;
+  final List<Repeat> repeat;
   final List<Led> leds;
   final String scheduleStatus;
 

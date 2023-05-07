@@ -9,10 +9,12 @@ import 'package:provider/provider.dart';
 class EditLeds extends StatefulWidget {
   final Led led;
   final String systemId;
+  final config;
   EditLeds({
     super.key,
     required this.led,
     required this.systemId,
+    required this.config,
   });
 
   @override
@@ -21,6 +23,26 @@ class EditLeds extends StatefulWidget {
 
 class _EditLedsState extends State<EditLeds> {
   String dropDownSelected = "standard";
+
+  void _onTap() {
+    widget.config
+        ? Provider.of<LedsProvider>(context, listen: false).editConfigs(
+            widget.systemId,
+            widget.led.id,
+            widget.led.ledStatus,
+            widget.led.intensity,
+            widget.led.color,
+          )
+        : Provider.of<LedsProvider>(context, listen: false).editLed(
+            widget.systemId,
+            widget.led.id,
+            widget.led.ledStatus,
+            widget.led.intensity,
+            widget.led.color,
+          );
+
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,14 +201,7 @@ class _EditLedsState extends State<EditLeds> {
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 60),
               child: styledButton(
                 innerText: "Save Changes",
-                onTap: () =>
-                    Provider.of<LedsProvider>(context, listen: false).editLed(
-                  widget.systemId,
-                  widget.led.id,
-                  widget.led.ledStatus,
-                  widget.led.intensity,
-                  widget.led.color,
-                ),
+                onTap: _onTap,
               ),
             )
           ]),

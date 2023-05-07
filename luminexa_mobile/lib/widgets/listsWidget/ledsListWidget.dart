@@ -7,6 +7,7 @@ class ledListOption extends StatelessWidget {
   final String ledName;
   final String status;
   final String system;
+  final bool config;
   final Led led;
 
   const ledListOption({
@@ -15,6 +16,7 @@ class ledListOption extends StatelessWidget {
     required this.status,
     required this.led,
     required this.system,
+    required this.config,
   });
 
   @override
@@ -22,7 +24,7 @@ class ledListOption extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(RouteManager.editLedPage,
-            arguments: {"led": led, "systemId": system});
+            arguments: {"led": led, "systemId": system, "config": config});
       },
       child: Container(
         height: 75,

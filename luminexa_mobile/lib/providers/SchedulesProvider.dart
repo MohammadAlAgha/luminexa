@@ -24,11 +24,21 @@ class SchedulesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future addSchedule(
-      systemId, scheduleTitle, timeStart, timeEnd, repeat) async {
+  Future addSchedule(String systemId, String scheduleTitle, DateTime timeStart,
+      DateTime timeEnd, List<String> repeat) async {
     final response = await ScheduleAPIs.addSchedule(
         systemId, scheduleTitle, timeStart, timeEnd, repeat);
-    return response;
+
+    List<Schedule> _schedules = [];
+
+    response.data["schedules"].forEach((map) {
+      final Schedule schedule = fromJSON(map);
+      _schedules.add(schedule);
+    });
+
+    schedules = _schedules;
+
+    notifyListeners();
   }
 
   Future toggleSchedule(systemId, scheduleId) async {
@@ -48,15 +58,15 @@ class SchedulesProvider extends ChangeNotifier {
     return response;
   }
 
-  Schedule fromJSON(Map josn) {
+  Schedule fromJSON(Map json) {
     final newSchedule = Schedule(
-        id: josn["_id"],
-        scheduleTitle: josn["scheduleTitle"],
-        timeStart: josn["timeStart"],
-        timeEnd: josn["timeEnd"],
+        id: json["_id"],
+        scheduleTitle: json["scheduleTitle"],
+        timeStart: DateTime.parse(json["timeStart"]),
+        timeEnd: DateTime.parse(json["timeEnd"]),
         repeat: [],
         leds: [],
-        scheduleStatus: josn["scheduleStatus"]);
+        scheduleStatus: json["scheduleStatus"]);
     return newSchedule;
   }
 }

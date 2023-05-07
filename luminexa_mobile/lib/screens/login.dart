@@ -1,11 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/models/brightMode.dart';
+import 'package:luminexa_mobile/providers/ThemeProvider.dart';
 import 'package:luminexa_mobile/remoteDataSource/authDataSource.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
+import 'package:provider/provider.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});

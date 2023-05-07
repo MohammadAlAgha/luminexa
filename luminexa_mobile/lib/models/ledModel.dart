@@ -16,4 +16,21 @@ class Led {
     required this.color,
     required this.histrory,
   });
+
+  Led copyWith({
+    String? ledName,
+    int? intensity,
+    String? ledStatus,
+    String? color,
+    List<History>? histrory,
+  }) {
+    return Led(
+      id: this.id,
+      ledName: ledName ?? this.ledName,
+      intensity: intensity ?? this.intensity,
+      ledStatus: ledStatus ?? this.ledStatus,
+      color: color ?? this.color,
+      histrory: histrory ?? this.histrory,
+    );
+  }
 }

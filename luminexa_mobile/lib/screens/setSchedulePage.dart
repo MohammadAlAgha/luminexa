@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/helpers/timeHelpers.dart';
 import 'package:luminexa_mobile/models/ledModel.dart';
+import 'package:luminexa_mobile/models/modeModel.dart';
+import 'package:luminexa_mobile/models/scheduleModel.dart';
+import 'package:luminexa_mobile/models/weekDayModel.dart';
 import 'package:luminexa_mobile/providers/LedsProvider.dart';
+import 'package:luminexa_mobile/providers/ModesProvider.dart';
+import 'package:luminexa_mobile/providers/SchedulesProvider.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
@@ -20,6 +26,16 @@ class SetSchedulePage extends StatefulWidget {
 }
 
 class _SetSchedulePageState extends State<SetSchedulePage> {
+  final List<WeekDay> weekdays = [
+    WeekDay(holder: "Mon", value: "monday"),
+    WeekDay(holder: "Tue", value: "tuesday"),
+    WeekDay(holder: "Wed", value: "wednesday"),
+    WeekDay(holder: "Thu", value: "thursday"),
+    WeekDay(holder: "Fri", value: "friday"),
+    WeekDay(holder: "Sat", value: "saturday"),
+    WeekDay(holder: "Sun", value: "sunday"),
+  ];
+
   Future<void> fetchLeds() async {
     await Provider.of<LedsProvider>(context, listen: false)
         .getLeds(widget.systemId);
@@ -32,25 +48,48 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
   }
 
   final scheduleName = TextEditingController();
-  TimeOfDay timeToStart = TimeOfDay(hour: 12, minute: 0);
-  TimeOfDay timeToEnd = TimeOfDay(hour: 1, minute: 0);
 
-  void showTimeStart() {
-    showTimePicker(context: context, initialTime: TimeOfDay.now())
-        .then((value) {
+  DateTime timeToStart = DateTime.now();
+  DateTime timeToEnd = DateTime.now().add(Duration(hours: 1));
+
+  List<String> days = [];
+
+  addDay(String day) {
+    if (!days.contains(day)) {
+      days.add(day);
+    } else {
+      days.remove(day);
+    }
+    print(days);
+  }
+
+  void showTimePopup(String time) {
+    showTimePicker(
+      context: context,
+      initialTime:
+          TimeOfDay(hour: timeToStart.hour, minute: timeToStart.minute),
+    ).then((value) {
+      String date = getStringTimeOfDay(value);
       setState(() {
-        timeToStart = value!;
+        if (time == "start")
+          timeToStart = DateTime.parse(date);
+        else
+          timeToEnd = DateTime.parse(date);
       });
     });
   }
 
-  void showTimeEnd() {
-    showTimePicker(context: context, initialTime: TimeOfDay.now())
-        .then((value) {
-      setState(() {
-        timeToEnd = value!;
-      });
+  List<Widget> _buildWeekDays() {
+    List<Widget> tiles = [];
+
+    weekdays.forEach((weekDay) {
+      tiles.add(
+        customeCheckBox(
+            day: weekDay.holder, onTap: () => addDay(weekDay.value)),
+      );
     });
+
+    return tiles;
   }
 
   @override
@@ -85,7 +124,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                 ),
                 titleWidget(title: "Time"),
                 Text(
-                  timeToStart.format(context),
+                  getTimeFormat(timeToStart),
                   style: TextStyle(
                       fontFamily: "ralewayBold",
                       fontSize: 25,
@@ -95,11 +134,11 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                   padding: const EdgeInsets.all(25),
                   child: styledButton(
                     innerText: "Pick a time to start",
-                    onTap: showTimeStart,
+                    onTap: () => showTimePopup("start"),
                   ),
                 ),
                 Text(
-                  timeToEnd.format(context),
+                  getTimeFormat(timeToEnd),
                   style: TextStyle(
                       fontFamily: "ralewayBold",
                       fontSize: 25,
@@ -109,7 +148,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                   padding: const EdgeInsets.all(25),
                   child: styledButton(
                     innerText: "Pick a time to end",
-                    onTap: showTimeEnd,
+                    onTap: () => showTimePopup("end"),
                   ),
                 ),
                 SizedBox(
@@ -121,15 +160,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      customeCheckBox(day: "Mon", isPressed: false),
-                      customeCheckBox(day: "Tue", isPressed: false),
-                      customeCheckBox(day: "Wed", isPressed: false),
-                      customeCheckBox(day: "Thu", isPressed: false),
-                      customeCheckBox(day: "Fri", isPressed: false),
-                      customeCheckBox(day: "Sat", isPressed: false),
-                      customeCheckBox(day: "Sun", isPressed: false),
-                    ],
+                    children: _buildWeekDays(),
                   ),
                 ),
                 SizedBox(
@@ -145,6 +176,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                   itemCount: _leds.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ledListOption(
+                        config: true,
                         system: widget.systemId,
                         led: _leds[index],
                         ledName: _leds[index].ledName,
@@ -155,7 +187,12 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                   padding: const EdgeInsets.all(25),
                   child: styledButton(
                     innerText: "Set Schedule",
-                    onTap: () {},
+                    onTap: () {
+                      Provider.of<SchedulesProvider>(context, listen: false)
+                          .addSchedule(widget.systemId, scheduleName.text,
+                              timeToStart, timeToEnd, days);
+                      Navigator.of(context).pop(context);
+                    },
                   ),
                 )
               ],

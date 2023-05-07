@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/helpers/timeHelpers.dart';
 import 'package:luminexa_mobile/models/scheduleModel.dart';
 import 'package:luminexa_mobile/providers/SchedulesProvider.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
@@ -58,7 +59,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         return toggleListTile(
                           title: _schedules[index].scheduleTitle,
                           subTitle:
-                              '${_schedules[index].timeStart.toString()}, ${_schedules[index].timeEnd.toString()}',
+                              '${getTimeFormat(_schedules[index].timeStart)} - ${getTimeFormat(_schedules[index].timeEnd)}',
                           status: _schedules[index].scheduleTitle,
                         );
                       },

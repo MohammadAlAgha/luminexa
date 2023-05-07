@@ -32,13 +32,15 @@ class LedsProvider extends ChangeNotifier {
     final response =
         await LedsAPIs.editLed(systemId, ledId, ledStatus, intensity, color);
 
-    List<Led> _led = [];
-
-    response.data.forEach((map) {
-      final Led led = fromJSON(map);
-      _led.add(led);
-    });
-    leds = _led;
+    for (int i = 0; i < leds.length; i++) {
+      if (leds[i].id == ledId) {
+        leds[i] = leds[i].copyWith(
+          color: color,
+          intensity: intensity,
+          ledStatus: ledStatus,
+        );
+      }
+    }
 
     notifyListeners();
   }

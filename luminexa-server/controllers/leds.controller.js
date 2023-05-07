@@ -83,7 +83,7 @@ exports.editLed = async (req, res) => {
 
   await system.save();
 
-  res.json(config);
+  res.json(led);
 };
 
 exports.getActiveLeds = async (req, res) => {

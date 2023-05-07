@@ -1,5 +1,6 @@
 import 'package:luminexa_mobile/configs/remoteConfig.dart';
 import 'package:luminexa_mobile/enums/requestMethods.dart';
+import 'package:luminexa_mobile/models/repeatModel.dart';
 
 class ScheduleAPIs {
   static Future getSchedules(systemId) async {
@@ -16,20 +17,21 @@ class ScheduleAPIs {
     }
   }
 
-  static Future addSchedule(
-      systemId, scheduleTitle, timeStart, timeEnd, repeat) async {
+  static Future addSchedule(String systemId, String scheduleTitle,
+      DateTime timeStart, DateTime timeEnd, List<String> repeat) async {
     try {
       final body = {
         "systemId": systemId,
         "scheduleTitle": scheduleTitle,
-        "timeStart": timeStart,
-        "timeEnd": timeEnd,
+        "timeStart": timeStart.toIso8601String(),
+        "timeEnd": timeEnd.toIso8601String(),
         "repeat": repeat
       };
       final response = await sendRequest(
-          route: "schedules/addSchedule",
-          method: RequestMethods.POST,
-          load: body);
+        route: "/schedules/addSchedule",
+        method: RequestMethods.POST,
+        load: body,
+      );
       return response;
     } catch (e) {
       rethrow;

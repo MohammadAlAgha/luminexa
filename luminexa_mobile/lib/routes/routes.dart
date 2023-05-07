@@ -42,6 +42,14 @@ class RouteManager {
   static const String viewUsersPage = '/viewUsersPage';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    dynamic _args(String argument) {
+      if ((settings.arguments as Map)[argument] != null) {
+        return (settings.arguments as Map)[argument];
+      } else {
+        throw Exception("No argument found");
+      }
+    }
+
     switch (settings.name) {
       case login:
         return MaterialPageRoute(
@@ -74,6 +82,7 @@ class RouteManager {
           builder: (context) => EditLeds(
             led: (settings.arguments as Map)["led"],
             systemId: (settings.arguments as Map)["systemId"],
+            config: _args("config"),
           ),
         );
       //LEDs Routes

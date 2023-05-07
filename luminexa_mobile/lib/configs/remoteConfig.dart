@@ -5,7 +5,7 @@ import 'package:luminexa_mobile/enums/requestMethods.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final options = BaseOptions(
-  baseUrl: "http://192.168.1.10:8000",
+  baseUrl: "http://192.168.0.106:8000",
   contentType: Headers.jsonContentType,
 );
 
