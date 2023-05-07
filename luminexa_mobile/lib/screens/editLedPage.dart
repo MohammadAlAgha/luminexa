@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/models/ledModel.dart';
+import 'package:luminexa_mobile/providers/LedsProvider.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
+import 'package:provider/provider.dart';
 
 class EditLeds extends StatefulWidget {
   final Led led;
+  final String systemId;
   EditLeds({
     super.key,
     required this.led,
+    required this.systemId,
   });
 
   @override
@@ -16,9 +20,7 @@ class EditLeds extends StatefulWidget {
 }
 
 class _EditLedsState extends State<EditLeds> {
-  double sliderValue = 100;
-  bool isOn = true;
-  String dropDownSelected = "Standard";
+  String dropDownSelected = "standard";
 
   @override
   Widget build(BuildContext context) {
@@ -46,23 +48,27 @@ class _EditLedsState extends State<EditLeds> {
                     ? Switch(
                         value: true,
                         onChanged: (value) {
-                          sliderValue == 0
+                          widget.led.intensity == 0
                               ? setState(() {
-                                  isOn = false;
+                                  widget.led.ledStatus = "off";
                                 })
-                              : setState(() {
-                                  isOn = value;
-                                });
+                              : value == true
+                                  ? setState(() {
+                                      widget.led.ledStatus = "on";
+                                    })
+                                  : setState(() {
+                                      widget.led.ledStatus = "off";
+                                    });
                         })
                     : Switch(
                         value: false,
                         onChanged: (value) {
-                          sliderValue == 0
+                          widget.led.intensity == 0
                               ? setState(() {
-                                  isOn = false;
+                                  widget.led.ledStatus = "off";
                                 })
                               : setState(() {
-                                  isOn = value;
+                                  widget.led.ledStatus = "on";
                                 });
                         }),
                 Text(
@@ -79,16 +85,16 @@ class _EditLedsState extends State<EditLeds> {
               height: 10,
             ),
             Text(
-              sliderValue.toStringAsFixed(0),
+              widget.led.intensity.toString(),
               style: Theme.of(context).textTheme.titleMedium,
             ),
             Slider(
                 min: 0,
                 max: 100,
-                value: sliderValue,
+                value: widget.led.intensity.toDouble(),
                 onChanged: (value) {
                   setState(() {
-                    sliderValue = value;
+                    widget.led.intensity = value.toInt();
                   });
                 }),
             SizedBox(
@@ -99,7 +105,7 @@ class _EditLedsState extends State<EditLeds> {
               height: 10,
             ),
             DropdownButton<String>(
-                value: dropDownSelected,
+                value: widget.led.color,
                 borderRadius: BorderRadius.circular(25),
                 icon: Icon(
                   Icons.arrow_drop_down_circle_sharp,
@@ -116,54 +122,54 @@ class _EditLedsState extends State<EditLeds> {
                       "Standard",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    value: "Standard",
+                    value: dropDownSelected,
                   ),
                   DropdownMenuItem(
                     child: Text(
                       "Red",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    value: "Red",
+                    value: "red",
                   ),
                   DropdownMenuItem(
                     child: Text(
                       "Blue",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    value: "Blue",
+                    value: "blue",
                   ),
                   DropdownMenuItem(
                     child: Text(
                       "Green",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    value: "Green",
+                    value: "green",
                   ),
                   DropdownMenuItem(
                     child: Text(
                       "Yellow",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    value: "Yellow",
+                    value: "yellow",
                   ),
                   DropdownMenuItem(
                     child: Text(
                       "Purple",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    value: "Purple",
+                    value: "purple",
                   ),
                   DropdownMenuItem(
                     child: Text(
                       "Orange",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    value: "Orange",
+                    value: "orange",
                   ),
                 ],
                 onChanged: (String? value) {
                   setState(() {
-                    dropDownSelected = value!;
+                    widget.led.color = value!;
                   });
                 }),
             SizedBox(
@@ -173,7 +179,14 @@ class _EditLedsState extends State<EditLeds> {
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 60),
               child: styledButton(
                 innerText: "Save Changes",
-                onTap: () {},
+                onTap: () =>
+                    Provider.of<LedsProvider>(context, listen: false).editLed(
+                  widget.systemId,
+                  widget.led.id,
+                  widget.led.ledStatus,
+                  widget.led.intensity,
+                  widget.led.color,
+                ),
               ),
             )
           ]),
