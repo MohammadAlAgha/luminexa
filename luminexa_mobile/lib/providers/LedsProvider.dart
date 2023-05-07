@@ -31,13 +31,31 @@ class LedsProvider extends ChangeNotifier {
   Future editLed(systemId, ledId, ledStatus, intensity, color) async {
     final response =
         await LedsAPIs.editLed(systemId, ledId, ledStatus, intensity, color);
-    return response;
+
+    List<Led> _led = [];
+
+    response.data.forEach((map) {
+      final Led led = fromJSON(map);
+      _led.add(led);
+    });
+    leds = _led;
+
+    notifyListeners();
   }
 
-  Future editConfigs(systemId, ledId, ledStatus, intensity, color) async {
+  Future<void> editConfigs(systemId, ledId, ledStatus, intensity, color) async {
     final response = await LedsAPIs.editConfigs(
         systemId, ledId, ledStatus, intensity, color);
-    return response;
+
+    List<Led> _led = [];
+
+    response.data.forEach((map) {
+      final Led led = fromJSON(map);
+      _led.add(led);
+    });
+    leds = _led;
+
+    notifyListeners();
   }
 
   Future getActiveLeds(systemId) async {
