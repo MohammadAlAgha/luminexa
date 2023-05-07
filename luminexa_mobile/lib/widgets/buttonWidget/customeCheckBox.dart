@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class customeCheckBox extends StatefulWidget {
   final String day;
-  final bool isPressed;
+  bool isPressed;
+  final Function() onTap;
 
-  const customeCheckBox({
+  customeCheckBox({
     super.key,
     required this.day,
-    required this.isPressed,
+    this.isPressed = false,
+    required this.onTap,
   });
 
   @override
@@ -15,15 +17,18 @@ class customeCheckBox extends StatefulWidget {
 }
 
 class _customeCheckBoxState extends State<customeCheckBox> {
+  void changeState() {
+    setState(() {
+      widget.onTap();
+      widget.isPressed = !widget.isPressed;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return !widget.isPressed
         ? GestureDetector(
-            onTap: () {
-              setState(() {
-                widget.isPressed != widget.isPressed;
-              });
-            },
+            onTap: changeState,
             child: Container(
               height: 45,
               width: 45,
@@ -48,11 +53,7 @@ class _customeCheckBoxState extends State<customeCheckBox> {
             ),
           )
         : GestureDetector(
-            onTap: () {
-              setState(() {
-                widget.isPressed != widget.isPressed;
-              });
-            },
+            onTap: changeState,
             child: Container(
               height: 45,
               width: 45,
