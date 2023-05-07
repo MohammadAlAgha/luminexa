@@ -73,6 +73,7 @@ class RouteManager {
         return MaterialPageRoute(
           builder: (context) => EditLeds(
             led: (settings.arguments as Map)["led"],
+            systemId: (settings.arguments as Map)["systemId"],
           ),
         );
       //LEDs Routes
