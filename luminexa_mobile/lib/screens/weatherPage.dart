@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/helpers/timeHelpers.dart';
 import 'package:luminexa_mobile/providers/WeatherProvider.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
@@ -64,7 +65,7 @@ class _WeatherPageState extends State<WeatherPage> {
                   ],
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 Container(
                   height: 120,
@@ -96,6 +97,27 @@ class _WeatherPageState extends State<WeatherPage> {
                         )
                       ]),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).canvasColor,
+                      borderRadius: BorderRadius.circular(25)),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          " Sun Rise: ${getTimeFormat(value.sunRise)}",
+                          style: TextStyle(fontSize: 17, color: Colors.black),
+                        ),
+                        Text(
+                          "Sun Set: ${getTimeFormat(value.sunSet)}",
+                          style: TextStyle(fontSize: 17, color: Colors.black),
+                        ),
+                      ]),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Container(
@@ -103,7 +125,7 @@ class _WeatherPageState extends State<WeatherPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                            width: 100,
+                            width: 110,
                             decoration: BoxDecoration(
                                 color: Theme.of(context).canvasColor,
                                 borderRadius: BorderRadius.circular(25)),
@@ -130,34 +152,7 @@ class _WeatherPageState extends State<WeatherPage> {
                               ),
                             )),
                         Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).canvasColor,
-                                borderRadius: BorderRadius.circular(25)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Column(
-                                children: [
-                                  Icon(
-                                    Icons.water,
-                                    size: 26,
-                                  ),
-                                  Text(
-                                    "Water Levels",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
-                                  ),
-                                  Text(
-                                    "1.68%",
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
-                                  )
-                                ],
-                              ),
-                            )),
-                        Container(
-                            width: 100,
+                            width: 110,
                             decoration: BoxDecoration(
                                 color: Theme.of(context).canvasColor,
                                 borderRadius: BorderRadius.circular(25)),
@@ -188,7 +183,7 @@ class _WeatherPageState extends State<WeatherPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 60,
                 ),
                 Text(
                   "Note",
@@ -200,19 +195,6 @@ class _WeatherPageState extends State<WeatherPage> {
                 Text(
                   "The weather seems sunny outside,the LEDs can be turned off",
                   style: Theme.of(context).textTheme.displaySmall,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 50, bottom: 20),
-                  child: styledButton(
-                    innerText: "Edit LEDs",
-                    onTap: () {
-                      Navigator.of(context).pushNamed(RouteManager.systemPage);
-                    },
-                  ),
-                ),
-                styledButton(
-                  innerText: "Turn off LEDs",
-                  onTap: () {},
                 ),
               ],
             ),

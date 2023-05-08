@@ -82,8 +82,13 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
             create: (context) => ThemeProvider(isDark: _isDark)),
         ChangeNotifierProvider(
-            create: (context) =>
-                WeatherProvider(temp: "", wind: "", status: "", humidity: "")),
+            create: (context) => WeatherProvider(
+                temp: "",
+                wind: "",
+                status: "",
+                humidity: "",
+                sunRise: DateTime.now(),
+                sunSet: DateTime.now())),
       ],
       child: Consumer<ThemeProvider>(
         builder: (context, value, child) => MaterialApp(
