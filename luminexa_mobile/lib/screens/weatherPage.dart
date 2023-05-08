@@ -82,13 +82,24 @@ class _WeatherPageState extends State<WeatherPage> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.sunny,
-                              size: 35,
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
+                            value.status == "Clouds"
+                                ? Icon(
+                                    Icons.cloud,
+                                    size: 35,
+                                  )
+                                : value.status == "Sunny"
+                                    ? Icon(
+                                        Icons.wb_sunny_rounded,
+                                        size: 35,
+                                      )
+                                    : value.status == "Rain"
+                                        ? Icon(
+                                            Icons.cloudy_snowing,
+                                            size: 35,
+                                          )
+                                        : SizedBox(
+                                            height: 8,
+                                          ),
                             Text(
                               value.status,
                               style: Theme.of(context).textTheme.bodySmall,
@@ -98,7 +109,7 @@ class _WeatherPageState extends State<WeatherPage> {
                       ]),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Container(
                   height: 100,
@@ -126,6 +137,7 @@ class _WeatherPageState extends State<WeatherPage> {
                       children: [
                         Container(
                             width: 110,
+                            height: 95,
                             decoration: BoxDecoration(
                                 color: Theme.of(context).canvasColor,
                                 borderRadius: BorderRadius.circular(25)),
@@ -153,6 +165,7 @@ class _WeatherPageState extends State<WeatherPage> {
                             )),
                         Container(
                             width: 110,
+                            height: 95,
                             decoration: BoxDecoration(
                                 color: Theme.of(context).canvasColor,
                                 borderRadius: BorderRadius.circular(25)),
@@ -192,10 +205,15 @@ class _WeatherPageState extends State<WeatherPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                  "The weather seems sunny outside,the LEDs can be turned off",
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
+                value.status == "Sunny"
+                    ? Text(
+                        "The weather seems sunny outside,the LEDs should be turned off",
+                        style: Theme.of(context).textTheme.displaySmall,
+                      )
+                    : Text(
+                        "The weather seems Cloudy outside,the LEDs should be turned on",
+                        style: Theme.of(context).textTheme.displaySmall,
+                      )
               ],
             ),
           )),
