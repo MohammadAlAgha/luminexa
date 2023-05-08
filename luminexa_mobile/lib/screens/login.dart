@@ -45,7 +45,20 @@ class _LogInState extends State<LogIn> {
                 SizedBox(
                   height: 40,
                 ),
-                SvgPicture.asset("images/Logo.svg"),
+                Container(
+                  width: 200,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset('images/Logo.svg'),
+                      ]),
+                ),
                 SizedBox(
                   height: 100,
                 ),
@@ -79,7 +92,7 @@ class _LogInState extends State<LogIn> {
                   ],
                 ),
                 SizedBox(
-                  height: 180,
+                  height: 165,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(25),
