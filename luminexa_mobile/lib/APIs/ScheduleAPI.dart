@@ -10,7 +10,7 @@ class ScheduleAPIs {
           route: "/schedules/getSchedules",
           method: RequestMethods.GET,
           load: body);
-
+      print(response);
       return response;
     } catch (e) {
       rethrow;
@@ -42,7 +42,7 @@ class ScheduleAPIs {
     final body = {"systemId": systemId, "scheduleId": scheduleId};
     try {
       final response = await sendRequest(
-          route: "schedules/toggleSchedule",
+          route: "/schedules/toggleSchedule",
           method: RequestMethods.PUT,
           load: body);
       return response;
@@ -63,7 +63,7 @@ class ScheduleAPIs {
     };
     try {
       final response = await sendRequest(
-          route: "schedules/updateSchedule",
+          route: "/schedules/updateSchedule",
           method: RequestMethods.PUT,
           load: body);
       return response;
@@ -76,7 +76,7 @@ class ScheduleAPIs {
     final body = {"systemId": systemId, "scheduleId": scheduleId};
     try {
       final response = await sendRequest(
-          route: "schedules/deleteSchedule",
+          route: "/schedules/deleteSchedule",
           method: RequestMethods.DELETE,
           load: body);
       return response;
