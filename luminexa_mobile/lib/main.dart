@@ -15,6 +15,8 @@ import 'package:luminexa_mobile/providers/SystemsProvider.dart';
 import 'package:luminexa_mobile/providers/ModesProvider.dart';
 import 'package:luminexa_mobile/providers/ThemeProvider.dart';
 import 'package:luminexa_mobile/providers/UserProvider.dart';
+import 'package:luminexa_mobile/providers/WeatherProvider.dart';
+import 'package:luminexa_mobile/screens/WeatherPage.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
@@ -79,12 +81,15 @@ class _MyAppState extends State<MyApp> {
                 NotificationsProvider(notifications: <Notifications>[])),
         ChangeNotifierProvider(
             create: (context) => ThemeProvider(isDark: _isDark)),
+        ChangeNotifierProvider(
+            create: (context) =>
+                WeatherProvider(temp: "", wind: "", status: "", humidity: "")),
       ],
       child: Consumer<ThemeProvider>(
         builder: (context, value, child) => MaterialApp(
           theme: value.isDark ? CustomedTheme.dark : CustomedTheme.bright,
           debugShowCheckedModeBanner: false,
-          home: _isloggedIn ? LandingPage() : LogIn(),
+          home: _isloggedIn ? LandingPage() : WeatherPage(),
           onGenerateRoute: RouteManager.generateRoute,
         ),
       ),

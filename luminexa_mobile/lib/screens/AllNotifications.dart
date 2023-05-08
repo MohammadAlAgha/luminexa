@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/helpers/timeHelpers.dart';
 import 'package:luminexa_mobile/models/notificationModel.dart';
 import 'package:luminexa_mobile/providers/NotificationsProvider.dart';
-import 'package:luminexa_mobile/screens/notificationPage.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/notificationTile.dart';
 import 'package:provider/provider.dart';
