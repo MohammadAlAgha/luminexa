@@ -85,10 +85,10 @@ abstract class CustomedTheme {
 
   static final ThemeData dark = ThemeData(
     primarySwatch: createMaterialColor(
-      Color.fromARGB(255, 28, 60, 0),
+      Color.fromARGB(255, 63, 139, 0),
     ),
     canvasColor: Color.fromARGB(255, 63, 139, 0),
-    scaffoldBackgroundColor: Color.fromARGB(51, 51, 51, 51),
+    scaffoldBackgroundColor: Color.fromARGB(255, 27, 27, 27),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(
@@ -103,11 +103,11 @@ abstract class CustomedTheme {
       bodyLarge: TextStyle(
         fontFamily: "Raleway",
         fontSize: 24,
-        color: Colors.black,
+        color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
       bodyMedium: TextStyle(
-          color: Color.fromARGB(255, 188, 236, 147),
+          color: Color.fromARGB(255, 63, 139, 0),
           fontFamily: "Raleway",
           fontSize: 17,
           fontWeight: FontWeight.w600),
@@ -169,7 +169,7 @@ abstract class CustomedTheme {
       headlineLarge: TextStyle(
         fontSize: 12,
         fontFamily: "RalewayBold",
-        color: Color.fromARGB(255, 188, 236, 147),
+        color: Color.fromARGB(255, 63, 139, 0),
       ),
       headlineMedium: TextStyle(
           fontFamily: "RalewayBold", fontSize: 17, color: Colors.white),

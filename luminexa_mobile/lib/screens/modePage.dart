@@ -66,10 +66,11 @@ class _ModePageState extends State<ModePage> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                      Colors.white.withOpacity(0.5),
-                      Colors.white,
-                      Colors.white,
-                      Colors.white,
+                      Theme.of(context)
+                          .scaffoldBackgroundColor
+                          .withOpacity(0.8),
+                      Theme.of(context).scaffoldBackgroundColor,
+                      Theme.of(context).scaffoldBackgroundColor,
                     ])),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 10),

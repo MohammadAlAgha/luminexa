@@ -81,8 +81,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         colors: [
                           Theme.of(context)
                               .scaffoldBackgroundColor
-                              .withOpacity(0.6),
-                          Theme.of(context).scaffoldBackgroundColor,
+                              .withOpacity(0.8),
                           Theme.of(context).scaffoldBackgroundColor,
                           Theme.of(context).scaffoldBackgroundColor,
                         ]),

@@ -127,8 +127,10 @@ class _LandingPageState extends State<LandingPage> {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
+                          Theme.of(context)
+                              .scaffoldBackgroundColor
+                              .withOpacity(0.8),
                           Theme.of(context).scaffoldBackgroundColor,
-                          // .withOpacity(0.5),
                           Theme.of(context).scaffoldBackgroundColor,
                         ])),
                     padding: const EdgeInsets.only(

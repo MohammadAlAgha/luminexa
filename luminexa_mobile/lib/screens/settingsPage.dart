@@ -12,17 +12,10 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   bool notificationStatus = true;
-  bool DarkModeStatus = true;
-  bool EnergyStatus = true;
+  bool EnergyStatus = false;
   void setNotificationStatus(value) {
     setState(() {
       notificationStatus = value;
-    });
-  }
-
-  void setDarkModeStatus(value) {
-    setState(() {
-      DarkModeStatus = value;
     });
   }
 
