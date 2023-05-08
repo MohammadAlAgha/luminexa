@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 String getTimeFormat(DateTime time) {
-  return "${time.hour}:${time.minute == 0 ? "00" : time.minute}";
+  return "${time.hour}:${time.minute == 0 ? "00" : time.minute < 10 ? "0${time.minute}" : time.minute}";
 }
 
 String getStringTimeOfDay(TimeOfDay? time) {
