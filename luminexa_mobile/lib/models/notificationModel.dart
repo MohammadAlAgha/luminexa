@@ -1,8 +1,6 @@
-import 'package:luminexa_mobile/models/systemModel.dart';
-
 class Notifications {
   final String id;
-  final String time;
+  final DateTime time;
   final String system;
   final String description;
 
