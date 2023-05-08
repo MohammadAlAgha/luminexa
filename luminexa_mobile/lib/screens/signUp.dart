@@ -30,6 +30,8 @@ class _SignUpState extends State<SignUp> {
 
     try {
       await AuthDataSource.register(userName, email, password, confirmPassword);
+
+      Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
     } catch (e) {
       print(e);
     }
