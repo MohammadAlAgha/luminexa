@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:luminexa_mobile/models/brightMode.dart';
+import 'package:luminexa_mobile/models/themesModel.dart';
 import 'package:luminexa_mobile/providers/ThemeProvider.dart';
 import 'package:luminexa_mobile/remoteDataSource/authDataSource.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
@@ -59,12 +59,16 @@ class _LogInState extends State<LogIn> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             sytledTextField(
+                              decoration:
+                                  Theme.of(context).inputDecorationTheme,
                               controller: emailController,
                               hintText: "Email",
                               label: "Email",
                               isPass: false,
                             ),
                             sytledTextField(
+                              decoration:
+                                  Theme.of(context).inputDecorationTheme,
                               controller: passwordController,
                               hintText: "Password",
                               label: "Password",
