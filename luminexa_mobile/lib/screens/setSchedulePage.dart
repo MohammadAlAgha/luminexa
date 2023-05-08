@@ -125,10 +125,7 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                 titleWidget(title: "Time"),
                 Text(
                   getTimeFormat(timeToStart),
-                  style: TextStyle(
-                      fontFamily: "ralewayBold",
-                      fontSize: 25,
-                      color: Colors.black),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(25),
@@ -137,12 +134,12 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                     onTap: () => showTimePopup("start"),
                   ),
                 ),
+                SizedBox(
+                  height: 30,
+                ),
                 Text(
                   getTimeFormat(timeToEnd),
-                  style: TextStyle(
-                      fontFamily: "ralewayBold",
-                      fontSize: 25,
-                      color: Colors.black),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(25),
