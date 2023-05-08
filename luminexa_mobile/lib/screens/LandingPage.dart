@@ -20,7 +20,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   final List leds = [3, 2, 5];
 
-  final newSystem = TextEditingController();
+  final TextEditingController newSystem = TextEditingController();
 
   Future<void> fetchSystems() async {
     await Provider.of<SystemsProvider>(context, listen: false).getAllSystems();
@@ -55,7 +55,11 @@ class _LandingPageState extends State<LandingPage> {
                 child: systemButton(
                   isPressed: false,
                   innerText: "Connect",
-                  onTap: () {},
+                  onTap: () {
+                    print(newSystem.text);
+                    Provider.of<SystemsProvider>(context, listen: false)
+                        .addSystem(newSystem.text);
+                  },
                 ),
               ),
               Padding(

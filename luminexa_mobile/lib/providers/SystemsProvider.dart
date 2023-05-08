@@ -24,9 +24,18 @@ class SystemsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<System>> addSystem(serialNumber) async {
+  Future<void> addSystem(serialNumber) async {
     final response = await SystemAPIs.addSystem(serialNumber);
-    return response;
+    List<System> _systems = [];
+
+    response.data.forEach((map) {
+      final System system = fromJSON(map);
+      _systems.add(system);
+    });
+
+    systems = _systems;
+
+    notifyListeners();
   }
 
   System fromJSON(Map json) {
