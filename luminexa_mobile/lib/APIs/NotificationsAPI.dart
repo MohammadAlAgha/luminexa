@@ -32,4 +32,16 @@ class NotificationsAPIs {
       rethrow;
     }
   }
+
+  static Future getNotifications() async {
+    try {
+      final response = await sendRequest(
+        route: "/notifications/getSystemNotifications",
+        method: RequestMethods.GET,
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

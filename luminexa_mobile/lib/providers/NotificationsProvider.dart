@@ -31,6 +31,12 @@ class NotificationsProvider extends ChangeNotifier {
     return response;
   }
 
+  Future getNotifications() async {
+    final response = await NotificationsAPIs.getNotifications();
+
+    return response;
+  }
+
   Notifications fromJSON(Map json) {
     final newNotification = Notifications(
         id: json['_id'],
