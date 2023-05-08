@@ -7,12 +7,14 @@ import 'package:luminexa_mobile/models/modeModel.dart';
 import 'package:luminexa_mobile/models/notificationModel.dart';
 import 'package:luminexa_mobile/models/scheduleModel.dart';
 import 'package:luminexa_mobile/models/systemModel.dart';
+import 'package:luminexa_mobile/models/userModel.dart';
 import 'package:luminexa_mobile/providers/LedsProvider.dart';
 import 'package:luminexa_mobile/providers/NotificationsProvider.dart';
 import 'package:luminexa_mobile/providers/SchedulesProvider.dart';
 import 'package:luminexa_mobile/providers/SystemsProvider.dart';
 import 'package:luminexa_mobile/providers/ModesProvider.dart';
 import 'package:luminexa_mobile/providers/ThemeProvider.dart';
+import 'package:luminexa_mobile/providers/UserProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
@@ -61,6 +63,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+            create: (context) =>
+                UserProvider(user: User(name: "", email: "", isHost: false))),
         ChangeNotifierProvider(
             create: (context) => ModesProvider(modes: <Mode>[])),
         ChangeNotifierProvider(

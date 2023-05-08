@@ -18,6 +18,7 @@ abstract class AuthDataSource {
       prefs.setString("access_token", response.data["token"]);
 
       print("Token saved");
+      return response;
     } catch (e) {
       rethrow;
     }
