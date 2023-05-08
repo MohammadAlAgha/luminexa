@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/drawerButtonWidget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class drawerWidget extends StatelessWidget {
   const drawerWidget({super.key});
@@ -60,9 +61,11 @@ class drawerWidget extends StatelessWidget {
               drawerButton(
                   innerText: "Log Out",
                   iconName: Icon(Icons.logout),
-                  onTap: () {
+                  onTap: () async {
                     Navigator.of(context).pop(context);
                     Navigator.of(context).popAndPushNamed(RouteManager.login);
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.clear();
                   }),
             ]),
           )
