@@ -20,6 +20,7 @@ class _ViewUsersState extends State<ViewUsers> {
         context: context,
         builder: (context) {
           return AlertDialog(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             title: Text("Add the user email"),
             content: styledTextField(
               decoration: Theme.of(context).inputDecorationTheme,

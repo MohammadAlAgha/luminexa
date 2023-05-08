@@ -39,6 +39,7 @@ class _LandingPageState extends State<LandingPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             title: Text("Add the system serial number"),
             content: styledTextField(
               decoration: Theme.of(context).inputDecorationTheme,
