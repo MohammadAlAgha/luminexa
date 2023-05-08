@@ -80,6 +80,7 @@ class _LandingPageState extends State<LandingPage> {
         List<System> _systems = value.systems;
 
         return Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           drawer: drawerWidget(),
           appBar: AppBar(
             title: Text(
@@ -126,17 +127,31 @@ class _LandingPageState extends State<LandingPage> {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
-                          Colors.white.withOpacity(0.5),
-                          Colors.white,
-                          Colors.white,
+                          Theme.of(context).scaffoldBackgroundColor,
+                          // .withOpacity(0.5),
+                          Theme.of(context).scaffoldBackgroundColor,
                         ])),
                     padding: const EdgeInsets.only(
-                        left: 25, right: 25, bottom: 20, top: 60),
+                        left: 25, right: 25, bottom: 20, top: 20),
                     width: MediaQuery.of(context).size.width,
-                    child: iconButton(
-                      innerText: "Add new system",
-                      iconName: Icon(Icons.add),
-                      onTap: addSystem,
+                    child: Column(
+                      children: [
+                        // if (true)
+                        //   iconButton(
+                        //     innerText: "View Consumption",
+                        //     iconName: Icon(Icons.add),
+                        //     onTap: addSystem,
+                        //   ),
+                        // if (true)
+                        //   SizedBox(
+                        //     height: 20,
+                        //   ),
+                        iconButton(
+                          innerText: "Add new system",
+                          iconName: Icon(Icons.add),
+                          onTap: addSystem,
+                        ),
+                      ],
                     ),
                   ),
                 )

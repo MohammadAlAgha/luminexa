@@ -38,7 +38,7 @@ class _LedsPageState extends State<LedsPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              titleWidget(title: "Edite LEDs in Kitchen"),
+              titleWidget(title: "Edite LEDs in ${widget.systemId}"),
               ListView.builder(
                 physics: ScrollPhysics(parent: null),
                 shrinkWrap: true,
