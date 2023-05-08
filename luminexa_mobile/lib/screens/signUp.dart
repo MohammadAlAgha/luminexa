@@ -15,7 +15,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  @override
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -37,6 +36,7 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -48,7 +48,20 @@ class _SignUpState extends State<SignUp> {
               SizedBox(
                 height: 40,
               ),
-              SvgPicture.asset('images/Logo.svg'),
+              Container(
+                width: 200,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset('images/Logo.svg'),
+                    ]),
+              ),
               SizedBox(
                 height: 50,
               ),
@@ -89,7 +102,7 @@ class _SignUpState extends State<SignUp> {
                     ]),
               ),
               SizedBox(
-                height: 55,
+                height: 45,
               ),
               Padding(
                 padding: const EdgeInsets.all(25),
