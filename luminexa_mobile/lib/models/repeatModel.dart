@@ -5,7 +5,7 @@ class Repeat {
     this.days,
   });
 
-  Repeat fromJSON(Map json) {
+  static Repeat fromJSON(Map json) {
     final Repeat day = Repeat(
       days: json["repeat"],
     );

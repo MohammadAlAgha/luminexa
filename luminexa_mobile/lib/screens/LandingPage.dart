@@ -18,7 +18,16 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  final List leds = [3, 2, 5];
+  int getActiveLeds(System _system) {
+    int activeLeds = 0;
+    _system.leds.forEach((led) {
+      if (led.ledStatus == "on") {
+        activeLeds++;
+      }
+    });
+    print(activeLeds);
+    return activeLeds;
+  }
 
   final TextEditingController newSystem = TextEditingController();
 
@@ -116,7 +125,8 @@ class _LandingPageState extends State<LandingPage> {
                         itemCount: _systems.length,
                         itemBuilder: (BuildContext context, int index) {
                           return listOption(
-                              system: _systems[index], activeLeds: leds[index]);
+                              system: _systems[index],
+                              activeLeds: getActiveLeds(_systems[index]));
                         },
                       ),
                       SizedBox(

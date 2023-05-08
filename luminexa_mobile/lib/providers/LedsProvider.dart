@@ -65,7 +65,7 @@ class LedsProvider extends ChangeNotifier {
     return response;
   }
 
-  Led fromJSON(Map json) {
+  static Led fromJSON(Map json) {
     final Led newLed = Led(
       id: json["_id"],
       ledName: json["ledName"],

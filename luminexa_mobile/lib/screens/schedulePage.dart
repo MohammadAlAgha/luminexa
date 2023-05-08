@@ -58,6 +58,9 @@ class _SchedulePageState extends State<SchedulePage> {
                       itemCount: _schedules.length,
                       itemBuilder: (BuildContext context, int index) {
                         return toggleListTile(
+                          condition: "schedule",
+                          id: _schedules[index].id,
+                          systemId: widget.systemId,
                           title: _schedules[index].scheduleTitle,
                           subTitle:
                               '${getTimeFormat(_schedules[index].timeStart)} - ${getTimeFormat(_schedules[index].timeEnd)}',

@@ -48,6 +48,9 @@ class _ModePageState extends State<ModePage> {
                       itemCount: _modes.length,
                       itemBuilder: (BuildContext context, int index) {
                         return toggleListTile(
+                          condition: "mode",
+                          id: _modes[index].id,
+                          systemId: widget.systemId,
                           title: _modes[index].modeName,
                           status: _modes[index].modeStatus,
                         );

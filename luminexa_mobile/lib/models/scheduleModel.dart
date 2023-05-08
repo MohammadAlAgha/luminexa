@@ -7,7 +7,7 @@ class Schedule {
   final String scheduleTitle;
   final DateTime timeStart;
   final DateTime timeEnd;
-  final List<Repeat> repeat;
+  final List<dynamic> repeat;
   final List<Led> leds;
   final String scheduleStatus;
 
