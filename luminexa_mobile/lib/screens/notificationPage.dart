@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/helpers/timeHelpers.dart';
 import 'package:luminexa_mobile/models/notificationModel.dart';
 import 'package:luminexa_mobile/providers/NotificationsProvider.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/notificationTile.dart';
@@ -42,8 +43,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     itemCount: _notifications.length,
                     itemBuilder: (BuildContext context, int index) {
                       return notificationTile(
-                          title: _notifications[index].description,
-                          time: _notifications[index].time);
+                        title: _notifications[index].description,
+                        time: '${getTimeFormat(_notifications[index].time)}',
+                      );
                     })
               ],
             ),

@@ -15,7 +15,8 @@ class NotificationsAPIs {
     }
   }
 
-  static Future createNotifications(time, systemId, description) async {
+  static Future createNotifications(
+      DateTime time, String systemId, String description) async {
     final body = {
       "systemId": systemId,
       "time": time,

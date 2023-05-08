@@ -24,7 +24,8 @@ class NotificationsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future createNotifications(time, systemId, description) async {
+  Future createNotifications(
+      DateTime time, String systemId, String description) async {
     final response = await NotificationsAPIs.createNotifications(
         time, systemId, description);
     return response;
@@ -33,7 +34,7 @@ class NotificationsProvider extends ChangeNotifier {
   Notifications fromJSON(Map json) {
     final newNotification = Notifications(
         id: json['_id'],
-        time: json['time'],
+        time: DateTime.parse(json["time"]),
         system: json['system'],
         description: json['description']);
     return newNotification;
