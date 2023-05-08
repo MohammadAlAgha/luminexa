@@ -46,9 +46,7 @@ exports.register = async (req, res) => {
     process.env.SECRET_KEY
   ); //generating a token
 
-  const { password: hashedPassword, ...newUser } = user.toJSON();
-
-  res.status(201).json({ newUser, token });
+  res.status(201).json({ token });
 };
 
 exports.login = async (req, res) => {

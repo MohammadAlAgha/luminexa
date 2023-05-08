@@ -14,12 +14,6 @@ abstract class AuthDataSource {
         method: RequestMethods.POST,
       );
 
-      // await localSave(
-      //   type: LocalTypes.String,
-      //   key: "access_token",
-      //   value: response.data["token"],
-      // );
-
       final prefs = await SharedPreferences.getInstance();
       prefs.setString("access_token", response.data["token"]);
 
@@ -37,8 +31,20 @@ abstract class AuthDataSource {
       "confirmPassword": confirmPassword
     };
     try {
-      final response = await dioClient.post("/auth/register", data: body);
-      print(response);
+      try {
+        final response = await sendRequest(
+          route: "/auth/register",
+          load: body,
+          method: RequestMethods.POST,
+        );
+
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString("access_token", response.data["token"]);
+
+        print("Token saved");
+      } catch (e) {
+        rethrow;
+      }
     } catch (e) {
       rethrow;
     }
