@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/providers/ThemeProvider.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -32,54 +34,62 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(
-        title: "Settings",
-        iconLeading: Icon(Icons.arrow_back),
-        iconLeadingFunction: () => Navigator.of(context).pop(context),
-      ),
-      body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 30),
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            ListTile(
-              leading: Switch(
-                activeColor: Theme.of(context).canvasColor,
-                value: notificationStatus,
-                onChanged: setNotificationStatus,
-              ),
-              title: Text(
-                "Notifications",
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
+    return Consumer<ThemeProvider>(
+      builder: (context, value, child) {
+        bool dark = value.isDark;
+
+        return Scaffold(
+          appBar: appBar(
+            title: "Settings",
+            iconLeading: Icon(Icons.arrow_back),
+            iconLeadingFunction: () => Navigator.of(context).pop(context),
+          ),
+          body: SafeArea(
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 30),
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                ListTile(
+                  leading: Switch(
+                    activeColor: Theme.of(context).canvasColor,
+                    value: notificationStatus,
+                    onChanged: setNotificationStatus,
+                  ),
+                  title: Text(
+                    "Notifications",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ),
+                ListTile(
+                  leading: Switch(
+                    activeColor: Theme.of(context).canvasColor,
+                    value: dark,
+                    onChanged: (_) {
+                      value.toggleTheme();
+                    },
+                  ),
+                  title: Text(
+                    "Dark mode",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ),
+                ListTile(
+                  leading: Switch(
+                    activeColor: Theme.of(context).canvasColor,
+                    value: EnergyStatus,
+                    onChanged: setEnergyStatus,
+                  ),
+                  title: Text(
+                    "Energy saving mode",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ),
+              ],
             ),
-            ListTile(
-              leading: Switch(
-                activeColor: Theme.of(context).canvasColor,
-                value: DarkModeStatus,
-                onChanged: setDarkModeStatus,
-              ),
-              title: Text(
-                "Dark mode",
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
-            ListTile(
-              leading: Switch(
-                activeColor: Theme.of(context).canvasColor,
-                value: EnergyStatus,
-                onChanged: setEnergyStatus,
-              ),
-              title: Text(
-                "Energy saving mode",
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
-          ],
-        ),
-      )),
+          )),
+        );
+      },
     );
   }
 }
