@@ -7,6 +7,7 @@ abstract class CustomedTheme {
       Color.fromARGB(255, 63, 139, 0),
     ),
     canvasColor: Color.fromARGB(255, 188, 236, 147),
+    cardColor: Color.fromARGB(255, 121, 121, 121),
     scaffoldBackgroundColor: Colors.white,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(
@@ -88,6 +89,7 @@ abstract class CustomedTheme {
       Color.fromARGB(255, 63, 139, 0),
     ),
     canvasColor: Color.fromARGB(255, 63, 139, 0),
+    cardColor: Color.fromARGB(255, 188, 236, 147),
     scaffoldBackgroundColor: Color.fromARGB(255, 27, 27, 27),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(

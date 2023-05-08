@@ -70,9 +70,10 @@ class _styledTextFieldState extends State<styledTextField> {
                     style: Theme.of(context).textTheme.displayMedium),
                 hintStyle: Theme.of(context).textTheme.displayMedium,
                 suffixIcon: IconButton(
-                  icon: Icon(passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
+                  icon: Icon(
+                    passwordVisible ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  color: Theme.of(context).cardColor,
                   onPressed: () {
                     setState(
                       () {
