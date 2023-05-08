@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/models/ledModel.dart';
 import 'package:luminexa_mobile/providers/LedsProvider.dart';
+import 'package:luminexa_mobile/providers/ModesProvider.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/buttonWidget.dart';
@@ -84,7 +85,11 @@ class _SetModePageState extends State<SetModePage> {
                 padding: const EdgeInsets.all(25),
                 child: styledButton(
                   innerText: "Set Mode",
-                  onTap: () {},
+                  onTap: () {
+                    Provider.of<ModesProvider>(context, listen: false)
+                        .addMode(widget.systemId, modeController.text);
+                    Navigator.of(context).pop(context);
+                  },
                 ),
               )
             ],
