@@ -113,7 +113,8 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                 SizedBox(
                   height: 10,
                 ),
-                sytledTextField(
+                styledTextField(
+                  decoration: Theme.of(context).inputDecorationTheme,
                   isPass: false,
                   controller: scheduleName,
                   label: "Title",

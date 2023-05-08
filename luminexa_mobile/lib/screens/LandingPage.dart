@@ -40,7 +40,8 @@ class _LandingPageState extends State<LandingPage> {
         builder: (context) {
           return AlertDialog(
             title: Text("Add the system serial number"),
-            content: sytledTextField(
+            content: styledTextField(
+              decoration: Theme.of(context).inputDecorationTheme,
               isPass: false,
               controller: newSystem,
               label: "Serial Number",

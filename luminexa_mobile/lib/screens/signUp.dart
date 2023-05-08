@@ -56,25 +56,29 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      sytledTextField(
+                      styledTextField(
+                        decoration: Theme.of(context).inputDecorationTheme,
                         controller: userNameController,
                         label: "Name",
                         hintText: "Name",
                         isPass: false,
                       ),
-                      sytledTextField(
+                      styledTextField(
+                        decoration: Theme.of(context).inputDecorationTheme,
                         controller: emailController,
                         label: "Email",
                         hintText: "Email",
                         isPass: false,
                       ),
-                      sytledTextField(
+                      styledTextField(
+                        decoration: Theme.of(context).inputDecorationTheme,
                         controller: passwordController,
                         label: "Password",
                         hintText: "Password",
                         isPass: true,
                       ),
-                      sytledTextField(
+                      styledTextField(
+                        decoration: Theme.of(context).inputDecorationTheme,
                         controller: ConfirmPasswordController,
                         label: "Confirm Password",
                         hintText: "Confirm Password",

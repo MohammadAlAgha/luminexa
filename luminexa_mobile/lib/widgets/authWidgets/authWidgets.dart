@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class sytledTextField extends StatefulWidget {
+class styledTextField extends StatefulWidget {
   final bool isPass;
   final controller;
   final String label;
   final String hintText;
   final InputDecorationTheme? decoration;
 
-  sytledTextField({
+  styledTextField({
     super.key,
     required this.isPass,
     required this.controller,
@@ -18,10 +18,10 @@ class sytledTextField extends StatefulWidget {
   });
 
   @override
-  State<sytledTextField> createState() => _sytledTextFieldState();
+  State<styledTextField> createState() => _styledTextFieldState();
 }
 
-class _sytledTextFieldState extends State<sytledTextField> {
+class _styledTextFieldState extends State<styledTextField> {
   bool passwordVisible = true;
 
   Future<bool> getTheme() async {

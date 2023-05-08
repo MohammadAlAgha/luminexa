@@ -54,7 +54,8 @@ class _SetModePageState extends State<SetModePage> {
               SizedBox(
                 height: 10,
               ),
-              sytledTextField(
+              styledTextField(
+                  decoration: Theme.of(context).inputDecorationTheme,
                   isPass: false,
                   controller: modeController,
                   label: "Title",

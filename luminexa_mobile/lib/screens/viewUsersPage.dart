@@ -21,7 +21,8 @@ class _ViewUsersState extends State<ViewUsers> {
         builder: (context) {
           return AlertDialog(
             title: Text("Add the user email"),
-            content: sytledTextField(
+            content: styledTextField(
+              decoration: Theme.of(context).inputDecorationTheme,
               isPass: false,
               controller: newUser,
               label: "User Email",

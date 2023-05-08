@@ -58,7 +58,7 @@ class _LogInState extends State<LogIn> {
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            sytledTextField(
+                            styledTextField(
                               decoration:
                                   Theme.of(context).inputDecorationTheme,
                               controller: emailController,
@@ -66,7 +66,7 @@ class _LogInState extends State<LogIn> {
                               label: "Email",
                               isPass: false,
                             ),
-                            sytledTextField(
+                            styledTextField(
                               decoration:
                                   Theme.of(context).inputDecorationTheme,
                               controller: passwordController,
