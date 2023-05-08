@@ -27,7 +27,7 @@ class _LogInState extends State<LogIn> {
     try {
       await AuthDataSource.login(email, password);
 
-      Navigator.of(context).pushNamed(RouteManager.landingPage);
+      Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
     } catch (e) {
       print(e);
     }
