@@ -7,9 +7,11 @@ import 'package:provider/provider.dart';
 
 class LedsPage extends StatefulWidget {
   final String systemId;
+  final String systemName;
 
   const LedsPage({
     required this.systemId,
+    required this.systemName,
     super.key,
   });
 
@@ -38,7 +40,7 @@ class _LedsPageState extends State<LedsPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              titleWidget(title: "Edite LEDs in ${widget.systemId}"),
+              titleWidget(title: "Edite LEDs in ${widget.systemName}"),
               ListView.builder(
                 physics: ScrollPhysics(parent: null),
                 shrinkWrap: true,
