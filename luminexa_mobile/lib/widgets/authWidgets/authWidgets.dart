@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class sytledTextField extends StatefulWidget {
   final bool isPass;
   final controller;
   final String label;
   final String hintText;
+  final InputDecorationTheme? decoration;
 
   sytledTextField({
     super.key,
@@ -12,6 +14,7 @@ class sytledTextField extends StatefulWidget {
     required this.controller,
     required this.label,
     required this.hintText,
+    this.decoration,
   });
 
   @override
@@ -19,9 +22,17 @@ class sytledTextField extends StatefulWidget {
 }
 
 class _sytledTextFieldState extends State<sytledTextField> {
-  @override
   bool passwordVisible = true;
 
+  Future<bool> getTheme() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    final check = prefs.getBool("isDark");
+
+    return check ?? false;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return !widget.isPass
         ? Padding(
@@ -30,6 +41,7 @@ class _sytledTextFieldState extends State<sytledTextField> {
               controller: widget.controller,
               obscureText: false,
               decoration: InputDecoration(
+                enabledBorder: widget.decoration?.border,
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20))),
                 hintText: widget.hintText,
@@ -47,6 +59,7 @@ class _sytledTextFieldState extends State<sytledTextField> {
               controller: widget.controller,
               obscureText: passwordVisible,
               decoration: InputDecoration(
+                enabledBorder: widget.decoration?.border,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(20),
