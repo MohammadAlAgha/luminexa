@@ -26,6 +26,8 @@ class SetSchedulePage extends StatefulWidget {
 }
 
 class _SetSchedulePageState extends State<SetSchedulePage> {
+  final _formKey = GlobalKey<FormState>();
+
   final List<WeekDay> weekdays = [
     WeekDay(holder: "Mon", value: "monday"),
     WeekDay(holder: "Tue", value: "tuesday"),
@@ -113,12 +115,15 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                 SizedBox(
                   height: 10,
                 ),
-                styledTextField(
-                  decoration: Theme.of(context).inputDecorationTheme,
-                  isPass: false,
-                  controller: scheduleName,
-                  label: "Title",
-                  hintText: "Title",
+                Form(
+                  key: _formKey,
+                  child: styledTextField(
+                    decoration: Theme.of(context).inputDecorationTheme,
+                    isPass: false,
+                    controller: scheduleName,
+                    label: "Title",
+                    hintText: "Title",
+                  ),
                 ),
                 SizedBox(
                   height: 30,
@@ -186,10 +191,13 @@ class _SetSchedulePageState extends State<SetSchedulePage> {
                   child: styledButton(
                     innerText: "Set Schedule",
                     onTap: () {
-                      Provider.of<SchedulesProvider>(context, listen: false)
-                          .addSchedule(widget.systemId, scheduleName.text,
-                              timeToStart, timeToEnd, days);
-                      Navigator.of(context).pop(context);
+                      if (_formKey.currentState!.validate()) {
+                        Provider.of<SchedulesProvider>(context, listen: false)
+                            .addSchedule(widget.systemId, scheduleName.text,
+                                timeToStart, timeToEnd, days);
+                        Navigator.of(context).pop(context);
+                      }
+                      ;
                     },
                   ),
                 )

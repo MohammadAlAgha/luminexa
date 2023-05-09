@@ -29,6 +29,8 @@ class _SetModePageState extends State<SetModePage> {
         .getLeds(widget.systemId);
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -55,12 +57,15 @@ class _SetModePageState extends State<SetModePage> {
               SizedBox(
                 height: 10,
               ),
-              styledTextField(
-                  decoration: Theme.of(context).inputDecorationTheme,
-                  isPass: false,
-                  controller: modeController,
-                  label: "Title",
-                  hintText: "Title"),
+              Form(
+                key: _formKey,
+                child: styledTextField(
+                    decoration: Theme.of(context).inputDecorationTheme,
+                    isPass: false,
+                    controller: modeController,
+                    label: "Title",
+                    hintText: "Title"),
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -86,9 +91,12 @@ class _SetModePageState extends State<SetModePage> {
                 child: styledButton(
                   innerText: "Set Mode",
                   onTap: () {
-                    Provider.of<ModesProvider>(context, listen: false)
-                        .addMode(widget.systemId, modeController.text);
-                    Navigator.of(context).pop(context);
+                    if (_formKey.currentState!.validate()) {
+                      Provider.of<ModesProvider>(context, listen: false)
+                          .addMode(widget.systemId, modeController.text);
+                      Navigator.of(context).pop(context);
+                    }
+                    ;
                   },
                 ),
               )
