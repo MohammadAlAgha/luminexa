@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/models/modeModel.dart';
 import 'package:luminexa_mobile/providers/ModesProvider.dart';
+import 'package:luminexa_mobile/providers/SystemsProvider.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
@@ -19,23 +20,14 @@ class ModePage extends StatefulWidget {
 }
 
 class _ModePageState extends State<ModePage> {
-  Future fetchModes() async {
-    await Provider.of<ModesProvider>(context, listen: false)
-        .getModes(widget.systemId);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsFlutterBinding.ensureInitialized();
-
-    fetchModes();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Consumer<ModesProvider>(builder: (context, value, child) {
-      List<Mode> _modes = value.modes;
+    return Consumer<SystemsProvider>(builder: (context, value, child) {
+      List<Mode> _modes = value.systems
+          .firstWhere(
+            (system) => system.id == widget.systemId,
+          )
+          .modes;
 
       return SafeArea(
         child: Stack(

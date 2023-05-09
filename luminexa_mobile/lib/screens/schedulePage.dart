@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/helpers/timeHelpers.dart';
 import 'package:luminexa_mobile/models/scheduleModel.dart';
 import 'package:luminexa_mobile/providers/SchedulesProvider.dart';
+import 'package:luminexa_mobile/providers/SystemsProvider.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/listsWidget/toggleListTileWidget.dart';
@@ -21,24 +22,15 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
-  Future fetchSchedules() async {
-    Provider.of<SchedulesProvider>(context, listen: false)
-        .getSchedules(widget.systemId);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsFlutterBinding.ensureInitialized();
-
-    fetchSchedules();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Consumer<SchedulesProvider>(
+    return Consumer<SystemsProvider>(
       builder: (context, value, child) {
-        List<Schedule> _schedules = value.schedules;
+        List<Schedule> _schedules = value.systems
+            .firstWhere(
+              (system) => system.id == widget.systemId,
+            )
+            .schedules;
 
         return SafeArea(
           child: Stack(
