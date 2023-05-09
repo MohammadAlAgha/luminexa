@@ -49,12 +49,43 @@ class _ModePageState extends State<ModePage> {
                       shrinkWrap: true,
                       itemCount: _modes.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return toggleListTile(
-                          condition: "mode",
-                          id: _modes[index].id,
-                          systemId: widget.systemId,
-                          title: _modes[index].modeName,
-                          status: _modes[index].modeStatus,
+                        return Dismissible(
+                          key: ValueKey<Mode>(_modes[index]),
+                          onDismissed: (DismissDirection direction) async {
+                            await Provider.of<ModesProvider>(context,
+                                    listen: false)
+                                .deleteMode(widget.systemId, _modes[index].id);
+                            setState(() {
+                              _modes.removeAt(index);
+                            });
+                          },
+                          background: Container(
+                            color: Colors.red,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(
+                                    Icons.delete,
+                                    color: Colors.white,
+                                  ),
+                                  Icon(
+                                    Icons.delete,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          child: toggleListTile(
+                            condition: "mode",
+                            id: _modes[index].id,
+                            systemId: widget.systemId,
+                            title: _modes[index].modeName,
+                            status: _modes[index].modeStatus,
+                          ),
                         );
                       }),
                   SizedBox(

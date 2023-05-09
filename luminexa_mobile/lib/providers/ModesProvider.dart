@@ -57,7 +57,17 @@ class ModesProvider extends ChangeNotifier {
 
   Future updateMode(systemId, modeId, modeName) async {
     final response = await ModeAPIs.updateMode(systemId, modeId, modeName);
-    return response;
+
+    List<Mode> _modes = [];
+
+    response.data["modes"].forEach((map) {
+      final Mode mode = fromJSON(map);
+      _modes.add(mode);
+    });
+
+    modes = _modes;
+
+    notifyListeners();
   }
 
   Future deleteMode(systemId, modeId) async {
