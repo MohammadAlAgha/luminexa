@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/APIs/LedAPI.dart';
 import 'package:luminexa_mobile/models/ledModel.dart';
+import 'package:luminexa_mobile/providers/SystemsProvider.dart';
+import 'package:provider/provider.dart';
 
 class LedsProvider extends ChangeNotifier {
   List<Led> leds = [];
@@ -28,7 +30,7 @@ class LedsProvider extends ChangeNotifier {
     return response;
   }
 
-  Future editLed(systemId, ledId, ledStatus, intensity, color) async {
+  Future editLed(systemId, ledId, ledStatus, intensity, color, context) async {
     final response =
         await LedsAPIs.editLed(systemId, ledId, ledStatus, intensity, color);
 
@@ -39,6 +41,7 @@ class LedsProvider extends ChangeNotifier {
           intensity: intensity,
           ledStatus: ledStatus,
         );
+        Provider.of<SystemsProvider>(context).updateLed(systemId, leds[i]);
       }
     }
 

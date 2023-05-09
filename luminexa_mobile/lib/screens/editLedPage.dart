@@ -39,6 +39,7 @@ class _EditLedsState extends State<EditLeds> {
             widget.led.ledStatus,
             widget.led.intensity,
             widget.led.color,
+            context,
           );
 
     Navigator.of(context).pop();

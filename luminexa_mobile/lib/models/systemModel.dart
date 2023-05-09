@@ -11,7 +11,7 @@ class System {
   final String serialNumber;
   final List<Led> leds;
   final List<Mode> modes;
-  final List<Schedule> schedule;
+  final List<Schedule> schedules;
 
   System({
     required this.id,
@@ -21,6 +21,6 @@ class System {
     required this.serialNumber,
     required this.leds,
     required this.modes,
-    required this.schedule,
+    required this.schedules,
   });
 }

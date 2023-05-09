@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/APIs/ModeAPIs.dart';
+import 'package:luminexa_mobile/models/ledConfigs.dart';
 import 'package:luminexa_mobile/models/modeModel.dart';
 
 class ModesProvider extends ChangeNotifier {
@@ -64,11 +65,15 @@ class ModesProvider extends ChangeNotifier {
     return response;
   }
 
-  Mode fromJSON(Map json) {
+  static Mode fromJSON(Map json) {
+    List<LedConfig> parsedConfigs = [];
+    json["leds"].forEach((mode) {
+      parsedConfigs.add(LedConfig.fromJSON(mode));
+    });
     final Mode newMode = Mode(
         id: json["_id"],
         modeName: json["modeName"],
-        leds: [],
+        configs: parsedConfigs,
         modeStatus: json['modeStatus']);
     return newMode;
   }
