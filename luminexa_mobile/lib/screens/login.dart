@@ -29,8 +29,12 @@ class _LogInState extends State<LogIn> {
 
       Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Invalid Credentials")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Invalid Credentials"),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 
