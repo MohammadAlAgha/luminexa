@@ -28,6 +28,13 @@ class _SignUpState extends State<SignUp> {
     final String confirmPassword = ConfirmPasswordController.text;
 
     try {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Center(child: CircularProgressIndicator());
+        },
+      );
+
       await AuthDataSource.register(userName, email, password, confirmPassword);
 
       Navigator.of(context).popAndPushNamed(RouteManager.landingPage);

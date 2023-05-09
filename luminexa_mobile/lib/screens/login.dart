@@ -25,6 +25,13 @@ class _LogInState extends State<LogIn> {
     final String email = emailController.text;
     final String password = passwordController.text;
     try {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Center(child: CircularProgressIndicator());
+        },
+      );
+
       await AuthDataSource.login(email, password);
 
       Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
