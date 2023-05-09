@@ -32,9 +32,12 @@ class _SignUpState extends State<SignUp> {
 
       Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Invalid Credentials")));
     }
   }
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,38 +71,41 @@ class _SignUpState extends State<SignUp> {
               titleWidget(title: "Sign Up"),
               Container(
                 height: 370,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      styledTextField(
-                        decoration: Theme.of(context).inputDecorationTheme,
-                        controller: userNameController,
-                        label: "Name",
-                        hintText: "Name",
-                        isPass: false,
-                      ),
-                      styledTextField(
-                        decoration: Theme.of(context).inputDecorationTheme,
-                        controller: emailController,
-                        label: "Email",
-                        hintText: "Email",
-                        isPass: false,
-                      ),
-                      styledTextField(
-                        decoration: Theme.of(context).inputDecorationTheme,
-                        controller: passwordController,
-                        label: "Password",
-                        hintText: "Password",
-                        isPass: true,
-                      ),
-                      styledTextField(
-                        decoration: Theme.of(context).inputDecorationTheme,
-                        controller: ConfirmPasswordController,
-                        label: "Confirm Password",
-                        hintText: "Confirm Password",
-                        isPass: true,
-                      )
-                    ]),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        styledTextField(
+                          decoration: Theme.of(context).inputDecorationTheme,
+                          controller: userNameController,
+                          label: "Name",
+                          hintText: "Name",
+                          isPass: false,
+                        ),
+                        styledTextField(
+                          decoration: Theme.of(context).inputDecorationTheme,
+                          controller: emailController,
+                          label: "Email",
+                          hintText: "Email",
+                          isPass: false,
+                        ),
+                        styledTextField(
+                          decoration: Theme.of(context).inputDecorationTheme,
+                          controller: passwordController,
+                          label: "Password",
+                          hintText: "Password",
+                          isPass: true,
+                        ),
+                        styledTextField(
+                          decoration: Theme.of(context).inputDecorationTheme,
+                          controller: ConfirmPasswordController,
+                          label: "Confirm Password",
+                          hintText: "Confirm Password",
+                          isPass: true,
+                        )
+                      ]),
+                ),
               ),
               SizedBox(
                 height: 45,
@@ -110,7 +116,11 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     styledButton(
                       innerText: "Sign Up",
-                      onTap: register,
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          register();
+                        }
+                      },
                     ),
                     SizedBox(
                       height: 20,
