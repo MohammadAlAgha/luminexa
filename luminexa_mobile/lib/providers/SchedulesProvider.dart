@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/APIs/ScheduleAPI.dart';
+import 'package:luminexa_mobile/models/ledConfigs.dart';
+import 'package:luminexa_mobile/models/ledModel.dart';
 import 'package:luminexa_mobile/models/repeatModel.dart';
 import 'package:luminexa_mobile/models/scheduleModel.dart';
 import 'package:luminexa_mobile/providers/LedsProvider.dart';
@@ -47,7 +49,7 @@ class SchedulesProvider extends ChangeNotifier {
     final response = await ScheduleAPIs.toggleSchedule(systemId, scheduleId);
     List<Schedule> _schedules = [];
 
-    response.data.forEach((map) {
+    response.data["schedules"].forEach((map) {
       final Schedule schedule = fromJSON(map);
       _schedules.add(schedule);
     });
@@ -69,14 +71,18 @@ class SchedulesProvider extends ChangeNotifier {
     return response;
   }
 
-  Schedule fromJSON(Map json) {
+  static Schedule fromJSON(Map json) {
+    List<LedConfig> parsedConfigss = [];
+    json["leds"].forEach((led) {
+      parsedConfigss.add(LedConfig.fromJSON(led));
+    });
     final newSchedule = Schedule(
         id: json["_id"],
         scheduleTitle: json["scheduleTitle"],
         timeStart: DateTime.parse(json["timeStart"]),
         timeEnd: DateTime.parse(json["timeEnd"]),
         repeat: json["repeat"],
-        leds: json["leds"].map((led) => {LedsProvider.fromJSON(led)}),
+        configs: parsedConfigss,
         scheduleStatus: json["scheduleStatus"]);
     return newSchedule;
   }
