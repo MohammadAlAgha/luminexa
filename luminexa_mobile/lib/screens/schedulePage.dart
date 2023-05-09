@@ -64,7 +64,7 @@ class _SchedulePageState extends State<SchedulePage> {
                           title: _schedules[index].scheduleTitle,
                           subTitle:
                               '${getTimeFormat(_schedules[index].timeStart)} - ${getTimeFormat(_schedules[index].timeEnd)}',
-                          status: _schedules[index].scheduleTitle,
+                          status: _schedules[index].scheduleStatus,
                         );
                       },
                     ),
