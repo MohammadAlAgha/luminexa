@@ -10,7 +10,6 @@ class ScheduleAPIs {
           route: "/schedules/getSchedules",
           method: RequestMethods.GET,
           load: body);
-      print(response);
       return response;
     } catch (e) {
       rethrow;

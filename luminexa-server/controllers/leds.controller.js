@@ -41,7 +41,7 @@ exports.addLed = async (req, res) => {
 
   system.leds.forEach((led) => {
     if (led.id == newLed.id) {
-      led.ledConfig = ledConfig;
+      led.ledConfig = newLedObject.ledConfig;
     }
   });
   //updating the led initial configuration

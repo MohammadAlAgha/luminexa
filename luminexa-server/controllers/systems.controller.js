@@ -42,13 +42,17 @@ exports.addSystem = async (req, res) => {
 
   await system.save();
 
-  res.json(updatedUser);
+  const updated = await User.findById(req.user.id).populate("systems");
+
+  res.json(updated);
 };
 
 exports.getSystems = async (req, res) => {
+  // const isHost = [];
   const user = await User.findById(req.user.id).populate("systems"); //Finding the authenticated user then getting all the systems he is connected to
   user.systems.forEach((system) => {
     system.populate("users");
+    // isHost.push(system.hosts.includes(req.user.id));
   });
 
   res.json(user.systems);
