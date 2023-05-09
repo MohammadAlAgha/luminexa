@@ -29,9 +29,12 @@ class _LogInState extends State<LogIn> {
 
       Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Invalid Credentials")));
     }
   }
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,26 +71,29 @@ class _LogInState extends State<LogIn> {
                     titleWidget(title: "Log In"),
                     Container(
                       height: 200,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            styledTextField(
-                              decoration:
-                                  Theme.of(context).inputDecorationTheme,
-                              controller: emailController,
-                              hintText: "Email",
-                              label: "Email",
-                              isPass: false,
-                            ),
-                            styledTextField(
-                              decoration:
-                                  Theme.of(context).inputDecorationTheme,
-                              controller: passwordController,
-                              hintText: "Password",
-                              label: "Password",
-                              isPass: true,
-                            ),
-                          ]),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              styledTextField(
+                                decoration:
+                                    Theme.of(context).inputDecorationTheme,
+                                controller: emailController,
+                                hintText: "Email",
+                                label: "Email",
+                                isPass: false,
+                              ),
+                              styledTextField(
+                                decoration:
+                                    Theme.of(context).inputDecorationTheme,
+                                controller: passwordController,
+                                hintText: "Password",
+                                label: "Password",
+                                isPass: true,
+                              ),
+                            ]),
+                      ),
                     ),
                   ],
                 ),
@@ -100,7 +106,11 @@ class _LogInState extends State<LogIn> {
                     children: [
                       styledButton(
                         innerText: "Log In",
-                        onTap: login,
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            login();
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 20,

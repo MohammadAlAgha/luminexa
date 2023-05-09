@@ -37,7 +37,12 @@ class _styledTextFieldState extends State<styledTextField> {
     return !widget.isPass
         ? Padding(
             padding: EdgeInsets.symmetric(horizontal: 25),
-            child: TextField(
+            child: TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "This value can't be empty";
+                }
+              },
               controller: widget.controller,
               obscureText: false,
               decoration: InputDecoration(
@@ -55,7 +60,12 @@ class _styledTextFieldState extends State<styledTextField> {
           )
         : Padding(
             padding: EdgeInsets.symmetric(horizontal: 25),
-            child: TextField(
+            child: TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "This value can't be empty";
+                }
+              },
               controller: widget.controller,
               obscureText: passwordVisible,
               decoration: InputDecoration(
