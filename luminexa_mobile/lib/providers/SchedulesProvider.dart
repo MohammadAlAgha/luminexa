@@ -68,7 +68,16 @@ class SchedulesProvider extends ChangeNotifier {
 
   Future deleteSchedule(systemId, scheduleId) async {
     final response = await ScheduleAPIs.deleteSchedule(systemId, scheduleId);
-    return response;
+    List<Schedule> _schedules = [];
+
+    response.data["schedules"].forEach((map) {
+      final Schedule schedule = fromJSON(map);
+      _schedules.add(schedule);
+    });
+
+    schedules = _schedules;
+
+    notifyListeners();
   }
 
   static Schedule fromJSON(Map json) {
