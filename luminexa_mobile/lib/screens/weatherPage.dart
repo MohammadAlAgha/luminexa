@@ -22,6 +22,7 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   void initState() {
     super.initState();
+
     Provider.of<WeatherProvider>(context, listen: false).getWeather();
   }
 

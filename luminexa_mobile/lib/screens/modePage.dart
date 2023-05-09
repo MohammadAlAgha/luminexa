@@ -27,6 +27,8 @@ class _ModePageState extends State<ModePage> {
   @override
   void initState() {
     super.initState();
+    WidgetsFlutterBinding.ensureInitialized();
+
     fetchModes();
   }
 

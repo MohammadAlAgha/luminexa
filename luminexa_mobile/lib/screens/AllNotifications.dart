@@ -22,6 +22,8 @@ class _AllNotificationsState extends State<AllNotifications> {
   @override
   void initState() {
     super.initState();
+    WidgetsFlutterBinding.ensureInitialized();
+
     getNotifications();
   }
 

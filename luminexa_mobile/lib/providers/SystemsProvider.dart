@@ -21,7 +21,7 @@ class SystemsProvider extends ChangeNotifier {
 
     List<System> _systems = [];
 
-    response.data["systems"].forEach((map) {
+    response.data.forEach((map) {
       final System system = fromJSON(map);
       _systems.add(system);
     });
