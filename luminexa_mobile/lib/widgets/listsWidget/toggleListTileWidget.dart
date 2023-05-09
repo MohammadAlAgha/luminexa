@@ -30,9 +30,10 @@ class _toggleTileListState extends State<toggleListTile> {
     if (widget.condition == "mode") {
       Provider.of<ModesProvider>(context, listen: false)
           .toggleMode(widget.systemId, widget.id);
+    } else {
+      Provider.of<SchedulesProvider>(context, listen: false)
+          .toggleSchedule(widget.systemId, widget.id);
     }
-    Provider.of<SchedulesProvider>(context, listen: false)
-        .toggleSchedule(widget.systemId, widget.id);
   }
 
   @override
@@ -45,25 +46,18 @@ class _toggleTileListState extends State<toggleListTile> {
           ),
         ),
         child: ListTile(
-          title: Text(
-            widget.title,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          subtitle: Text(
-            widget.subTitle ?? "Edit Mode",
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
-          trailing: widget.status == "on"
-              ? Switch(
-                  activeColor: Theme.of(context).canvasColor,
-                  value: true,
-                  onChanged: setStatus,
-                )
-              : Switch(
-                  activeColor: Theme.of(context).canvasColor,
-                  value: false,
-                  onChanged: setStatus,
-                ),
-        ));
+            title: Text(
+              widget.title,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              widget.subTitle ?? "Edit Mode",
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
+            trailing: Switch(
+              activeColor: Theme.of(context).canvasColor,
+              value: widget.status == "on",
+              onChanged: setStatus,
+            )));
   }
 }
