@@ -29,6 +29,8 @@ class _SchedulePageState extends State<SchedulePage> {
   @override
   void initState() {
     super.initState();
+    WidgetsFlutterBinding.ensureInitialized();
+
     fetchSchedules();
   }
 
@@ -44,27 +46,52 @@ class _SchedulePageState extends State<SchedulePage> {
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    // titleWidget(title: "Upcoming schedule"),
-                    // toggleListTile(
-                    //   title: _schedules[0].scheduleTitle,
-                    //   subTitle:
-                    //       '${_schedules[0].timeStart.toString()}, ${_schedules[0].timeEnd.toString()}',
-                    //   status: _schedules[0].scheduleStatus,
-                    // ),
                     titleWidget(title: "Schedules"),
                     ListView.builder(
                       physics: ScrollPhysics(parent: null),
                       shrinkWrap: true,
                       itemCount: _schedules.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return toggleListTile(
-                          condition: "schedule",
-                          id: _schedules[index].id,
-                          systemId: widget.systemId,
-                          title: _schedules[index].scheduleTitle,
-                          subTitle:
-                              '${getTimeFormat(_schedules[index].timeStart)} - ${getTimeFormat(_schedules[index].timeEnd)}',
-                          status: _schedules[index].scheduleStatus,
+                        return Dismissible(
+                          key: ValueKey<Schedule>(_schedules[index]),
+                          onDismissed: (DismissDirection direction) async {
+                            await Provider.of<SchedulesProvider>(context,
+                                    listen: false)
+                                .deleteSchedule(
+                                    widget.systemId, _schedules[index].id);
+                            setState(() {
+                              _schedules.removeAt(index);
+                            });
+                          },
+                          background: Container(
+                            color: Colors.red,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(
+                                    Icons.delete,
+                                    color: Colors.white,
+                                  ),
+                                  Icon(
+                                    Icons.delete,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          child: toggleListTile(
+                            condition: "schedule",
+                            id: _schedules[index].id,
+                            systemId: widget.systemId,
+                            title: _schedules[index].scheduleTitle,
+                            subTitle:
+                                '${getTimeFormat(_schedules[index].timeStart)} - ${getTimeFormat(_schedules[index].timeEnd)}',
+                            status: _schedules[index].scheduleStatus,
+                          ),
                         );
                       },
                     ),
