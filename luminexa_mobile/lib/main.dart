@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:luminexa_mobile/FireBaseNotifications/localNotifications.dart';
 import 'package:luminexa_mobile/configs/local_storage_config.dart';
 import 'package:luminexa_mobile/enums/localTypes.dart';
 import 'package:luminexa_mobile/models/themesModel.dart';
@@ -31,6 +32,9 @@ Future<void> backgroundHandler(RemoteMessage message) async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  print(fcmToken);
+  LocalNotificationService.initialize();
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   runApp(const MyApp());
 }
@@ -65,6 +69,29 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     logInChecker();
+
+    FirebaseMessaging.instance.getInitialMessage().then((event) {
+      print("New message from terminated");
+      print(event?.notification?.title);
+      print(event?.notification?.body);
+    });
+
+    FirebaseMessaging.onMessage.listen(
+      (event) {
+        print("New message on foreground");
+        print(event.notification?.title);
+        print(event.notification?.body);
+        LocalNotificationService.showMessageOnForeground(event);
+      },
+    );
+
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (event) {
+        print("New message from background");
+        print(event.notification?.title);
+        print(event.notification?.body);
+      },
+    );
   }
 
   @override
