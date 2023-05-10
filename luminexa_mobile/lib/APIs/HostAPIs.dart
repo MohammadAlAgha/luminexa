@@ -25,4 +25,15 @@ class HostAPIs {
       rethrow;
     }
   }
+
+  static Future setHost(systemId, userEmail) async {
+    final body = {"systemId": systemId, "email": userEmail};
+    try {
+      final response = await sendRequest(
+          route: "/host/setHost", method: RequestMethods.PUT, load: body);
+      return response.data;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

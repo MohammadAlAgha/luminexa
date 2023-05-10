@@ -101,7 +101,10 @@ class _ViewUsersState extends State<ViewUsers> {
                                 HostAPIs.deleteUser(
                                     widget.systemId, user["email"]);
                               } else if (direction ==
-                                  DismissDirection.startToEnd) {}
+                                  DismissDirection.startToEnd) {
+                                HostAPIs.setHost(
+                                    widget.systemId, user["email"]);
+                              }
                             },
                             background: Container(
                               color: Colors.green,
