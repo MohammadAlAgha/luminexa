@@ -23,13 +23,13 @@ class currentIntensity {
 
   void initializeBarData() {
     barData = [
-      individualBar(x: 0, y: IntensityHourOne),
-      individualBar(x: 1, y: IntensityHourTwo),
-      individualBar(x: 2, y: IntensityHourThree),
-      individualBar(x: 3, y: IntensityHourFour),
-      individualBar(x: 4, y: IntensityHourFive),
-      individualBar(x: 5, y: IntensityHourSix),
-      individualBar(x: 6, y: IntensityHourSeven),
+      individualBar(x: 11, y: IntensityHourOne),
+      individualBar(x: 12, y: IntensityHourTwo),
+      individualBar(x: 1, y: IntensityHourThree),
+      individualBar(x: 2, y: IntensityHourFour),
+      individualBar(x: 3, y: IntensityHourFive),
+      individualBar(x: 4, y: IntensityHourSix),
+      individualBar(x: 5, y: IntensityHourSeven),
     ];
   }
 }

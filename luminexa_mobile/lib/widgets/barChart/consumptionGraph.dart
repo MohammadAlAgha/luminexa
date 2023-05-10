@@ -45,7 +45,19 @@ class consumptionGraph extends StatelessWidget {
                     textScaleFactor: 0.7,
                   );
                 },
-                reservedSize: 70,
+                reservedSize: 55,
+                showTitles: true,
+              ),
+            ),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                getTitlesWidget: (value, meta) {
+                  return Text(
+                    '${value.toInt()}:00',
+                    textScaleFactor: 0.6,
+                  );
+                },
+                reservedSize: 30,
                 showTitles: true,
               ),
             ),
