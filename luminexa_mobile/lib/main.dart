@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:luminexa_mobile/configs/local_storage_config.dart';
 import 'package:luminexa_mobile/enums/localTypes.dart';
 import 'package:luminexa_mobile/models/themesModel.dart';
@@ -16,16 +17,21 @@ import 'package:luminexa_mobile/providers/ModesProvider.dart';
 import 'package:luminexa_mobile/providers/ThemeProvider.dart';
 import 'package:luminexa_mobile/providers/UserProvider.dart';
 import 'package:luminexa_mobile/providers/WeatherProvider.dart';
-import 'package:luminexa_mobile/screens/WeatherPage.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
 import 'package:luminexa_mobile/screens/LandingPage.dart';
 import 'package:luminexa_mobile/screens/Login.dart';
 
+Future<void> backgroundHandler(RemoteMessage message) async {
+  print(message.notification!.body);
+  print(message.notification!.title);
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   runApp(const MyApp());
 }
 
