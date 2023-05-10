@@ -124,6 +124,13 @@ class RouteManager {
         );
       //Weather Routes
 
+      case viewUsersPage:
+        return MaterialPageRoute(
+          builder: (context) => ViewUsers(
+            systemId: (settings.arguments as Map)["systemId"],
+          ),
+        );
+
       default:
         throw FormatException('Wrong Route');
     }
