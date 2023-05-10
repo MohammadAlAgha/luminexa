@@ -88,7 +88,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                     Icons.cloud,
                                     size: 35,
                                   )
-                                : value.status == "Sunny"
+                                : value.status == "Clear"
                                     ? Icon(
                                         Icons.wb_sunny_rounded,
                                         size: 35,
@@ -206,7 +206,7 @@ class _WeatherPageState extends State<WeatherPage> {
                 SizedBox(
                   height: 20,
                 ),
-                value.status == "Sunny"
+                value.status == "Clear"
                     ? Text(
                         "The weather seems sunny outside,the LEDs should be turned off",
                         style: Theme.of(context).textTheme.displaySmall,
