@@ -39,6 +39,7 @@ class _SignUpState extends State<SignUp> {
 
       Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
     } catch (e) {
+      Navigator.of(context).pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Invalid Credentials"),
