@@ -37,6 +37,18 @@ class consumptionGraph extends StatelessWidget {
             rightTitles: AxisTitles(
               sideTitles: SideTitles(showTitles: false),
             ),
+            leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+                getTitlesWidget: (value, meta) {
+                  return Text(
+                    '${value.toInt()} Amps',
+                    textScaleFactor: 0.7,
+                  );
+                },
+                reservedSize: 70,
+                showTitles: true,
+              ),
+            ),
           ),
           borderData: FlBorderData(
             show: true,
