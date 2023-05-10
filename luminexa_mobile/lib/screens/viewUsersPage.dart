@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
-import 'package:luminexa_mobile/widgets/listsWidget/userListWidget.dart';
 
 class ViewUsers extends StatefulWidget {
   const ViewUsers({super.key});
@@ -85,81 +83,83 @@ class _ViewUsersState extends State<ViewUsers> {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 50, bottom: 70),
+              padding: EdgeInsets.only(bottom: 70),
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      ExpansionPanelList(
-                        expansionCallback: (panelIndex, isExpanded) {
-                          setState(() {
-                            isOpen = !isOpen;
-                          });
-                        },
-                        children: [
-                          ExpansionPanel(
-                              headerBuilder: (context, isExpanded) {
-                                return userListTile(
-                                    index: 1, user: "user", type: "type");
-                              },
-                              body: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 5),
-                                    height: 60,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                        color: Colors.red,
-                                        borderRadius:
-                                            BorderRadius.circular(25)),
-                                    child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text("Delete User",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .displaySmall),
-                                          Icon(
-                                            Icons.delete,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                        ]),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 5),
-                                    height: 60,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        borderRadius:
-                                            BorderRadius.circular(25)),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Set a Host",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displaySmall,
-                                        ),
-                                        Icon(
-                                          Icons.person_add,
-                                          size: 20,
-                                          color: Colors.black,
-                                        ),
-                                      ],
+                      ListView.builder(
+                        physics: ScrollPhysics(parent: null),
+                        shrinkWrap: true,
+                        itemCount: users.length,
+                        itemBuilder: (context, index) {
+                          final user = users[index];
+                          return Dismissible(
+                            key: Key(user['name']),
+                            onDismissed: (direction) {
+                              if (direction == DismissDirection.endToStart) {
+                                // set user as host
+                              } else if (direction ==
+                                  DismissDirection.startToEnd) {
+                                // delete user
+                              }
+                            },
+                            background: Container(
+                              color: Colors.green,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.person_add),
+                                    SizedBox(
+                                      width: 5,
                                     ),
-                                  )
-                                ],
+                                    Text(
+                                      "Set as host",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displaySmall,
+                                    )
+                                  ],
+                                ),
                               ),
-                              isExpanded: isOpen)
-                        ],
+                              alignment: Alignment.centerLeft,
+                            ),
+                            secondaryBackground: Container(
+                              color: Colors.red,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      "Delete user",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displaySmall,
+                                    ),
+                                    Icon(Icons.delete),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              alignment: Alignment.centerRight,
+                            ),
+                            child: ListTile(
+                              title: Text(
+                                user['name'],
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                              subtitle: Text(
+                                user['type'],
+                                style: Theme.of(context).textTheme.displaySmall,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -167,49 +167,30 @@ class _ViewUsersState extends State<ViewUsers> {
               ),
             ),
             Positioned(
-              bottom: 15,
+              bottom: 0,
               child: Container(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                      Theme.of(context)
-                          .scaffoldBackgroundColor
-                          .withOpacity(0.8),
-                      Theme.of(context).scaffoldBackgroundColor,
-                      Theme.of(context).scaffoldBackgroundColor,
-                    ])),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Theme.of(context)
+                            .scaffoldBackgroundColor
+                            .withOpacity(0.9),
+                        Theme.of(context).scaffoldBackgroundColor,
+                        Theme.of(context).scaffoldBackgroundColor,
+                      ]),
+                ),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 width: MediaQuery.of(context).size.width,
                 child: iconButton(
-                  innerText: "Add New User",
+                  innerText: "Add new user",
                   iconName: Icon(Icons.add),
                   onTap: addUser,
                 ),
               ),
-            ),
-            Positioned(
-              top: 0,
-              child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                color: Theme.of(context).primaryColor,
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "User Name",
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Text(
-                        "User Type",
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                    ]),
-              ),
-            ),
+            )
           ],
         ),
       ),
