@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/APIs/HostAPIs.dart';
 import 'package:luminexa_mobile/widgets/authWidgets/authWidgets.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/iconButtonWidget.dart';
 import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 
 class ViewUsers extends StatefulWidget {
-  const ViewUsers({super.key});
+  final String systemId;
+  const ViewUsers({
+    super.key,
+    required this.systemId,
+  });
 
   @override
   State<ViewUsers> createState() => _ViewUsersState();
@@ -55,144 +60,139 @@ class _ViewUsersState extends State<ViewUsers> {
   }
 
   bool isOpen = false;
-  List<Map> users = [
-    {"name": "User 1", "type": "Host"},
-    {"name": "User 1", "type": "User"},
-    {"name": "User 3", "type": "User"},
-    {"name": "User 4", "type": "Host"},
-    {"name": "User 5", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-    {"name": "User 6", "type": "User"},
-  ];
+
+  List users = [];
+
+  Future<void> getUsers() async {
+    final response = await HostAPIs.getSystemUsers(widget.systemId);
+    response.forEach((user) => {users.add(user)});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsFlutterBinding.ensureInitialized();
+    getUsers();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(bottom: 70),
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ListView.builder(
-                        physics: ScrollPhysics(parent: null),
-                        shrinkWrap: true,
-                        itemCount: users.length,
-                        itemBuilder: (context, index) {
-                          final user = users[index];
-                          return Dismissible(
-                            key: Key(user['name']),
-                            onDismissed: (direction) {
-                              if (direction == DismissDirection.endToStart) {
-                                // set user as host
-                              } else if (direction ==
-                                  DismissDirection.startToEnd) {
-                                // delete user
-                              }
-                            },
-                            background: Container(
-                              color: Colors.green,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.person_add),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Set as host",
+    return SafeArea(
+      child: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: 70),
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ListView.builder(
+                      physics: ScrollPhysics(parent: null),
+                      shrinkWrap: true,
+                      itemCount: users.length,
+                      itemBuilder: (context, index) {
+                        final user = users[index];
+                        return Dismissible(
+                          key: Key(user["_id"]),
+                          onDismissed: (direction) {
+                            if (direction == DismissDirection.endToStart) {
+                              // set user as host
+                            } else if (direction ==
+                                DismissDirection.startToEnd) {
+                              // delete user
+                            }
+                          },
+                          background: Container(
+                            color: Colors.green,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.person_add),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    "Set as host",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displaySmall,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            alignment: Alignment.centerLeft,
+                          ),
+                          secondaryBackground: Container(
+                            color: Colors.red,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "Delete user",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displaySmall,
+                                  ),
+                                  Icon(Icons.delete),
+                                  SizedBox(width: 5),
+                                ],
+                              ),
+                            ),
+                            alignment: Alignment.centerRight,
+                          ),
+                          child: ListTile(
+                              title: Text(
+                                user["userName"].toString(),
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                              subtitle: user["isHosts"] == true
+                                  ? Text(
+                                      "Host",
                                       style: Theme.of(context)
                                           .textTheme
                                           .displaySmall,
                                     )
-                                  ],
-                                ),
-                              ),
-                              alignment: Alignment.centerLeft,
-                            ),
-                            secondaryBackground: Container(
-                              color: Colors.red,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "Delete user",
+                                  : Text(
+                                      "Normal User",
                                       style: Theme.of(context)
                                           .textTheme
                                           .displaySmall,
-                                    ),
-                                    Icon(Icons.delete),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              alignment: Alignment.centerRight,
-                            ),
-                            child: ListTile(
-                              title: Text(
-                                user['name'],
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                              subtitle: Text(
-                                user['type'],
-                                style: Theme.of(context).textTheme.displaySmall,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                                    )),
+                        );
+                      },
+                    )
+                  ],
                 ),
               ),
             ),
-            Positioned(
-              bottom: 0,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Theme.of(context)
-                            .scaffoldBackgroundColor
-                            .withOpacity(0.9),
-                        Theme.of(context).scaffoldBackgroundColor,
-                        Theme.of(context).scaffoldBackgroundColor,
-                      ]),
-                ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                width: MediaQuery.of(context).size.width,
-                child: iconButton(
-                  innerText: "Add new user",
-                  iconName: Icon(Icons.add),
-                  onTap: addUser,
-                ),
+          ),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Theme.of(context)
+                          .scaffoldBackgroundColor
+                          .withOpacity(0.9),
+                      Theme.of(context).scaffoldBackgroundColor,
+                      Theme.of(context).scaffoldBackgroundColor,
+                    ]),
               ),
-            )
-          ],
-        ),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              width: MediaQuery.of(context).size.width,
+              child: iconButton(
+                innerText: "Add new user",
+                iconName: Icon(Icons.add),
+                onTap: addUser,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

@@ -19,11 +19,14 @@ class WeatherPage extends StatefulWidget {
 class _WeatherPageState extends State<WeatherPage> {
   DateTime todayDate = DateTime.now();
 
+  Future<void> getWeather() async {
+    await Provider.of<WeatherProvider>(context, listen: false).getWeather();
+  }
+
   @override
   void initState() {
     super.initState();
-
-    Provider.of<WeatherProvider>(context, listen: false).getWeather();
+    getWeather();
   }
 
   @override
