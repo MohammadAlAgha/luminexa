@@ -14,19 +14,9 @@ class UserProvider extends ChangeNotifier {
     print(response);
 
     response.data.forEach((map) => {
-          user = fromJSON(map),
+          user = User.fromJSON(map),
         });
 
     notifyListeners();
-  }
-
-  User fromJSON(Map json) {
-    final User newUser = User(
-      name: json["userName"],
-      email: json["email"],
-      isHost: false,
-    );
-
-    return newUser;
   }
 }

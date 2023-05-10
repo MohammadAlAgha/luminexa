@@ -10,4 +10,14 @@ class User {
     required this.email,
     required this.isHost,
   });
+
+  static User fromJSON(Map json) {
+    final User newUser = User(
+      name: json["userName"],
+      email: json["email"],
+      isHost: false,
+    );
+
+    return newUser;
+  }
 }
