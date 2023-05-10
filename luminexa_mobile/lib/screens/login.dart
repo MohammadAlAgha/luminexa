@@ -32,9 +32,12 @@ class _LogInState extends State<LogIn> {
         },
       );
 
-      await AuthDataSource.login(email, password);
+      await AuthDataSource.login(email, password).then((value) {
+        final List<bool> isHost = value.isHost;
 
-      Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
+        Navigator.of(context).popAndPushNamed(RouteManager.landingPage,
+            arguments: {"isHost": isHost});
+      });
     } catch (e) {
       Navigator.of(context).pop(context);
       ScaffoldMessenger.of(context).showSnackBar(

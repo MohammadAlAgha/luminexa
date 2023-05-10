@@ -52,7 +52,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email }); //finding user by email
+  const user = await User.findOne({ email }).populate("systems"); //finding user by email
 
   if (!user) {
     return res.status(404).json({ message: "Invalid Credentials" });
@@ -67,5 +67,13 @@ exports.login = async (req, res) => {
     process.env.SECRET_KEY
   ); //generating a token
 
-  res.json({ token });
+  const isHost = [];
+
+  user.systems.forEach((system) => {
+    if (system.hosts.includes(user.id)) {
+      isHost.push(true);
+    } else isHost.push(false);
+  });
+
+  res.json({ token, isHost });
 };

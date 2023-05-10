@@ -5,11 +5,13 @@ import 'package:luminexa_mobile/routes/routes.dart';
 class listOption extends StatelessWidget {
   final System system;
   final int activeLeds;
+  final bool isHost;
 
   const listOption({
     super.key,
     required this.system,
     required this.activeLeds,
+    required this.isHost,
   });
 
   @override
@@ -19,6 +21,7 @@ class listOption extends StatelessWidget {
         Navigator.of(context).pushNamed(RouteManager.systemPage, arguments: {
           "systemId": system.id,
           "systemName": system.systemName,
+          "isHost": isHost,
         });
       },
       child: Container(

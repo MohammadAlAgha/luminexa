@@ -127,7 +127,7 @@ class _MyAppState extends State<MyApp> {
         builder: (context, value, child) => MaterialApp(
           theme: value.isDark ? CustomedTheme.dark : CustomedTheme.bright,
           debugShowCheckedModeBanner: false,
-          home: _isloggedIn ? LandingPage() : LogIn(),
+          home: LogIn(),
           onGenerateRoute: RouteManager.generateRoute,
         ),
       ),

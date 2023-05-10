@@ -11,7 +11,11 @@ import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 import 'package:provider/provider.dart';
 
 class LandingPage extends StatefulWidget {
-  const LandingPage({super.key});
+  final List<bool> isHost;
+  const LandingPage({
+    super.key,
+    required this.isHost,
+  });
 
   @override
   State<LandingPage> createState() => _LandingPageState();
@@ -124,6 +128,7 @@ class _LandingPageState extends State<LandingPage> {
                         itemCount: _systems.length,
                         itemBuilder: (BuildContext context, int index) {
                           return listOption(
+                              isHost: widget.isHost[index],
                               system: _systems[index],
                               activeLeds: getActiveLeds(_systems[index]));
                         },

@@ -67,13 +67,16 @@ class RouteManager {
           builder: (context) => SystemPage(
             systemId: (settings.arguments as Map)["systemId"],
             systemName: (settings.arguments as Map)["systemName"],
+            isHost: (settings.arguments as Map)["isHost"],
           ),
         );
       //System Route
 
       case landingPage:
         return MaterialPageRoute(
-          builder: (context) => LandingPage(),
+          builder: (context) => LandingPage(
+            isHost: (settings.arguments as Map)["isHost"],
+          ),
         );
       //Landing Rourte
 

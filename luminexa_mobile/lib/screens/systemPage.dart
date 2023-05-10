@@ -10,11 +10,13 @@ import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 class SystemPage extends StatefulWidget {
   final String systemId;
   final String systemName;
+  final bool isHost;
 
   const SystemPage({
     super.key,
     required this.systemId,
     required this.systemName,
+    required this.isHost,
   });
 
   @override
