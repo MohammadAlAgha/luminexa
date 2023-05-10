@@ -55,41 +55,82 @@ class _SystemPageState extends State<SystemPage> {
             borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
-          child: GNav(
-            activeColor: Theme.of(context).primaryColor,
-            onTabChange: (value) => navigateTab(value),
-            backgroundColor: Theme.of(context).primaryColor,
-            tabBackgroundColor: Colors.white,
-            color: Colors.white,
-            gap: 10,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            tabs: [
-              GButton(
-                icon: Icons.lightbulb,
-                iconSize: 20,
-                text: "LEDs",
-                textStyle: Theme.of(context).textTheme.headlineLarge,
-              ),
-              GButton(
-                icon: Icons.schedule,
-                iconSize: 20,
-                text: "Schedules",
-                textStyle: Theme.of(context).textTheme.headlineLarge,
-              ),
-              GButton(
-                icon: Icons.list,
-                iconSize: 20,
-                text: "Modes",
-                textStyle: Theme.of(context).textTheme.headlineLarge,
-              ),
-              GButton(
-                icon: Icons.notifications,
-                iconSize: 20,
-                text: "Notifications",
-                textStyle: Theme.of(context).textTheme.headlineLarge,
-              ),
-            ],
-          ),
+          child: widget.isHost == true
+              ? GNav(
+                  activeColor: Theme.of(context).primaryColor,
+                  onTabChange: (value) => navigateTab(value),
+                  backgroundColor: Theme.of(context).primaryColor,
+                  tabBackgroundColor: Colors.white,
+                  color: Colors.white,
+                  gap: 10,
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  tabs: [
+                      GButton(
+                        icon: Icons.lightbulb,
+                        iconSize: 20,
+                        text: "LEDs",
+                        textStyle: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                      GButton(
+                        icon: Icons.schedule,
+                        iconSize: 20,
+                        text: "Schedules",
+                        textStyle: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                      GButton(
+                        icon: Icons.list,
+                        iconSize: 20,
+                        text: "Modes",
+                        textStyle: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                      GButton(
+                        icon: Icons.notifications,
+                        iconSize: 20,
+                        text: "Notifications",
+                        textStyle: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                      GButton(
+                        icon: Icons.verified_user,
+                        iconSize: 20,
+                        text: "Users",
+                        textStyle: Theme.of(context).textTheme.headlineLarge,
+                      )
+                    ])
+              : GNav(
+                  activeColor: Theme.of(context).primaryColor,
+                  onTabChange: (value) => navigateTab(value),
+                  backgroundColor: Theme.of(context).primaryColor,
+                  tabBackgroundColor: Colors.white,
+                  color: Colors.white,
+                  gap: 10,
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  tabs: [
+                    GButton(
+                      icon: Icons.lightbulb,
+                      iconSize: 20,
+                      text: "LEDs",
+                      textStyle: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                    GButton(
+                      icon: Icons.schedule,
+                      iconSize: 20,
+                      text: "Schedules",
+                      textStyle: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                    GButton(
+                      icon: Icons.list,
+                      iconSize: 20,
+                      text: "Modes",
+                      textStyle: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                    GButton(
+                      icon: Icons.notifications,
+                      iconSize: 20,
+                      text: "Notifications",
+                      textStyle: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                  ],
+                ),
         ),
       ),
       appBar: appBar(

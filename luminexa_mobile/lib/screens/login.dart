@@ -31,14 +31,14 @@ class _LogInState extends State<LogIn> {
           return Center(child: CircularProgressIndicator());
         },
       );
+      final response = await AuthDataSource.login(email, password);
+      final data = response.data;
+      final List<bool> isHost = List<bool>.from(data['isHost']);
 
-      await AuthDataSource.login(email, password).then((value) {
-        final List<bool> isHost = value.isHost;
-
-        Navigator.of(context).popAndPushNamed(RouteManager.landingPage,
-            arguments: {"isHost": isHost});
-      });
+      Navigator.of(context).popAndPushNamed(RouteManager.landingPage,
+          arguments: {"isHost": isHost});
     } catch (e) {
+      print(e);
       Navigator.of(context).pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
