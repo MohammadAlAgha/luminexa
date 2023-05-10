@@ -81,7 +81,6 @@ class _ViewUsersState extends State<ViewUsers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: "Users"),
       body: SafeArea(
         child: Stack(
           children: [
@@ -175,9 +174,11 @@ class _ViewUsersState extends State<ViewUsers> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                      Colors.white.withOpacity(0.6),
-                      Color.fromARGB(255, 255, 255, 255),
-                      Color.fromARGB(255, 255, 255, 255),
+                      Theme.of(context)
+                          .scaffoldBackgroundColor
+                          .withOpacity(0.8),
+                      Theme.of(context).scaffoldBackgroundColor,
+                      Theme.of(context).scaffoldBackgroundColor,
                     ])),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 10),

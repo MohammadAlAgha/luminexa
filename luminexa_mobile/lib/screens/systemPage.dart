@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
+import 'package:luminexa_mobile/screens/ConsumptionPage.dart';
 import 'package:luminexa_mobile/screens/LedPage.dart';
 import 'package:luminexa_mobile/screens/ModePage.dart';
 import 'package:luminexa_mobile/screens/NotificationPage.dart';
 import 'package:luminexa_mobile/screens/SchedulePage.dart';
+import 'package:luminexa_mobile/screens/ViewUsersPage.dart';
 import 'package:luminexa_mobile/widgets/appBarWidget/appBarWidget.dart';
 
 class SystemPage extends StatefulWidget {
@@ -40,7 +42,9 @@ class _SystemPageState extends State<SystemPage> {
       ),
       SchedulePage(systemId: widget.systemId),
       ModePage(systemId: widget.systemId),
-      NotificationsPage(systemId: widget.systemId)
+      NotificationsPage(systemId: widget.systemId),
+      ViewUsers(),
+      ConsumptionPage()
     ];
 
     return pages[currentIndex];
@@ -90,9 +94,15 @@ class _SystemPageState extends State<SystemPage> {
                         textStyle: Theme.of(context).textTheme.headlineLarge,
                       ),
                       GButton(
-                        icon: Icons.verified_user,
+                        icon: Icons.person,
                         iconSize: 20,
                         text: "Users",
+                        textStyle: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                      GButton(
+                        icon: Icons.power,
+                        iconSize: 20,
+                        text: "Power",
                         textStyle: Theme.of(context).textTheme.headlineLarge,
                       )
                     ])

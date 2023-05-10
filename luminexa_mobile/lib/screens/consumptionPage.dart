@@ -65,26 +65,9 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: "Consumption"),
       body: SafeArea(
           child: Column(
         children: [
-          titleWidget(title: "Systems"),
-          SizedBox(
-            height: 50,
-            child: ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: systems.length,
-              itemBuilder: (context, index) {
-                return systemButton(
-                  innerText: systems[index]["name"],
-                  onTap: () {},
-                  isPressed: systems[index]["isOn"],
-                );
-              },
-            ),
-          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 70),
