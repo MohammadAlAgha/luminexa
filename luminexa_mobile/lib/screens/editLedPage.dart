@@ -27,6 +27,7 @@ class _EditLedsState extends State<EditLeds> {
   void _onTap() {
     widget.config
         ? Provider.of<LedsProvider>(context, listen: false).editConfigs(
+            context,
             widget.systemId,
             widget.led.id,
             widget.led.ledStatus,

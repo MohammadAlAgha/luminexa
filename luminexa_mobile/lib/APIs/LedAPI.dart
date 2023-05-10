@@ -41,8 +41,8 @@ class LedsAPIs {
     }
   }
 
-  static Future editConfigs(
-      systemId, ledId, ledStatus, intensity, color) async {
+  static Future editConfigs(String systemId, String ledId, String ledStatus,
+      int intensity, String color) async {
     final body = {
       "systemId": systemId,
       "ledId": ledId,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luminexa_mobile/providers/LedsProvider.dart';
 import 'package:luminexa_mobile/providers/ModesProvider.dart';
 import 'package:luminexa_mobile/providers/SchedulesProvider.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,9 @@ class _toggleTileListState extends State<toggleListTile> {
   void setStatus(value) {
     if (widget.condition == "mode") {
       Provider.of<ModesProvider>(context, listen: false)
-          .toggleMode(widget.systemId, widget.id);
+          .toggleMode(context, widget.systemId, widget.id);
+      Provider.of<LedsProvider>(context, listen: false)
+          .getLeds(widget.systemId);
     } else {
       Provider.of<SchedulesProvider>(context, listen: false)
           .toggleSchedule(widget.systemId, widget.id);

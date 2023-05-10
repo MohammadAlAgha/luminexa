@@ -48,17 +48,21 @@ class LedsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> editConfigs(systemId, ledId, ledStatus, intensity, color) async {
+  Future<void> editConfigs(BuildContext context, String systemId, String ledId,
+      String ledStatus, int intensity, String color) async {
     final response = await LedsAPIs.editConfigs(
         systemId, ledId, ledStatus, intensity, color);
+    print(response);
 
-    List<Led> _led = [];
-
-    response.data.forEach((map) {
-      final Led led = fromJSON(map);
-      _led.add(led);
-    });
-    leds = _led;
+    for (int i = 0; i < leds.length; i++) {
+      if (leds[i].id == ledId) {
+        leds[i] = leds[i].copyWith(
+          color: color,
+          intensity: intensity,
+          ledStatus: ledStatus,
+        );
+      }
+    }
 
     notifyListeners();
   }

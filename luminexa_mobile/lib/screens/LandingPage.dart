@@ -65,7 +65,6 @@ class _LandingPageState extends State<LandingPage> {
                   isPressed: false,
                   innerText: "Connect",
                   onTap: () {
-                    print(newSystem.text);
                     Provider.of<SystemsProvider>(context, listen: false)
                         .addSystem(newSystem.text);
                   },

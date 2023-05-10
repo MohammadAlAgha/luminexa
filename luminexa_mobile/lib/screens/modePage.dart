@@ -20,14 +20,23 @@ class ModePage extends StatefulWidget {
 }
 
 class _ModePageState extends State<ModePage> {
+  Future fetchModes() async {
+    await Provider.of<ModesProvider>(context, listen: false)
+        .getModes(widget.systemId);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsFlutterBinding.ensureInitialized();
+
+    fetchModes();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<SystemsProvider>(builder: (context, value, child) {
-      List<Mode> _modes = value.systems
-          .firstWhere(
-            (system) => system.id == widget.systemId,
-          )
-          .modes;
+    return Consumer<ModesProvider>(builder: (context, value, child) {
+      List<Mode> _modes = value.modes;
 
       return SafeArea(
         child: Stack(

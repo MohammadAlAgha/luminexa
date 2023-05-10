@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:luminexa_mobile/APIs/ModeAPIs.dart';
 import 'package:luminexa_mobile/models/ledConfigs.dart';
+import 'package:luminexa_mobile/models/ledModel.dart';
 import 'package:luminexa_mobile/models/modeModel.dart';
+import 'package:luminexa_mobile/providers/LedsProvider.dart';
+import 'package:provider/provider.dart';
 
 class ModesProvider extends ChangeNotifier {
   List<Mode> modes = [];
@@ -40,7 +43,7 @@ class ModesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future toggleMode(systemId, modeId) async {
+  Future toggleMode(BuildContext context, String systemId, modeId) async {
     final response = await ModeAPIs.toggleMode(systemId, modeId);
 
     List<Mode> _modes = [];
@@ -51,6 +54,12 @@ class ModesProvider extends ChangeNotifier {
     });
 
     modes = _modes;
+
+    response.data["leds"].forEach((map) {
+      final Led led = LedsProvider.fromJSON(map);
+      Provider.of<LedsProvider>(context, listen: false).editConfigs(
+          context, systemId, led.id, led.ledStatus, led.intensity, led.color);
+    });
 
     notifyListeners();
   }
