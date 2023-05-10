@@ -5,7 +5,11 @@ import 'package:luminexa_mobile/widgets/buttonWidget/systemButton.dart';
 import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 
 class ConsumptionPage extends StatefulWidget {
-  const ConsumptionPage({super.key});
+  final String systemId;
+  const ConsumptionPage({
+    super.key,
+    required this.systemId,
+  });
 
   @override
   State<ConsumptionPage> createState() => _ConsumptionPageState();
@@ -64,20 +68,18 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 70),
-              child: consumptionGraph(
-                consumption: currentIntensity,
-              ),
+    return SafeArea(
+        child: Column(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 70),
+            child: consumptionGraph(
+              consumption: currentIntensity,
             ),
           ),
-        ],
-      )),
-    );
+        ),
+      ],
+    ));
   }
 }
