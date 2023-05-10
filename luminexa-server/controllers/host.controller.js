@@ -6,10 +6,18 @@ exports.getSystemUsers = async (req, res) => {
 
   const system = await System.findById(systemId).populate({
     path: "users",
-    select: "-password",
-  }); //getting all the users detailes to the host except the password
+    select: "-password -systems -notifications",
+  }); //getting all the users detailes to the host except the password,systems and notifications
 
-  res.json(system.users);
+  const users = system.users.map((user) => {
+    const isHosts = system.hosts.includes(user._id.toString());
+    return {
+      ...user.toJSON(),
+      isHosts,
+    };
+  }); //iterating over the users then checking if they are in the hosts list
+
+  res.json(users);
 };
 
 exports.renameSystem = async (req, res) => {

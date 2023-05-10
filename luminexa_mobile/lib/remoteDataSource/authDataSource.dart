@@ -16,7 +16,7 @@ abstract class AuthDataSource {
 
       final prefs = await SharedPreferences.getInstance();
       prefs.setString("access_token", response.data["token"]);
-
+      print(response.data["token"]);
       print("Token saved");
       return response;
     } catch (e) {
