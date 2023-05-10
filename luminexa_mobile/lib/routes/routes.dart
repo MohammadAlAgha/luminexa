@@ -124,17 +124,6 @@ class RouteManager {
         );
       //Weather Routes
 
-      case consumptionPage:
-        return MaterialPageRoute(
-          builder: (context) => ConsumptionPage(),
-        );
-
-      case viewUsersPage:
-        return MaterialPageRoute(
-          builder: (context) => ViewUsers(),
-        );
-      //Host Routes
-
       default:
         throw FormatException('Wrong Route');
     }
