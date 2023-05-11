@@ -1,5 +1,3 @@
-import 'package:luminexa_mobile/models/systemModel.dart';
-
 class SystemUser {
   final String id;
   final String name;
@@ -18,7 +16,7 @@ class SystemUser {
       id: json['_id'],
       name: json["userName"],
       email: json["email"],
-      isHost: false,
+      isHost: json["isHosts"],
     );
 
     return newSystemUser;
