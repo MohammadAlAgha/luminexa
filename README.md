@@ -54,17 +54,17 @@
 
 ### User Screens (Mobile)
 
-| Login screen                        | Register screen                      | Landing screen                 | Loading screen                          |
-| ----------------------------------- | ------------------------------------ | ------------------------------ | --------------------------------------- |
-| ![Landing](./readme/Login.jpg)      | ![fsdaf](./readme/SignUp.jpg)        | ![fsdaf](./readme/home.jpg)    | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen                         | Menu Screen                          | Order Screen                   | Checkout Screen                         |
-| ![Landing](./readme/System.jpg.jpg) | ![fsdaf](./readme/Notifications.jpg) | ![fsdaf](./readme/Weather.jpg) | ![fsdaf](https://placehold.co/900x1600) |
+| Login screen                    | Register screen                      | Landing screen                 | screen                                  |
+| ------------------------------- | ------------------------------------ | ------------------------------ | --------------------------------------- |
+| ![Landing](./readme/Login.jpg)  | ![fsdaf](./readme/SignUp.jpg)        | ![fsdaf](./readme/home.jpg)    |
+| Home screen                     | Notifications Screen                 | Weather Screen                 | System Screen                           |
+| ![Landing](./readme/System.jpg) | ![fsdaf](./readme/Notifications.jpg) | ![fsdaf](./readme/Weather.jpg) | ![fsdaf](https://placehold.co/900x1600) |
 
 ### Host Screens (Web)
 
-| Users screen                   | Consumption screen           | Landing screen                        |
-| ------------------------------ | ---------------------------- | ------------------------------------- |
-| ![Landing](./readme/Users.jpg) | ![fsdaf](./readme/Graph.jpg) | ![fsdaf](./readme/SystemHost.jpg.jpg) |
+| Users screen                   | Consumption screen           | Landing screen                    |
+| ------------------------------ | ---------------------------- | --------------------------------- |
+| ![Landing](./readme/Users.jpg) | ![fsdaf](./readme/Graph.jpg) | ![fsdaf](./readme/SystemHost.jpg) |
 
 <br><br>
 
@@ -77,7 +77,7 @@
 - For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
 - To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
   - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+- The app uses the font ["Raleway"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
 
 <br><br>
 
