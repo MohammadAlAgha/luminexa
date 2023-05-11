@@ -24,13 +24,9 @@ class SchedulePage extends StatefulWidget {
 class _SchedulePageState extends State<SchedulePage> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<SystemsProvider>(
+    return Consumer<SchedulesProvider>(
       builder: (context, value, child) {
-        List<Schedule> _schedules = value.systems
-            .firstWhere(
-              (system) => system.id == widget.systemId,
-            )
-            .schedules;
+        List<Schedule> _schedules = value.schedules;
 
         return SafeArea(
           child: Stack(
