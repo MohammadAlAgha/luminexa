@@ -35,15 +35,15 @@
 
 ### Wireframes
 
-| Login screen                            | Register screen                       | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Login screen                          | Register screen                     | Landing screen                    |
+| ------------------------------------- | ----------------------------------- | --------------------------------- |
+| ![Landing](./readme/SignIn_figma.png) | ![fsdaf](./readme/SignUp_Figma.png) | ![fsdaf](./readme/Home_Figma.png) |
 
 ### Mockups
 
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Login screen                                | Register Screen                           | Home Screen                             |
+| ------------------------------------------- | ----------------------------------------- | --------------------------------------- |
+| ![Landing](./readme/SignIn_figmaMockUp.png) | ![fsdaf](./readme/SignUp_FigmaMockUp.png) | ![fsdaf](./readme/Home_figmaMockUp.png) |
 
 <br><br>
 
@@ -54,19 +54,17 @@
 
 ### User Screens (Mobile)
 
-| Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| Login screen                        | Register screen                      | Landing screen                 | Loading screen                          |
+| ----------------------------------- | ------------------------------------ | ------------------------------ | --------------------------------------- |
+| ![Landing](./readme/Login.jpg)      | ![fsdaf](./readme/SignUp.jpg)        | ![fsdaf](./readme/home.jpg)    | ![fsdaf](https://placehold.co/900x1600) |
+| Home screen                         | Menu Screen                          | Order Screen                   | Checkout Screen                         |
+| ![Landing](./readme/System.jpg.jpg) | ![fsdaf](./readme/Notifications.jpg) | ![fsdaf](./readme/Weather.jpg) | ![fsdaf](https://placehold.co/900x1600) |
 
 ### Host Screens (Web)
 
-| Login screen                            | Register screen                       | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Users screen                   | Consumption screen           | Landing screen                        |
+| ------------------------------ | ---------------------------- | ------------------------------------- |
+| ![Landing](./readme/Users.jpg) | ![fsdaf](./readme/Graph.jpg) | ![fsdaf](./readme/SystemHost.jpg.jpg) |
 
 <br><br>
 
