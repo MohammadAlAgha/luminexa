@@ -54,11 +54,11 @@
 
 ### User Screens (Mobile)
 
-| Login screen                    | Register screen                      | Landing screen                 | screen                                  |
-| ------------------------------- | ------------------------------------ | ------------------------------ | --------------------------------------- |
+| Login screen                    | Register screen                      | Landing                        |
+| ------------------------------- | ------------------------------------ | ------------------------------ |
 | ![Landing](./readme/Login.jpg)  | ![fsdaf](./readme/SignUp.jpg)        | ![fsdaf](./readme/home.jpg)    |
-| Home screen                     | Notifications Screen                 | Weather Screen                 | System Screen                           |
-| ![Landing](./readme/System.jpg) | ![fsdaf](./readme/Notifications.jpg) | ![fsdaf](./readme/Weather.jpg) | ![fsdaf](https://placehold.co/900x1600) |
+| Home screen                     | Notifications Screen                 | Weather Screen                 |
+| ![Landing](./readme/System.jpg) | ![fsdaf](./readme/Notifications.jpg) | ![fsdaf](./readme/Weather.jpg) |
 
 ### Host Screens (Web)
 
