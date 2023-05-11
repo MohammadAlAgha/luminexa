@@ -59,4 +59,21 @@ class HostProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future<void> addUser(systemId, email) async {
+    final response = await HostAPIs.addUser(systemId, email);
+
+    List<SystemUser> _systemUsers = [];
+
+    response.forEach(
+      (map) {
+        final SystemUser user = SystemUser.fromJSON(map);
+        _systemUsers.add(user);
+      },
+    );
+
+    systemUsers = _systemUsers;
+
+    notifyListeners();
+  }
 }

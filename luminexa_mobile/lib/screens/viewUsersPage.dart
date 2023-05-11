@@ -54,7 +54,10 @@ class _ViewUsersState extends State<ViewUsers> {
                 child: systemButton(
                   isPressed: false,
                   innerText: "Invite",
-                  onTap: () {},
+                  onTap: () {
+                    Provider.of<HostProvider>(context, listen: false)
+                        .addUser(widget.systemId, newUser.text);
+                  },
                 ),
               ),
               Padding(

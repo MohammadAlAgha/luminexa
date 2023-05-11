@@ -36,4 +36,15 @@ class HostAPIs {
       rethrow;
     }
   }
+
+  static Future addUser(systemId, userEmail) async {
+    final body = {"systemId": systemId, "email": userEmail};
+    try {
+      final response = await sendRequest(
+          route: "/host/addUser", method: RequestMethods.POST, load: body);
+      return response.data;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

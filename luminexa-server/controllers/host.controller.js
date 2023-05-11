@@ -88,7 +88,10 @@ exports.systemShutDown = async (req, res) => {
 exports.addUser = async (req, res) => {
   const { systemId, email } = req.body;
 
-  const system = await System.findById(systemId); //getting the system by ID
+  const system = await System.findById(systemId).populate({
+    path: "users",
+    select: "-password -systems -notifications",
+  }); //getting all the users detailes to the host except the password,systems and notifications
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
@@ -120,7 +123,10 @@ exports.addUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   const { systemId, email } = req.body;
 
-  const system = await System.findById(systemId); //getting the system by ID
+  const system = await System.findById(systemId).populate({
+    path: "users",
+    select: "-password -systems -notifications",
+  }); //getting all the users detailes to the host except the password,systems and notifications
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
@@ -165,7 +171,10 @@ exports.deleteUser = async (req, res) => {
 exports.setHost = async (req, res) => {
   const { systemId, email } = req.body;
 
-  const system = await System.findById(systemId); //getting the system by ID
+  const system = await System.findById(systemId).populate({
+    path: "users",
+    select: "-password -systems -notifications",
+  }); //getting all the users detailes to the host except the password,systems and notifications
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
@@ -177,15 +186,15 @@ exports.setHost = async (req, res) => {
     return res.status(400).json({ message: "Wrong email" });
   } //checking if the email exist
 
-  const userIndex = system.users.indexOf(user._id); //searching for the index of the user ID in the array of users
+  const userExists = system.users.find((user) => user.email === email);
 
-  if (userIndex === -1) {
+  if (!userExists) {
     return res.status(400).json({ message: "This user is not in this system" });
-  } //checking if the user is already in the system
+  }
 
   system.hosts.push(user._id); //adding the user to the sets of hosts in that system
 
   await system.save();
 
-  res.json(system.hosts);
+  res.json(system.users);
 };
