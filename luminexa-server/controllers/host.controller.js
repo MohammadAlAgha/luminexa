@@ -10,10 +10,10 @@ exports.getSystemUsers = async (req, res) => {
   }); //getting all the users detailes to the host except the password,systems and notifications
 
   const users = system.users.map((user) => {
-    const isHostss = system.hosts.includes(user._id.toString());
+    const isHosts = system.hosts.includes(user._id.toString());
     return {
       ...user.toJSON(),
-      isHostss,
+      isHosts,
     };
   }); //iterating over the users then checking if they are in the hosts list
 
@@ -91,7 +91,7 @@ exports.addUser = async (req, res) => {
   const system = await System.findById(systemId).populate({
     path: "users",
     select: "-password -systems -notifications",
-  }); //getting all the users detailes to the host except the password,systems and notifications
+  }); //getting all the users details to the host except the password,systems and notifications
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
@@ -117,7 +117,16 @@ exports.addUser = async (req, res) => {
   await system.save();
   await user.save();
 
-  res.json(system.users);
+  const updatedSystem = await System.findById(systemId).populate({
+    path: "users",
+    select: "-password -systems -notifications",
+  }); //fetching the system object again to update the isHost property for all users
+
+  updatedSystem.users.forEach((systemUser) => {
+    systemUser.isHosts = systemUser._id.equals(system.hosts); //updating the isHost property for all users
+  });
+
+  res.json(updatedSystem.users);
 };
 
 exports.deleteUser = async (req, res) => {
