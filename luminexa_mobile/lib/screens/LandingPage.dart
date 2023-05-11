@@ -102,7 +102,7 @@ class _LandingPageState extends State<LandingPage> {
           drawer: drawerWidget(),
           appBar: AppBar(
             title: Text(
-              "User Name",
+              "Home",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             centerTitle: true,
