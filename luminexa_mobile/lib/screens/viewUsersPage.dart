@@ -104,7 +104,7 @@ class _ViewUsersState extends State<ViewUsers> {
                             itemBuilder: (context, index) {
                               final user = systemUsers[index];
                               return Dismissible(
-                                key: Key(user.id),
+                                key: Key(user.email),
                                 onDismissed: (direction) {
                                   if (direction ==
                                       DismissDirection.endToStart) {

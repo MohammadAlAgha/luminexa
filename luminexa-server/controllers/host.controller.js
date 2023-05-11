@@ -10,10 +10,10 @@ exports.getSystemUsers = async (req, res) => {
   }); //getting all the users detailes to the host except the password,systems and notifications
 
   const users = system.users.map((user) => {
-    const isHosts = system.hosts.includes(user._id.toString());
+    const isHostss = system.hosts.includes(user._id.toString());
     return {
       ...user.toJSON(),
-      isHosts,
+      isHostss,
     };
   }); //iterating over the users then checking if they are in the hosts list
 
@@ -126,46 +126,54 @@ exports.deleteUser = async (req, res) => {
   const system = await System.findById(systemId).populate({
     path: "users",
     select: "-password -systems -notifications",
-  }); //getting all the users detailes to the host except the password,systems and notifications
+  });
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  } //checking if system exists
+  }
 
-  const user = await User.findOne({ email }); //finding the user by email
+  const user = await User.findOne({ email });
 
   if (!user) {
     return res.status(400).json({ message: "Wrong email" });
-  } //checking if the email exist
+  }
 
-  const userIndex = system.users.indexOf(user._id); //searching for the index of the user ID in the array of users
+  const userIndex = system.users.findIndex((oneUser) =>
+    oneUser._id.equals(user._id)
+  );
 
   if (userIndex === -1) {
     return res.status(400).json({ message: "This user is not in this system" });
-  } //checking if the user is already in the system
+  }
 
-  const updatedSystem = [];
-  const updatedUser = [];
+  const updatedSystem = system.users.filter(
+    (oneUser) => !oneUser._id.equals(user._id)
+  );
+  const updatedUser = user.systems.filter(
+    (oneSystem) => !oneSystem.equals(systemId)
+  );
 
-  system.users.forEach((oneUser) => {
-    if (!(oneUser.valueOf() == user._id)) {
-      updatedSystem.push(oneUser);
-    }
-  }); //removing the user ID from the array of users in the system
-
-  user.systems.forEach((oneSystem) => {
-    if (!(oneSystem.valueOf() == systemId)) {
-      updatedUser.push(oneSystem);
-    }
-  }); //removing the system ID from the array of systems for that user
-
-  system.users = updatedSystem; //updating the users array in the system
-  user.systems = updatedUser; //updating the systems array for the user
+  system.users = updatedSystem;
+  user.systems = updatedUser;
 
   await system.save();
   await user.save();
 
-  res.json(system.users);
+  const updatedUsers = await User.find({ systems: systemId })
+    .select("-password -systems -notifications")
+    .lean();
+  const userIds = updatedUsers.map((oneUser) => oneUser._id);
+
+  const usersWithHostIndicator = system.users.map((oneUser) => {
+    return {
+      _id: oneUser._id,
+      userName: oneUser.userName,
+      email: oneUser.email,
+      isHosts: userIds.includes(oneUser._id),
+    };
+  });
+
+  res.json(usersWithHostIndicator);
 };
 
 exports.setHost = async (req, res) => {
@@ -174,27 +182,42 @@ exports.setHost = async (req, res) => {
   const system = await System.findById(systemId).populate({
     path: "users",
     select: "-password -systems -notifications",
-  }); //getting all the users detailes to the host except the password,systems and notifications
+  });
 
   if (!system) {
     return res.status(404).json({ message: "System not found" });
-  } //checking if system exists
+  }
 
-  const user = await User.findOne({ email: email }); //finding the user by email
+  const user = await User.findOne({ email });
 
   if (!user) {
     return res.status(400).json({ message: "Wrong email" });
-  } //checking if the email exist
+  }
 
-  const userExists = system.users.find((user) => user.email === email);
+  const userIndex = system.users.findIndex(
+    (u) => u._id.toString() === user._id.toString()
+  );
 
-  if (!userExists) {
+  if (userIndex === -1) {
     return res.status(400).json({ message: "This user is not in this system" });
   }
 
-  system.hosts.push(user._id); //adding the user to the sets of hosts in that system
-
+  system.hosts.push(user._id);
   await system.save();
 
-  res.json(system.users);
+  const updatedSystem = await System.findById(systemId).populate({
+    path: "users",
+    select: "-password -systems -notifications",
+  });
+
+  const updatedUsers = updatedSystem.users.map((u) => {
+    return {
+      _id: u._id,
+      userName: u.userName,
+      email: u.email,
+      isHosts: system.hosts.includes(u._id),
+    };
+  });
+
+  res.json(updatedUsers);
 };
