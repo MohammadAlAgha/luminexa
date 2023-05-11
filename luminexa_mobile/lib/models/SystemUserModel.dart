@@ -2,7 +2,7 @@ class SystemUser {
   final String id;
   final String name;
   final String email;
-  final bool isHost;
+  bool isHost;
 
   SystemUser({
     required this.id,
