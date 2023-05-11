@@ -60,15 +60,13 @@
 | Home screen                          | Notifications Screen                 | Weather Screen                 |
 | ![Landing](./readme/System.jpg)      | ![fsdaf](./readme/Notifications.jpg) | ![fsdaf](./readme/Weather.jpg) |
 | Login Demo                           | Log Out Demo                         | Set Mode Demo                  |
-| -------------------------------      | ------------------------------------ | ------------------------------ |
 | ![Landing](./readme/LogIn.mp4)       | ![fsdaf](./readme/LogOut.mp4)        | ![fsdaf](./readme/SetMode.mp4) |
 | Set Schedule Demo                    | Notifications Demo                   | Edit Led Demo                  |
 | ![Landing](./readme/SetSchedule.mp4) | ![fsdaf](./readme/Notification.mp4)  | ![fsdaf](./readme/EditLed.mp4) |
 | Switch Themes Demo                   | Delete mode/schedule Demo            |
-| -------------------------------      | ------------------------------------ |
 | ![Landing](./readme/Theme.mp4)       | ![fsdaf](./readme/Delete.mp4)        |
 
-### Host Screens (Web)
+### Host Screens
 
 | Users screen                   | Consumption screen           | Landing screen                    |
 | ------------------------------ | ---------------------------- | --------------------------------- |
