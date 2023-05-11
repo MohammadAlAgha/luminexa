@@ -10,6 +10,7 @@ import 'package:luminexa_mobile/models/notificationModel.dart';
 import 'package:luminexa_mobile/models/scheduleModel.dart';
 import 'package:luminexa_mobile/models/systemModel.dart';
 import 'package:luminexa_mobile/models/userModel.dart';
+import 'package:luminexa_mobile/providers/HostProvider.dart';
 import 'package:luminexa_mobile/providers/LedsProvider.dart';
 import 'package:luminexa_mobile/providers/NotificationsProvider.dart';
 import 'package:luminexa_mobile/providers/SchedulesProvider.dart';
@@ -101,6 +102,8 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
             create: (context) =>
                 UserProvider(user: User(name: "", email: "", isHost: false))),
+        ChangeNotifierProvider(
+            create: (context) => HostProvider(systemUsers: [])),
         ChangeNotifierProvider(
             create: (context) => ModesProvider(modes: <Mode>[])),
         ChangeNotifierProvider(
