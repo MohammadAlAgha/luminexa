@@ -54,17 +54,17 @@
 
 ### User Screens (Mobile)
 
-| Login screen                         | Register screen                      | Landing                        |
-| ------------------------------------ | ------------------------------------ | ------------------------------ |
-| ![Landing](./readme/Login.jpg)       | ![fsdaf](./readme/SignUp.jpg)        | ![fsdaf](./readme/home.jpg)    |
-| Home screen                          | Notifications Screen                 | Weather Screen                 |
-| ![Landing](./readme/System.jpg)      | ![fsdaf](./readme/Notifications.jpg) | ![fsdaf](./readme/Weather.jpg) |
-| Login Demo                           | Log Out Demo                         | Set Mode Demo                  |
-| ![Landing](./readme/LogIn.mp4)       | ![fsdaf](./readme/LogOut.mp4)        | ![fsdaf](./readme/SetMode.mp4) |
-| Set Schedule Demo                    | Notifications Demo                   | Edit Led Demo                  |
-| ![Landing](./readme/SetSchedule.mp4) | ![fsdaf](./readme/Notification.mp4)  | ![fsdaf](./readme/EditLed.mp4) |
-| Switch Themes Demo                   | Delete mode/schedule Demo            |
-| ![Landing](./readme/Theme.mp4)       | ![fsdaf](./readme/Delete.mp4)        |
+| Login screen                                              | Register screen                                          | Landing                                             |
+| --------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
+| ![Landing](./readme/Login.jpg)                            | ![fsdaf](./readme/SignUp.jpg)                            | ![fsdaf](./readme/home.jpg)                         |
+| Home screen                                               | Notifications Screen                                     | Weather Screen                                      |
+| ![Landing](./readme/System.jpg)                           | ![fsdaf](./readme/Notifications.jpg)                     | ![fsdaf](./readme/Weather.jpg)                      |
+| Login Demo                                                | Log Out Demo                                             | Set Mode Demo                                       |
+| ![Landing](<./readme/LogIn_AdobeExpress%20(1).gif>)       | ![fsdaf](<./readme/LogOut_AdobeExpress%20(1).gif>)       | ![fsdaf](<./readme/SetMode_AdobeExpress%20(1).gif>) |
+| Set Schedule Demo                                         | Notifications Demo                                       | Edit Led Demo                                       |
+| ![Landing](<./readme/SetSchedule_AdobeExpress%20(1).gif>) | ![fsdaf](<./readme/Notification_AdobeExpress%20(1).gif>) | ![fsdaf](<./readme/EditLed_AdobeExpress%20(1).gif>) |
+| Switch Themes Demo                                        | Delete mode/schedule Demo                                |
+| ![Landing](./readme/Theme_AdobeExpress.gif)               | ![fsdaf](<./readme/Delete_AdobeExpress%20(3).gif>)       |
 
 ### Host Screens
 
