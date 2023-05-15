@@ -51,8 +51,8 @@
 
 ### Mockups
 
-| Login screen | Register Screen | Home Screen |
-| | | |
+| Login screen                                | Register Screen                           | Home Screen                             |
+| ------------------------------------------- | ----------------------------------------- | --------------------------------------- |
 | ![Landing](./readme/SignIn_figmaMockUp.png) | ![fsdaf](./readme/SignUp_FigmaMockUp.png) | ![fsdaf](./readme/Home_figmaMockUp.png) |
 
 <br><br>
