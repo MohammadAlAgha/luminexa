@@ -39,20 +39,20 @@
 | ------------------------------------------ | ------------------------------------------------- | ------------------------------------------------ |
 | ![Landing](./readme/SignIn_figma.png)      | ![fsdaf](./readme/SignUp_Figma.png)               | ![fsdaf](./readme/Home_Figma.png)                |
 | Edit LED screen                            | Notifications screen                              | Consumption screen                               |
-| -------------------------------------      | -----------------------------------               | ---------------------------------                |
+|                                            |                                                   |                                                  |
 | ![Landing](./readme/LEDS_figma.png)        | ![fsdaf](./readme/Notifications_figma.png)        | ![fsdaf](./readme/Power%20Consumption_figma.png) |
 | Settings screen                            | View Schedules screen                             | View Modes screen                                |
-| -------------------------------------      | -----------------------------------               | ---------------------------------                |
+|                                            |                                                   |                                                  |
 | ![Landing](./readme/Settings_figma.png)    | ![fsdaf](./readme/View%20Schedules_figma.png.png) | ![fsdaf](./readme/View%20Modes_figma.png_.png)   |
 | Weather screen                             | View Users screen                                 | LEDS screen                                      |
-| -------------------------------------      | -----------------------------------               | ---------------------------------                |
+|                                            |                                                   |                                                  |
 | ![Landing](./readme/Weather_figma.png.png) | ![fsdaf](./readme/Users_figma.png.png)            | ![fsdaf](./readme/LEDS_figma.png.png)            |
 |                                            |
 
 ### Mockups
 
-| Login screen                                | Register Screen                           | Home Screen                             |
-| ------------------------------------------- | ----------------------------------------- | --------------------------------------- |
+| Login screen | Register Screen | Home Screen |
+| | | |
 | ![Landing](./readme/SignIn_figmaMockUp.png) | ![fsdaf](./readme/SignUp_FigmaMockUp.png) | ![fsdaf](./readme/Home_figmaMockUp.png) |
 
 <br><br>
