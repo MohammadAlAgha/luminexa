@@ -51,19 +51,19 @@
 
 ### Mockups
 
-| Login screen                                  | Register Screen                                     | Home Screen                                            |
-| --------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------ |
-| ![Landing](./readme/SignIn_figmaMockUp.png)   | ![fsdaf](./readme/SignUp_FigmaMockUp.png)           | ![fsdaf](./readme/Home_figmaMockUp.png)                |
-| Edit LED screen                               | Notifications screen                                | Consumption screen                                     |
-|                                               |                                                     |                                                        |
-| ![Landing](./readme/LEDS_MockUps.png.png)     | ![fsdaf](./readme/Notifications_MockUps.png.png)    | ![fsdaf](./readme/Power%20Consumption_MockUps.png.png) |
-| Settings screen                               | View Schedules screen                               | View Modes screen                                      |
-|                                               |                                                     |                                                        |
-| ![Landing](./readme/Settings_MockUps.png.png) | ![fsdaf](./readme/View%20Schedules_MockUps.png.png) | ![fsdaf](./readme/View%20Modes_MockUps.png.png)        |
-| Weather screen                                | View Users screen                                   | LEDS screen                                            |
-|                                               |                                                     |                                                        |
-| ![Landing](./readme/Weather_MockUps.png.png)  | ![fsdaf](./readme/Users_MockUps.png.png)            | ![fsdaf](./readme/LEDS_MockUps.png.png)                |
-|                                               |
+| Login screen                                | Register Screen                                 | Home Screen                                        |
+| ------------------------------------------- | ----------------------------------------------- | -------------------------------------------------- |
+| ![Landing](./readme/SignIn_figmaMockUp.png) | ![fsdaf](./readme/SignUp_FigmaMockUp.png)       | ![fsdaf](./readme/Home_figmaMockUp.png)            |
+| Edit LED screen                             | Notifications screen                            | Consumption screen                                 |
+|                                             |                                                 |                                                    |
+| ![Landing](./readme/LEDS_MockUps.png)       | ![fsdaf](./readme/Notifications_MockUps.png)    | ![fsdaf](./readme/Power%20Consumption_MockUps.png) |
+| Settings screen                             | View Schedules screen                           | View Modes screen                                  |
+|                                             |                                                 |                                                    |
+| ![Landing](./readme/Settings_MockUps.png)   | ![fsdaf](./readme/View%20Schedules_MockUps.png) | ![fsdaf](./readme/View%20Modes_MockUps.png)        |
+| Weather screen                              | View Users screen                               | LEDS screen                                        |
+|                                             |                                                 |                                                    |
+| ![Landing](./readme/Weather_MockUps.png)    | ![fsdaf](./readme/Users_MockUps.png)            | ![fsdaf](./readme/LEDS_MockUps.png)                |
+|                                             |
 
 <br><br>
 
