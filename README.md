@@ -43,7 +43,7 @@
 | ![Landing](./readme/LEDS_figma.png)     | ![fsdaf](./readme/Notifications_figma.png)    | ![fsdaf](./readme/Power%20Consumption_figma.png) |
 | Settings screen                         | View Schedules screen                         | View Modes screen                                |
 |                                         |                                               |                                                  |
-| ![Landing](./readme/Settings_figma.png) | ![fsdaf](./readme/View%20Schedules_figma.png) | ![fsdaf](./readme/View%20Modes_figma.png_)       |
+| ![Landing](./readme/Settings_figma.png) | ![fsdaf](./readme/View%20Schedules_figma.png) | ![fsdaf](./readme/View%20Modes_figma.png)        |
 | Weather screen                          | View Users screen                             | LEDS screen                                      |
 |                                         |                                               |                                                  |
 | ![Landing](./readme/Weather_figma.png)  | ![fsdaf](./readme/Users_figma.png)            | ![fsdaf](./readme/LEDS_figma.png)                |
