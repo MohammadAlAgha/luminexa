@@ -12,18 +12,11 @@
 ### User Stories
 
 - As a user, I want to control the the intensity(increase/decrease) of the light and not only the state(On/Off) of it so I can have a full control on every single spot light in the room.
-  -As a user, I want to get notified when there is no one in the room with the lights on so that I can approve/reject the permission to shut down the light
 - As a user, I want to create my own schedule and set time so that the lights can be turned on or off automatically and based on the schedule I made.
 - As a user, I want to set different light modes in the room so that I can match it with the event I have.
-- As a user, I want the system to be adaptive to the light that is coming from outside so that it asks me for a permission to turn off/decreases the light when it is sunny and increases the light when it is cloudy.
-- As a user, I want benefit from an already built in energy saving mode that I can activate when needed.
-- As a user, I want to be able to login/sign up.
 - As a user, I want to add new system connection to my account.
-- As a host, I want to be able to turn off all schedules so that I don’t have to worry about the lights automatically going on when I am out on a vacation for example.
 - As a host, I want to view the power consumption statistics of the lighting system in each room.
-- As a host, I want to be able to shut down the whole system in case of an emergency.
 - As a host, I want to be able to add new hosts so that they can help me.
-- As a host, I want to be able to add/remove normal users.
 - As a host, I want to be able to view all normal users so that I know who I want to delete or promote to a host.
 
 <br><br>
@@ -35,35 +28,15 @@
 
 ### Wireframes
 
-| Login screen                            | Register screen                               | Landing screen                                   |
-| --------------------------------------- | --------------------------------------------- | ------------------------------------------------ |
-| ![Landing](./readme/SignIn_figma.png)   | ![fsdaf](./readme/SignUp_Figma.png)           | ![fsdaf](./readme/Home_Figma.png)                |
-| Edit LED screen                         | Notifications screen                          | Consumption screen                               |
-|                                         |                                               |                                                  |
-| ![Landing](./readme/LEDS_figma.png)     | ![fsdaf](./readme/Notifications_figma.png)    | ![fsdaf](./readme/Power%20Consumption_figma.png) |
-| Settings screen                         | View Schedules screen                         | View Modes screen                                |
-|                                         |                                               |                                                  |
-| ![Landing](./readme/Settings_figma.png) | ![fsdaf](./readme/View%20Schedules_figma.png) | ![fsdaf](./readme/View%20Modes_figma.png)        |
-| Weather screen                          | View Users screen                             | LEDS screen                                      |
-|                                         |                                               |                                                  |
-| ![Landing](./readme/Weather_figma.png)  | ![fsdaf](./readme/Users_figma.png)            | ![fsdaf](./readme/LEDS_figma.png)                |
-|                                         |
+| LED screen                        | View Schedules screen                         | View Modes screen                         | Weather screen                       |
+| --------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------ |
+| ![fsdaf](./readme/LEDS_figma.png) | ![fsdaf](./readme/View%20Schedules_figma.png) | ![fsdaf](./readme/View%20Modes_figma.png) | ![fsdaf](./readme/Weather_figma.png) |
 
 ### Mockups
 
-| Login screen                                | Register Screen                                 | Home Screen                                        |
-| ------------------------------------------- | ----------------------------------------------- | -------------------------------------------------- |
-| ![Landing](./readme/SignIn_figmaMockUp.png) | ![fsdaf](./readme/SignUp_FigmaMockUp.png)       | ![fsdaf](./readme/Home_figmaMockUp.png)            |
-| Edit LED screen                             | Notifications screen                            | Consumption screen                                 |
-|                                             |                                                 |                                                    |
-| ![Landing](./readme/LEDS_MockUps.png)       | ![fsdaf](./readme/Notifications_MockUps.png)    | ![fsdaf](./readme/Power%20Consumption_MockUps.png) |
-| Settings screen                             | View Schedules screen                           | View Modes screen                                  |
-|                                             |                                                 |                                                    |
-| ![Landing](./readme/Settings_MockUps.png)   | ![fsdaf](./readme/View%20Schedules_MockUps.png) | ![fsdaf](./readme/View%20Modes_MockUps.png)        |
-| Weather screen                              | View Users screen                               | LEDS screen                                        |
-|                                             |                                                 |                                                    |
-| ![Landing](./readme/Weather_MockUps.png)    | ![fsdaf](./readme/Users_MockUps.png)            | ![fsdaf](./readme/LEDS_MockUps.png)                |
-|                                             |
+| Edit LED                                        | View Schedules screen                             | View Modes screen                             | LED screen                                |
+| ----------------------------------------------- | ------------------------------------------------- | --------------------------------------------- | ----------------------------------------- |
+| ![Log in](./readme/Edit%20Lighting_MockUps.png) | ![Sign up](./readme/View%20Schedules_MockUps.png) | ![Landing](./readme/View%20Modes_MockUps.png) | ![Notifications](./readme/LEDS_figma.png) |
 
 <br><br>
 
@@ -84,7 +57,7 @@
 | Set Schedule Demo                                         | Notifications Demo                                       | Edit Led Demo                                       |
 | ![Landing](<./readme/SetSchedule_AdobeExpress%20(1).gif>) | ![fsdaf](<./readme/Notification_AdobeExpress%20(1).gif>) | ![fsdaf](<./readme/EditLed_AdobeExpress%20(1).gif>) |
 | Switch Themes Demo                                        | Delete mode/schedule Demo                                |
-| ![Landing](./readme/Theme_AdobeExpress.gif)               | ![fsdaf](<./readme/Delete_AdobeExpress%20(3).gif>)       |
+| ![Landing](./readme/Theme_AdobeExpress.gif)               | ![fsdaf](<./readme/Delete_AdobeExpress%20(3).gif>)       | Sign Up Demo ![Landing](./readme/SignupGIF.gif)     |
 
 ### Host Screens
 
