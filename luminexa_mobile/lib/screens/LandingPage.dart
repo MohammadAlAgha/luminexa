@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:luminexa_mobile/models/systemModel.dart';
 import 'package:luminexa_mobile/providers/SystemsProvider.dart';
 import 'package:luminexa_mobile/routes/routes.dart';
@@ -11,10 +12,10 @@ import 'package:luminexa_mobile/widgets/titleWidget/titleWidget.dart';
 import 'package:provider/provider.dart';
 
 class LandingPage extends StatefulWidget {
-  final List<bool> isHost;
+  final List<bool>? isHost;
   const LandingPage({
     super.key,
-    required this.isHost,
+    this.isHost,
   });
 
   @override
@@ -123,16 +124,40 @@ class _LandingPageState extends State<LandingPage> {
                   child: Column(
                     children: [
                       titleWidget(title: "Systems"),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: _systems.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return listOption(
-                              isHost: widget.isHost[index],
-                              system: _systems[index],
-                              activeLeds: getActiveLeds(_systems[index]));
-                        },
-                      ),
+                      _systems.length == 0
+                          ? Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(25.0),
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 170,
+                                    ),
+                                    Text(
+                                      "Seems that you are not connected to any systems yet",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelMedium,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    SvgPicture.asset('images/EmptyState.svg'),
+                                  ],
+                                ),
+                              ),
+                            )
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: _systems.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return listOption(
+                                  isHost: widget.isHost?[index],
+                                  system: _systems[index],
+                                  activeLeds: getActiveLeds(_systems[index]),
+                                );
+                              },
+                            ),
                       SizedBox(
                         height: 120,
                       ),
@@ -158,16 +183,6 @@ class _LandingPageState extends State<LandingPage> {
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       children: [
-                        // if (true)
-                        //   iconButton(
-                        //     innerText: "View Consumption",
-                        //     iconName: Icon(Icons.add),
-                        //     onTap: addSystem,
-                        //   ),
-                        // if (true)
-                        //   SizedBox(
-                        //     height: 20,
-                        //   ),
                         iconButton(
                           innerText: "Add new system",
                           iconName: Icon(Icons.add),

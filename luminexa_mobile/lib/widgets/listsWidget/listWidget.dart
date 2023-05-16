@@ -5,13 +5,13 @@ import 'package:luminexa_mobile/routes/routes.dart';
 class listOption extends StatelessWidget {
   final System system;
   final int activeLeds;
-  final bool isHost;
+  final bool? isHost;
 
   const listOption({
     super.key,
     required this.system,
     required this.activeLeds,
-    required this.isHost,
+    this.isHost,
   });
 
   @override

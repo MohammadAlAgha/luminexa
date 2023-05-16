@@ -78,7 +78,7 @@ class RouteManager {
             isHost: (settings.arguments as Map)["isHost"],
           ),
         );
-      //Landing Rourte
+      //Landing Route
 
       case editLedPage:
         return MaterialPageRoute(

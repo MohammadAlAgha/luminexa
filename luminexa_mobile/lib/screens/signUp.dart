@@ -37,7 +37,12 @@ class _SignUpState extends State<SignUp> {
 
       await AuthDataSource.register(userName, email, password, confirmPassword);
 
-      Navigator.of(context).popAndPushNamed(RouteManager.landingPage);
+      Navigator.of(context).popAndPushNamed(
+        RouteManager.landingPage,
+        arguments: {
+          "isHost": [false]
+        },
+      );
     } catch (e) {
       Navigator.of(context).pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -92,28 +97,28 @@ class _SignUpState extends State<SignUp> {
                           decoration: Theme.of(context).inputDecorationTheme,
                           controller: userNameController,
                           label: "Name",
-                          hintText: "Name",
+                          hintText: "",
                           isPass: false,
                         ),
                         styledTextField(
                           decoration: Theme.of(context).inputDecorationTheme,
                           controller: emailController,
                           label: "Email",
-                          hintText: "Email",
+                          hintText: "ex : name@email.com",
                           isPass: false,
                         ),
                         styledTextField(
                           decoration: Theme.of(context).inputDecorationTheme,
                           controller: passwordController,
                           label: "Password",
-                          hintText: "Password",
+                          hintText: "",
                           isPass: true,
                         ),
                         styledTextField(
                           decoration: Theme.of(context).inputDecorationTheme,
                           controller: ConfirmPasswordController,
                           label: "Confirm Password",
-                          hintText: "Confirm Password",
+                          hintText: "",
                           isPass: true,
                         )
                       ]),

@@ -95,7 +95,7 @@ class _LogInState extends State<LogIn> {
                                 decoration:
                                     Theme.of(context).inputDecorationTheme,
                                 controller: emailController,
-                                hintText: "Email",
+                                hintText: "ex : name@email.com",
                                 label: "Email",
                                 isPass: false,
                               ),
@@ -103,7 +103,7 @@ class _LogInState extends State<LogIn> {
                                 decoration:
                                     Theme.of(context).inputDecorationTheme,
                                 controller: passwordController,
-                                hintText: "Password",
+                                hintText: "",
                                 label: "Password",
                                 isPass: true,
                               ),
